@@ -32,6 +32,8 @@ git show 5879919 --stat
 
 ## 查看旧版与回滚
 
+Gaze 首移动基准修订 APK 1.0.5 / code 6 保存在 `backups/gaze-move-anchor-v4-2026-11-12/`，含 SHA-256 与前后设备日志。基于 `44b848b` 修订；99 项单测和构建通过，已安装，用户有限头显复测反馈两种捏合行为一致；4 次 Gaze 的日志未再出现原始首笔大跳位。详见 `docs/gaze-move-anchor-v4.md`，源码提交以实际 Git 记录为准。
+
 GazePinch 全程有序增量版 APK 1.0.4 / code 5 保存在 `backups/gaze-drag-ordered-v3-2026-11-12/`，附 SHA-256。以 `5879919` 为修改前基线；本轮源码使用后续独立提交保存（以 Git 实际结果为准）。96 项单测、开发/测试 APK、实验 API 和样式检查通过；真实头显输入校准与显示仍待确认。详见 `docs/gaze-drag-ordered-v3.md`。
 
 PCM v3 再次减半修订保存于 `backups/petal-audio-pcm-v3-2026-11-12/`，含源码、APK、清单和 SHA-256。PCM gain 0.05 → 0.025；APK 1.0.3 / code 4；86 项单测、开发/测试 APK 和交付检查通过，头显试听待验证。当前 WAV 和交互代码保持，旧快照保留。详见 `docs/petal-audio-pcm-v3-review.json`；无 Git commit。

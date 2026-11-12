@@ -8,12 +8,13 @@ class PinchDragTracker {
         val kind: Kind, val targetPetal: Int?)
     sealed interface Step {
         data class Started(val pointerId: Long, val petal: Int, val source: PositionSource) : Step
+        data class Anchored(val pointerId: Long, val downPosition: Vec, val position: Vec) : Step
         data class Moved(val pointerId: Long, val delta: Vec, val frameDelta: Vec = Vec()) : Step
         data class Unavailable(val pointerId: Long) : Step
         data class Released(val pointerId: Long, val cancelled: Boolean) : Step
     }
     private data class Capture(val pointerId: Long, val petal: Int, val source: PositionSource,
-        val origin: Vec, var previous: Vec = origin, var accumulated: Vec = Vec())
+        val origin: Vec, var previous: Vec?, var accumulated: Vec = Vec())
     private val pending = mutableMapOf<Long, Int>()
     private var capture: Capture? = null
     val positionSource: PositionSource? get() = capture?.source
@@ -28,13 +29,22 @@ class PinchDragTracker {
                 clear()
                 return Step.Released(sample.pointerId, cancelled = !sample.up)
             }
+            // Repeated down metadata is not part of the remote movement stream.
+            if (held.source == PositionSource.GlobalDevicePose && sample.down) return null
             // Keep both owner and coordinate source after the pointer leaves the collider,
             // after detach, or when the latest metadata changes/misses kind.
             val current = position(held.source)?.takeIf { it.finite() }
                 ?: return Step.Unavailable(sample.pointerId)
             if (held.source == PositionSource.GlobalDevicePose) {
+                val previous = held.previous
+                if (previous == null) {
+                    // Native down and move poses can have a discontinuity at gesture activation.
+                    // Anchor once on the first valid move; never infer motion from the down pose.
+                    held.previous = current
+                    return Step.Anchored(sample.pointerId, held.origin, current)
+                }
                 // Convert only adjacent samples. A scale change must never remap past movement.
-                val frameDelta = displacement(held.source, held.previous, current).takeIf { it.finite() }
+                val frameDelta = displacement(held.source, previous, current).takeIf { it.finite() }
                     ?: return Step.Unavailable(sample.pointerId)
                 val total = (held.accumulated + frameDelta).takeIf { it.finite() }
                     ?: return Step.Unavailable(sample.pointerId)
@@ -60,7 +70,9 @@ class PinchDragTracker {
         }
         val origin = position(source)?.takeIf { it.finite() } ?: return null
         if (!grab(petal, sample.pointerId)) { pending.remove(sample.pointerId); return null }
-        capture = Capture(sample.pointerId, petal, source, origin)
+        // A pending target may first acquire a valid pinch on a move, which is already an anchor.
+        capture = Capture(sample.pointerId, petal, source, origin,
+            previous = if (source == PositionSource.GlobalDevicePose && sample.down) null else origin)
         // Other fingers already down must make a fresh pinch after this gesture finishes.
         pending.clear()
         return Step.Started(sample.pointerId, petal, source)

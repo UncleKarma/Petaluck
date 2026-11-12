@@ -6,6 +6,87 @@ import org.junit.Test
 import kotlin.math.sqrt
 
 class PinchDragTrackerTest {
+    @Test fun remoteAnchorWaitsForValidMoveAndSurvivesDuplicateDownWithoutRebasing() {
+        val tracker = PinchDragTracker()
+        var conversions = 0
+        var grabs = 0
+        fun send(raw: Vec?, down: Boolean = false, up: Boolean = false) = tracker.update(
+            PinchDragTracker.Sample(1, down, up, !up, PinchDragTracker.Kind.Remote, if (down) 0 else null),
+            position = { raw }, grab = { _, _ -> grabs++; true },
+            displacement = { _, previous, current -> conversions++; (current - previous) * .001f })
+        assertTrue(send(Vec(1000f), down = true) is PinchDragTracker.Step.Started)
+        assertNull(send(Vec(1200f), down = true))
+        assertTrue(send(null) is PinchDragTracker.Step.Unavailable)
+        assertTrue(send(Vec(Float.NaN)) is PinchDragTracker.Step.Unavailable)
+        assertTrue(send(Vec(1500f)) is PinchDragTracker.Step.Anchored)
+        assertEquals(0, conversions)
+        assertNull(send(Vec(3000f), down = true))
+        assertVec(Vec(.01f), (send(Vec(1510f)) as PinchDragTracker.Step.Moved).delta)
+        assertVec(Vec(.02f), (send(Vec(1520f)) as PinchDragTracker.Step.Moved).delta)
+        assertEquals(1, grabs)
+        assertTrue(send(null, up = true) is PinchDragTracker.Step.Released)
+        assertTrue(send(Vec(6000f), down = true) is PinchDragTracker.Step.Started)
+        assertTrue(send(Vec(9000f)) is PinchDragTracker.Step.Anchored)
+        assertVec(Vec(.005f), (send(Vec(9005f)) as PinchDragTracker.Step.Moved).delta)
+    }
+
+    @Test fun pendingRemoteCaptureUsesItsFirstMoveAndUnanchoredReleaseNeedsNoPose() {
+        val h = Harness()
+        assertTrue(h.send(kind=PinchDragTracker.Kind.Remote,down=true,device=Vec(1000f)) is PinchDragTracker.Step.Started)
+        val reads = h.sources.size
+        assertTrue(h.send(up=true,device=null) is PinchDragTracker.Step.Released)
+        assertEquals(reads, h.sources.size)
+        assertEquals(0, h.session.detachedCount)
+        assertNull(h.send(kind=PinchDragTracker.Kind.Other,down=true,target=1))
+        val start = h.send(kind=PinchDragTracker.Kind.Remote,target=2,device=Vec(.5f)) as PinchDragTracker.Step.Started
+        assertEquals(1, start.petal)
+        val moved = h.send(kind=PinchDragTracker.Kind.Other,target=null,device=Vec(.52f)) as PinchDragTracker.Step.Moved
+        assertVec(Vec(.02f), moved.delta)
+        assertEquals(0, h.session.detachedCount)
+    }
+
+    @Test fun recordedRemoteDownToFirstMoveDiscontinuityDoesNotTearOrLoadTheStem() {
+        val tracker = PinchDragTracker()
+        val drag = RemotePetalDrag().apply { start() }
+        val stem = StemMotion().apply { grab() }
+        val strengths = mutableListOf<Float>()
+        var tears = 0
+        val tearPose = Vec(.06f, .03f, -.01f)
+        fun send(raw: Vec, down: Boolean = false): Vec? {
+            val step = tracker.update(
+                PinchDragTracker.Sample(1, down, false, true, PinchDragTracker.Kind.Remote, if (down) 0 else null),
+                position = { raw }, grab = { _, _ -> true },
+                displacement = { _, previous, current ->
+                    val d = (current - previous) * .0004f
+                    Vec(d.x, -d.y, d.z)
+                })
+            if (step is PinchDragTracker.Step.Moved) drag.moveBy(step.frameDelta)
+            return drag.advance { delta, crossing ->
+                val strength = PullRules.strength(delta.length())
+                strengths += strength
+                stem.pull(delta, strength)
+                if (crossing) { tears++; tearPose } else null
+            }
+        }
+        send(Vec(712.55927f, 997.3746f, 4855.635f), down = true)
+        val firstMove = Vec(1213.1f, 1226.1869f, 4079.283f)
+        assertNull(send(firstMove))
+        assertEquals(0, tears)
+        assertTrue(strengths.isEmpty())
+        // The next real recorded sample is sub-millimeter, not another large jump.
+        assertNull(send(Vec(1215.0251f, 1226.0284f, 4080.0034f)))
+        assertEquals(0f, strengths.last(), .000001f)
+        assertNull(send(firstMove + Vec(50f)))
+        assertTrue(strengths.last() in .01f..0.99f)
+        assertEquals(0, tears)
+        val held = checkNotNull(send(firstMove + Vec(102.5f)))
+        assertEquals(1, tears)
+        assertVec(tearPose + Vec(.001f), held)
+        assertVec(held, checkNotNull(send(firstMove + Vec(102.5f))))
+        assertVec(held + Vec(.02f), checkNotNull(send(firstMove + Vec(152.5f))))
+        assertEquals(1, tears)
+    }
+
     @Test fun remoteAccumulationDoesNotRescaleEarlierMovementWhenConversionChanges() {
         val tracker = PinchDragTracker()
         var scale = .001f
@@ -14,6 +95,7 @@ class PinchDragTrackerTest {
             position = { raw }, grab = { _, _ -> true },
             displacement = { _, previous, current -> (current - previous) * scale })
         send(Vec(1000f), down = true)
+        assertTrue(send(Vec(1000f)) is PinchDragTracker.Step.Anchored)
         val first = send(Vec(1010f)) as PinchDragTracker.Step.Moved
         assertVec(Vec(.01f), first.delta)
         scale = .003f
@@ -51,6 +133,7 @@ class PinchDragTrackerTest {
             return Vec(p.x,-p.y,p.z)*.001f
         }
         assertTrue(send(rawOrigin,down=true) is PinchDragTracker.Step.Started)
+        assertTrue(send(rawOrigin) is PinchDragTracker.Step.Anchored)
         val rawAtTear=rawOrigin+Vec(41f,-8f,12f)
         val tear=send(rawAtTear) as PinchDragTracker.Step.Moved
         assertVec(Vec(.041f,.008f,.012f),tear.delta)
@@ -81,6 +164,7 @@ class PinchDragTrackerTest {
                 displacement={_,start,current->val d=(current-start)*.002f;Vec(d.x,-d.y,d.z)},
                 grab={_,_->true})
             sample(0f,down=true)
+            assertTrue(sample(0f) is PinchDragTracker.Step.Anchored)
             val before=sample(.039f) as PinchDragTracker.Step.Moved
             val after=sample(.041f) as PinchDragTracker.Step.Moved
             assertTrue(PullRules.distance(before.delta)<PullRules.THRESHOLD)
@@ -99,6 +183,7 @@ class PinchDragTrackerTest {
             displacement={_,start,current->if(valid)(current-start)*.001f else Vec(Float.NaN)},
             grab={_,_->true})
         sample(origin,down=true)
+        assertTrue(sample(origin) is PinchDragTracker.Step.Anchored)
         valid=false
         assertTrue(sample(origin+Vec(30f)) is PinchDragTracker.Step.Unavailable)
         valid=true
@@ -122,6 +207,7 @@ class PinchDragTrackerTest {
                 kind=metadata,down=down,target=target,
                 local=if(direct)delta else Vec(99f),device=if(direct)null else origin+delta)
             assertTrue(send(Vec(),down=true,target=16) is PinchDragTracker.Step.Started)
+            if(!direct)assertTrue(send(Vec()) is PinchDragTracker.Step.Anchored)
             val motion=PetalDragMotion()
             val tear=send(Vec(.041f)) as PinchDragTracker.Step.Moved
             motion.move(tear.delta);motion.detach(Vec(.065f,.04f,-.005f))
@@ -210,6 +296,7 @@ class PinchDragTrackerTest {
                 device = if (direct) null else origin + delta
             )
             assertTrue(sample(Vec(), down = true) is PinchDragTracker.Step.Started)
+            if (!direct) assertTrue(sample(Vec()) is PinchDragTracker.Step.Anchored)
             stem.grab()
             fun pull(delta: Vec): Vec {
                 val moved = sample(delta) as PinchDragTracker.Step.Moved

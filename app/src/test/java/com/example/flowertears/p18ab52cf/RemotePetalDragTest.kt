@@ -110,6 +110,7 @@ class RemotePetalDragTest {
             grab = { id, hand -> session.grab(1, id, hand) },
             displacement = { _, previous, current -> (current - previous) * .001f })
         assertTrue(send(Vec(1000f), down = true) is PinchDragTracker.Step.Started)
+        assertTrue(send(Vec(1000f)) is PinchDragTracker.Step.Anchored)
         drag.start()
         for (raw in listOf(Vec(1050f), Vec(1080f, 20f))) {
             drag.moveBy((send(raw) as PinchDragTracker.Step.Moved).frameDelta)

@@ -16,8 +16,9 @@ class RemotePetalDrag {
     }
 
     /**
-     * Drain on a scene frame, and once before release. Do not sum samples before testing the
-     * threshold: a hand can cross it and return within one frame.
+     * Drain in the input callback, and once before release. Do not sum samples before testing
+     * the threshold: a hand can cross it and return within one frame. Scene-frame callbacks
+     * batch native transform writes and cannot safely read back a just-written tear pose.
      * At the crossing, pull must preserve/reparent the full pose and return its root position.
      */
     fun advance(pull: (displacement: Vec, crossing: Boolean) -> Vec?): Vec? {

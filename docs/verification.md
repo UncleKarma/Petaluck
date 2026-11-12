@@ -2,7 +2,14 @@
 
 日期：2026-11-12。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## GazePinch 全程有序增量与阈值分段（当前，ordered-v3）
+## Gaze 首移动基准与输入回调姿态更新（当前，move-anchor-v4）
+
+- 实际 1.0.4 日志中 down 到首 MOVE 间隔 572 ms，差值换算约 38 cm，立即摘取并将约 34 cm 余量应用到持有花瓣；同帧写后的原生 loaded 姿态仍为旧值。
+- APK 1.0.5 / code 6：remote 首有效 MOVE 只建基准，后续相邻采样按序在输入回调消费；4 cm 分段与 Direct 运动路径保持。99 项单测、开发/测试 APK 构建通过，新增 3 项基准/实测数值回归。
+- ADB 安装 Success，已核对设备版本。用户复测反馈“看上去行为一致了”；4 次 Gaze 摘取均出现阈值前连续受力，首次 held 相对 tear 仅 0.397–1.136 mm，换父位置误差 < 0.00001 mm；Direct 对照位置连续。采集停止，详细日志等级已恢复。此次有限真机反馈不代表全场景验收。此前检查器脚本本轮未找到，未声称新的实验 API / SpatialUI verifier PASS。
+- APK、旧日志及新日志单独保存在 `backups/gaze-move-anchor-v4-2026-11-12/`；详情见 [gaze-move-anchor-v4.md](gaze-move-anchor-v4.md)。
+
+## GazePinch 全程有序增量与阈值分段（历史，ordered-v3）
 
 - APK 1.0.4 / code 5。remote 从抓取开始累计相邻有效手部位移；跨 4 cm 分段，按完整 TRS 快照换父，剩余位移只应用一次。release 即使没有新场景帧也先消费队列；DirectPinch 路径保持。
 - 新增 10 项回归，原倍率变化缺陷先在旧代码上失败，修订后测试通过。全量 96 项单测零失败，开发/测试 APK 构建成功；实验 API 与 SpatialUI 检查通过，保留既有一条大字号提示。

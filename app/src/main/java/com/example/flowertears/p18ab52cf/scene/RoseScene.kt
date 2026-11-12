@@ -325,12 +325,20 @@ class RoseScene(context: Context) {
                     if(step.source==PinchDragTracker.PositionSource.GlobalDevicePose)remotePetalDrag.start()
                     p.owner.components[AccessibilityComponent::class.java]?.value="正在拉取"
                     Log.i(TAG,"PetalGrab session=${s.id} petal=${p.spec.id} kind=${e.kind} source=${step.source} pointer=$hand")
+                    gazeTrace {"grab pointer=$hand source=${step.source} raw=${e.inputDevicePose.rawPosition} local=${e.position3D}"}
+                }
+                is PinchDragTracker.Step.Anchored -> {
+                    handled=true;lostTime=-1f;trackingUnavailable=false
+                    gazeTrace {"anchor pointer=$hand downRaw=${step.downPosition} moveRaw=${step.position} appliedDelta=0"}
                 }
                 is PinchDragTracker.Step.Moved -> {
                     handled=true;lostTime=-1f;trackingUnavailable=false
                     if(remotePetalDrag.active) {
                         remotePetalDrag.moveBy(step.frameDelta)
                         gazeTrace {"queued pointer=$hand delta=${step.frameDelta} total=${step.delta}"}
+                        // Match DirectPinch's input phase. In SceneEvents.Update, transform setters
+                        // are batched but convertTransformTo reads native state before that flush.
+                        applyRemotePetalDrag()
                     } else {
                         // Keep DirectPinch's existing absolute-delta path unchanged.
                         petalDrag.move(step.delta);pull(hand)
@@ -358,7 +366,10 @@ class RoseScene(context: Context) {
     }
     private fun pointerDisplacement(source:PinchDragTracker.PositionSource,origin:Vec,current:Vec):Vec {
         val delta=current-origin
-        if(source==PinchDragTracker.PositionSource.LocalPointer)return delta
+        if(source==PinchDragTracker.PositionSource.LocalPointer) {
+            gazeTrace {"direct origin=$origin current=$current total=$delta"}
+            return delta
+        }
         // convertSize scales pixels to scene meters without adding the view's position.
         // Device/view axes have Y down; the scene and RoseAnchor have Y up.
         val v=content.convertSize(Vector3(delta.x,-delta.y,delta.z),ViewCoordinateSpace.Global,content.localSpatialCoordinateSpace)
@@ -397,9 +408,9 @@ class RoseScene(context: Context) {
         val world=p.owner.convertTransformTo(Transform(),root)
         p.owner.removeFromParent();root!!.addChild(p.owner);p.owner.components.set(TransformComponent(world))
         petalDrag.detach(Vec(world.position.x,world.position.y,world.position.z))
-        if(remotePetalDrag.active) {
+        if(Log.isLoggable(GAZE_TAG,Log.DEBUG) || remotePetalDrag.active) {
             val after=p.owner.convertTransformTo(Transform(),root)
-            Log.i(GAZE_TAG,"revision=ordered-v3 stage=reparent session=$token petal=${p.spec.id} " +
+            Log.i(GAZE_TAG,"revision=move-anchor-v4 stage=reparent remote=${remotePetalDrag.active} session=$token petal=${p.spec.id} " +
                 "pull=${remotePetalDrag.displacement} before=$world after=$after")
         }
         // Keep the same native input owner/collider for the captured pointer until release.
@@ -411,7 +422,7 @@ class RoseScene(context: Context) {
     }
     private fun release(hand:Long,immediate:Boolean) {
         val s=session ?: return;val p=petals[s.heldId] ?: return
-        // Up can arrive before the next scene frame; include every queued hand delta in fallStart.
+        // Preserve ordered draining before capture cleanup and fallStart, including cancellation.
         applyRemotePetalDrag()
         pinchDrag.clear()
         when(s.release(s.id,hand)) {
@@ -494,7 +505,6 @@ class RoseScene(context: Context) {
         }
         if(lostTime>=0f){lostTime+=dt;if(lostTime>=.25f) {trackingUnavailable=true;s.handId?.let {release(it,true)}}}
         stemMotion.advance(dt)?.let(::applyBend)
-        applyRemotePetalDrag()
         for(p in petals.values) {
             if(p.returning>=0f) {
                 p.returning+=dt;val t=(p.returning/StemMotion.CANCEL_TIME).coerceIn(0f,1f);val a=p.returnStart!!;val b=p.rest
@@ -576,7 +586,7 @@ class RoseScene(context: Context) {
     private fun walk(entity:Entity):Sequence<Entity> = sequence {yield(entity);for(c in entity.getChildren())yieldAll(walk(c))}
     private fun Vec.vector()=Vector3(x,y,z)
     private inline fun gazeTrace(message:()->String) {
-        if(Log.isLoggable(GAZE_TAG,Log.DEBUG))Log.d(GAZE_TAG,"revision=ordered-v3 session=${session?.id} ${message()}")
+        if(Log.isLoggable(GAZE_TAG,Log.DEBUG))Log.d(GAZE_TAG,"revision=move-anchor-v4 session=${session?.id} ${message()}")
     }
     companion object {
         private const val TAG="FlowerTears"

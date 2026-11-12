@@ -59,6 +59,7 @@ class IncrementalPetalDragTest {
                 Vec(d.x,-d.y,d.z)*metersPerPixel
             })
         send(origin,down=true)
+        assertTrue(send(origin) is PinchDragTracker.Step.Anchored)
         val atTear=origin+Vec(50f,0f,0f)
         val threshold=send(atTear) as PinchDragTracker.Step.Moved
         assertTrue(PullRules.distance(threshold.delta)>=PullRules.THRESHOLD)
@@ -85,6 +86,7 @@ class IncrementalPetalDragTest {
             position={source->assertEquals(PinchDragTracker.PositionSource.GlobalDevicePose,source);raw},
             grab={_,_->true},displacement={_,previous,current->(current-previous)*.001f})
         send(down=true,kind=PinchDragTracker.Kind.Remote)
+        assertTrue(send() is PinchDragTracker.Step.Anchored)
         raw=origin+Vec(50f)
         send() as PinchDragTracker.Step.Moved
         raw=null
@@ -109,6 +111,7 @@ class IncrementalPetalDragTest {
             position={check(!up);raw},grab={id,hand->session.grab(1,id,hand)},
             displacement={_,previous,current->(current-previous)*.001f})
         send(origin,down=true)
+        assertTrue(send(origin) is PinchDragTracker.Step.Anchored)
         send(origin+Vec(50f)) as PinchDragTracker.Step.Moved
         assertTrue(session.detach(1,16,1))
         val visible=Vec(.06f,.04f,-.01f)
