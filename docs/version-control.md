@@ -4,27 +4,21 @@
 
 ## 当前状态
 
-2026-11-10 在本工程执行 `git init -b main`，创建 `.git` 被当前会话文件权限拒绝：`Operation not permitted`。没有 Git 提交或 tag 创建成功，也没有改用其它 Git 目录绕过限制。
+2026-11-12 已确认工程存在 Git，分支为 `main`，初始提交 `5879919 Initial commit`。本轮开始时工作区干净。2026-11-10 创建 `.git` 被拒绝的记录属于历史状态；下文各旧快照中的“没有 commit”描述的是当时的交付状态。
 
 源码、用户参考、建模工具、正式资产、Editor 审阅源和验证记录已准备完整本地快照，见 `backups/baseline-2026-11-10/`。源码归档、APK、文件清单与 SHA-256 校验信息放在一起。缓存、构建目录、本机 `local.properties`、临时工作数据和私有密钥配置不进入源码归档或 Git；Gradle Wrapper JAR 是构建所需源码设施，会保留。
 
-## 在本机终端完成 Git 基线
+## 查看已有 Git 基线
 
-在本机终端运行（不是当前受限会话）：
+无需重新初始化。可运行：
 
 ```bash
-cd /Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp
-git init -b main
-git add .
-git status --short
-git diff --cached --stat
-git commit -m "chore: establish RoseTear baseline"
-git tag -a baseline-2026-11-10 -m "一瓣欢喜 / RoseTear baseline"
-git status --short
-git log -1 --oneline
+git --no-optional-locks status --short
+git log -10 --oneline
+git show 5879919 --stat
 ```
 
-检查暂存清单后再执行 commit；应包含源码、资产、原始参考和文档，不应包含 build、.gradle、.kotlin、local.properties、backups 或 APK。当前已有 Git 作者配置，不需要改写全局配置。若之后仍处于同样的 `.git` 写入权限限制，提交和 tag 操作也需要在本机终端完成。
+每次仅暂存该增量文件；不包含 build、.gradle、.kotlin、local.properties、backups 或 APK。不改写 Git 配置。若后续元数据写入仍被会话权限拒绝，记录失败并由本机终端完成，不改用其它 Git 目录绕过限制。未确认存在基线 tag，查看旧版优先使用明确的 commit ID。
 
 ## 后续每轮修改
 
@@ -37,6 +31,8 @@ git log -1 --oneline
 当前会话仍没有可用 Git 仓库，未提交 commit；新完整源码和 APK 单独保存于 `backups/materials-v2-2026-11-10/`，配有逐文件清单和 SHA-256。该快照保留本次成果；`baseline-2026-11-10/` 保留修改前状态。之后在本机初始化 Git 时，当前工作树包含本次纹理更新，初始提交即对应更新后的状态，不能将它称为更新前的旧基线。
 
 ## 查看旧版与回滚
+
+GazePinch 全程有序增量版 APK 1.0.4 / code 5 保存在 `backups/gaze-drag-ordered-v3-2026-11-12/`，附 SHA-256。以 `5879919` 为修改前基线；本轮源码使用后续独立提交保存（以 Git 实际结果为准）。96 项单测、开发/测试 APK、实验 API 和样式检查通过；真实头显输入校准与显示仍待确认。详见 `docs/gaze-drag-ordered-v3.md`。
 
 PCM v3 再次减半修订保存于 `backups/petal-audio-pcm-v3-2026-11-12/`，含源码、APK、清单和 SHA-256。PCM gain 0.05 → 0.025；APK 1.0.3 / code 4；86 项单测、开发/测试 APK 和交付检查通过，头显试听待验证。当前 WAV 和交互代码保持，旧快照保留。详见 `docs/petal-audio-pcm-v3-review.json`；无 Git commit。
 
@@ -84,8 +80,8 @@ DirectPinch 拖拽修订另存于 `backups/direct-pinch-2026-11-10/`：完整源
 
 ```bash
 git log --oneline --decorate
-git show baseline-2026-11-10 --stat
-git worktree add --detach ../RoseTear-baseline-review baseline-2026-11-10
+git show 5879919 --stat
+git worktree add --detach ../RoseTear-baseline-review 5879919
 ```
 
 检查和构建旧版时需在新目录配置本机 Android SDK 路径；`local.properties` 不在 Git 中。若确认要撤销某项后续修改，优先使用 `git revert <commit>` 生成新的撤销提交，保留完整历史。不要在有未保存改动时直接 hard reset 或 clean。未经用户要求不推送远端，也不把回滚等同于改写历史。

@@ -13,7 +13,7 @@ class PinchDragTracker {
         data class Released(val pointerId: Long, val cancelled: Boolean) : Step
     }
     private data class Capture(val pointerId: Long, val petal: Int, val source: PositionSource,
-        val origin: Vec, var previous: Vec = origin)
+        val origin: Vec, var previous: Vec = origin, var accumulated: Vec = Vec())
     private val pending = mutableMapOf<Long, Int>()
     private var capture: Capture? = null
     val positionSource: PositionSource? get() = capture?.source
@@ -32,16 +32,18 @@ class PinchDragTracker {
             // after detach, or when the latest metadata changes/misses kind.
             val current = position(held.source)?.takeIf { it.finite() }
                 ?: return Step.Unavailable(sample.pointerId)
-            val delta = displacement(held.source, held.origin, current).takeIf { it.finite() }
-                ?: return Step.Unavailable(sample.pointerId)
             if (held.source == PositionSource.GlobalDevicePose) {
-                // Remote held petals use the difference between adjacent hand samples,
-                // converted in this event, rather than a recomputed gesture-total position.
+                // Convert only adjacent samples. A scale change must never remap past movement.
                 val frameDelta = displacement(held.source, held.previous, current).takeIf { it.finite() }
                     ?: return Step.Unavailable(sample.pointerId)
+                val total = (held.accumulated + frameDelta).takeIf { it.finite() }
+                    ?: return Step.Unavailable(sample.pointerId)
                 held.previous = current
-                return Step.Moved(sample.pointerId, delta, frameDelta)
+                held.accumulated = total
+                return Step.Moved(sample.pointerId, total, frameDelta)
             }
+            val delta = displacement(held.source, held.origin, current).takeIf { it.finite() }
+                ?: return Step.Unavailable(sample.pointerId)
             return Step.Moved(sample.pointerId, delta)
         }
         if (sample.up || !sample.pressed) { pending.remove(sample.pointerId); return null }

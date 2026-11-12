@@ -4,7 +4,7 @@
 
 应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「RoseTear」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
 
-当前 APK 版本为 **1.0.1（versionCode 2）**，用于区分 PCM 衰减修订。版本记录与恢复流程见 [docs/version-control.md](docs/version-control.md)。当前源码和 APK 已准备本地基线快照；Git 初始化需在本机终端完成，因为当前会话不能创建 `.git`。
+当前 APK 版本为 **1.0.4（versionCode 5）**，包含 GazePinch 全程增量与 4 cm 阈值分段修订，头显验证待完成；音效 PCM gain 保持 0.025。交互说明见 [docs/gaze-drag-ordered-v3.md](docs/gaze-drag-ordered-v3.md)，版本记录见 [docs/version-control.md](docs/version-control.md)。工程已建立 Git，初始提交为 `5879919 Initial commit`。
 
 冷启动在本地装配 17–30 片独立 3D 花瓣，从八种花色里抽取第一朵。重玩避开本次打开应用后最近三朵成功生成的花色。向任意方向拉离捏住时的位置达到 4 cm 后只结算一次，花瓣继续跟手，松手后飘落淡出。两种捏合都用位移驱动同一条三骨骼花茎。摘下时花茎从受力姿态开始来回轻摆，约 0.64 秒后回到原位。最后一瓣松手后显示祝福和重玩按钮。
 

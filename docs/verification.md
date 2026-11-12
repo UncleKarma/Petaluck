@@ -2,7 +2,14 @@
 
 日期：2026-11-12。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## petalDrop 播放增益再降低 50%（当前，PCM v3）
+## GazePinch 全程有序增量与阈值分段（当前，ordered-v3）
+
+- APK 1.0.4 / code 5。remote 从抓取开始累计相邻有效手部位移；跨 4 cm 分段，按完整 TRS 快照换父，剩余位移只应用一次。release 即使没有新场景帧也先消费队列；DirectPinch 路径保持。
+- 新增 10 项回归，原倍率变化缺陷先在旧代码上失败，修订后测试通过。全量 96 项单测零失败，开发/测试 APK 构建成功；实验 API 与 SpatialUI 检查通过，保留既有一条大字号提示。
+- 头显输入单位、骨骼/矩阵刷新与实际连续性待验证。异常大输入仍完整跟随，不以限幅掩盖；详见 `docs/gaze-drag-ordered-v3.md` 中复测与日志说明。
+- APK 与 SHA-256 独立保存于 `backups/gaze-drag-ordered-v3-2026-11-12/`。Git 已存在，初始提交 `5879919`，下文“尚无 Git”的描述均为历史状态。本轮提交以实际 Git 记录为准。
+
+## petalDrop 播放增益再降低 50%（历史 PCM v3，当前音效参数）
 
 - 按用户追加要求，将 PCM gain 从 0.05 调整为 0.025，音轨 gain 保持 1；APK 1.0.3 / code 4，日志 revision=pcm-gain-v3。
 - 当前原始 WAV/raw 字节保持；与 v2 快照相比，生产目录仅 `PetalAudioSamples.kt` 变化。实际工厂输出经逐样本独立检查，RMS 89.405863 → 44.700712，比例 0.499975，约 -6.02103 dB；原采样率、帧数和时长保持。

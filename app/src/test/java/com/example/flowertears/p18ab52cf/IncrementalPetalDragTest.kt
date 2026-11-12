@@ -66,7 +66,7 @@ class IncrementalPetalDragTest {
         motion.detach(visible) // Do not also add threshold.frameDelta: already represented in visible.
         metersPerPixel=.01f
         val stationary=send(atTear) as PinchDragTracker.Step.Moved
-        assertEquals(.5f,stationary.delta.x,.000001f) // A total-based position would now jump.
+        assertEquals(.05f,stationary.delta.x,.000001f) // Past movement is no longer rescaled.
         assertVec(Vec(),stationary.frameDelta)
         motion.moveBy(stationary.frameDelta)
         assertVec(visible,motion.advance())

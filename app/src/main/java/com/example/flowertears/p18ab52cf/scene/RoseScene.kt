@@ -60,7 +60,7 @@ class RoseScene(context: Context) {
     private val petals = mutableMapOf<Int,PetalVisual>()
     private val pinchDrag = PinchDragTracker()
     private val petalDrag = PetalDragMotion()
-    private val incrementalPetalDrag = IncrementalPetalDrag()
+    private val remotePetalDrag = RemotePetalDrag()
     private var lostTime = -1f
     private val stemMotion = StemMotion()
     private val entrance = RoseEntrance()
@@ -321,16 +321,16 @@ class RoseScene(context: Context) {
                     handled=true
                     stemMotion.grab()
                     if(p.returning>=0f){p.returning=-1f;p.owner.components.set(TransformComponent(p.rest))}
-                    petalDrag.clear();incrementalPetalDrag.clear();lostTime=-1f;trackingUnavailable=false
+                    petalDrag.clear();remotePetalDrag.clear();lostTime=-1f;trackingUnavailable=false
+                    if(step.source==PinchDragTracker.PositionSource.GlobalDevicePose)remotePetalDrag.start()
                     p.owner.components[AccessibilityComponent::class.java]?.value="正在拉取"
                     Log.i(TAG,"PetalGrab session=${s.id} petal=${p.spec.id} kind=${e.kind} source=${step.source} pointer=$hand")
                 }
                 is PinchDragTracker.Step.Moved -> {
                     handled=true;lostTime=-1f;trackingUnavailable=false
-                    val heldId=s.heldId
-                    if(pinchDrag.positionSource==PinchDragTracker.PositionSource.GlobalDevicePose &&
-                        heldId!=null && s.state(heldId)==PetalState.DetachedHeld) {
-                        incrementalPetalDrag.moveBy(step.frameDelta)
+                    if(remotePetalDrag.active) {
+                        remotePetalDrag.moveBy(step.frameDelta)
+                        gazeTrace {"queued pointer=$hand delta=${step.frameDelta} total=${step.delta}"}
                     } else {
                         // Keep DirectPinch's existing absolute-delta path unchanged.
                         petalDrag.move(step.delta);pull(hand)
@@ -362,6 +362,7 @@ class RoseScene(context: Context) {
         // convertSize scales pixels to scene meters without adding the view's position.
         // Device/view axes have Y down; the scene and RoseAnchor have Y up.
         val v=content.convertSize(Vector3(delta.x,-delta.y,delta.z),ViewCoordinateSpace.Global,content.localSpatialCoordinateSpace)
+        gazeTrace {"sample rawPrevious=$origin rawCurrent=$current rawDelta=$delta sceneDelta=${Vec(v.x,v.y,v.z)}"}
         return Vec(v.x,v.y,v.z)
     }
     private fun pull(hand: Long) {
@@ -372,21 +373,22 @@ class RoseScene(context: Context) {
             p.owner.components[TransformComponent::class.java]!!.setPosition(position.vector())
             return
         }
-        val distance=PullRules.distance(delta)
-        val strength=PullRules.strength(distance)
+        applyPullPose(p,delta)
+        if(PullRules.distance(delta)>=PullRules.THRESHOLD && detach(s.id,p,hand)!=null) {
+            stemMotion.release(rebound=true)
+        }
+    }
+    private fun applyPullPose(p:PetalVisual,delta:Vec) {
+        val strength=PullRules.strength(PullRules.distance(delta))
         applyBend(stemMotion.pull(delta,strength))
         p.owner.components[TransformComponent::class.java]!!.apply {
             setPosition(p.spec.position.vector()+crown!!.convertPositionFrom(delta.vector()+crown!!.convertPositionTo(Vector3.ZERO,root),root))
             setQuaternion(petalRotation(p.spec,strength*7f))
         }
-        if(distance>=PullRules.THRESHOLD && detach(s.id,p,hand)) {
-            // Keep the last loaded pose, even when one input update crossed the whole pull range.
-            stemMotion.release(rebound=true)
-        }
     }
-    private fun detach(token:Long,p:PetalVisual,hand:Long):Boolean {
-        val s=session ?: return false
-        if(!s.detach(token,p.spec.id,hand))return false
+    private fun detach(token:Long,p:PetalVisual,hand:Long):Transform? {
+        val s=session ?: return null
+        if(!s.detach(token,p.spec.id,hand))return null
         // The seated root, in RoseAnchor meters, includes the current loaded stem bend.
         // Sample before reparenting or rebound; the pulled petal itself is already displaced.
         val tearPosition=crown!!.convertPositionTo(p.spec.position.vector(),root)
@@ -395,26 +397,29 @@ class RoseScene(context: Context) {
         val world=p.owner.convertTransformTo(Transform(),root)
         p.owner.removeFromParent();root!!.addChild(p.owner);p.owner.components.set(TransformComponent(world))
         petalDrag.detach(Vec(world.position.x,world.position.y,world.position.z))
-        if(pinchDrag.positionSource==PinchDragTracker.PositionSource.GlobalDevicePose) {
-            incrementalPetalDrag.detach(Vec(world.position.x,world.position.y,world.position.z))
+        if(remotePetalDrag.active) {
+            val after=p.owner.convertTransformTo(Transform(),root)
+            Log.i(GAZE_TAG,"revision=ordered-v3 stage=reparent session=$token petal=${p.spec.id} " +
+                "pull=${remotePetalDrag.displacement} before=$world after=$after")
         }
         // Keep the same native input owner/collider for the captured pointer until release.
         // RoseSession and the down-target predicate reject every attempt to grab it again.
         p.meshOwner.components.remove(HoverEffectComponent::class.java)
         content.clearAccessibilityActions(p.owner);p.owner.components[AccessibilityComponent::class.java]?.value="已经摘下，等待松手"
         publish();Log.i(TAG,"PetalDetached session=$token petal=${p.spec.id} k=${s.detachedCount} result=${s.result}")
-        return true
+        return world
     }
     private fun release(hand:Long,immediate:Boolean) {
         val s=session ?: return;val p=petals[s.heldId] ?: return
         // Up can arrive before the next scene frame; include every queued hand delta in fallStart.
-        applyIncrementalPetalDrag()
+        applyRemotePetalDrag()
         pinchDrag.clear()
         when(s.release(s.id,hand)) {
             PetalState.Falling -> {
                 p.meshOwner.components.remove(InteractableComponent::class.java)
                 p.meshOwner.components.remove(CollisionComponent::class.java)
                 p.fallStart=p.owner.convertTransformTo(Transform(),root);p.falling=0f
+                if(remotePetalDrag.active)gazeTrace {"release petal=${p.spec.id} fallStart=${p.fallStart}"}
                 // Opaque while attached/held. Only the released petal changes blend mode.
                 p.material.setBlendingMode(BlendingMode.TRANSPARENT)
                 p.owner.components[AccessibilityComponent::class.java]?.isAccessibilityElement=false
@@ -427,21 +432,34 @@ class RoseScene(context: Context) {
             else -> Unit
         }
         if(immediate)applyBend(stemMotion.reset())
-        lostTime=-1f;petalDrag.clear();incrementalPetalDrag.clear();publish()
+        lostTime=-1f;petalDrag.clear();remotePetalDrag.clear();publish()
     }
-    private fun applyIncrementalPetalDrag() {
+    private fun applyRemotePetalDrag() {
         val s=session ?: return
         val p=petals[s.heldId] ?: return
-        if(s.state(p.spec.id)!=PetalState.DetachedHeld)return
-        val position=incrementalPetalDrag.advance() ?: return
+        if(!remotePetalDrag.active)return
+        val position=remotePetalDrag.advance {delta,crossing->
+            val before=if(Log.isLoggable(GAZE_TAG,Log.DEBUG))p.owner.convertTransformTo(Transform(),root) else null
+            applyPullPose(p,delta)
+            gazeTrace {"pull petal=${p.spec.id} delta=$delta strength=${PullRules.strength(delta.length())} " +
+                "crossing=$crossing before=$before loaded=${p.owner.convertTransformTo(Transform(),root)}"}
+            if(crossing) {
+                val world=checkNotNull(detach(s.id,p,checkNotNull(s.handId)))
+                stemMotion.release(rebound=true)
+                // Seed from exactly the same snapshot used for reparenting, without a native re-read.
+                val atTear=world.position
+                Vec(atTear.x,atTear.y,atTear.z)
+            } else null
+        } ?: return
         p.owner.components[TransformComponent::class.java]!!.setPosition(position.vector())
+        gazeTrace {"held petal=${p.spec.id} position=$position"}
     }
     fun streamLost() {pinchDrag.clear();if(session?.heldId!=null && lostTime<0)lostTime=0f}
     private fun accessiblePluck(token:Long,id:Int):Boolean {
         val s=session ?: return false
         if(disposed || busy || appPaused || s.phase !in listOf(Phase.Ready,Phase.Playing))return false
         if(!s.grab(token,id,-1))return false
-        if(!detach(token,petals.getValue(id),-1))return false
+        if(detach(token,petals.getValue(id),-1)==null)return false
         release(-1,false);return true
     }
     private fun applyBend(v:Vec) {
@@ -476,7 +494,7 @@ class RoseScene(context: Context) {
         }
         if(lostTime>=0f){lostTime+=dt;if(lostTime>=.25f) {trackingUnavailable=true;s.handId?.let {release(it,true)}}}
         stemMotion.advance(dt)?.let(::applyBend)
-        applyIncrementalPetalDrag()
+        applyRemotePetalDrag()
         for(p in petals.values) {
             if(p.returning>=0f) {
                 p.returning+=dt;val t=(p.returning/StemMotion.CANCEL_TIME).coerceIn(0f,1f);val a=p.returnStart!!;val b=p.rest
@@ -543,7 +561,7 @@ class RoseScene(context: Context) {
         entranceAwaitingFrame=false
         petalAudio.clearRound()
         skeleton=null;restPose=emptyList();stem=null;crown=null;stemMotion.reset();lostTime=-1f;trackingUnavailable=false;glowTime=0f;coreMaterials.clear()
-        petalDrag.clear();incrementalPetalDrag.clear();pinchDrag.clear()
+        petalDrag.clear();remotePetalDrag.clear();pinchDrag.clear()
         root?.let {if(it.valid)it.destroy()};root=null
         for(p in petals.values){p.material.close();p.shape.close()};petals.clear()
     }
@@ -557,7 +575,11 @@ class RoseScene(context: Context) {
     }
     private fun walk(entity:Entity):Sequence<Entity> = sequence {yield(entity);for(c in entity.getChildren())yieldAll(walk(c))}
     private fun Vec.vector()=Vector3(x,y,z)
+    private inline fun gazeTrace(message:()->String) {
+        if(Log.isLoggable(GAZE_TAG,Log.DEBUG))Log.d(GAZE_TAG,"revision=ordered-v3 session=${session?.id} ${message()}")
+    }
     companion object {
         private const val TAG="FlowerTears"
+        private const val GAZE_TAG="RoseGaze"
     }
 }

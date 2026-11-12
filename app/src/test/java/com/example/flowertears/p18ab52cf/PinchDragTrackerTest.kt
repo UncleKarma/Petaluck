@@ -6,6 +6,25 @@ import org.junit.Test
 import kotlin.math.sqrt
 
 class PinchDragTrackerTest {
+    @Test fun remoteAccumulationDoesNotRescaleEarlierMovementWhenConversionChanges() {
+        val tracker = PinchDragTracker()
+        var scale = .001f
+        fun send(raw: Vec, down: Boolean = false) = tracker.update(
+            PinchDragTracker.Sample(1, down, false, true, PinchDragTracker.Kind.Remote, if (down) 0 else null),
+            position = { raw }, grab = { _, _ -> true },
+            displacement = { _, previous, current -> (current - previous) * scale })
+        send(Vec(1000f), down = true)
+        val first = send(Vec(1010f)) as PinchDragTracker.Step.Moved
+        assertVec(Vec(.01f), first.delta)
+        scale = .003f
+        val stationary = send(Vec(1010f)) as PinchDragTracker.Step.Moved
+        assertVec(Vec(), stationary.frameDelta)
+        assertVec(Vec(.01f), stationary.delta)
+        val next = send(Vec(1015f)) as PinchDragTracker.Step.Moved
+        assertVec(Vec(.015f), next.frameDelta)
+        assertVec(Vec(.025f), next.delta)
+    }
+
     private fun assertVec(expected:Vec,actual:Vec) {
         assertEquals(expected.x,actual.x,.000001f)
         assertEquals(expected.y,actual.y,.000001f)
@@ -47,7 +66,7 @@ class PinchDragTrackerTest {
         val moved=send(rawAtTear+Vec(240f,70f,-130f)) as PinchDragTracker.Step.Moved
         motion.moveBy(moved.frameDelta)
         assertVec(visibleAtTear+Vec(.24f,-.07f,-.13f),checkNotNull(motion.advance()))
-        assertEquals(listOf(rawOrigin,rawOrigin,rawOrigin,rawAtTear,rawOrigin,rawAtTear),capturedOrigins)
+        assertEquals(listOf(rawOrigin,rawAtTear,rawAtTear),capturedOrigins)
     }
 
     @Test fun remoteRawPixelDisplacementsHaveTheSameAnyDirectionMeterThresholdAsDirectPinch() {
