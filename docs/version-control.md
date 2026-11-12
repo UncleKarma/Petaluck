@@ -32,6 +32,8 @@ git show 5879919 --stat
 
 ## 查看旧版与回滚
 
+祝福音乐修订 APK 1.0.7 / code 8 保存在 `backups/ending-bgm-v1-2026-11-12/`，附 SHA-256。每轮祝福播放 endingBGM，重玩时 1 秒淡出；108 项单测与构建、实验 API / 样式检查通过，头显音频验证待完成。见 `docs/ending-bgm-v1.md`。
+
 重玩文字闪帧修订 APK 1.0.6 / code 7 保存在 `backups/replay-panel-v1-2026-11-12/`，附 SHA-256。基于 `536dfd7`，固定提示与完成区的原生面板位置和尺寸，重开同步隐藏旧文字。99 项单测及构建通过，用户头显复测确认错位闪帧已消失（2026-11-12），见 `docs/replay-panel-v1.md`。
 
 Gaze 首移动基准修订 APK 1.0.5 / code 6 保存在 `backups/gaze-move-anchor-v4-2026-11-12/`，含 SHA-256 与前后设备日志。基于 `44b848b` 修订；99 项单测和构建通过，已安装，用户有限头显复测反馈两种捏合行为一致；4 次 Gaze 的日志未再出现原始首笔大跳位。详见 `docs/gaze-move-anchor-v4.md`，源码提交以实际 Git 记录为准。

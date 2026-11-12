@@ -44,6 +44,7 @@ class RoseScene(context: Context) {
     // A Kotlin reference does not retain native resources after the last petal is destroyed.
     private val textures = RoundAssetSet<TextureResource>({it.valid},{it.toGlobal()},{it.close()})
     private val petalAudio = PetalSpatialAudio(context.applicationContext)
+    private val endingMusic = EndingMusic(context.applicationContext)
     private val petalSampler = MaterialTextureSampler().apply {sWrapMode=SamplerWrapMode.CLAMP_TO_EDGE;tWrapMode=SamplerWrapMode.CLAMP_TO_EDGE}
     private var root: Entity? = null
     private var stem: Entity? = null
@@ -159,6 +160,8 @@ class RoseScene(context: Context) {
     suspend fun replay(roundId: Long) {
         // Reject stale/duplicate clicks after loading or the next round has begun.
         if(ui.roundId!=roundId || (ui.phase!=Phase.Completed && ui.phase!=Phase.Error))return
+        if(disposed || busy || appPaused)return
+        endingMusic.replay()
         newRound()
     }
     private suspend fun newRound() {
@@ -293,6 +296,10 @@ class RoseScene(context: Context) {
                     if(disposed || s.id!=generation)throw CancellationException("Audio round no longer active")
                 }},
                 onFailure={Log.e(TAG,"PetalAudioPreparationFailed session=${s.id}; flower remains playable",it)},
+            )
+            prepareOptionalAudio(
+                prepare={endingMusic.prepare()},
+                onFailure={Log.e(TAG,"EndingMusicPreparationFailed session=${s.id}; flower remains playable",it)},
             )
         }
     }
@@ -549,8 +556,10 @@ class RoseScene(context: Context) {
         pinchDrag.clear()
     }
     fun pause() {
+        appPaused=true
         cancelInput()
         petalAudio.stop()
+        endingMusic.stop()
         applyBend(stemMotion.reset())
         appPaused=true;session?.pause()
     }
@@ -561,8 +570,11 @@ class RoseScene(context: Context) {
     }
     private fun updateUi(state:RoseUi) {
         if(state!=ui){
+            val blessingAppeared = state.phase==Phase.Completing &&
+                (ui.roundId!=state.roundId || ui.phase!=Phase.Completing)
             ui=state
             syncPanels(state)
+            if(blessingAppeared && !appPaused)endingMusic.blessing(state.roundId)
         }
     }
     private fun syncPanels(state:RoseUi) {
@@ -588,6 +600,7 @@ class RoseScene(context: Context) {
         entrance.clear()
         entranceAwaitingFrame=false
         petalAudio.clearRound()
+        // EndingMusic is scene-owned: its 1 s replay fade survives flower teardown/loading.
         skeleton=null;restPose=emptyList();stem=null;crown=null;stemMotion.reset();lostTime=-1f;trackingUnavailable=false;glowTime=0f;coreMaterials.clear()
         petalDrag.clear();remotePetalDrag.clear();pinchDrag.clear()
         root?.let {if(it.valid)it.destroy()};root=null
@@ -598,6 +611,7 @@ class RoseScene(context: Context) {
         disposed=true;generation++;initializationJob?.cancel();assemblyJob?.cancel()
         subscription?.cancel();subscription=null;clearRound()
         petalAudio.close()
+        endingMusic.close()
         resultBinding.clear();messageBinding.clear();completionBinding.clear()
         resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()

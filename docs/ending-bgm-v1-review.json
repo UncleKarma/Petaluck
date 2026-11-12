@@ -1,0 +1,13 @@
+{
+  "versionName": "1.0.7",
+  "versionCode": 8,
+  "apkSha256": "78718d15c4a0475643d8703320e93c7e9676d2cf92c8041a7128e773cceaa829",
+  "bgmSha256": "685cf1cc05d88a32ac7152da2ad204364cc61c7b772a2e68c8d412823df9ca7d",
+  "bgmSeconds": 14.5,
+  "bgmSampleRate": 44100,
+  "bgmChannels": 2,
+  "replayFadeMs": 1000,
+  "unitTests": 108,
+  "unitFailures": 0,
+  "deviceAudioVerified": false
+}
