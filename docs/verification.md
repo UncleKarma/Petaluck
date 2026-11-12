@@ -2,7 +2,13 @@
 
 日期：2026-11-12。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## Gaze 首移动基准与输入回调姿态更新（当前，move-anchor-v4）
+## 重玩文字闪帧（当前，replay-panel-v1）
+
+- APK 1.0.6 / code 7：普通提示与完成组固定在独立附件位置，固定表面尺寸；重开同步隐藏旧完成/结果面板，结果 remembered state 按轮次重置。
+- 99 项单测和开发/测试 APK 构建通过；已安装并核对版本。启动仪器测试未读到任何可见文字而失败，随后确认头显处于 Asleep，不能声称启动验证通过。佩戴后的闪帧与版式复测待完成。
+- 实验 opt-in / SpatialUI 检查器未找到，本轮未声称 PASS；详见 [replay-panel-v1.md](replay-panel-v1.md)。
+
+## Gaze 首移动基准与输入回调姿态更新（当前输入策略，move-anchor-v4）
 
 - 实际 1.0.4 日志中 down 到首 MOVE 间隔 572 ms，差值换算约 38 cm，立即摘取并将约 34 cm 余量应用到持有花瓣；同帧写后的原生 loaded 姿态仍为旧值。
 - APK 1.0.5 / code 6：remote 首有效 MOVE 只建基准，后续相邻采样按序在输入回调消费；4 cm 分段与 Direct 运动路径保持。99 项单测、开发/测试 APK 构建通过，新增 3 项基准/实测数值回归。

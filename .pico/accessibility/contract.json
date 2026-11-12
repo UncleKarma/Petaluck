@@ -8,8 +8,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 89,
-        "endLine": 89,
+        "line": 93,
+        "endLine": 93,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.result",
@@ -34,8 +34,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 96,
-        "endLine": 96,
+        "line": 101,
+        "endLine": 101,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.message",
@@ -50,6 +50,30 @@
       "binding": {
         "kind": "spatial",
         "ownerExpression": "messagePanel",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true
+      }
+    },
+    {
+      "contractId": "attachment:rose-completion",
+      "semanticAnchor": "rose-completion",
+      "kind": "attachment",
+      "source": {
+        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "line": 110,
+        "endLine": 110,
+        "symbol": "bindPanels"
+      },
+      "semanticId": "rose.completion",
+      "label": "祝福与重玩操作区",
+      "runtimeSelector": {
+        "semanticId": "rose.completion"
+      },
+      "stateSources": ["value"],
+      "actions": [],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "completionPanel",
         "sdkComponentDeclaration": true,
         "sdkActionRegistration": true
       }

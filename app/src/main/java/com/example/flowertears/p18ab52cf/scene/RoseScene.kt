@@ -71,8 +71,10 @@ class RoseScene(context: Context) {
     private var glowTime = 0f
     private var resultPanel:Entity? = null
     private var messagePanel:Entity? = null
+    private var completionPanel:Entity? = null
     private val resultBinding = AttachmentBinding<Entity> {it.valid}
     private val messageBinding = AttachmentBinding<Entity> {it.valid}
+    private val completionBinding = AttachmentBinding<Entity> {it.valid}
     private data class PetalVisual(val spec: PetalSpec, val owner: Entity, val meshOwner: Entity, val material: UnlitMaterial,
         val shape: ShapeResource, val rest: Transform, var falling: Float = -1f, var fallStart: Transform? = null,
         var returning: Float = -1f, var returnStart: Transform? = null)
@@ -81,9 +83,11 @@ class RoseScene(context: Context) {
         if(disposed)return false
         val resultPanel=attachments.entity("rose_result")
         val messagePanel=attachments.entity("rose_message")
+        val completionPanel=attachments.entity("rose_completion")
         resultBinding.bind(resultPanel) {
             if(resultPanel!=null) {
                 resultPanel.components.set(AccessibilityComponent("占卜回应","尚未摘取"))
+                resultPanel.enabled=false
                 resultPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,.255f,.075f))
                 content.addEntity(resultPanel)
                 content.setAccessibilityActions(resultPanel,"rose.result") {}
@@ -92,14 +96,25 @@ class RoseScene(context: Context) {
         messageBinding.bind(messagePanel) {
             if(messagePanel!=null) {
                 messagePanel.components.set(AccessibilityComponent("提示与重玩操作区","花正在盛开"))
+                messagePanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,-.245f,.075f))
                 content.addEntity(messagePanel)
                 content.setAccessibilityActions(messagePanel,"rose.message") {}
             }
         }
+        completionBinding.bind(completionPanel) {
+            if(completionPanel!=null) {
+                completionPanel.enabled=false
+                completionPanel.components.set(AccessibilityComponent("祝福与重玩操作区",""))
+                completionPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,0f,.12f))
+                content.addEntity(completionPanel)
+                content.setAccessibilityActions(completionPanel,"rose.completion") {}
+            }
+        }
         this.resultPanel=resultPanel?.takeIf {it.valid}
         this.messagePanel=messagePanel?.takeIf {it.valid}
+        this.completionPanel=completionPanel?.takeIf {it.valid}
         syncPanels(ui)
-        return this.resultPanel!=null && this.messagePanel!=null
+        return this.resultPanel!=null && this.messagePanel!=null && this.completionPanel!=null
     }
     private suspend fun ensureAssets(colorId:Int) {
         textures.retain(RoseLayout.texturePaths(colorId)) {path->withContext(Dispatchers.IO){TextureResource.load(path,option=TextureCreateOption())}}
@@ -555,15 +570,18 @@ class RoseScene(context: Context) {
         messagePanel?.components?.get(AccessibilityComponent::class.java)?.value=when {
             state.phase==Phase.Loading->"花正在盛开…"
             state.phase==Phase.Error->"这朵花暂时没准备好，请再试一次。重新开始可用"
-            state.phase==Phase.Completed->state.blessing
-            state.phase==Phase.Completing->state.blessing
+            state.phase==Phase.Completed || state.phase==Phase.Completing->""
             state.trackingLost->"暂时没看清你的手，放松一下，再试试。"
             state.teaching->"看向或靠近一片花瓣，捏住，轻轻拉开。"
             else->"继续摘取"
         }
         val completing=state.phase==Phase.Completing || state.phase==Phase.Completed
-        messagePanel?.components?.get(TransformComponent::class.java)?.setPosition(
-            if(completing)Vector3(0f,0f,.12f) else Vector3(0f,-.245f,.075f))
+        completionPanel?.components?.get(AccessibilityComponent::class.java)?.value=if(completing)state.blessing else ""
+        // Hide the outgoing surface synchronously, before its Compose buffer catches up.
+        // Inactive panels must not leave transparent hit areas over the flower or replay button.
+        completionPanel?.enabled=completing
+        messagePanel?.enabled=!completing
+        resultPanel?.enabled=state.result.isNotEmpty()
     }
     private fun clearRound() {
         audioPreparationJob?.cancel();audioPreparationJob=null
@@ -580,7 +598,8 @@ class RoseScene(context: Context) {
         disposed=true;generation++;initializationJob?.cancel();assemblyJob?.cancel()
         subscription?.cancel();subscription=null;clearRound()
         petalAudio.close()
-        resultBinding.clear();messageBinding.clear();resultPanel=null;messagePanel=null
+        resultBinding.clear();messageBinding.clear();completionBinding.clear()
+        resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()
     }
     private fun walk(entity:Entity):Sequence<Entity> = sequence {yield(entity);for(c in entity.getChildren())yieldAll(walk(c))}

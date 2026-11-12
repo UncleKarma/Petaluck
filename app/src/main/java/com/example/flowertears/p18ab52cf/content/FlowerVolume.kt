@@ -70,16 +70,17 @@ fun FlowerVolume(modifier:Modifier) {
             if(panelsReady) {
                 AttachmentPanel(id="rose_result") {
                     val ui=scene.ui
-                    Box(Modifier.width(560.dp).heightIn(min=96.dp).semantics {liveRegion=LiveRegionMode.Polite},contentAlignment=Alignment.Center) {
-                        var displayed by remember {mutableStateOf("")}
-                        var targetAlpha by remember {mutableStateOf(0f)}
-                        LaunchedEffect(ui.result) {
+                    Box(Modifier.width(560.dp).height(104.dp).semantics {liveRegion=LiveRegionMode.Polite},contentAlignment=Alignment.Center) {
+                        var displayed by remember(ui.roundId) {mutableStateOf("")}
+                        var targetAlpha by remember(ui.roundId) {mutableStateOf(0f)}
+                        LaunchedEffect(ui.roundId,ui.result) {
                             targetAlpha=0f
                             if(ui.result.isEmpty()){displayed="";return@LaunchedEffect}
                             delay(90);displayed=ui.result;targetAlpha=1f
                         }
                         val alpha by animateFloatAsState(targetAlpha,tween(90),label="resultFade")
-                        RoseLargeText(text=displayed,modifier=Modifier.alpha(alpha))
+                        // Empty/new-round content must not wait for an effect or a fade-out.
+                        RoseLargeText(text=if(ui.result.isEmpty()) "" else displayed,modifier=Modifier.alpha(alpha))
                     }
                 }
                 AttachmentPanel(id="rose_message") {
@@ -87,7 +88,7 @@ fun FlowerVolume(modifier:Modifier) {
                     val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
                     val replay = { scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
                     // One native layout keeps the message's transparent hit area off the button.
-                    Column(Modifier.width(560.dp).heightIn(min=128.dp),horizontalAlignment=Alignment.CenterHorizontally,
+                    Column(Modifier.width(560.dp).height(128.dp),horizontalAlignment=Alignment.CenterHorizontally,
                         verticalArrangement=Arrangement.spacedBy(16.dp,Alignment.CenterVertically)) {
                         when {
                             ui.phase==Phase.Loading->Text("花正在盛开…",style=PicoTheme.typography.bodyLarge,color=roseTextWhite)
@@ -95,13 +96,25 @@ fun FlowerVolume(modifier:Modifier) {
                                 Text("这朵花暂时没准备好，请再试一次。",style=PicoTheme.typography.bodyMedium,color=roseTextWhite)
                                 ReplayButton("重新开始", enabled=true, onClick=replay)
                             }
-                            completing->key(ui.roundId) { CompletionFooter(ui,replay) }
+                            completing->Unit
                             ui.trackingLost->Text("暂时没看清你的手，放松一下，再试试。",style=PicoTheme.typography.bodyMedium,color=roseTextWhite)
                             ui.teaching->Column(horizontalAlignment=Alignment.CenterHorizontally,verticalArrangement=Arrangement.spacedBy(8.dp)) {
                                 Text("心里想着一个人，也可以只为自己。",style=PicoTheme.typography.bodyMedium,color=roseTextWhite)
                                 Text("看向或靠近一片花瓣，捏住，轻轻拉开。",style=PicoTheme.typography.bodyMedium,color=roseTextWhite)
                             }
                         }
+                    }
+                }
+                // Keep each native surface at one position. Moving a surface while Compose
+                // replaces its buffer can display the previous text at the next phase's position.
+                AttachmentPanel(id="rose_completion") {
+                    val ui=scene.ui
+                    val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
+                    val replay = { scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
+                    // Stable surface size also avoids a resize racing the outgoing text buffer.
+                    // Center the original wish/button group inside it without changing its spacing.
+                    Box(Modifier.width(560.dp).height(384.dp),contentAlignment=Alignment.Center) {
+                        if(completing) key(ui.roundId) { CompletionFooter(ui,replay) }
                     }
                 }
             }
