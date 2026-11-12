@@ -1,0 +1,93 @@
+{
+  "revision": "petal-audio-startup-fix",
+  "sdkBom": "6.2.8",
+  "reportedBehavior": "After the first audio increment, launch/retry shows only the restart error state and no flower.",
+  "confirmedCodeDefect": "Audio load/preparation exceptions propagated into newRound assembly catch, which cleared the flower and marked Error; retry repeated that mandatory audio path.",
+  "originalNativeException": null,
+  "originalNativeFailureEvidence": "No headset stack trace is available; the particular native load/prepare error is unconfirmed.",
+  "changes": {
+    "audioOutsideFlowerAssembly": true,
+    "flowerPublishedReadyBeforeAudioJob": true,
+    "isolatedExceptionsWithCancellationPreserved": true,
+    "singleReusableSpatialVoice": true,
+    "rawResourceUriLoader": true,
+    "customMixerConfigRemoved": true,
+    "newRealFramesBeforeLoadAndAfterEmitterAttachment": true,
+    "audioJobCancelledOnRoundTeardown": true,
+    "nativeCleanupExceptionsLoggedAndIsolated": true,
+    "tearPositionAndNativeSpatialAudioPreserved": true
+  },
+  "audio": {
+    "source": "petalDrop.wav",
+    "packagedPath": "res/raw/petal_drop.wav",
+    "sha256": "73f120a79921cf6604593c7f8aaa8b74de7cefed4c6c48b39007b997aed397da",
+    "bytes": 7244,
+    "byteIdenticalToUserSource": true,
+    "storedUncompressed": true,
+    "format": {
+      "channels": 1,
+      "sampleWidthBytes": 2,
+      "sampleRate": 48000,
+      "frames": 3600,
+      "durationMs": 75,
+      "compression": "NONE"
+    },
+    "component": "ObjectAudioComponent",
+    "preparation": "Optional job after Ready; one new frame before URI load and one after emitter attachment",
+    "loadMethod": "AudioResource.load(name, android.resource URI, applicationContext)",
+    "maxControllers": 1,
+    "trigger": "successful RoseSession.detach before reparent/rebound",
+    "emitterPosition": "crown.convertPositionTo(spec.position, root), in RoseAnchor meters",
+    "headsetVerified": false
+  },
+  "publicApiEvidence": {
+    "versionMatchedSource": ".scratch/sdk/core-6.2.8-sources/com/pico/spatial/core/ecs/resource/AudioResource.kt: public URI/Context load overload and FileDescriptor ownership",
+    "bundledResourceGuide": "spatialsdk/references/resources-assets/en_audio-resource.md: android.resource URI example, relative asset path example",
+    "bundledObjectAudioGuide": "spatialsdk/references/appendix/en_use-object-audio-component.md: contrasting asset:// example",
+    "bundledSpatialAudioGuide": "spatialsdk/references/appendix/en_spatial-audio-overview.md: AudioResource/controller relationship and reuse",
+    "knowledgeMcp": "Unavailable; no query result claimed."
+  },
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 52,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "regressionTests": [
+      "OptionalAudioPreparationTest.nativeLoadFailureCannotClearAPlayableFlower: injected resource load failure, then complete all 30 petals.",
+      "OptionalAudioPreparationTest.repeatedInvalidControllersDoNotTrapReplayInTheErrorState: 4 failed preparations, 4 playable flowers.",
+      "OptionalAudioPreparationTest.roundCancellationStillPropagatesWithoutBecomingAnAudioError",
+      "SceneFrameGateTest.newlyAttachedAudioOwnerWaitsForANewFrameRatherThanAnOldOne",
+      "SceneFrameGateTest.teardownCancelsPendingAudioPreparationBeforeTheNextSceneFrame"
+    ],
+    "experimentalApiCheck": "PASS; no opt-ins",
+    "spatialUiStyle": "PASS; 0 errors, 1 existing user-requested large-font warning",
+    "placementSource": {
+      "passed": true,
+      "violations": [],
+      "advisoryDispositions": {
+        "containment-evidence-incomplete": "No new containment logic. RoseAnchor is the position owner; model geometry is unchanged.",
+        "surface-detail-depth-without-body-contract": "Existing accessible petal click is a heuristic match; no visual detail geometry added."
+      }
+    },
+    "rawWavByteIdenticalAndStored": true,
+    "oldAssetsSoundCopyAbsent": true,
+    "roseAssetsDomainAndAccessibilityContractUnchanged": true
+  },
+  "runtime": {
+    "installLaunchVerified": false,
+    "headsetSoundVerified": false,
+    "blocker": "Existing sandbox denial starting the ADB listener; denied operation not retried.",
+    "acceptancePending": [
+      "Upgrade to this APK, cold launch and confirm an actual flower plus teaching text appears.",
+      "Complete a round and replay repeatedly; restart/error screen must not return because of audio failure.",
+      "Verify DirectPinch/GazePinch one-shot from the flower junction, including the first and final pluck.",
+      "Check native playback, loudness, spatial location and onset latency.",
+      "If sound is unavailable, collect PetalAudioPreparationFailed while confirming the flower remains playable.",
+      "Check pause/resume and resource counts across 20 rounds."
+    ]
+  }
+}

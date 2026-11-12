@@ -1,0 +1,15 @@
+{
+  "sampleRate": 48000,
+  "frames": 3600,
+  "durationMs": 75,
+  "sourcePeak": 32767,
+  "playbackPeak": 3277,
+  "sourceRms": 3576.3925714716747,
+  "playbackRms": 357.62903770682703,
+  "rmsChangeDb": -20.00024820037909,
+  "sourceWavSha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+  "playbackPcmSha256": "f9786699836e49799a266878ed3a5f3179ea84ff84f0028760d0ef71983858c4",
+  "preview": "art/audio/petalDrop-pcm-010.wav",
+  "previewSha256": "d19651e0220b573b01cee17553cf77d43a50ee57c28cc6a4452409bfe489d93c",
+  "scope": "Exact production PetalAudioSamples.fromWav buffer exported by unit test, independently measured in Python. Input signal measurement, not headset output."
+}

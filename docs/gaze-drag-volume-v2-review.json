@@ -1,0 +1,116 @@
+{
+  "revision": "gaze-drag-volume-v2",
+  "date": "2026-11-12",
+  "sdkBom": "6.2.8",
+  "requirements": [
+    "Reduce the current 0.25 petalDrop gain by a further 60%, to 0.10.",
+    "GazePinch: hold exactly at detach pose, then add each frame's hand delta to the current petal position.",
+    "Preserve working DirectPinch behavior."
+  ],
+  "previousRevision": {
+    "userResult": "User reports the conversion-only v1 did not fix gaze dragging.",
+    "sourceFinding": "V1 still rebuilt the held position from total grab-origin displacement. It did not provide the requested adjacent-sample incremental held-motion path.",
+    "nativeCauseConfirmed": false,
+    "limit": "No headset recording or raw coordinate trace; no specific native unit/source/frame transition is claimed as a proven root cause."
+  },
+  "changes": {
+    "volume": {
+      "previousLinearGain": 0.25,
+      "newLinearGain": 0.1,
+      "relativeReduction": 0.6,
+      "method": "Only change PETAL_VOLUME; existing AudioTrack.setVolume and audio lifecycle unchanged.",
+      "sourceWavAndSystemVolumeUnchanged": true
+    },
+    "remoteSampleDelta": "PinchDragTracker.Moved.frameDelta = convert(currentRaw - previousValidRaw) for captured GlobalDevicePose. Captured-total delta remains for pre-detach pulling. Previous advances only after valid conversion.",
+    "detach": "Seed IncrementalPetalDrag with the visible RoseAnchor-relative root position captured before reparent/rebound. Clear pending delta; do not enqueue threshold-crossing sample again.",
+    "heldFrames": "Only remote DetachedHeld input enqueues frameDelta. SceneEvents.Update drains pending samples exactly once: nextPosition = currentPosition + pendingDelta, then clears pending. No dt factor, total-origin rebuild or displacement clamp.",
+    "emptyFrames": "No pending movement means identical pose, regardless of crown return.",
+    "release": "Drain pending deltas before clearing input and taking fallStart, even when up arrives before the next scene frame. Existing fall/fade starts there.",
+    "cleanup": "Clear incremental state on grab/release/round teardown; existing pause, loss timeout and stream-abort cleanup retained.",
+    "directIsolation": "Direct still executes petalDrag.move(step.delta); pull(hand), never computes remote frameDelta, and never initializes IncrementalPetalDrag.",
+    "directCoreSourceByteIdentical": {
+      "pointerPosition": true,
+      "pointerDisplacement": true,
+      "pull": true,
+      "PetalDragMotion": true
+    },
+    "audioSourceOnlyGainChanged": true,
+    "accessibility": "Same IDs/labels/actions and completed rose.petal.0 binding; only source anchor line numbers +1."
+  },
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 81,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "newTests": 6,
+    "coverage": [
+      "Detach frame and 90 stationary frames preserve the exact tear pose.",
+      "Multiple input samples in one scene frame apply once; empty frames never replay delta; full XYZ/reverse movement remains uncapped.",
+      "Pending delta is drained before release; clear/new round cannot reuse old pending movement.",
+      "Changed conversion scale does not reapply historical gesture displacement: stationary sample delta remains zero; next adjacent sample moves by only its own converted delta.",
+      "Unavailable/nonfinite samples and metadata kind changes preserve the previous valid remote sample.",
+      "Final petal remains held, pose-free up flushes latest delta into fall start, Completing then Completed ordering retained.",
+      "Existing DirectPinch, cancellation, audio lifecycle and 4 cm threshold regressions pass."
+    ],
+    "experimentalApi": "PASS; no active opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large-font emphasis."
+    },
+    "placementSource": {
+      "passed": true,
+      "violations": [],
+      "advisoryDispositions": {
+        "containment-evidence-incomplete": "No resting placement or container/model envelope change.",
+        "surface-detail-depth-without-body-contract": "Existing accessible petal click heuristic; no new detail geometry."
+      }
+    },
+    "previousSnapshotComparisons": {
+      "flowerAssets": true,
+      "layoutSessionStemEntranceAndDirectMotion": true,
+      "ui": true,
+      "userAndRawWav": true,
+      "audioCompletionAndDecoder": true
+    },
+    "accessibilitySemanticContentUnchanged": true,
+    "contractSourceAnchorsRefreshed": true,
+    "packagedRoseFiles": 40,
+    "glbsStoredUncompressed": 13,
+    "sourceRawApkWavIdentical": true,
+    "wavStoredUncompressed": true,
+    "newIncrementalClassPresentInApkDex": true
+  },
+  "apiEvidence": "Existing exact-version SDK 6.2.8 pointer/coordinate/entity APIs are reused unchanged; all new motion accumulation is app-owned Kotlin state. Knowledge MCP remains unavailable; no new query/configuration or experimental API.",
+  "audioSha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+  "artifact": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 48699508,
+    "sha256": "338aa79937eb3af126cdd844be8cca9d0650846a3e5498414266a75cc48de742"
+  },
+  "runtime": {
+    "headsetGazeDragVerified": false,
+    "headsetDirectRegressionVerified": false,
+    "volumeListeningVerified": false,
+    "installLaunchVerified": false,
+    "newCrashBufferCollected": false,
+    "blocker": "Existing ADB listener sandbox denial; denied operation not retried.",
+    "pending": [
+      "GazePinch: detach, stop hand through crown rebound, move XYZ by measured deltas, reverse, hold, then release; include several input samples between scene frames.",
+      "Last petal: keep holding after tear; release before next update and confirm fall begins at final held pose.",
+      "Compare DirectPinch against working previous version; verify pause/tracking loss and replay cancellation.",
+      "Listen to gain 0.10 and continuous system ambience/music across rounds."
+    ],
+    "evidenceScope": "Host state-machine and synthetic input/conversion sequences plus source diff are not native coordinate/render/audio validation."
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "snapshot": "backups/gaze-drag-volume-v2-2026-11-12",
+    "previous": "backups/gaze-drag-volume-v1-2026-11-12"
+  }
+}

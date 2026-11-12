@@ -1,0 +1,103 @@
+{
+  "revision": "petal-spatial-audio",
+  "sdkBom": "6.2.8",
+  "sdkDeclaration": "gradle/libs.versions.toml",
+  "knowledgeMcpAvailable": false,
+  "apiEvidence": "Exact-version public SDK sources under .scratch/sdk/core-6.2.8-sources; no experimental APIs or dependency upgrades.",
+  "audio": {
+    "source": "petalDrop.wav",
+    "packagedPath": "assets/sounds/petalDrop.wav",
+    "sha256": "73f120a79921cf6604593c7f8aaa8b74de7cefed4c6c48b39007b997aed397da",
+    "bytes": 7244,
+    "format": {
+      "channels": 1,
+      "sampleWidthBytes": 2,
+      "sampleRate": 48000,
+      "frames": 3600,
+      "durationMs": 75.0,
+      "compression": "NONE"
+    },
+    "byteIdenticalToUserSource": true,
+    "storedUncompressed": true,
+    "component": "ObjectAudioComponent",
+    "preparation": "one prepared non-looping controller per petal, before Ready",
+    "maxControllers": 30,
+    "trigger": "successful RoseSession.detach, before reparent/rebound",
+    "emitterPosition": "crown.convertPositionTo(spec.position, root), in RoseAnchor meters",
+    "headsetVerified": false
+  },
+  "sourceReview": {
+    "detachOnly": true,
+    "sharedDirectGazeAndAccessiblePath": true,
+    "idempotencyGuard": "RoseSession.detach returns false on repeated, cancelled or stale callbacks. Existing RoseSessionTest covers this transition.",
+    "frozenAtFlowerJunction": true,
+    "sampleBeforeReparentAndRebound": true,
+    "preloadedBeforeReady": true,
+    "globalResourceRetainedAcrossRounds": true,
+    "roundTeardownBeforeAnchorDestroy": true,
+    "pauseStopsStartedVoices": true,
+    "resumeDoesNotReplay": true,
+    "partialPreparationCleanup": true,
+    "cancelledLoadCleanup": true,
+    "playbackFailureDoesNotUndoPluck": true,
+    "controlsAndAccessibilityActionsUnchanged": true,
+    "decorativeEmitters": "No visual, collider, interaction or accessibility actions on audio-only nodes."
+  },
+  "sourceReviewScope": "Code review and host checks; these flags do not establish native playback or acoustic results.",
+  "hostValidation": {
+    "assembleDebug": true,
+    "testDebugUnitTest": {
+      "tests": 47,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "assembleDebugAndroidTest": true,
+    "experimentalApiCheck": "PASS; no active opt-ins",
+    "spatialUiStyle": {
+      "result": "PASS",
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing large white result/blessing typography explicitly requested by user; UI code unchanged."
+    },
+    "placementSource": {
+      "result": "PASS",
+      "violations": [],
+      "advisories": [
+        {
+          "evidence": "import com.pico.spatial.core.container.SpatialViewContent",
+          "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+          "line": 8,
+          "rationale": "The focused source contains containment logic but no visible named owner, epsilon, revision or size key; review whether another selected file supplies that evidence.",
+          "rule": "containment-evidence-incomplete",
+          "disposition": "No new containment logic; audio positions are converted to the existing named RoseAnchor in meters. Rose geometry/volume unchanged."
+        },
+        {
+          "evidence": "onClick(label=\"摘取花瓣\") {accessiblePluck(token,id)}",
+          "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+          "line": 257,
+          "rationale": "Foreground-facing details appear in a scene with depth transforms but no visible body/detail depth contract; review whether Z is being used only for front-view visibility.",
+          "rule": "surface-detail-depth-without-body-contract",
+          "disposition": "Heuristic matches the existing accessible petal click declaration; audio change creates no visual surface details."
+        }
+      ]
+    },
+    "roseAssetsAndDomainUnchangedVsInterleavedV6": true,
+    "audioMatchesUserSource": true,
+    "audioStoredUncompressed": true
+  },
+  "runtime": {
+    "headsetAudioVerified": false,
+    "deviceInstallAndLaunchVerified": false,
+    "blocker": "Existing ADB listener Operation not permitted; denied operation not retried.",
+    "checksPending": [
+      "First cold-start pluck has sound without asset-loading delay.",
+      "DirectPinch and GazePinch: cancel below threshold is silent, threshold crossing plays once, continued hold/release is silent.",
+      "Sound originates at the bent flower junction, remains there during rebound, and spatializes as listener/head/container moves.",
+      "Last petal and accessible pluck use the same one-shot path.",
+      "Check loudness, spatial distance attenuation and onset latency on headphones/headset speakers.",
+      "Pause stops any active short sound; resume does not replay it.",
+      "Replay/error retry and 20 rounds: sound stays available, controllers remain at most 30 per round, no increasing native resource count."
+    ]
+  }
+}

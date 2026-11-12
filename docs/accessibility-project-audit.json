@@ -1,0 +1,38 @@
+{
+  "tool_name": "accessibility.project-audit",
+  "tool_status": "SUCCESS",
+  "summary": "Project A11Y audit found 0 error(s), 0 warning(s), and 0 info finding(s).",
+  "data": {
+    "projectRoot": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp",
+    "passed": true,
+    "requiresRuntimeAudit": true,
+    "inventory": {
+      "candidateCount": 4,
+      "attachments": 2,
+      "entities": 2,
+      "unresolvedCount": 1,
+      "unresolvedLabels": 0,
+      "unsupportedFileCount": 0
+    },
+    "coverage": {
+      "candidates": 4,
+      "contracted": 3,
+      "completedByContract": 1,
+      "excluded": 0,
+      "required": 4,
+      "unresolved": 1
+    },
+    "counts": {
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "findings": []
+  },
+  "errors": [],
+  "resources": [],
+  "meta": {
+    "format": "json",
+    "truncated": false
+  }
+}

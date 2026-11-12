@@ -1,0 +1,22 @@
+{
+  "defaultAndEnglishName": "RoseTear",
+  "chineseName": "一瓣欢喜",
+  "manifestLabel": "@string/app_name",
+  "applicationId": "com.example.flowertears.p18ab52cf",
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "aapt2ApplicationLabels": [
+    "application-label:'RoseTear'",
+    "application-label-en-AU:'RoseTear'",
+    "application-label-en-CA:'RoseTear'",
+    "application-label-en-GB:'RoseTear'",
+    "application-label-en-IN:'RoseTear'",
+    "application-label-en-XC:'RoseTear'",
+    "application-label-zh:'一瓣欢喜'",
+    "application-label-zh-CN:'一瓣欢喜'",
+    "application-label-zh-HK:'一瓣欢喜'",
+    "application-label-zh-Hant:'一瓣欢喜'",
+    "application-label-zh-TW:'一瓣欢喜'"
+  ],
+  "apkResourceInspectionPassed": true,
+  "launcherLanguageSwitchVerifiedOnDevice": false
+}

@@ -1,0 +1,112 @@
+{
+  "revision": "gaze-drag-volume-v1",
+  "date": "2026-11-12",
+  "sdkBom": "6.2.8",
+  "requirements": [
+    "Reduce petalDrop volume to approximately 25% of its current level.",
+    "Keep gazePinch detached petal at the tear pose and move relative to subsequent drag; preserve working DirectPinch."
+  ],
+  "volume": {
+    "linearGain": 0.25,
+    "previousLinearGain": 1.0,
+    "method": "AudioTrack.setVolume after preload/initialization, before voice publication",
+    "systemVolumeChanged": false,
+    "wavBytesChanged": false,
+    "spatialBinding": "OBJECT unchanged",
+    "audioFocusRequested": false,
+    "completionCleanup": "Previous marker/watchdog/token lifecycle retained.",
+    "headsetLoudnessVerified": false
+  },
+  "findings": {
+    "confirmedSourceIssue": "Remote positions were converted with each frame's global-view offset and then subtracted from an already converted capture origin. Different view origins therefore entered the gesture displacement.",
+    "exactSdkEvidence": "6.2.8 SpatialCoordinateSpaceConverterImpl.convertPosition(Global) subtracts current view center and getLocationInWindow; convertSize only applies px-to-meter scale.",
+    "nativeCauseConfirmed": false,
+    "limit": "No headset event/coordinate trace; the exact native change during the reported fly-away is unconfirmed."
+  },
+  "changes": {
+    "remoteCapture": "Capture original inputDevicePose.rawPosition in its source coordinate space; preserve pointer, target and source through detach/kind metadata changes.",
+    "remoteDisplacement": "currentRaw - capturedRawOrigin -> flip Y -> public convertSize(Global, localSpatialCoordinateSpace) -> scene-meter displacement. No point-origin translation.",
+    "directPinch": "Existing position3D -> convertPosition(Local, localSpatialCoordinateSpace), then current - captured scene point, unchanged.",
+    "detachAnchor": "Existing PetalDragMotion: visible root pose minus current scene-meter delta at detach; subsequent position adds current delta. Snapshot/reparent before crown rebound, unchanged.",
+    "noDragCap": true,
+    "invalidConversion": "Reject nonfinite scene displacement as Unavailable; keep original capture for recovery. Up/release requires no pose.",
+    "preserved": "4 cm any-direction threshold, stem response, final held petal, native collider/input capture until release, release-position fall/fade, pause/loss/teardown."
+  },
+  "publicApiEvidence": {
+    "coordinateReference": "Installed spatial-sdk-guideline/reference/coordinates-and-units.md",
+    "sdkCoordinateConverter": ".scratch/sdk/core-6.2.8-sources/com/pico/spatial/core/coordinate/SpatialCoordinateSpaceConverter.kt + Impl: public convertSize and precise view-offset behavior.",
+    "sdkPointer": ".scratch/sdk/foundation-6.2.8-sources/com/pico/spatial/ui/foundation/gesture/SpatialPointerEventDetector.kt: raw device pose and retained down-target semantics.",
+    "knowledgeMcp": "Unavailable; project knowledge selector missing. No query or configuration attempt; exact-version local source/KDoc fallback."
+  },
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 75,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "newTests": 3,
+    "coverage": [
+      "Changing view origin does not move a stationary detached remote petal; subsequent XYZ motion is relative to its tear pose and remains uncapped.",
+      "26 direction raw pixel vectors use scene-meter 4 cm threshold after scaling/Y flip.",
+      "Invalid converted delta retains original capture for recovery and release needs no pose.",
+      "Existing DirectPinch, final-petal, long/reverse drag, cancellation and audio lifecycle tests pass."
+    ],
+    "experimentalApi": "PASS; no active opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large-font emphasis."
+    },
+    "placementSource": {
+      "passed": true,
+      "violations": [],
+      "advisoryDispositions": {
+        "containment-evidence-incomplete": "No resting placement/container/model envelope change; existing entrance envelope evidence retained.",
+        "surface-detail-depth-without-body-contract": "Existing accessible petal click heuristic; no new depth/detail geometry."
+      }
+    },
+    "previousSnapshotComparisons": {
+      "flowerAssets": true,
+      "layoutSessionStemEntranceAndDetachedMotion": true,
+      "ui": true,
+      "accessibilityContract": true,
+      "wav": true,
+      "audioLifecycle": true
+    },
+    "packagedRoseFiles": 40,
+    "glbsStoredUncompressed": 13,
+    "sourceRawAndApkWavIdentical": true,
+    "wavStoredUncompressed": true,
+    "accessibility": "Semantic IDs/actions and contract source anchors remain unchanged; no new controls. Runtime audit not available."
+  },
+  "audioSha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+  "artifact": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 48699508,
+    "sha256": "a7ef01e7dfe6cd8791ad7707fd221823aebd7738b887470c735df6e7fe452bc4"
+  },
+  "runtime": {
+    "headsetGazeDragVerified": false,
+    "headsetDirectRegressionVerified": false,
+    "headsetVolumeVerified": false,
+    "backgroundAudioMixingVerified": false,
+    "installLaunchVerified": false,
+    "crashBufferCollected": false,
+    "blocker": "Existing ADB listener sandbox denial; denied operation not retried.",
+    "pending": [
+      "GazePinch: tear then hold still through stem rebound, drag XYZ/return beyond 12 cm, release; confirm continuity at tear and fall start.",
+      "Repeat with final petal and DirectPinch; pause, tracking loss and replay must clear capture.",
+      "Listen to 0.25 track gain, fixed spatial tear location and continuous system background audio through several rounds."
+    ],
+    "evidenceScope": "Host fake coordinate/gesture sequences and source/API review do not prove native display or coordinate calibration."
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "snapshot": "backups/gaze-drag-volume-v1-2026-11-12",
+    "previous": "backups/petal-audio-mixing-v1-2026-11-12"
+  }
+}

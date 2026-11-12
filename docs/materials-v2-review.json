@@ -1,0 +1,113 @@
+{
+  "textureVersion": "botanical-basecolor-v2",
+  "geometryComparedWith": "backups/baseline-2026-11-10/RoseTear-baseline-2026-11-10-source.tar.gz",
+  "allTrianglePositionsUnchanged": true,
+  "stemJointTransformsInverseBindsAndPositionWeightsUnchanged": true,
+  "meshes": [
+    {
+      "asset": "inner_01.glb",
+      "mesh": "inner_01",
+      "trianglePositionSha256": "567fa438529dbd13064f2019edcd7cde0ff7e8de0b562bae97fcf687606431bf",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "inner_02.glb",
+      "mesh": "inner_02",
+      "trianglePositionSha256": "52ead305016108b6916edd681608222347afafaee8296c6286785205a24f6a8d",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "inner_03.glb",
+      "mesh": "inner_03",
+      "trianglePositionSha256": "80e15d93f9df4ea344c05782e87070b3d9f861895286608b667f3b75ad4424cf",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "inner_04.glb",
+      "mesh": "inner_04",
+      "trianglePositionSha256": "2f94554a46ba90d81de12aec61f131cd9ff8f2f786a14d078020bc891f07ea86",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "middle_01.glb",
+      "mesh": "middle_01",
+      "trianglePositionSha256": "0e56476d00707c6a3c28f824b7a7568e677abed90b677bc66848c0d6db35f15e",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "middle_02.glb",
+      "mesh": "middle_02",
+      "trianglePositionSha256": "aba7d296ad3fdf041c0b63ef842a9585da98c99a16c1c84dd84f95a39810e5a0",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "middle_03.glb",
+      "mesh": "middle_03",
+      "trianglePositionSha256": "96ae653fac801b054f4d1dca4829e3ef574e31fa6dad496ebebb17ee82935d2d",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "middle_04.glb",
+      "mesh": "middle_04",
+      "trianglePositionSha256": "4a09fe933388fcc879fcdcec13485837a323aacc63c83c07a02b937e7fc0c562",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "outer_01.glb",
+      "mesh": "outer_01",
+      "trianglePositionSha256": "a245cef565119daca925a8352bfb5f104e9c19aa074850306c1d6e8123350ace",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "outer_02.glb",
+      "mesh": "outer_02",
+      "trianglePositionSha256": "4e820ef17d90d27216618ccf95b96fa73567fb8305b98663f37311018b9f4862",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "outer_03.glb",
+      "mesh": "outer_03",
+      "trianglePositionSha256": "870e9c22c4bc629398075a53ff0af12b14d29b5daf4ca36761c37de3745de534",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "outer_04.glb",
+      "mesh": "outer_04",
+      "trianglePositionSha256": "83b0e425b80124c59e965078a38b8d44d6fdb57e40c961928f33c9492ae324f4",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "stem.glb",
+      "mesh": "Stem_Skinned",
+      "trianglePositionSha256": "c0d7350b46f4c77462c5a6faeada430a5d385a4df824714207af42961fd72fe4",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "stem.glb",
+      "mesh": "Hypanthium_and_five_sepals",
+      "trianglePositionSha256": "f19c86bfb73709b63397e33e815c6e3b0a5b4f0b2050ee4d1822bdb1456350e8",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "stem.glb",
+      "mesh": "Filaments",
+      "trianglePositionSha256": "1e010ebe838cf65ed06f492327374fe7c094cde7030b991e5d44bf753c939b60",
+      "matchesBaseline": true
+    },
+    {
+      "asset": "stem.glb",
+      "mesh": "Anthers_and_pistils",
+      "trianglePositionSha256": "52258683239f79b60f99a4a66360d712a18876d1bb4909f63be14ff3b74b2144",
+      "matchesBaseline": true
+    }
+  ],
+  "previews": [
+    "art/rose-materials-v2-comparison.png",
+    "art/rose-materials-v2-eight-colors.png",
+    "art/rose-materials-v2-detail.png"
+  ],
+  "previewMethod": "CPU orthographic rasterization of actual exported GLB triangles, UVs and embedded base-color PNGs; sRGB decoding, linear color multiplication, no lights. No native mipmap/tone-mapper simulation.",
+  "sdkEvidence": "Exact cached SDK 6.2.8 public KDoc: TextureCreateOption defaults sRGB encoding/color space, GENERATE_ALL; MaterialTextureSampler defaults trilinear, explicitly clamp S/T; Resource.toGlobal ownership. Knowledge graph remains unavailable.",
+  "deviceVerified": false,
+  "runtimeBlocker": "Existing ADB listener Operation not permitted; not retried"
+}

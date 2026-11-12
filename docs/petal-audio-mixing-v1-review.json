@@ -1,0 +1,110 @@
+{
+  "revision": "petal-audio-mixing-v1",
+  "date": "2026-11-12",
+  "sdkBom": "6.2.8",
+  "reportedBehavior": "System background audio becomes silent after petalDrop, restoring only on the next flower.",
+  "confirmedSourceDefect": "The previous AudioPlayerController had no natural-completion cleanup; started remained true until next-round cleanup.",
+  "nativeFocusRootCauseConfirmed": false,
+  "diagnosticLimit": "No device focus dump, audio recording or native logs; controller lifetime matches the symptom, but a particular native focus flag is unconfirmed.",
+  "changes": {
+    "playback": "One Android MODE_STATIC AudioTrack preloaded per round; exact PCM16 samples cached per scene.",
+    "attributes": {
+      "usage": "USAGE_ASSISTANCE_SONIFICATION",
+      "contentType": "CONTENT_TYPE_SONIFICATION"
+    },
+    "spatialBinding": "SDK 6.2.8 public SpatialAudioTrackExtension, OBJECT mode, attached to independent tear emitter.",
+    "oldAudioResourceAndPlayerPathRemoved": true,
+    "requestsAudioFocus": false,
+    "createsMediaSession": false,
+    "changesSystemVolume": false,
+    "completion": "Final sample marker explicitly stops the track. Duration + 250 ms watchdog stops it if callback is lost; scheduling depends on the main looper.",
+    "watchdogCurrentClipMs": 325,
+    "rapidCues": "Stop/rewind before play; generation tokens reject old completion/timeouts; playback head rejects an old marker delivered to a new listener.",
+    "pause": "Stops and cancels callbacks, no delayed resume.",
+    "teardown": "Cancel optional preparation job (unchanged scene); stop, unregister listener/marker/watchdog, release track and spatial extension, destroy emitter.",
+    "triggerAndPosition": "Unchanged successful detach before reparent/rebound, crown.convertPositionTo(spec.position, root) in RoseAnchor meters.",
+    "preparation": "Unchanged optional post-Ready job with two real frame waits; exceptions cannot clear flower or set Error.",
+    "acousticDefaults": "OBJECT bridge platform defaults; prior ObjectAudioComponent attenuation and reverb settings are not asserted for this bridge."
+  },
+  "audio": {
+    "source": "petalDrop.wav",
+    "packagedPath": "res/raw/petal_drop.wav",
+    "bytes": 7244,
+    "sha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+    "channels": 1,
+    "pcmBits": 16,
+    "sampleRate": 48000,
+    "frames": 3600,
+    "durationMs": 75,
+    "sourceRawApkByteIdentical": true,
+    "storedUncompressed": true
+  },
+  "publicApiEvidence": {
+    "sdkSource": ".scratch/sdk/core-6.2.8-sources/com/pico/spatial/audio/SpatialAudioTrackExtension.kt: public builder config, OBJECT positional mode, entity binding, release; exact-version compile passed.",
+    "bundledGuidance": "Spatial SDK guideline + local spatial-audio overview; custom AudioTrack spatial bridge documented in installed audio performance reference.",
+    "androidAudioTrack": "https://developer.android.com/reference/android/media/AudioTrack",
+    "androidAudioAttributes": "https://developer.android.com/reference/android/media/AudioAttributes",
+    "androidAudioFocus": "https://developer.android.com/media/optimize/audio-focus",
+    "knowledgeMcp": "Unavailable; missing project knowledge selector not modified. Version-matched public SDK/KDoc and official Android API fallback."
+  },
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 72,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "newTests": 11,
+    "regressionCoverage": [
+      "Final PCM frame stops output before another flower is created; duplicate callbacks stop only once.",
+      "Missing callback watchdog stops; previous timeout cannot stop a new pluck.",
+      "Old marker token and freshly rewound head cannot cut a new clip early.",
+      "Pause/teardown invalidate callback; failed native start stops partially started output.",
+      "600 simulated cues return to stopped; not a native performance or memory test.",
+      "Exact user PCM samples and duration; ancillary odd chunk padding; invalid format, rate, truncated and oversized chunks."
+    ],
+    "experimentalApi": "PASS; no active opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large-font emphasis."
+    },
+    "previousSnapshotComparisons": {
+      "flowerAssets": true,
+      "sceneAndInput": true,
+      "ui": true,
+      "accessibilityContract": true,
+      "rawAndUserWav": true
+    },
+    "apkRoseFilesMatch": true,
+    "packagedRoseFiles": 40,
+    "storedGlbs": 13,
+    "accessibility": "User controls/actions unchanged; existing contract and scene source byte-identical. No new runtime audit claimed."
+  },
+  "artifact": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 48683124,
+    "sha256": "5f4675ec7c0123522027c570230ba7301ed6bdb0664c2ec7820678407a915220"
+  },
+  "runtime": {
+    "headsetMixingVerified": false,
+    "headsetSpatialSoundVerified": false,
+    "installLaunchVerified": false,
+    "crashBufferCollected": false,
+    "blocker": "Existing ADB listener sandbox denial; denied operation not retried.",
+    "pending": [
+      "Play system ambience/music first; confirm it remains continuous through first pluck, rapid repeated plucks, final petal hold/release, completion wait and replay.",
+      "Check POSITIONAL sound at tear root for DirectPinch/GazePinch and source staying fixed through drag.",
+      "Listen for full short cue, volume, spatial effect, onset latency and no unwanted echo; bridge acoustic defaults require headset evaluation.",
+      "Pause during cue; no resume echo; run 20 rounds and inspect native track/entity/resource count and crash/audio logs."
+    ]
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "snapshot": "backups/petal-audio-mixing-v1-2026-11-12",
+    "previous": "backups/held-petal-drag-v1-2026-11-11"
+  }
+}

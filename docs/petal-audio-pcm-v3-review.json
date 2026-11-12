@@ -1,0 +1,67 @@
+{
+  "revision": "petal-audio-pcm-v3",
+  "date": "2026-11-12",
+  "request": "Reduce current petalDrop playback gain by another 50%.",
+  "changes": {
+    "previousPcmGain": 0.05,
+    "pcmGain": 0.025,
+    "trackGain": 1,
+    "logRevision": "pcm-gain-v3",
+    "versionCode": 4,
+    "versionName": "1.0.3",
+    "applicationId": "com.example.flowertears.p18ab52cf",
+    "productionDiffAgainstV2": ["app/src/main/java/com/example/flowertears/p18ab52cf/scene/PetalAudioSamples.kt"],
+    "sourceWavPreserved": true,
+    "sourceWavSha256": "ea4338224bc3db7a417aade1cacc897069c9f3ae94302c2ebac433e269368982"
+  },
+  "measurement": {
+    "sampleRate": 48000,
+    "frames": 3600,
+    "durationMs": 75,
+    "sourcePeak": 16384,
+    "playbackPeak": 410,
+    "sourceRms": 1788.1924459880959,
+    "previousPlaybackRms": 89.40586296956891,
+    "playbackRms": 44.70071152801833,
+    "relativeAmplitude": 0.49997516989722607,
+    "relativeDb": -6.021031267055063,
+    "playbackPcmSha256": "7cdb8c8c923750be5b22d2a2b8e7ebbb88021f309222fcb48fe26bcf76db2fbe",
+    "method": "Existing test exports actual production-factory PCM; Python independently verifies all samples and RMS. PCM16 rounding accounts for the small deviation from 0.5."
+  },
+  "tests": {
+    "scope": "PetalAudioSamples.fromWav, existing PetalAudioSamplesTest.",
+    "defectAnalysis": "No production algorithm defect found; requested gain adjustment only.",
+    "newCases": 0,
+    "updatedCases": "Actual playback sample/RMS gain, comparison to previous 0.05 gain, signed PCM16 boundary expectations and revision-specific PCM export.",
+    "iteration": "One generation/verification cycle; all-pass, no repair needed.",
+    "commands": [
+      "./gradlew :app:testDebugUnitTest --tests com.example.flowertears.p18ab52cf.PetalAudioSamplesTest",
+      "./gradlew testDebugUnitTest assembleDebug assembleDebugAndroidTest"
+    ],
+    "testCount": 86,
+    "failures": 0,
+    "errors": 0,
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "experimentalApi": "PASS",
+    "spatialUiStyle": "PASS, 0 errors, 1 existing large-font warning",
+    "coverage": "Skipped per workflow; no configured threshold or requested coverage goal.",
+    "utreeFlush": "Attempted; executable missing, exit 127. Verification recorded in this report."
+  },
+  "artifact": {
+    "path": "backups/petal-audio-pcm-v3-2026-11-12/RoseTear-1.0.3-petal-audio-pcm-v3.apk",
+    "sha256": "5c377e30bbda19fbae83eb477c44234b8f0d1c0f654ff1fd4c783ff2ae7ae3a7",
+    "packagedWavMatchesCurrentRaw": true,
+    "packagedWavUncompressed": true
+  },
+  "runtime": {
+    "headsetAuditionVerified": false,
+    "headsetOutputMeasured": false,
+    "note": "Digital input-signal verification only; existing ADB restriction not bypassed."
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "reason": "Workspace still has no Git repository; previous Git metadata write denial not bypassed.",
+    "snapshot": "backups/petal-audio-pcm-v3-2026-11-12"
+  }
+}

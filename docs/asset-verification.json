@@ -1,0 +1,541 @@
+{
+  "passed": true,
+  "petals": [
+    {
+      "asset": "outer_01.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "outer_02.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "outer_03.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "outer_04.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "middle_01.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "middle_02.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "middle_03.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "middle_04.glb",
+      "triangles": 412,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "inner_01.glb",
+      "triangles": 476,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "inner_02.glb",
+      "triangles": 476,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "inner_03.glb",
+      "triangles": 476,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    },
+    {
+      "asset": "inner_04.glb",
+      "triangles": 476,
+      "closedSolid": true,
+      "bothSidesCupInward": true
+    }
+  ],
+  "stemTriangles": 4842,
+  "jointCount": 3,
+  "weightSumsValid": true,
+  "max30PetalTriangles": 19122,
+  "organicStem": {
+    "version": "curved-stem-seated-core-v5",
+    "ringCount": 41,
+    "bodyInclineDegrees": 2.675532622082151,
+    "bodyLineDeviationMeters": 0.0008507578184444119,
+    "forwardOverhangMeters": 0.022825976833701134,
+    "rigPivotsMeetCenterline": true,
+    "restBindProductsIdentity": true,
+    "closedAfterUvWelding": true,
+    "tipAndCoreAxis": [
+      0,
+      0.8191520442889918,
+      0.573576436351046
+    ],
+    "matchesProductionCrownAxis": true,
+    "neckStartFraction": 0.64
+  },
+  "textures": {
+    "petal": {
+      "file": "neutral.png",
+      "size": [
+        512,
+        512
+      ],
+      "sha256": "a030c4bda88d4073bcc7ea66c0cf88e85cacfb731f17954ff0682fe5e8d74da3",
+      "opaque": true
+    },
+    "stem": {
+      "file": "stem-atlas.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "3f26ac797061c5b9e735596604c4fa77067944919428a2443a8fc3d77991c239",
+      "opaque": true
+    }
+  },
+  "palettes": [
+    {
+      "colorId": 0,
+      "name": "red",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-0-outer.png",
+          "sha256": "f1c69c1747df3717b88a827b01f978fd087ea963cf14e7184ed05847de0954aa",
+          "meanSrgb": [
+            230.14019775390625,
+            103.48627471923828,
+            120.80545806884766
+          ],
+          "meanLinearLuminance": 0.285737907251163
+        },
+        {
+          "layer": "middle",
+          "file": "petal-0-middle.png",
+          "sha256": "10bf19625e0933bfb951365e00c452711b3d21bfdb62f5f45c1e2865c5fa8a58",
+          "meanSrgb": [
+            214.28304290771484,
+            67.55957794189453,
+            88.55998992919922
+          ],
+          "meanLinearLuminance": 0.19465934570473664
+        },
+        {
+          "layer": "inner",
+          "file": "petal-0-inner.png",
+          "sha256": "36515b92a7c63a12782ce9a56b3c5c02c1879532b41958832997ccc22a9a3c60",
+          "meanSrgb": [
+            197.98340606689453,
+            51.857704162597656,
+            76.21166229248047
+          ],
+          "meanLinearLuminance": 0.15304108923191667
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        9.175690663761088,
+        5.179994608506156
+      ],
+      "surfacePatternCorrelations": [
+        0.007822305538742401,
+        0.0035968199506892003,
+        0.0012322244448261137
+      ]
+    },
+    {
+      "colorId": 1,
+      "name": "pink",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-1-outer.png",
+          "sha256": "1c2de93558299433d18a5467835cc8422b87fb3f7c44c6e9c1021af638fbd998",
+          "meanSrgb": [
+            242.5551528930664,
+            146.25758361816406,
+            165.63624954223633
+          ],
+          "meanLinearLuminance": 0.42928608075473057
+        },
+        {
+          "layer": "middle",
+          "file": "petal-1-middle.png",
+          "sha256": "c8a54975ef6e66f9465c0be560888e57f7f9eb39e719e1ad1bfb64cba50e7f9a",
+          "meanSrgb": [
+            238.24052810668945,
+            118.84469604492188,
+            141.14112091064453
+          ],
+          "meanLinearLuminance": 0.3370942282092902
+        },
+        {
+          "layer": "inner",
+          "file": "petal-1-inner.png",
+          "sha256": "6b07024374bfe2465983f1b0d4b63b1f01b3059174cd3bff675f64bd2a790cfb",
+          "meanSrgb": [
+            224.31544876098633,
+            97.7931900024414,
+            124.38967895507812
+          ],
+          "meanLinearLuminance": 0.2642918442765425
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        6.775223124002707,
+        6.289058218836615
+      ],
+      "surfacePatternCorrelations": [
+        0.01038585093292527,
+        -0.013141840123283007,
+        0.009699495440763657
+      ]
+    },
+    {
+      "colorId": 2,
+      "name": "pale-pink",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-2-outer.png",
+          "sha256": "382201fdec74470a56de423bbc3507af2d36bdbee66f1d540e9f1e8ee5e66a70",
+          "meanSrgb": [
+            249.5373878479004,
+            190.4314956665039,
+            201.4365997314453
+          ],
+          "meanLinearLuminance": 0.618949706039574
+        },
+        {
+          "layer": "middle",
+          "file": "petal-2-middle.png",
+          "sha256": "25e1b87b84804113b152901b6e7d4aa7c439489e7ea270e64e665a1074359a0e",
+          "meanSrgb": [
+            246.94862747192383,
+            178.98086166381836,
+            189.64842987060547
+          ],
+          "meanLinearLuminance": 0.559916050848245
+        },
+        {
+          "layer": "inner",
+          "file": "petal-2-inner.png",
+          "sha256": "77c2e98bd02c69e270f3dfc524ddabee62f89149877a14b7ae6a770f48cfbfea",
+          "meanSrgb": [
+            238.84647750854492,
+            161.08375930786133,
+            177.34585571289062
+          ],
+          "meanLinearLuminance": 0.4741248580567463
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        3.2484938636694523,
+        5.1561959378330045
+      ],
+      "surfacePatternCorrelations": [
+        -0.001294270260830741,
+        0.0016621036987674817,
+        0.006976069495820194
+      ]
+    },
+    {
+      "colorId": 3,
+      "name": "white",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-3-outer.png",
+          "sha256": "258848b718604566f2369708ddd2d52bf4481c883db28af6fc581d8ff8df1945",
+          "meanSrgb": [
+            240.54077529907227,
+            234.7454071044922,
+            235.93637466430664
+          ],
+          "meanLinearLuminance": 0.8407366585577492,
+          "pinkRimFraction": 0.7549031575520834,
+          "warmRootFraction": 0.7869466145833334,
+          "centerMeanChroma": 1.9457682291666667
+        },
+        {
+          "layer": "middle",
+          "file": "petal-3-middle.png",
+          "sha256": "e586a49e90a08a222a7e2a071b216f85183c3773386d6552651d5524e60682cc",
+          "meanSrgb": [
+            238.4675064086914,
+            231.9517707824707,
+            233.44054412841797
+          ],
+          "meanLinearLuminance": 0.819623136451182,
+          "pinkRimFraction": 0.7760823567708334,
+          "warmRootFraction": 0.91162109375,
+          "centerMeanChroma": 3.3360584077380953
+        },
+        {
+          "layer": "inner",
+          "file": "petal-3-inner.png",
+          "sha256": "15db50708c9509a7db493fcfee3f06f5c4fac4c3d72165c33f79a62a292505d8",
+          "meanSrgb": [
+            234.9189338684082,
+            227.47235107421875,
+            229.8529930114746
+          ],
+          "meanLinearLuminance": 0.7867897363028374,
+          "pinkRimFraction": 0.946044921875,
+          "warmRootFraction": 0.9488389756944444,
+          "centerMeanChroma": 3.2892113095238096
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        0.9242631089881854,
+        1.469382096338876
+      ],
+      "surfacePatternCorrelations": [
+        0.014584828831078605,
+        0.012140671630258046,
+        -0.00292605531442287
+      ]
+    },
+    {
+      "colorId": 4,
+      "name": "blue-enchantress",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-4-outer.png",
+          "sha256": "bfb2ab62f9818f2e7fa035fc07f23fecfeb0ae9c26b635ce0a1e78e9bd232fdb",
+          "meanSrgb": [
+            99.49948120117188,
+            128.58213806152344,
+            214.47609329223633
+          ],
+          "meanLinearLuminance": 0.2342693922896109
+        },
+        {
+          "layer": "middle",
+          "file": "petal-4-middle.png",
+          "sha256": "6d2de9ac6042338b0f4c5ba751b205e964a4dedc764c14dee3188e4740a635f8",
+          "meanSrgb": [
+            66.26601028442383,
+            99.94356155395508,
+            198.2871322631836
+          ],
+          "meanLinearLuminance": 0.14597527633533425
+        },
+        {
+          "layer": "inner",
+          "file": "petal-4-inner.png",
+          "sha256": "c8a8667692c2c1d12a50c7ef676d446ea59a61ea4f91322e07d0949359fc1774",
+          "meanSrgb": [
+            47.95832824707031,
+            81.30293273925781,
+            182.3392105102539
+          ],
+          "meanLinearLuminance": 0.10168487598789257
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        10.431460256884819,
+        6.9348055238768325
+      ],
+      "surfacePatternCorrelations": [
+        0.02397336846118189,
+        0.012103778905288886,
+        0.0062155188436506595
+      ]
+    },
+    {
+      "colorId": 5,
+      "name": "yellow",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-5-outer.png",
+          "sha256": "d362e2629674b72ce629138a2d0ff350abecbea15feb03f7ae81ac3d0a234f1b",
+          "meanSrgb": [
+            242.81431198120117,
+            195.7835464477539,
+            85.25298690795898
+          ],
+          "meanLinearLuminance": 0.5919446483694107
+        },
+        {
+          "layer": "middle",
+          "file": "petal-5-middle.png",
+          "sha256": "32d2862737eb0006a9f71bb536ae0ac3d2a26afbd5f83098b5aa48129f0d9c0b",
+          "meanSrgb": [
+            238.05451202392578,
+            182.1980209350586,
+            54.4593391418457
+          ],
+          "meanLinearLuminance": 0.5212186722628377
+        },
+        {
+          "layer": "inner",
+          "file": "petal-5-inner.png",
+          "sha256": "c16efab97e6a8619e867f210cfc5da2563d0d1b0647a2f3898fb47ebf7fbccc3",
+          "meanSrgb": [
+            226.57933807373047,
+            160.95013427734375,
+            36.63648986816406
+          ],
+          "meanLinearLuminance": 0.42072156483413914
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        4.044718224377775,
+        6.433012109728963
+      ],
+      "surfacePatternCorrelations": [
+        -0.0015202120529916542,
+        -0.0012953516015553814,
+        -0.004409106438627261
+      ]
+    },
+    {
+      "colorId": 6,
+      "name": "orange",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-6-outer.png",
+          "sha256": "d062c433bf3cc11ad29f4c20084c19652e4ada40c6d56472de043e91e6bce9be",
+          "meanSrgb": [
+            243.60849380493164,
+            156.7749900817871,
+            125.41829681396484
+          ],
+          "meanLinearLuminance": 0.4485991277728296
+        },
+        {
+          "layer": "middle",
+          "file": "petal-6-middle.png",
+          "sha256": "0127b81ff58ca2aa8667445b3f73e4ffbfc4fa7c1884fc8e39200e459fc8afd2",
+          "meanSrgb": [
+            240.16418075561523,
+            137.46214294433594,
+            94.63296890258789
+          ],
+          "meanLinearLuminance": 0.3758534163199804
+        },
+        {
+          "layer": "inner",
+          "file": "petal-6-inner.png",
+          "sha256": "27e2d8b7be99340d2095078e297648f787590a78a623c9f607a6c933f99f3df6",
+          "meanSrgb": [
+            231.0801658630371,
+            122.45513534545898,
+            82.9185562133789
+          ],
+          "meanLinearLuminance": 0.3184864394341794
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        5.085673049233009,
+        4.496291447554313
+      ],
+      "surfacePatternCorrelations": [
+        0.004996866637071917,
+        0.001948578604343774,
+        0.0024387622182100183
+      ]
+    },
+    {
+      "colorId": 7,
+      "name": "lavender",
+      "layers": [
+        {
+          "layer": "outer",
+          "file": "petal-7-outer.png",
+          "sha256": "99375aab5afcbca7df62adce127ffed37bc7230213dfa62ed7d83af0e0bb496f",
+          "meanSrgb": [
+            206.9038200378418,
+            161.31306838989258,
+            220.2425880432129
+          ],
+          "meanLinearLuminance": 0.441954723376472
+        },
+        {
+          "layer": "middle",
+          "file": "petal-7-middle.png",
+          "sha256": "65f78d7f746014fcd4a23073e9be9301ab13c7fb506585186752f837da38313e",
+          "meanSrgb": [
+            195.80804061889648,
+            144.18306732177734,
+            211.56314086914062
+          ],
+          "meanLinearLuminance": 0.3661015562889174
+        },
+        {
+          "layer": "inner",
+          "file": "petal-7-inner.png",
+          "sha256": "b1f7bcc410b85c20b41c45905c88ed6892d18a787d4cb71c969eae9da41ce0f1",
+          "meanSrgb": [
+            178.91272354125977,
+            123.21432495117188,
+            199.13264846801758
+          ],
+          "meanLinearLuminance": 0.28084941686432563
+        }
+      ],
+      "adjacentLightnessDeltas": [
+        5.375438349557498,
+        7.018118579904737
+      ],
+      "surfacePatternCorrelations": [
+        0.009536133177554508,
+        0.007076685909149646,
+        0.0013205610200294079
+      ]
+    }
+  ],
+  "all24TexturesDistinct": true,
+  "allColorsOuterLighterThanInner": true,
+  "textureMapping": {
+    "productionLayerBindingsVerified": true,
+    "petalRootAtImageBottom": true,
+    "stemAtlasShared": true,
+    "noCrossQuadrantTriangles": true,
+    "longitudinalUVs": true
+  },
+  "scope": "Exported GLB and textures, authored bind positions, stem arc, and rest-pose mesh contacts.",
+  "flowerContacts": {
+    "seatedSepals": 5,
+    "seatedFilamentsAndStyles": 31,
+    "headsConnectedToSupports": 31,
+    "stemOverlapsReceptacle": true,
+    "closedShells": true
+  },
+  "petalVariation": {
+    "uniqueUvMaps": 24,
+    "channelsPerVariant": 2,
+    "productionAppearanceVerified": true,
+    "neutralAlbedoScale": [
+      0.86,
+      1
+    ],
+    "meanLayerAlbedoScale": 0.93,
+    "sharedRoundTextures": 3
+  }
+}

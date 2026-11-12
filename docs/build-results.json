@@ -1,0 +1,399 @@
+{
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "applicationId": "com.example.flowertears.p18ab52cf",
+  "bytes": 48699512,
+  "sha256": "55d30e6c7f689a110d165864d7b62319f8b5c8f257da25d83d74449e6599c233",
+  "layoutVersion": "interleaved-petals-v6",
+  "resultFontSp": 80,
+  "resultColor": "#FFFFFF",
+  "unitTests": {
+    "tests": 86,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitTestSuites": {
+    "com.example.flowertears.p18ab52cf.AttachmentBindingTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.IncrementalPetalDragTest": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.OptionalAudioPreparationTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.PcmWaveClipTest": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.PetalAudioPlaybackTest": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.PetalAudioSamplesTest": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.PetalDragMotionTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.PinchDragTrackerTest": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RecentRoseColorsTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RetainedAssetTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RoseBlessingsTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RoseEntranceTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RoseLayoutTest": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RoseSessionTest": {
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.RoundAssetSetTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.SceneFrameGateTest": {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "com.example.flowertears.p18ab52cf.StemMotionTest": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "packagedGlbCount": 13,
+  "glbStoredUncompressed": true,
+  "packagedAssetsMatchSources": true,
+  "deviceLaunchVerified": false,
+  "runtimeBlocker": "ADB listener: Operation not permitted (existing restriction; not retried)",
+  "androidTestApkCompiled": true,
+  "replayRuntimeVerified": false,
+  "offlinePreview": "art/rose-interleaved-layout-v6-review.png",
+  "coldStartRuntimeVerified": false,
+  "footerTextColor": "#FFFFFF",
+  "applicationIcon": "@mipmap/ic_spatial_launcher",
+  "iconReport": "docs/icon-verification.json",
+  "latestValidation": "assembleDebug; testDebugUnitTest + assembleDebugAndroidTest; 86 unit tests including 5 PCM attenuation regressions; independently measured production buffer (-20.000248 dB RMS); old/new APK DEX path and version verification; experimental API/SpatialUI checks; APK asset/WAV and unchanged scene/input comparison",
+  "displayNames": {
+    "zh": "一瓣欢喜",
+    "defaultAndEnglish": "一瓣欢喜"
+  },
+  "appNameReport": "docs/app-name-verification.json",
+  "blessingCount": 12,
+  "completionFontSp": 80,
+  "completionPanelPositionMeters": [
+    0,
+    0,
+    0.12
+  ],
+  "attachmentsCreatedAfterFirstFrame": true,
+  "modelWaitsForBothUiOwners": true,
+  "coldStartUiRuntimeVerified": false,
+  "initialVisibleTextSmokeTestCompiled": true,
+  "initialVisibleTextSmokeTestExecuted": false,
+  "completionFadeMs": {
+    "blessing": 600,
+    "replayButton": 450
+  },
+  "replayClickableAfterFade": true,
+  "completionFadeRuntimeVerified": false,
+  "textureVersion": "layered-basecolor-v5",
+  "packagedPetalPaletteCount": 8,
+  "materialReport": "docs/asset-verification.json",
+  "materialRuntimeVerified": false,
+  "assetLibraryVersion": "rose-llm-v8",
+  "stemGeometryVersion": "curved-stem-seated-core-v5",
+  "stemTriangles": 4842,
+  "max30PetalTriangles": 19122,
+  "stemReport": "docs/stem-core-v5-review.json",
+  "coreAndPetalsShareCrown": true,
+  "coreLocalPitch": 90,
+  "stemNativeSkinRuntimeVerified": false,
+  "packagedPetalLayerTextureCount": 24,
+  "paletteNames": [
+    "red",
+    "pink",
+    "pale-pink",
+    "white",
+    "blue-enchantress",
+    "yellow",
+    "orange",
+    "lavender"
+  ],
+  "textureCacheLimit": 3,
+  "packagedRoseFileCount": 40,
+  "directPinchDragImplemented": true,
+  "directPinchRuntimeVerified": false,
+  "directPinchReport": "docs/direct-pinch-review.json",
+  "stemReboundMs": 640,
+  "stemReboundRuntimeVerified": false,
+  "firstStemReboundPeakRatio": 0.151,
+  "replayColorHistoryLimit": 3,
+  "replayColorHistoryScope": "current scene",
+  "workspaceResourceChanges": "Packaged existing local icon, label and locale resources. Previous icon and name reports are historical.",
+  "completionOnFinalPetalRemoval": true,
+  "completionRoundKeyed": true,
+  "completionButtonPremeasured": true,
+  "transientViewFocusLossCancelsInput": true,
+  "nativeTwentyRoundReplaySmokeCompiled": true,
+  "nativeTwentyRoundReplaySmokeExecuted": false,
+  "petalUvMaps": 24,
+  "petalUvChannelsPerVariant": 2,
+  "petalAlbedoScaleRange": [
+    0.86,
+    1
+  ],
+  "petalLayerMeanAlbedoScale": 0.93,
+  "petalVariationRuntimeVerified": false,
+  "layoutReport": "docs/layout-v6-verification.json",
+  "rootPivotsSeatedInReceptacle": true,
+  "layoutRuntimeVerified": false,
+  "petalCupProfiles": {
+    "outer_01": {
+      "radius": 0.0074,
+      "height": -0.009,
+      "tilt": 18
+    },
+    "outer_02": {
+      "radius": 0.008,
+      "height": -0.0078,
+      "tilt": 24
+    },
+    "outer_03": {
+      "radius": 0.0086,
+      "height": -0.0065,
+      "tilt": 30
+    },
+    "outer_04": {
+      "radius": 0.0092,
+      "height": -0.0052,
+      "tilt": 42
+    },
+    "middle_01": {
+      "radius": 0.0089,
+      "height": -0.0058,
+      "tilt": 36
+    },
+    "middle_02": {
+      "radius": 0.0096,
+      "height": -0.0044,
+      "tilt": 48
+    },
+    "middle_03": {
+      "radius": 0.01,
+      "height": -0.0034,
+      "tilt": 54
+    },
+    "middle_04": {
+      "radius": 0.0104,
+      "height": -0.0026,
+      "tilt": 66
+    },
+    "inner_01": {
+      "radius": 0.0102,
+      "height": -0.003,
+      "tilt": 60
+    },
+    "inner_02": {
+      "radius": 0.0106,
+      "height": -0.0022,
+      "tilt": 72
+    },
+    "inner_03": {
+      "radius": 0.0108,
+      "height": -0.0016,
+      "tilt": 78
+    },
+    "inner_04": {
+      "radius": 0.0109,
+      "height": -0.0014,
+      "tilt": 82
+    }
+  },
+  "allPetalRollRangeDegrees": [
+    -0.02,
+    0.02
+  ],
+  "layoutVariation": {
+    "phase": 20.0,
+    "angleFraction": 0.09,
+    "whorlTilt": 0.075,
+    "petalTilt": 0.025,
+    "whorlScale": 0.0015,
+    "petalScale": 0.0025,
+    "roll": 0.02
+  },
+  "changedRoseAssetsVsV5": [
+    "inner_01.glb",
+    "inner_02.glb",
+    "inner_03.glb",
+    "inner_04.glb",
+    "outer_04.glb",
+    "outer_01.glb",
+    "outer_02.glb",
+    "manifest.json",
+    "outer_03.glb",
+    "middle_04.glb",
+    "middle_03.glb",
+    "middle_02.glb",
+    "middle_01.glb"
+  ],
+  "stemAndTexturesUnchangedVsV5": true,
+  "sampledBladeIntersectionsVerified": true,
+  "sampledLayoutCount": 302,
+  "sampledPetalPairs": 82323,
+  "rootContactCount": 1535,
+  "rootContactRegion": {
+    "radius": 0.015,
+    "minZ": -0.01,
+    "maxZ": 0.006
+  },
+  "layoutVerificationScope": "Rest-pose blade intersections across all petal pairs, plus seated root pivots. Contacts within the declared mounting region are reported. Runtime capture and animated dragging pending.",
+  "petalAudio": {
+    "source": "petalDrop.wav",
+    "packagedPath": "res/raw/petal_drop.wav",
+    "sha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+    "bytes": 7244,
+    "byteIdenticalToUserSource": true,
+    "storedUncompressed": true,
+    "format": {
+      "channels": 1,
+      "sampleWidthBytes": 2,
+      "sampleRate": 48000,
+      "frames": 3600,
+      "durationMs": 75.0,
+      "compression": "NONE"
+    },
+    "component": "AudioTrack + SpatialAudioTrackExtension (OBJECT)",
+    "preparation": "Optional job after Ready; two real scene frames; PCM preload before first cue",
+    "loadMethod": "PcmWaveClip.decode(openRawResource) -> MODE_STATIC AudioTrack",
+    "trigger": "successful RoseSession.detach before reparent/rebound",
+    "emitterPosition": "crown.convertPositionTo(spec.position, root), in RoseAnchor meters",
+    "headsetVerified": false,
+    "sourceAndRawMatch": true,
+    "userUpdatePreserved": true,
+    "maxTracks": 1,
+    "usage": "USAGE_ASSISTANCE_SONIFICATION",
+    "contentType": "CONTENT_TYPE_SONIFICATION",
+    "requestsAudioFocus": false,
+    "completion": "Final sample marker -> stop; duration + 250 ms watchdog",
+    "volumeMethod": "PetalAudioSamples.fromWav scales PCM16 by 0.10 before AudioTrack.write; track gain is unity",
+    "pcmGain": 0.1,
+    "audioTrackGain": 1.0,
+    "playbackPcmSha256": "f9786699836e49799a266878ed3a5f3179ea84ff84f0028760d0ef71983858c4",
+    "inputMeasurement": "docs/petal-audio-pcm-v1-measurement.json",
+    "headsetOutputMeasured": false
+  },
+  "petalSpatialAudioImplemented": true,
+  "petalSpatialAudioRuntimeVerified": false,
+  "petalSpatialAudioReport": "docs/petal-audio-pcm-v1-review.json",
+  "audioFailureCannotClearFlower": true,
+  "audioInitializationRequiredForFlowerReady": false,
+  "audioStartupRegressionCovered": true,
+  "modelRootOffsetMeters": [
+    0,
+    -0.1,
+    0
+  ],
+  "modelEntrance": {
+    "durationMs": 800,
+    "scale": [
+      0,
+      1
+    ],
+    "opacity": [
+      0,
+      1
+    ],
+    "interactionsEnabledAfterFullScaleFrame": true,
+    "report": "docs/rose-entrance-v1-review.json",
+    "placementReport": "docs/rose-entrance-v1-verification.json",
+    "headsetVerified": false
+  },
+  "offlinePreviewScope": "Existing flower appearance preview; new container placement/entrance requires runtime capture.",
+  "preservedUserAudioChanges": [
+    "petalDrop.wav",
+    "app/src/main/res/raw/petal_drop.wav"
+  ],
+  "audioSha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+  "roseLayoutAndStemDynamicsUnchanged": true,
+  "heldPetalDrag": {
+    "unboundedDisplacement": true,
+    "nativeInputRetainedUntilRelease": true,
+    "fallStartsAtReleasePose": true,
+    "headsetVerified": false,
+    "report": "docs/held-petal-drag-v1-review.json",
+    "remoteDisplacement": "Adjacent valid raw device sample delta converted per event, queued and added once to current held position on scene frames; release flushes pending delta.",
+    "gazeFixReport": "docs/gaze-drag-volume-v2-review.json"
+  },
+  "systemBackgroundAudioCoexistenceRuntimeVerified": false,
+  "audioMixingReport": "docs/petal-audio-mixing-v1-review.json",
+  "gazePinchReport": "docs/gaze-drag-volume-v2-review.json",
+  "gazePinchRuntimeVerified": false,
+  "directPinchCoordinatesAndDetachThresholdUnchanged": true,
+  "roseAssetsSessionStemEntranceAndUiUnchanged": true,
+  "directCoreSourceUnchanged": {
+    "pointerPosition": true,
+    "pointerDisplacement": true,
+    "pull": true,
+    "PetalDragMotion": true
+  },
+  "versionCode": 2,
+  "versionName": "1.0.1",
+  "petalPcmAttenuationReport": "docs/petal-audio-pcm-v1-review.json"
+}

@@ -1,0 +1,96 @@
+{
+  "revision": "direct-pinch-drag",
+  "sdkVersion": "6.2.8",
+  "positionPaths": {
+    "DirectPinch": "SpatialPointerInfo.position3D, ViewCoordinateSpace.Local -> localSpatialCoordinateSpace (meters)",
+    "GazePinch/RayBasedPinch/Pointer": "existing inputDevicePose.rawPosition, ViewCoordinateSpace.Global -> localSpatialCoordinateSpace"
+  },
+  "capture": {
+    "locksOriginalDownTargetAndPointer": true,
+    "locksSourceAndOriginUntilRelease": true,
+    "allowsDelayedRecognizedPinch": true,
+    "pokeAloneCannotPluck": true,
+    "blocksAlreadyDownOtherHands": true,
+    "releaseNeedsNoPose": true,
+    "clearedOnReleasePauseStreamLossAndRoundTeardown": true
+  },
+  "thresholdMeters": 0.04,
+  "deadZoneMeters": 0.008,
+  "testCases": [
+    "directDragAll26DirectionsAndDuplicateDownsKeepOneOriginAndOneCount",
+    "rejectionClearAndCancellationRequireAFreshDown",
+    "pokeOrMissingKindCanBecomeDirectPinchWithoutChangingTheOriginalPetal",
+    "gazePinchKeepsDeviceMotionAndIgnoresProjectedPointerMotion",
+    "otherHandAlreadyDownMustReleaseAndPinchAgain",
+    "invalidDirectSampleDoesNotSwitchToDevicePoseAndCanRecover",
+    "pendingOtherHandCannotWakeAfterTheActiveHandReleases",
+    "directPinchUsesLocal3dWithoutDevicePoseAndSurvivesDetachUntilUp"
+  ],
+  "unitTests": {
+    "tests": 37,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "sdkEvidence": [
+    "Exact 6.2.8 ui:foundation public SpatialPointerInfo.position3D/InputDevicePose KDoc",
+    "Exact 6.2.8 core SpatialCoordinateSpaceConverter public KDoc: local view pixels to spatial meters",
+    "Existing project detectSpatialPointerEvent and mesh CollisionComponent/InteractableComponent"
+  ],
+  "assetsUnchangedAgainstV4": [
+    "app/src/main/assets/rose/inner_01.glb",
+    "app/src/main/assets/rose/inner_02.glb",
+    "app/src/main/assets/rose/inner_03.glb",
+    "app/src/main/assets/rose/inner_04.glb",
+    "app/src/main/assets/rose/manifest.json",
+    "app/src/main/assets/rose/middle_01.glb",
+    "app/src/main/assets/rose/middle_02.glb",
+    "app/src/main/assets/rose/middle_03.glb",
+    "app/src/main/assets/rose/middle_04.glb",
+    "app/src/main/assets/rose/neutral.png",
+    "app/src/main/assets/rose/outer_01.glb",
+    "app/src/main/assets/rose/outer_02.glb",
+    "app/src/main/assets/rose/outer_03.glb",
+    "app/src/main/assets/rose/outer_04.glb",
+    "app/src/main/assets/rose/petal-0-inner.png",
+    "app/src/main/assets/rose/petal-0-middle.png",
+    "app/src/main/assets/rose/petal-0-outer.png",
+    "app/src/main/assets/rose/petal-1-inner.png",
+    "app/src/main/assets/rose/petal-1-middle.png",
+    "app/src/main/assets/rose/petal-1-outer.png",
+    "app/src/main/assets/rose/petal-2-inner.png",
+    "app/src/main/assets/rose/petal-2-middle.png",
+    "app/src/main/assets/rose/petal-2-outer.png",
+    "app/src/main/assets/rose/petal-3-inner.png",
+    "app/src/main/assets/rose/petal-3-middle.png",
+    "app/src/main/assets/rose/petal-3-outer.png",
+    "app/src/main/assets/rose/petal-4-inner.png",
+    "app/src/main/assets/rose/petal-4-middle.png",
+    "app/src/main/assets/rose/petal-4-outer.png",
+    "app/src/main/assets/rose/petal-5-inner.png",
+    "app/src/main/assets/rose/petal-5-middle.png",
+    "app/src/main/assets/rose/petal-5-outer.png",
+    "app/src/main/assets/rose/petal-6-inner.png",
+    "app/src/main/assets/rose/petal-6-middle.png",
+    "app/src/main/assets/rose/petal-6-outer.png",
+    "app/src/main/assets/rose/petal-7-inner.png",
+    "app/src/main/assets/rose/petal-7-middle.png",
+    "app/src/main/assets/rose/petal-7-outer.png",
+    "app/src/main/assets/rose/stem-atlas.png",
+    "app/src/main/assets/rose/stem.glb"
+  ],
+  "apkAssetSetAndBytesMatch": true,
+  "accessibilitySourceAudit": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "runtimeVerified": false,
+  "coordinateConversionExecutedOnHeadset": false,
+  "deviceBlocker": "Existing ADB listener Operation not permitted; not retried",
+  "limitations": [
+    "Tests use synthetic scene-meter coordinates and RoseSession; they do not inject Android PointerInput/ROM events.",
+    "Native direct pinch event timing, 3D pointer continuity after leaving/detaching, and physical 4 cm calibration need headset evidence.",
+    "Remote raw-position unit semantics remain a previously documented gap; its working code path is preserved."
+  ]
+}

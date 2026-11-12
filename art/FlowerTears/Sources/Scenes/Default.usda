@@ -1,0 +1,22 @@
+#usda 1.0
+(
+    customLayerData = {
+        string Copyright = "Copyright 2022 - 2024 PICO. All rights reserved."
+        string RuntimeVersion = "Runtime V6.2.0.0.mol.20261007"
+        string Version = "Spatial Editor V6.2.4"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "PetalPreview" (
+        prepend references = @../AI-Asset/outer_02.usdz@</outer_02>
+    )
+    {
+        float3[] extent = [(-0.03722186, 0, -0.013143649), (0.04141807, 0.092, 0.009350659)]
+    }
+}
+

@@ -1,0 +1,21 @@
+#usda 1.0
+(
+    customLayerData = {
+        string Copyright = "Copyright 2022 - 2024 PICO. All rights reserved."
+        string RuntimeVersion = "Runtime V6.2.0.0.mol.20261007"
+        string Version = "Spatial Editor V6.2.4"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def "RoseProduction30" (
+        prepend references = @../AI-Asset/rose_30_1.usdz@</ROOT>
+    )
+    {
+    }
+}
+

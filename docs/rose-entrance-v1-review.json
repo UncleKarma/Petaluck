@@ -1,0 +1,97 @@
+{
+  "revision": "rose-entrance-v1",
+  "sdkBom": "6.2.8",
+  "changes": {
+    "modelRootOffsetMeters": [
+      0,
+      -0.1,
+      0
+    ],
+    "entranceMs": 800,
+    "scale": [
+      0,
+      1
+    ],
+    "opacity": [
+      0,
+      1
+    ],
+    "easing": "smoothstep",
+    "phaseDuringEntrance": "Loading",
+    "opacityApi": "OpacityControllerComponent on RoseAnchor and all descendants",
+    "initialAssembly": "scale 1, opacity 0; native rig remains enabled",
+    "interactiveAfter": "one scene frame after scale/opacity reach 1",
+    "lockedUntilReady": [
+      "colliders",
+      "hover",
+      "direct/gaze pinch",
+      "accessibility actions"
+    ],
+    "pauseFreezesClock": true,
+    "replayAndTeardownClearClock": true,
+    "shapesPinnedUntilRoundCleanup": true,
+    "textAttachmentsIndependent": true,
+    "audioStillOptionalAfterReady": true
+  },
+  "publicApiEvidence": "SDK 6.2.8 public OpacityControllerComponent controls entity/descendant opacity; public TransformComponent.setScaleVector sets absolute local scale. Bundled opacity/hierarchy guidance checked. Knowledge MCP unavailable.",
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 56,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "entranceTests": 4,
+    "meshPlacementReport": "docs/rose-entrance-v1-verification.json",
+    "sampledLayouts": 302,
+    "sampledEnvelopes": 1510,
+    "roseMeshesTexturesAndExistingRulesUnchanged": true,
+    "apkResourcesMatchSources": true,
+    "experimentalApi": "PASS; no opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large result/blessing text."
+    },
+    "placementSource": {
+      "passed": true,
+      "violations": [],
+      "advisoryDispositions": {
+        "containment-evidence-incomplete": "RoseAnchor is the named owner; actual rest meshes/entrance envelopes were checked offline, native bounds still pending.",
+        "surface-detail-depth-without-body-contract": "Existing accessible click declaration is a heuristic match; no visual surface detail added."
+      }
+    },
+    "accessibilityContract": "Existing IDs, labels, actions and completed rose.petal.0 factory binding retained. Source line anchors refreshed manually; CLI/runtime audits not rerun due existing environment/device blockers."
+  },
+  "preservedUserAudio": {
+    "sha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+    "bytes": 7244,
+    "format": {
+      "channels": 1,
+      "sampleWidthBytes": 2,
+      "sampleRate": 48000,
+      "frames": 3600,
+      "durationMs": 75.0,
+      "compression": "NONE"
+    },
+    "sourceAndRawMatch": true,
+    "storedUncompressed": true,
+    "userUpdatePreserved": true
+  },
+  "runtime": {
+    "headsetEntranceVerified": false,
+    "headsetInputVerified": false,
+    "blocker": "Existing ADB listener sandbox denial; no denied device operation retried.",
+    "pending": [
+      "Cold launch, replay and error retry show a hidden assembly followed by simultaneous scale/fade entrance.",
+      "No first-frame partial model flash, and native skeletal/opacity rendering remains stable at scale zero.",
+      "During entrance gaze/direct pinches, hover and accessibility cannot pluck; full-scale frame unlocks them.",
+      "Pause/resume freezes and resumes the entrance; teardown/replay creates no late unlock.",
+      "Check root position, footer overlap, native transparency sorting, fall clipping and spatial sound placement.",
+      "20-round resource/performance checks."
+    ]
+  }
+}

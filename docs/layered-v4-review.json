@@ -1,0 +1,227 @@
+{
+  "revision": "weighted-neck-and-layered-colors-v4",
+  "previews": [
+    "art/rose-neck-v4-review.png",
+    "art/rose-layered-v4-eight-colors.png",
+    "art/rose-layered-v4-blue-detail.png"
+  ],
+  "previousSnapshot": "backups/stem-v3-2026-11-10/RoseTear-stem-v3-2026-11-10-source.tar.gz",
+  "sampledRestBounds": [
+    {
+      "count": 17,
+      "min": [
+        -0.09868127107620239,
+        -0.20011992752552032,
+        -0.0695391595363617
+      ],
+      "max": [
+        0.10039301216602325,
+        0.12824930250644684,
+        0.10679829865694046
+      ]
+    },
+    {
+      "count": 18,
+      "min": [
+        -0.09868127107620239,
+        -0.20011992752552032,
+        -0.0695391595363617
+      ],
+      "max": [
+        0.10039301216602325,
+        0.12824930250644684,
+        0.10679829865694046
+      ]
+    },
+    {
+      "count": 19,
+      "min": [
+        -0.09790199995040894,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10030112415552139,
+        0.1265171766281128,
+        0.0986681804060936
+      ]
+    },
+    {
+      "count": 20,
+      "min": [
+        -0.09790199995040894,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10030112415552139,
+        0.12823539972305298,
+        0.0986681804060936
+      ]
+    },
+    {
+      "count": 21,
+      "min": [
+        -0.09665191918611526,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.13102933764457703,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 22,
+      "min": [
+        -0.09665191918611526,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.13102933764457703,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 23,
+      "min": [
+        -0.09665191918611526,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.1295604109764099,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 24,
+      "min": [
+        -0.09992331266403198,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.09883058071136475,
+        0.128795325756073,
+        0.10075323283672333
+      ]
+    },
+    {
+      "count": 25,
+      "min": [
+        -0.09992331266403198,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.09883058071136475,
+        0.13071030378341675,
+        0.10075323283672333
+      ]
+    },
+    {
+      "count": 26,
+      "min": [
+        -0.09727317094802856,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10070376098155975,
+        0.12680897116661072,
+        0.10259683430194855
+      ]
+    },
+    {
+      "count": 27,
+      "min": [
+        -0.09727317094802856,
+        -0.20011992752552032,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10070376098155975,
+        0.12680897116661072,
+        0.10259683430194855
+      ]
+    },
+    {
+      "count": 28,
+      "min": [
+        -0.1021568551659584,
+        -0.20011992752552032,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997961044311523,
+        0.10166964679956436
+      ]
+    },
+    {
+      "count": 29,
+      "min": [
+        -0.1021568551659584,
+        -0.20011992752552032,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997590005397797,
+        0.10166964679956436
+      ]
+    },
+    {
+      "count": 30,
+      "min": [
+        -0.1021568551659584,
+        -0.20011992752552032,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997590005397797,
+        0.10166964679956436
+      ]
+    }
+  ],
+  "sampledRestMeshesFitNominalVolume": true,
+  "method": "Actual GLB triangles/UVs and individually exported layer textures, using production Kotlin textureFile paths. CPU sRGB Unlit, no native mipmap/tone-mapper simulation.",
+  "runtimeVisualStatus": "UNOBSERVED",
+  "nativeSkinAndJointPoseSpaceVerified": false,
+  "runtimeVisualBoundsVerified": false,
+  "allSeedIntersectionsVerified": false,
+  "unchangedPetalAndSharedTextureFiles": [
+    "app/src/main/assets/rose/inner_01.glb",
+    "app/src/main/assets/rose/inner_02.glb",
+    "app/src/main/assets/rose/inner_03.glb",
+    "app/src/main/assets/rose/inner_04.glb",
+    "app/src/main/assets/rose/outer_04.glb",
+    "app/src/main/assets/rose/outer_01.glb",
+    "app/src/main/assets/rose/outer_02.glb",
+    "app/src/main/assets/rose/outer_03.glb",
+    "app/src/main/assets/rose/middle_04.glb",
+    "app/src/main/assets/rose/middle_03.glb",
+    "app/src/main/assets/rose/middle_02.glb",
+    "app/src/main/assets/rose/middle_01.glb",
+    "app/src/main/assets/rose/neutral.png",
+    "app/src/main/assets/rose/stem-atlas.png"
+  ],
+  "assetVerification": "docs/asset-verification.json",
+  "packageRoseFilesMatch": true,
+  "packagedRoseFileCount": 40,
+  "blueReplacesColorId": 4,
+  "whitePreservedAtColorId": 3,
+  "textureCacheLimit": 3,
+  "unitTests": {
+    "tests": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}

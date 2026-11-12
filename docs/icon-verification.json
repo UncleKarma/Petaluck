@@ -1,0 +1,58 @@
+{
+  "sourceArtwork": "roseTear.png",
+  "activeIcon": "@mipmap/ic_spatial_launcher",
+  "picoMetadata": {
+    "icon.3d.list": "@array/icon_3d_list",
+    "icon.sdf.list": "@array/icon_sdf_list"
+  },
+  "packagedImages": [
+    {
+      "resource": "ic_spatial_launcher",
+      "apkPath": "res/mipmap-xxxhdpi-v4/ic_spatial_launcher.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixelsMatchSource": true
+    },
+    {
+      "resource": "icon_3d_layer_0",
+      "apkPath": "res/drawable/icon_3d_layer_0.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixelsMatchSource": true
+    },
+    {
+      "resource": "icon_3d_layer_1",
+      "apkPath": "res/drawable/icon_3d_layer_1.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixelsMatchSource": true
+    },
+    {
+      "resource": "icon_3d_sdf_0",
+      "apkPath": "res/drawable/icon_3d_sdf_0.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixelsMatchSource": true
+    },
+    {
+      "resource": "icon_3d_sdf_1",
+      "apkPath": "res/drawable/icon_3d_sdf_1.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "pixelsMatchSource": true
+    }
+  ],
+  "alternateImageGenForeground": "art/app-icon/rose-tear-foreground.png",
+  "promptAndProvenance": "art/app-icon/generation.md",
+  "launcherRuntimeVerified": false
+}

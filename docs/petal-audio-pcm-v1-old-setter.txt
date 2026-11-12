@@ -1,0 +1,15 @@
+APK: backups/gaze-drag-volume-v2-2026-11-12/RoseTear-gaze-drag-volume-v2-2026-11-12.apk
+DEX: classes6.dex
+Class: Lcom/example/flowertears/p18ab52cf/scene/PetalSpatialAudio;
+00c6b6: 0a06                                   |016f: move-result v6
+00c6b8: 1217                                   |0170: const/4 v7, #int 1 // #1
+00c6ba: 3376 0400                              |0171: if-ne v6, v7, 0175 // +0004
+00c6be: 0176                                   |0173: move v6, v7
+00c6c0: 2802                                   |0174: goto 0176 // +0002
+00c6c2: 0186                                   |0175: move v6, v8
+00c6c4: 3806 5800                              |0176: if-eqz v6, 01ce // +0058
+00c6c8: 1406 cdcc cc3d                         |0178: const v6, #float 0.1 // #3dcccccd
+00c6ce: 6e20 1a00 6200                         |017b: invoke-virtual {v2, v6}, Landroid/media/AudioTrack;.setVolume:(F)I // method@001a
+00c6d4: 0a06                                   |017e: move-result v6
+00c6d6: 3906 0300                              |017f: if-nez v6, 0182 // +0003
+00c6da: 2802                                   |0181: goto 0183 // +0002

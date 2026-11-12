@@ -1,0 +1,1187 @@
+{
+  "assetLibraryVersion": "rose-llm-v8",
+  "layoutVersion": "interleaved-petals-v6",
+  "coordinates": "meters, Y-up, +Z front",
+  "source": "New LLM-authored meshes based on user-provided flowerTears.zip reference images. No third-party stock models.",
+  "petals": [
+    {
+      "variantId": "outer_01",
+      "layer": "outer",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "9a1ee58c1aedf9995dd014812f9bc7c11671d31ddd9840061a9d92f69728cf6c",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Broad rounded fan, shallow cup, rolled back upper rim.",
+      "shapeParameters": [
+        0.082,
+        0.096,
+        0.01,
+        -0.01,
+        0.002,
+        0.0,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.04055130805665477,
+          -0.0004634924671646701,
+          -0.0041745425798680805
+        ],
+        [
+          0.038409527267744874,
+          0.09497813751621009,
+          0.005280470763032901
+        ]
+      ]
+    },
+    {
+      "variantId": "outer_02",
+      "layer": "outer",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "3e1d3d477d69967943a1e1d37773cc726cc50551a33060cb35b8f916097b5947",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Wide oval fan, wavy lip, asymmetric left shoulder.",
+      "shapeParameters": [
+        0.079,
+        0.092,
+        0.012,
+        -0.005,
+        0.004,
+        -0.006,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.03856605921400497,
+          -0.0004292056803957083,
+          -0.002493502830481477
+        ],
+        [
+          0.037367330479593446,
+          0.09210381091787,
+          0.006941991435786709
+        ]
+      ]
+    },
+    {
+      "variantId": "outer_03",
+      "layer": "outer",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "ca73a5f993e5721bb3277478912a72cb7f9df2c92ebd4961d6046709e0972172",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Broad fan, shallow central notch, gentle saddle bend.",
+      "shapeParameters": [
+        0.084,
+        0.094,
+        0.008,
+        -0.008,
+        0.002,
+        0.002,
+        0.004
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.04114740706305331,
+          -0.00044214570790906006,
+          -0.001753861529988257
+        ],
+        [
+          0.03873867395609509,
+          0.09136489389487171,
+          0.00923070802398138
+        ]
+      ]
+    },
+    {
+      "variantId": "outer_04",
+      "layer": "outer",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "5b9360b67a48d03dcf6310808fd3986031ae4096912cbec3dd7c7bb512a11481",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Rounded silhouette, right lip curls outward.",
+      "shapeParameters": [
+        0.08,
+        0.09,
+        0.011,
+        -0.004,
+        0.003,
+        0.005,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.03867591751288481,
+          -0.00040806205644471544,
+          -0.00016485506982204245
+        ],
+        [
+          0.03614228828439881,
+          0.09081870969453815,
+          0.012521415312123411
+        ]
+      ]
+    },
+    {
+      "variantId": "middle_01",
+      "layer": "middle",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "11e3982fbf62cbb639e037460ac83899864eba4b619b88c15e2c5c4d73ae337d",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Rounded fan, deeper bowl, smooth lip.",
+      "shapeParameters": [
+        0.067,
+        0.08,
+        0.018,
+        0.002,
+        0.001,
+        0.0,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.03271801503864447,
+          -0.00031832948100815443,
+          -0.00011745786216354483
+        ],
+        [
+          0.031079264384777254,
+          0.08131076111261222,
+          0.008864672974510487
+        ]
+      ]
+    },
+    {
+      "variantId": "middle_02",
+      "layer": "middle",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "5098685067ef4cd7f156ba80386eca28298e6f833e9ef4bcdc55c1e38db37e3e",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Left rim folded inward, asymmetric bowl.",
+      "shapeParameters": [
+        0.064,
+        0.078,
+        0.016,
+        0.003,
+        0.002,
+        -0.007,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.03041478807358385,
+          -0.00030144585344161725,
+          -9.373765074243218e-05
+        ],
+        [
+          0.029659996977299527,
+          0.08114415224581623,
+          0.011425454997118379
+        ]
+      ]
+    },
+    {
+      "variantId": "middle_03",
+      "layer": "middle",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "6669c7dba4cf8f5a0e6fa6d84132faf3d3f7509aea4bf276f92b84624cdb4b50",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Tall rounded fan, softly undulating lip.",
+      "shapeParameters": [
+        0.063,
+        0.084,
+        0.015,
+        0.001,
+        0.004,
+        0.001,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.030270518684843147,
+          -0.000285609943839292,
+          -8.165580373324767e-05
+        ],
+        [
+          0.02867498106575372,
+          0.08888175482787286,
+          0.011788632335830572
+        ]
+      ]
+    },
+    {
+      "variantId": "middle_04",
+      "layer": "middle",
+      "triangles": 412,
+      "surfaceRows": 8,
+      "surfaceColumns": 13,
+      "sha256": "f934cac132e579f94f1166ebf9ed7ec7d91190d69a827c1443c0fa2327f0908e",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Rounded spoon, gentle diagonal twist.",
+      "shapeParameters": [
+        0.066,
+        0.079,
+        0.017,
+        0.003,
+        0.001,
+        0.007,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.02921383479710241,
+          -0.00028162674521507556,
+          -5.48122302211397e-05
+        ],
+        [
+          0.027518075241062333,
+          0.08429198553087527,
+          0.016048179519221755
+        ]
+      ]
+    },
+    {
+      "variantId": "inner_01",
+      "layer": "inner",
+      "triangles": 476,
+      "surfaceRows": 8,
+      "surfaceColumns": 15,
+      "sha256": "8d1ba682e1fb14b544048c3631f3b6d00a25b5b49d01bda14a3bb76e4effc273",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Narrow rounded petal, inward curl, open front.",
+      "shapeParameters": [
+        0.045,
+        0.059,
+        0.02,
+        0.008,
+        0.001,
+        0.0,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.02111948754360626,
+          -0.00021564396609244287,
+          -6.832775820320746e-05
+        ],
+        [
+          0.020270788587647078,
+          0.06350152548719393,
+          0.009733499603320525
+        ]
+      ]
+    },
+    {
+      "variantId": "inner_02",
+      "layer": "inner",
+      "triangles": 476,
+      "surfaceRows": 8,
+      "surfaceColumns": 15,
+      "sha256": "f6330f7d17e77c77b00b1ef3cbbd78df5896be9807609800fa6bc5675cdca306",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Small cupped fan, softly folded left rim.",
+      "shapeParameters": [
+        0.048,
+        0.056,
+        0.022,
+        0.006,
+        0.002,
+        -0.006,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.019917998377581993,
+          -0.00022413453695490222,
+          -4.1451011031329516e-05
+        ],
+        [
+          0.01975520139291469,
+          0.06272326358769277,
+          0.013315359615545917
+        ]
+      ]
+    },
+    {
+      "variantId": "inner_03",
+      "layer": "inner",
+      "triangles": 476,
+      "surfaceRows": 8,
+      "surfaceColumns": 15,
+      "sha256": "6a4bb10b3281444946066223eeab946619baee109eccf22399ff0fa8bf559450",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Small oval, softly folded right rim.",
+      "shapeParameters": [
+        0.044,
+        0.06,
+        0.018,
+        0.007,
+        0.002,
+        0.006,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.018021015558331833,
+          -0.0002070730520337914,
+          -2.7381147833700845e-05
+        ],
+        [
+          0.017393227796920478,
+          0.06759297363881055,
+          0.012980463965154235
+        ]
+      ]
+    },
+    {
+      "variantId": "inner_04",
+      "layer": "inner",
+      "triangles": 476,
+      "surfaceRows": 8,
+      "surfaceColumns": 15,
+      "sha256": "b77f3853d22308cb8cbdfb3fa937a0bf2e5369a8956330f62cdc722e6cca8cf7",
+      "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
+      "brief": "Small open cup with mild S profile and rounded lip.",
+      "shapeParameters": [
+        0.047,
+        0.058,
+        0.021,
+        0.009,
+        0.001,
+        0.002,
+        0.0
+      ],
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        [
+          -0.016509421930178757,
+          -0.00025245491633914025,
+          -1.849316284947478e-05
+        ],
+        [
+          0.01634402983688448,
+          0.06604683982855288,
+          0.01566960982445485
+        ]
+      ]
+    }
+  ],
+  "stem": {
+    "file": "stem.glb",
+    "triangles": 4842,
+    "sha256": "5010f4644821f4c73688c0bf9e5f82a7efc25dc88b8e772a80d8fdce4e4278f1",
+    "geometryVersion": "curved-stem-seated-core-v5",
+    "joints": [
+      "stem_root",
+      "stem_mid",
+      "stem_tip"
+    ],
+    "skinned": true,
+    "bodyRings": 41,
+    "bodyRingStride": 13,
+    "bodySegments": 12,
+    "centerline": [
+      [
+        0.008,
+        -0.24,
+        -0.022825977100439637
+      ],
+      [
+        0.007605,
+        -0.23399999999999999,
+        -0.022823789600439636
+      ],
+      [
+        0.00722,
+        -0.22799999999999998,
+        -0.022817227100439638
+      ],
+      [
+        0.006845,
+        -0.222,
+        -0.022806289600439636
+      ],
+      [
+        0.0064800000000000005,
+        -0.216,
+        -0.022790977100439636
+      ],
+      [
+        0.006125,
+        -0.21,
+        -0.022771289600439636
+      ],
+      [
+        0.0057799999999999995,
+        -0.204,
+        -0.022747227100439638
+      ],
+      [
+        0.005444999999999999,
+        -0.198,
+        -0.02271878960043964
+      ],
+      [
+        0.005120000000000001,
+        -0.192,
+        -0.02268597710043964
+      ],
+      [
+        0.004805000000000001,
+        -0.186,
+        -0.022648789600439638
+      ],
+      [
+        0.0045000000000000005,
+        -0.18,
+        -0.022607227100439636
+      ],
+      [
+        0.004205,
+        -0.174,
+        -0.022561289600439637
+      ],
+      [
+        0.00392,
+        -0.16799999999999998,
+        -0.022510977100439637
+      ],
+      [
+        0.0036450000000000007,
+        -0.16199999999999998,
+        -0.022456289600439636
+      ],
+      [
+        0.00338,
+        -0.156,
+        -0.022397227100439638
+      ],
+      [
+        0.003125,
+        -0.15,
+        -0.022333789600439635
+      ],
+      [
+        0.0028799999999999997,
+        -0.144,
+        -0.022265977100439635
+      ],
+      [
+        0.0026449999999999998,
+        -0.138,
+        -0.022193789600439637
+      ],
+      [
+        0.0024200000000000003,
+        -0.132,
+        -0.022117227100439635
+      ],
+      [
+        0.002205,
+        -0.126,
+        -0.022036289600439636
+      ],
+      [
+        0.002,
+        -0.12,
+        -0.021950977100439636
+      ],
+      [
+        0.001805,
+        -0.11399999999999999,
+        -0.021861289600439638
+      ],
+      [
+        0.0016199999999999997,
+        -0.10799999999999998,
+        -0.021767227100439636
+      ],
+      [
+        0.0014450000000000003,
+        -0.10200000000000001,
+        -0.021668789600439636
+      ],
+      [
+        0.0012800000000000003,
+        -0.096,
+        -0.021565977100439636
+      ],
+      [
+        0.0011250000000000001,
+        -0.09,
+        -0.021458789600439638
+      ],
+      [
+        0.00098,
+        -0.08399999999999999,
+        -0.021346812877679425
+      ],
+      [
+        0.0008449999999999997,
+        -0.07799999999999999,
+        -0.021213529799595558
+      ],
+      [
+        0.0007200000000000003,
+        -0.07200000000000001,
+        -0.0210215049842339
+      ],
+      [
+        0.0006050000000000001,
+        -0.066,
+        -0.020731905047824593
+      ],
+      [
+        0.0005,
+        -0.06,
+        -0.020305896606597793
+      ],
+      [
+        0.0004049999999999999,
+        -0.05399999999999999,
+        -0.019704646276783637
+      ],
+      [
+        0.00031999999999999986,
+        -0.04799999999999999,
+        -0.01888932067461229
+      ],
+      [
+        0.00024500000000000015,
+        -0.04200000000000001,
+        -0.017821086416313886
+      ],
+      [
+        0.00018000000000000007,
+        -0.036000000000000004,
+        -0.01646111011811858
+      ],
+      [
+        0.000125,
+        -0.03,
+        -0.014770558396256508
+      ],
+      [
+        7.999999999999997e-05,
+        -0.023999999999999994,
+        -0.012710597866957829
+      ],
+      [
+        4.499999999999995e-05,
+        -0.017999999999999988,
+        -0.010242395146452695
+      ],
+      [
+        2.0000000000000036e-05,
+        -0.01200000000000001,
+        -0.007327116850971254
+      ],
+      [
+        5.000000000000009e-06,
+        -0.006000000000000005,
+        -0.003925929596743635
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "neckStartFraction": 0.64,
+    "tipAxis": [
+      0,
+      0.8191520442889918,
+      0.573576436351046
+    ],
+    "standaloneCorePitch": 35,
+    "runtimeCoreLocalPitch": 90
+  },
+  "max30PetalTriangles": 19122,
+  "petalCupProfiles": {
+    "outer_01": {
+      "radius": 0.0074,
+      "height": -0.009,
+      "tilt": 18
+    },
+    "outer_02": {
+      "radius": 0.008,
+      "height": -0.0078,
+      "tilt": 24
+    },
+    "outer_03": {
+      "radius": 0.0086,
+      "height": -0.0065,
+      "tilt": 30
+    },
+    "outer_04": {
+      "radius": 0.0092,
+      "height": -0.0052,
+      "tilt": 42
+    },
+    "middle_01": {
+      "radius": 0.0089,
+      "height": -0.0058,
+      "tilt": 36
+    },
+    "middle_02": {
+      "radius": 0.0096,
+      "height": -0.0044,
+      "tilt": 48
+    },
+    "middle_03": {
+      "radius": 0.01,
+      "height": -0.0034,
+      "tilt": 54
+    },
+    "middle_04": {
+      "radius": 0.0104,
+      "height": -0.0026,
+      "tilt": 66
+    },
+    "inner_01": {
+      "radius": 0.0102,
+      "height": -0.003,
+      "tilt": 60
+    },
+    "inner_02": {
+      "radius": 0.0106,
+      "height": -0.0022,
+      "tilt": 72
+    },
+    "inner_03": {
+      "radius": 0.0108,
+      "height": -0.0016,
+      "tilt": 78
+    },
+    "inner_04": {
+      "radius": 0.0109,
+      "height": -0.0014,
+      "tilt": 82
+    }
+  },
+  "petalOverlapSlope": 0.05,
+  "petalOverlapSlopeOverrides": {
+    "outer_04": 0.06,
+    "inner_04": 0.08
+  },
+  "petalCollarLength": 0.006,
+  "petalCupAxialHalfThickness": 0.00013,
+  "petalCollarLiftStep": 0.0007,
+  "runtimeLayoutNotes": "Interleaved-petals-v6 gives each mesh its own seated cup profile. Outer openings span 18-42 degrees, middle 36-66, inner 60-82, so neighboring families overlap. All membranes wrap around the blossom with nearly zero local roll. Outer rims curl gently outward. Seeded placement varies angular spacing and fine pose offsets. A small baked surface offset separates overlapping edges. Each mesh has two asymmetric UV maps. Per-petal neutral brightness and the three layer albedos are shared with the prior material revision. Petals and core share CrownMotion.",
+  "textures": {
+    "version": "layered-basecolor-v5",
+    "provenance": "art/textures/generation-v5.md; built-in ImageGen edits with localized secondary pigment, locally cropped and resized only",
+    "petal": {
+      "file": "neutral.png",
+      "size": [
+        512,
+        512
+      ],
+      "sha256": "a030c4bda88d4073bcc7ea66c0cf88e85cacfb731f17954ff0682fe5e8d74da3",
+      "tintable": true,
+      "uv": "root V=1, rim V=0; same mapping on both faces"
+    },
+    "stem": {
+      "file": "stem-atlas.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "3f26ac797061c5b9e735596604c4fa77067944919428a2443a8fc3d77991c239",
+      "quadrants": [
+        "stem",
+        "sepal",
+        "pollen",
+        "filament"
+      ],
+      "uvInsetPixels": 4
+    },
+    "masters": {
+      "petal-neutral-master-v2.png": "8942309e4783052a94274927b1e8e2cddcb4b316f2e90d8cdd7674d52837191f",
+      "stem-atlas-master-v2.png": "65ca5acfffea42e211d3314636ce207826cae705b03ea94d020ec7d51a47a4bf",
+      "petal-whorls-a-master-v5.png": "f2431f0b737e2e913f1a03b2836fcb5e424201feea1c13b9b5c1724883fe7b34",
+      "petal-whorls-b-master-v5.png": "79d65e889772dcef4d6f559365580d7b6c84567846baa5a8735af5c6dc3c1ce3"
+    },
+    "palettes": [
+      {
+        "colorId": 0,
+        "name": "red",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-0-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "f1c69c1747df3717b88a827b01f978fd087ea963cf14e7184ed05847de0954aa",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-0-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "10bf19625e0933bfb951365e00c452711b3d21bfdb62f5f45c1e2865c5fa8a58",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-0-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "36515b92a7c63a12782ce9a56b3c5c02c1879532b41958832997ccc22a9a3c60",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 1,
+        "name": "pink",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-1-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "1c2de93558299433d18a5467835cc8422b87fb3f7c44c6e9c1021af638fbd998",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-1-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "c8a54975ef6e66f9465c0be560888e57f7f9eb39e719e1ad1bfb64cba50e7f9a",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-1-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "6b07024374bfe2465983f1b0d4b63b1f01b3059174cd3bff675f64bd2a790cfb",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 2,
+        "name": "pale-pink",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-2-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "382201fdec74470a56de423bbc3507af2d36bdbee66f1d540e9f1e8ee5e66a70",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-2-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "25e1b87b84804113b152901b6e7d4aa7c439489e7ea270e64e665a1074359a0e",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-2-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "77c2e98bd02c69e270f3dfc524ddabee62f89149877a14b7ae6a770f48cfbfea",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 3,
+        "name": "white",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-3-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "258848b718604566f2369708ddd2d52bf4481c883db28af6fc581d8ff8df1945",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-3-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "e586a49e90a08a222a7e2a071b216f85183c3773386d6552651d5524e60682cc",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-3-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "15db50708c9509a7db493fcfee3f06f5c4fac4c3d72165c33f79a62a292505d8",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 4,
+        "name": "blue-enchantress",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-4-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "bfb2ab62f9818f2e7fa035fc07f23fecfeb0ae9c26b635ce0a1e78e9bd232fdb",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-4-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "6d2de9ac6042338b0f4c5ba751b205e964a4dedc764c14dee3188e4740a635f8",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-4-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "c8a8667692c2c1d12a50c7ef676d446ea59a61ea4f91322e07d0949359fc1774",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 5,
+        "name": "yellow",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-5-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "d362e2629674b72ce629138a2d0ff350abecbea15feb03f7ae81ac3d0a234f1b",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-5-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "32d2862737eb0006a9f71bb536ae0ac3d2a26afbd5f83098b5aa48129f0d9c0b",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-5-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "c16efab97e6a8619e867f210cfc5da2563d0d1b0647a2f3898fb47ebf7fbccc3",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 6,
+        "name": "orange",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-6-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "d062c433bf3cc11ad29f4c20084c19652e4ada40c6d56472de043e91e6bce9be",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-6-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "0127b81ff58ca2aa8667445b3f73e4ffbfc4fa7c1884fc8e39200e459fc8afd2",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-6-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "27e2d8b7be99340d2095078e297648f787590a78a623c9f607a6c933f99f3df6",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      },
+      {
+        "colorId": 7,
+        "name": "lavender",
+        "layers": [
+          {
+            "layer": "outer",
+            "file": "petal-7-outer.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "99375aab5afcbca7df62adce127ffed37bc7230213dfa62ed7d83af0e0bb496f",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "middle",
+            "file": "petal-7-middle.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "65f78d7f746014fcd4a23073e9be9301ab13c7fb506585186752f837da38313e",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "layer": "inner",
+            "file": "petal-7-inner.png",
+            "size": [
+              512,
+              512
+            ],
+            "sha256": "b1f7bcc410b85c20b41c45905c88ed6892d18a787d4cb71c969eae9da41ce0f1",
+            "baseColorFactor": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

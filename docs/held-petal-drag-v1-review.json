@@ -1,0 +1,71 @@
+{
+  "revision": "held-petal-drag-v1",
+  "sdkBom": "6.2.8",
+  "sourceFindings": [
+    "A shared 0.12 m displacement clamp also limited already detached petals.",
+    "Detach immediately removed the native InteractableComponent and CollisionComponent required by entity input. No device event log is available to confirm a particular ROM cancellation."
+  ],
+  "changes": {
+    "rawGestureDisplacementUncapped": true,
+    "motionPolicy": "PetalDragMotion saves the visible root-relative detach position minus the current gesture delta, then adds each new delta.",
+    "nativeInputAndColliderRetainedWhileHeld": true,
+    "hoverRemovedAtDetach": true,
+    "newGrabRejectedBySessionAndDownTarget": true,
+    "nativeMarkersRemovedOnRelease": true,
+    "fallStartSnapshot": "Current root-relative displayed pose on release, before gesture cleanup.",
+    "fallDurationSeconds": 1.2,
+    "heldOpacity": "Unchanged until release.",
+    "audio": "Once at successful detach; no new playback on hold or release.",
+    "finalPetal": "FinalPetalHeld continues pointer capture; Completing starts only on release.",
+    "lifecycle": "Existing pause/tracking-timeout/stream-abort/round teardown cleanup preserved."
+  },
+  "publicSdkEvidence": "Exact 6.2.8 detectSpatialPointerEvent and SpatialPointerInfo source/KDoc, entity interaction prerequisites, existing public transform conversion/component APIs. Down-target filter retains existing scope; move/up keep original entity/pointer. Knowledge MCP remains unavailable.",
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 61,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "newTests": 5,
+    "coverage": [
+      "Displacement past 12 cm in XYZ and reverse back inside the detach distance.",
+      "Large first threshold-crossing sample keeps the captured visible pose.",
+      "Release snapshot and cleared/new gesture cannot reuse old offsets.",
+      "Both Direct and Remote coordinate sources continue after kind/target metadata changes.",
+      "Final petal remains held with no blessing until pose-free up; no other-hand takeover."
+    ],
+    "experimentalApi": "PASS; no opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large-font emphasis."
+    },
+    "placementSource": {
+      "passed": true,
+      "violations": [],
+      "advisoryDispositions": {
+        "containment-evidence-incomplete": "This increment changes held motion, not model fitting. Existing placement report remains historical rest/entrance evidence.",
+        "surface-detail-depth-without-body-contract": "Existing accessibility click is a heuristic match; no visual surface detail added."
+      }
+    },
+    "roseAssetsAndExistingSessionStemEntranceAudioUiUnchanged": true,
+    "apkAssetsMatchSources": true,
+    "accessibility": "Published IDs/actions unchanged; contract source line anchors refreshed, completed factory binding retained. Runtime audit unavailable."
+  },
+  "runtime": {
+    "headsetVerified": false,
+    "blocker": "Existing ADB listener sandbox denial; denied device operation not retried.",
+    "pending": [
+      "DirectPinch and GazePinch: keep holding after the tear/audio and move more than 12 cm, reverse, and hold stationary through stem rebound.",
+      "Release in a new location: native petal starts falling and fading there, with no jump or continued capture.",
+      "Last petal: holding continues with result text; blessing appears only after release.",
+      "Native pointer metadata and capture continuity after detach/reparent while collider/input markers remain.",
+      "Pause, tracking loss/cancellation, replay and repeated-round resource/performance checks."
+    ],
+    "scope": "Synthetic meter-space unit sequences and code review are not a headset input/render capture. Container clipping is unchanged."
+  }
+}

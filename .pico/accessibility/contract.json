@@ -1,0 +1,124 @@
+{
+  "contractVersion": 1,
+  "packageName": "com.example.flowertears.p18ab52cf",
+  "components": [
+    {
+      "contractId": "attachment:9628d1e0c0f0cc2f",
+      "semanticAnchor": "9628d1e0c0f0cc2f",
+      "kind": "attachment",
+      "source": {
+        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "line": 89,
+        "endLine": 89,
+        "symbol": "bindPanels"
+      },
+      "semanticId": "rose.result",
+      "label": "占卜回应",
+      "runtimeSelector": {
+        "semanticId": "rose.result"
+      },
+      "stateSources": [
+        "value"
+      ],
+      "actions": [],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "resultPanel",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true
+      }
+    },
+    {
+      "contractId": "attachment:03fa02a16dd4b179",
+      "semanticAnchor": "03fa02a16dd4b179",
+      "kind": "attachment",
+      "source": {
+        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "line": 96,
+        "endLine": 96,
+        "symbol": "bindPanels"
+      },
+      "semanticId": "rose.message",
+      "label": "提示与重玩操作区",
+      "runtimeSelector": {
+        "semanticId": "rose.message"
+      },
+      "stateSources": [
+        "value"
+      ],
+      "actions": [],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "messagePanel",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true
+      }
+    },
+    {
+      "contractId": "entity:b02d3225d26bdcac",
+      "semanticAnchor": "b02d3225d26bdcac",
+      "kind": "entity",
+      "source": {
+        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "line": 286,
+        "endLine": 286,
+        "symbol": "registerStemAccessibility"
+      },
+      "semanticId": "rose.stem",
+      "label": "月季花芯与短茎",
+      "runtimeSelector": {
+        "semanticId": "rose.stem"
+      },
+      "stateSources": [
+        "value"
+      ],
+      "actions": [],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "base",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true
+      }
+    },
+    {
+      "contractId": "entity:1a766a5ad8e90cd1",
+      "semanticAnchor": "1a766a5ad8e90cd1",
+      "kind": "entity",
+      "source": {
+        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "line": 290,
+        "endLine": 292,
+        "symbol": "registerPetalAccessibility"
+      },
+      "semanticId": "rose.petal.0",
+      "label": "月季花瓣",
+      "runtimeSelector": {
+        "semanticId": "rose.petal.0"
+      },
+      "stateSources": [
+        "value"
+      ],
+      "actions": [
+        {
+          "key": "click",
+          "parameters": []
+        }
+      ],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "owner",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true,
+        "actionHandlers": [
+          {
+            "key": "click",
+            "symbols": [
+              "accessiblePluck"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "unresolved": []
+}

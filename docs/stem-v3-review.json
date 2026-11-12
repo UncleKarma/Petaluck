@@ -1,0 +1,230 @@
+{
+  "geometryVersion": "organic-stem-v3",
+  "stemSha256": "947ab4d94855aa174597c4ea4f26f089a2e4084af16965006a8e52004020a365",
+  "preview": "art/rose-stem-v3-review.png",
+  "baselineSnapshot": "backups/materials-v2-2026-11-10/RoseTear-materials-v2-2026-11-10-source.tar.gz",
+  "coreAndPetalsShare": "CrownMotion",
+  "crownPitchDegrees": -55,
+  "coreLocalPitchDegrees": 90,
+  "sharedGrowthAxis": [
+    0,
+    0.8191520442889918,
+    0.573576436351046
+  ],
+  "tipTangentMatchesGrowthAxis": true,
+  "restMeshFitsNominalVolumeForSampledSeed": true,
+  "sampledRestBounds": [
+    {
+      "count": 17,
+      "min": [
+        -0.09868127107620239,
+        -0.19999998807907104,
+        -0.0695391595363617
+      ],
+      "max": [
+        0.10039301216602325,
+        0.12824930250644684,
+        0.10679829865694046
+      ]
+    },
+    {
+      "count": 18,
+      "min": [
+        -0.09868127107620239,
+        -0.19999998807907104,
+        -0.0695391595363617
+      ],
+      "max": [
+        0.10039301216602325,
+        0.12824930250644684,
+        0.10679829865694046
+      ]
+    },
+    {
+      "count": 19,
+      "min": [
+        -0.09790199995040894,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10030112415552139,
+        0.1265171766281128,
+        0.0986681804060936
+      ]
+    },
+    {
+      "count": 20,
+      "min": [
+        -0.09790199995040894,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10030112415552139,
+        0.12823539972305298,
+        0.0986681804060936
+      ]
+    },
+    {
+      "count": 21,
+      "min": [
+        -0.09665191918611526,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.13102933764457703,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 22,
+      "min": [
+        -0.09665191918611526,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.13102933764457703,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 23,
+      "min": [
+        -0.09665191918611526,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10085632652044296,
+        0.1295604109764099,
+        0.10006358474493027
+      ]
+    },
+    {
+      "count": 24,
+      "min": [
+        -0.09992331266403198,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.09883058071136475,
+        0.128795325756073,
+        0.10075323283672333
+      ]
+    },
+    {
+      "count": 25,
+      "min": [
+        -0.09992331266403198,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.09883058071136475,
+        0.13071030378341675,
+        0.10075323283672333
+      ]
+    },
+    {
+      "count": 26,
+      "min": [
+        -0.09727317094802856,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10070376098155975,
+        0.12680897116661072,
+        0.10259683430194855
+      ]
+    },
+    {
+      "count": 27,
+      "min": [
+        -0.09727317094802856,
+        -0.19999998807907104,
+        -0.07058537751436234
+      ],
+      "max": [
+        0.10070376098155975,
+        0.12680897116661072,
+        0.10259683430194855
+      ]
+    },
+    {
+      "count": 28,
+      "min": [
+        -0.1021568551659584,
+        -0.19999998807907104,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997961044311523,
+        0.10166964679956436
+      ]
+    },
+    {
+      "count": 29,
+      "min": [
+        -0.1021568551659584,
+        -0.19999998807907104,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997590005397797,
+        0.10166964679956436
+      ]
+    },
+    {
+      "count": 30,
+      "min": [
+        -0.1021568551659584,
+        -0.19999998807907104,
+        -0.06620173901319504
+      ],
+      "max": [
+        0.102472223341465,
+        0.12997590005397797,
+        0.10166964679956436
+      ]
+    }
+  ],
+  "nativeJointPoseSpaceAndAnimatedSkinVerified": false,
+  "allSeedIntersectionsVerified": false,
+  "runtimeVisualBoundsVerified": false,
+  "runtimeVisualStatus": "UNOBSERVED",
+  "scope": "Actual exported rest mesh and production Kotlin layout samples, offline Unlit; no headset or animated native bone validation.",
+  "unchangedPetalAndTextureFiles": [
+    "app/src/main/assets/rose/inner_01.glb",
+    "app/src/main/assets/rose/inner_02.glb",
+    "app/src/main/assets/rose/inner_03.glb",
+    "app/src/main/assets/rose/inner_04.glb",
+    "app/src/main/assets/rose/middle_01.glb",
+    "app/src/main/assets/rose/middle_02.glb",
+    "app/src/main/assets/rose/middle_03.glb",
+    "app/src/main/assets/rose/middle_04.glb",
+    "app/src/main/assets/rose/neutral.png",
+    "app/src/main/assets/rose/outer_01.glb",
+    "app/src/main/assets/rose/outer_02.glb",
+    "app/src/main/assets/rose/outer_03.glb",
+    "app/src/main/assets/rose/outer_04.glb",
+    "app/src/main/assets/rose/petal-0.png",
+    "app/src/main/assets/rose/petal-1.png",
+    "app/src/main/assets/rose/petal-2.png",
+    "app/src/main/assets/rose/petal-3.png",
+    "app/src/main/assets/rose/petal-4.png",
+    "app/src/main/assets/rose/petal-5.png",
+    "app/src/main/assets/rose/petal-6.png",
+    "app/src/main/assets/rose/petal-7.png",
+    "app/src/main/assets/rose/stem-atlas.png"
+  ],
+  "bindJointNodesAndInverseMatricesUnchanged": true
+}

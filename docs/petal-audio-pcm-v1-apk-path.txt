@@ -1,0 +1,56 @@
+APK: app/build/outputs/apk/debug/app-debug.apk
+DEX: classes6.dex
+Class: Lcom/example/flowertears/p18ab52cf/scene/PetalAudioSamples;
+00c200:                                        |[00c200] com.example.flowertears.p18ab52cf.scene.PetalAudioSamples.fromWav:([B)Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;
+00c210: 1a00 8707                              |0000: const-string v0, "wav" // string@0787
+00c214: 7120 a003 0300                         |0002: invoke-static {v3, v0}, Lkotlin/jvm/internal/Intrinsics;.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V // method@03a0
+00c21a: 6200 a900                              |0005: sget-object v0, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;.Companion:Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip$Companion; // field@00a9
+00c21e: 6e20 7001 3000                         |0007: invoke-virtual {v0, v3}, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip$Companion;.decode:([B)Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip; // method@0170
+00c224: 0c00                                   |000a: move-result-object v0
+00c226: 1401 cdcc cc3d                         |000b: const v1, #float 0.1 // #3dcccccd
+00c22c: 6e20 7701 1000                         |000e: invoke-virtual {v0, v1}, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;.attenuated:(F)Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip; // method@0177
+00c232: 0c00                                   |0011: move-result-object v0
+00c234: 1100                                   |0012: return-object v0
+
+APK: app/build/outputs/apk/debug/app-debug.apk
+DEX: classes6.dex
+Class: Lcom/example/flowertears/p18ab52cf/scene/PetalSpatialAudio;
+00c710: 079b                                   |0094: move-object v11, v9
+00c712: 1f0b b500                              |0095: check-cast v11, Ljava/io/InputStream; // type@00b5
+00c716: 120c                                   |0097: const/4 v12, #int 0 // #0
+00c718: 620d ad00                              |0098: sget-object v13, Lcom/example/flowertears/p18ab52cf/scene/PetalAudioSamples;.INSTANCE:Lcom/example/flowertears/p18ab52cf/scene/PetalAudioSamples; // field@00ad
+00c71c: 7110 9e03 0b00                         |009a: invoke-static {v11}, Lkotlin/jvm/internal/Intrinsics;.checkNotNull:(Ljava/lang/Object;)V // method@039e
+00c722: 7110 9603 0b00                         |009d: invoke-static {v11}, Lkotlin/io/ByteStreamsKt;.readBytes:(Ljava/io/InputStream;)[B // method@0396
+00c728: 0c0e                                   |00a0: move-result-object v14
+00c72a: 6e20 7e01 ed00                         |00a1: invoke-virtual {v13, v14}, Lcom/example/flowertears/p18ab52cf/scene/PetalAudioSamples;.fromWav:([B)Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip; // method@017e
+00c730: 0c0d                                   |00a4: move-result-object v13
+00c732: 120b                                   |00a5: const/4 v11, #int 0 // #0
+
+APK: app/build/outputs/apk/debug/app-debug.apk
+DEX: classes6.dex
+Class: Lcom/example/flowertears/p18ab52cf/scene/PetalSpatialAudio;
+00c88a: 0c07                                   |0151: move-result-object v7
+00c88c: 0772                                   |0152: move-object v2, v7
+00c88e: 6e10 7b01 0000                         |0153: invoke-virtual {v0}, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;.getSamples:()[B // method@017b
+00c894: 0c06                                   |0156: move-result-object v6
+00c896: 6e10 7b01 0000                         |0157: invoke-virtual {v0}, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;.getSamples:()[B // method@017b
+00c89c: 0c07                                   |015a: move-result-object v7
+00c89e: 2177                                   |015b: array-length v7, v7
+00c8a0: 6e40 1c00 6278                         |015c: invoke-virtual {v2, v6, v8, v7}, Landroid/media/AudioTrack;.write:([BII)I // method@001c
+00c8a6: 0a06                                   |015f: move-result v6
+00c8a8: 6e10 7b01 0000                         |0160: invoke-virtual {v0}, Lcom/example/flowertears/p18ab52cf/scene/PcmWaveClip;.getSamples:()[B // method@017b
+
+APK: app/build/outputs/apk/debug/app-debug.apk
+DEX: classes6.dex
+Class: Lcom/example/flowertears/p18ab52cf/scene/PetalSpatialAudio;
+00c8c8: 1217                                   |0170: const/4 v7, #int 1 // #1
+00c8ca: 3376 0400                              |0171: if-ne v6, v7, 0175 // +0004
+00c8ce: 0176                                   |0173: move v6, v7
+00c8d0: 2802                                   |0174: goto 0176 // +0002
+00c8d2: 0186                                   |0175: move v6, v8
+00c8d4: 3806 5700                              |0176: if-eqz v6, 01cd // +0057
+00c8d8: 1506 803f                              |0178: const/high16 v6, #int 1065353216 // #3f80
+00c8dc: 6e20 1a00 6200                         |017a: invoke-virtual {v2, v6}, Landroid/media/AudioTrack;.setVolume:(F)I // method@001a
+00c8e2: 0a06                                   |017d: move-result v6
+00c8e4: 3906 0300                              |017e: if-nez v6, 0181 // +0003
+

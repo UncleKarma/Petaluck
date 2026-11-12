@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1480" viewBox="0 0 1500 1480">
+<rect width="1500" height="1480" fill="#faf8f5"/>
+<style>text{font-family:PingFang SC,Heiti SC,Arial,sans-serif;fill:#333936}.vtitle{font-size:30px;font-weight:600}.vlabel{font-size:23px;font-weight:600}.vnote{font-size:18px}</style>
+<text x="60" y="55" class="vtitle">结构三视图 · 正视 / 右视 / 俯视</text>
+<text x="60" y="92" class="vnote">统一 Y 轴向上；花冠用简化体积表示。此图说明骨骼方向，不定义花瓣造型。</text>
+<rect x="35" y="120" width="465" height="350" rx="20" fill="#f0eee8"/><text x="59" y="159" class="vlabel">FRONT · 正视</text>
+<path d="M267 397V268" stroke="#5c8054" stroke-width="16" stroke-linecap="round"/><path d="M267 397V268" stroke="#e5bb55" stroke-width="4" stroke-dasharray="6 4"/>
+<circle cx="267" cy="268" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="267" cy="311" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="267" cy="354" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="267" cy="397" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<ellipse cx="267" cy="241" rx="72" ry="55" fill="#e9a4b0" opacity=".8"/><circle cx="267" cy="241" r="11" fill="#d4ac6f"/>
+<text x="267" y="444" text-anchor="middle" class="vnote">沿 −Z 看，画面向上为 +Y</text>
+<rect x="530" y="120" width="465" height="350" rx="20" fill="#f0eee8"/><text x="554" y="159" class="vlabel">RIGHT · 右视</text>
+<path d="M762 397V268" stroke="#5c8054" stroke-width="16" stroke-linecap="round"/><path d="M762 397V268" stroke="#e5bb55" stroke-width="4" stroke-dasharray="6 4"/>
+<circle cx="762" cy="268" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="762" cy="311" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="762" cy="354" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<circle cx="762" cy="397" r="5" fill="#fff5ca" stroke="#987631" stroke-width="1.5"/>
+<ellipse cx="762" cy="241" rx="30" ry="55" transform="rotate(-18 762 241)" fill="#e9a4b0" opacity=".8"/>
+<text x="762" y="444" text-anchor="middle" class="vnote">沿 −X 看，画面向上为 +Y</text>
+<rect x="1025" y="120" width="465" height="350" rx="20" fill="#f0eee8"/><text x="1049" y="159" class="vlabel">TOP · 俯视</text>
+<ellipse cx="1257" cy="280" rx="72" ry="30" fill="#e9a4b0" opacity=".8"/><circle cx="1257" cy="280" r="7" fill="#fff5ca" stroke="#987631" stroke-width="2"/><text x="1257" y="358" text-anchor="middle" class="vnote">静止骨骼沿 Y 轴投影重合</text>
+<text x="1257" y="444" text-anchor="middle" class="vnote">沿 −Y 看，画面向上为 −Z</text>
+<g transform="translate(0 500)">
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#a45c50"/></marker></defs>
+<rect width="1500" height="980" fill="#faf8f5"/>
+<style>text{font-family:PingFang SC,Heiti SC,Arial,sans-serif;fill:#333936}.title{font-size:32px;font-weight:600}.head{font-size:25px;font-weight:600}.body{font-size:19px}.small{font-size:17px}.bone{stroke:#e5bb55;stroke-width:5;stroke-dasharray:7 4;fill:none}</style>
+<text x="60" y="65" class="title">月季 · 拉拽与短茎复位示意</text>
+<text x="60" y="104" class="body">下方为动作时序；弯曲示意放大，不代表真实网格、瓣数或已完成的绑定。</text>
+<rect x="35" y="145" width="465" height="520" rx="20" fill="#f0eee8"/>
+<text x="59" y="188" class="head">01  静止 / 可选取</text>
+<polyline points="215,545 215,478 215,411 215,344" fill="none" stroke="#5c8054" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="215,545 215,478 215,411 215,344" class="bone"/>
+<circle cx="215" cy="545" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="215" cy="478" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="215" cy="411" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="215" cy="344" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<g transform="translate(215 278) scale(1)"><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(0)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(45)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(90)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(135)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(180)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(225)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(270)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(315)"/><circle r="21" fill="#d4ac6f"/></g>
+<path d="M187 556H243" stroke="#69756b" stroke-width="4"/>
+<text x="59" y="610" class="body">根锚点固定 · 三段骨骼链</text>
+<text x="59" y="641" class="small">黄虚线：骨骼；圆点：关节</text>
+<rect x="530" y="145" width="465" height="520" rx="20" fill="#f0eee8"/>
+<text x="554" y="188" class="head">02  拉拽 / 短茎弯曲</text>
+<polyline points="715,545 715,478 728,411 753,349" fill="none" stroke="#5c8054" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="715,545 715,478 728,411 753,349" class="bone"/>
+<circle cx="715" cy="545" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="715" cy="478" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="728" cy="411" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="753" cy="349" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<g transform="translate(753 283) scale(1)"><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(0)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(45)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(90)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(135)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(180)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(225)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(270)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(315)"/><circle r="21" fill="#d4ac6f"/></g>
+<path d="M687 556H743" stroke="#69756b" stroke-width="4"/>
+<text x="554" y="610" class="body">顺拉拽方向小幅弯曲 · 合计约 8°</text>
+<text x="554" y="641" class="small">花冠跟随顶部，结果文字不晃动</text>
+<rect x="1025" y="145" width="465" height="520" rx="20" fill="#f0eee8"/>
+<text x="1049" y="188" class="head">03  摘下 / 当帧复位</text>
+<polyline points="1215,545 1215,478 1215,411 1215,344" fill="none" stroke="#5c8054" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="1215,545 1215,478 1215,411 1215,344" class="bone"/>
+<circle cx="1215" cy="545" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="1215" cy="478" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="1215" cy="411" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<circle cx="1215" cy="344" r="6" fill="#fff5ca" stroke="#987631" stroke-width="2"/>
+<g transform="translate(1215 278) scale(1)"><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(0)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(45)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(90)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(135)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(180)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(225)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(270)"/><ellipse cx="0" cy="-37" rx="31" ry="49" fill="#e9a4b0" stroke="#c78391" stroke-width="1.5" transform="rotate(315)"/><circle r="21" fill="#d4ac6f"/></g>
+<path d="M1187 556H1243" stroke="#69756b" stroke-width="4"/>
+<text x="1049" y="610" class="body">先分离花瓣，再立即复位短茎</text>
+<text x="1049" y="641" class="small">仍捏住的花瓣保留位置，松手才飘落</text>
+<text x="255" y="382" class="small">顶部</text><text x="255" y="451" class="small">中段</text><text x="255" y="518" class="small">根部</text>
+<path d="M825 280L916 238" stroke="#a45c50" stroke-width="4" marker-end="url(#arrow)"/><text x="837" y="220" class="small">拉拽方向</text>
+<ellipse cx="1375" cy="272" rx="25" ry="41" transform="rotate(35 1375 272)" fill="#e9a4b0" stroke="#c78391" stroke-width="2"/>
+<path d="M1365 330Q1395 360 1380 407" fill="none" stroke="#a45c50" stroke-width="3" stroke-dasharray="7 7" marker-end="url(#arrow)"/>
+<text x="1308" y="437" class="small">松手后下落</text>
+<text x="60" y="728" class="head">随机花色 · 每轮选一种，全花共用同一色系</text>
+<text x="60" y="762" class="small">下列为美术起始色值，非品种鉴定；实际效果需在目标材质与光照中调整。</text>
+<rect x="60" y="795" width="156" height="80" rx="12" fill="#B94150"/>
+<text x="138" y="906" text-anchor="middle" class="body">红</text><text x="138" y="936" text-anchor="middle" class="small">#B94150</text>
+<rect x="234" y="795" width="156" height="80" rx="12" fill="#DC829A"/>
+<text x="312" y="906" text-anchor="middle" class="body">粉</text><text x="312" y="936" text-anchor="middle" class="small">#DC829A</text>
+<rect x="408" y="795" width="156" height="80" rx="12" fill="#EAB4BE"/>
+<text x="486" y="906" text-anchor="middle" class="body">浅粉</text><text x="486" y="936" text-anchor="middle" class="small">#EAB4BE</text>
+<rect x="582" y="795" width="156" height="80" rx="12" fill="#F1EDE5"/>
+<text x="660" y="906" text-anchor="middle" class="body">白</text><text x="660" y="936" text-anchor="middle" class="small">#F1EDE5</text>
+<rect x="756" y="795" width="156" height="80" rx="12" fill="#EAD8AE"/>
+<text x="834" y="906" text-anchor="middle" class="body">奶油</text><text x="834" y="936" text-anchor="middle" class="small">#EAD8AE</text>
+<rect x="930" y="795" width="156" height="80" rx="12" fill="#E5BE55"/>
+<text x="1008" y="906" text-anchor="middle" class="body">黄</text><text x="1008" y="936" text-anchor="middle" class="small">#E5BE55</text>
+<rect x="1104" y="795" width="156" height="80" rx="12" fill="#DE9061"/>
+<text x="1182" y="906" text-anchor="middle" class="body">橙</text><text x="1182" y="936" text-anchor="middle" class="small">#DE9061</text>
+<rect x="1278" y="795" width="156" height="80" rx="12" fill="#B59BCB"/>
+<text x="1356" y="906" text-anchor="middle" class="body">淡紫</text><text x="1356" y="936" text-anchor="middle" class="small">#B59BCB</text>
+</g></svg>

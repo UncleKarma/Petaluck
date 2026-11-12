@@ -1,0 +1,68 @@
+{
+  "revision": "petal-audio-pcm-v2",
+  "date": "2026-11-12",
+  "request": "Reduce current petalDrop playback gain by 50%.",
+  "changes": {
+    "previousPcmGain": 0.10,
+    "pcmGain": 0.05,
+    "trackGain": 1,
+    "logRevision": "pcm-gain-v2",
+    "versionCode": 3,
+    "versionName": "1.0.2",
+    "applicationId": "com.example.flowertears.p18ab52cf",
+    "originalAudioFilesModifiedByThisChange": false,
+    "interactionCodeModified": false
+  },
+  "sourceAudio": {
+    "sha256": "ea4338224bc3db7a417aade1cacc897069c9f3ae94302c2ebac433e269368982",
+    "note": "Current user WAV differs from the previous archived v1 WAV and contains LIST metadata. Preserved current root/raw files byte-for-byte; gain halving is relative to 0.10 applied to this current source.",
+    "sampleRate": 48000,
+    "frames": 3600,
+    "durationMs": 75
+  },
+  "productionBufferMeasurement": {
+    "sourcePeak": 16384,
+    "playbackPeak": 819,
+    "sourceRms": 1788.1924459880959,
+    "previousGainOnCurrentSourceRms": 178.8397521370583,
+    "playbackRms": 89.40586296956891,
+    "relativeAmplitude": 0.4999216443839091,
+    "relativeDb": -6.021961196414365,
+    "playbackPcmSha256": "e861ada728c02b27aa4c3d352dad25bf84c35d937c11799d0fbd599832b90286",
+    "method": "Actual Kotlin production-factory PCM exported by existing test, independently compared sample-for-sample and measured using Python. Rounding accounts for deviation from exactly 0.5."
+  },
+  "tests": {
+    "scope": "Maintain PetalAudioSamplesTest and current-WAV compatibility in PcmWaveClipTest.",
+    "defectAnalysis": "No new production algorithm defect found. Existing test fixtures incorrectly assumed a fixed 44-byte WAV header.",
+    "newTestCount": 0,
+    "updatedCases": "Actual buffer amplitude/RMS and relative gain; signed PCM16 boundaries with standalone fixture; current WAV data-chunk extraction; odd data-length mutation.",
+    "iterations": [
+      "Audio test: 4/5 passed; fixed fixture construction after Missing WAV samples caused by source LIST metadata.",
+      "Audio test: 5/5 passed; full suite exposed fixed-header comparison in PcmWaveClipTest.",
+      "Attempted javax.sound helper was unavailable on Android test compile classpath; replaced with explicit test data-chunk lookup.",
+      "Final full suite: 86 tests, zero failures/errors."
+    ],
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "experimentalApiCheck": "PASS",
+    "spatialUiStyle": "PASS, 0 errors, 1 existing large-type warning",
+    "coverage": "Skipped: no configured coverage gate or user coverage requirement.",
+    "utreeFlush": "Attempted; /Users/bytedance/.local/bin/utree is unavailable (exit 127). Verification is recorded here instead."
+  },
+  "artifact": {
+    "path": "backups/petal-audio-pcm-v2-2026-11-12/RoseTear-1.0.2-petal-audio-pcm-v2.apk",
+    "sha256": "c6c6da67f656f12afb6efe9e167d476fd6e1e2d6c690088fdb4174ed49258ad5",
+    "packagedWavMatchesCurrentSource": true,
+    "packagedWavUncompressed": true
+  },
+  "runtime": {
+    "headsetAuditionVerified": false,
+    "headsetOutputMeasured": false,
+    "note": "Host input-signal measurement only; existing ADB restriction was not bypassed."
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "reason": "Workspace remains without a Git repository; previous Git metadata write denial not bypassed.",
+    "snapshot": "backups/petal-audio-pcm-v2-2026-11-12"
+  }
+}

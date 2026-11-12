@@ -1,0 +1,118 @@
+{
+  "revision": "petal-audio-pcm-v1",
+  "date": "2026-11-12",
+  "sdkBom": "6.2.8",
+  "reportedBehavior": "User hears little or no reduction with previous AudioTrack.setVolume(0.1) and asks whether the gain actually affects output.",
+  "confirmedEvidence": {
+    "oldDeliveredApkSha256": "338aa79937eb3af126cdd844be8cca9d0650846a3e5498414266a75cc48de742",
+    "oldDexEvidence": "docs/petal-audio-pcm-v1-old-setter.txt confirms const float 0.1 -> AudioTrack.setVolume in the delivered APK.",
+    "noAlternateAppPlaybackPathFound": "Only PetalSpatialAudio creates and plays this AudioTrack; no SoundPool/MediaPlayer/secondary app AudioResource path found in production source.",
+    "platformGainEffectVerified": false,
+    "limit": "Bytecode and API configuration do not establish PICO native gain execution or headset output level. No installed-version check or audio recording is available."
+  },
+  "explanation": {
+    "standardApi": "Android AudioTrack.setVolume is a linear gain; 0.1 would normally attenuate amplitude by 20 dB. It is not a direct perceived-loudness percentage.",
+    "rootCause": "Unknown on the headset. Ignored/overridden native gain or any other output-path explanation has not been established; the user is not blamed for installing an old package.",
+    "validationCorrection": "Earlier host build/unit checks did not measure headset gain or sound output."
+  },
+  "changes": {
+    "attenuationAuthority": "PetalAudioSamples.fromWav -> PcmWaveClip.attenuated(0.10f); apply once to signed little-endian PCM16 samples before writing AudioTrack.",
+    "pcmGain": 0.1,
+    "audioTrackGain": 1.0,
+    "doubleAttenuationAvoided": true,
+    "cache": "One already attenuated clip per scene; repeated round track preparation reuses it without another scaling pass.",
+    "sourceAndRawUnmodified": true,
+    "systemVolumeUnchanged": true,
+    "requestsAudioFocus": false,
+    "preserved": "OBJECT entity spatial binding, post-Ready optional preparation, fixed tear position, completion marker/watchdog, pause/teardown cleanup and all drag/scene/UI logic.",
+    "logMarker": "PetalAudioReady revision=pcm-gain-v1 pcmGain=0.1 trackGain=1",
+    "apkVersion": {
+      "versionCode": 2,
+      "versionName": "1.0.1",
+      "package": "com.example.flowertears.p18ab52cf"
+    }
+  },
+  "inputMeasurement": {
+    "sampleRate": 48000,
+    "frames": 3600,
+    "durationMs": 75,
+    "sourcePeak": 32767,
+    "playbackPeak": 3277,
+    "sourceRms": 3576.3925714716747,
+    "playbackRms": 357.62903770682703,
+    "rmsChangeDb": -20.00024820037909,
+    "sourceWavSha256": "4b154cdf195b74df0b13fc164365023430d4d18fee50ed0d8dafc23fdbaca361",
+    "playbackPcmSha256": "f9786699836e49799a266878ed3a5f3179ea84ff84f0028760d0ef71983858c4",
+    "preview": "art/audio/petalDrop-pcm-010.wav",
+    "previewSha256": "d19651e0220b573b01cee17553cf77d43a50ee57c28cc6a4452409bfe489d93c",
+    "scope": "Exact production PetalAudioSamples.fromWav buffer exported by unit test, independently measured in Python. Input signal measurement, not headset output."
+  },
+  "hostValidation": {
+    "assembleDebug": true,
+    "assembleDebugAndroidTest": true,
+    "unitTests": {
+      "tests": 86,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "newTests": 5,
+    "coverage": [
+      "Production factory output: sample amplitude/error, peak and RMS, unchanged duration/rate and source bytes.",
+      "Signed PCM16 boundary values, negative/positive samples and little-endian encoding.",
+      "Zero silence, unity identity and no source buffer mutation.",
+      "Reject negative, nonfinite or amplifying gains.",
+      "Twenty repeated preparations produce identical once-attenuated buffers."
+    ],
+    "newApkDexEvidence": "docs/petal-audio-pcm-v1-apk-path.txt confirms actual PCM factory, attenuated(0.1), buffer write and track gain 1.",
+    "newApkVersionEvidence": "package: name='com.example.flowertears.p18ab52cf' versionCode='2' versionName='1.0.1' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'",
+    "independentMeasurement": "Production JVM-exported PCM independently decoded/measured in Python; WAV preview carries exactly that PCM, without normalization.",
+    "experimentalApi": "PASS; no active opt-ins",
+    "spatialUiStyle": {
+      "passed": true,
+      "errors": 0,
+      "warnings": 1,
+      "disposition": "Existing user-requested large-font emphasis."
+    },
+    "previousSnapshotComparisons": {
+      "allDomainAndInteraction": true,
+      "wholeRoseScene": true,
+      "ui": true,
+      "flowerAssets": true,
+      "accessibility": true,
+      "sourceAndRawWav": true,
+      "completionPolicy": true
+    },
+    "packagedRoseFiles": 40,
+    "glbsStoredUncompressed": 13,
+    "sourceRawApkWavIdentical": true,
+    "wavStoredUncompressed": true,
+    "accessibility": "No owner/action/semantic or scene source changes. Existing contract preserved; no new runtime audit claimed."
+  },
+  "primaryReference": "https://developer.android.com/reference/android/media/AudioTrack#setVolume(float)",
+  "apiEvidence": "Uses existing exact-version SDK 6.2.8 bridge; only app-owned PCM processing added. Public native bridge exposes no documented gain override found in its wrapper. Knowledge MCP remains unavailable.",
+  "artifact": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 48699512,
+    "sha256": "55d30e6c7f689a110d165864d7b62319f8b5c8f257da25d83d74449e6599c233"
+  },
+  "runtime": {
+    "headsetOutputMeasured": false,
+    "headsetAuditionVerified": false,
+    "nativeGainBypassConfirmed": false,
+    "installedVersionVerified": false,
+    "installLaunchVerified": false,
+    "blocker": "Existing ADB listener sandbox denial; denied operation not retried.",
+    "pending": [
+      "Confirm upgraded installed app version 1.0.1/code 2 and audio revision marker.",
+      "Listen/record petalDrop against system ambience and compare the PCM preview; verify final output, spatial location and completion cleanup.",
+      "If output remains unchanged, obtain device audio routing/gain logs and an output recording to separate application samples from platform processing/sounds."
+    ],
+    "evidenceScope": "Verified input-signal attenuation and APK binding, not final headset output or perceived loudness."
+  },
+  "versionHistory": {
+    "gitCommit": null,
+    "snapshot": "backups/petal-audio-pcm-v1-2026-11-12",
+    "previous": "backups/gaze-drag-volume-v2-2026-11-12"
+  }
+}
