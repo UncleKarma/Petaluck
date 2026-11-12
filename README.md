@@ -4,7 +4,7 @@
 
 应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「RoseTear」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
 
-当前 APK 版本为 **1.0.7（versionCode 8）**：每轮摘完出现祝福时播放用户提供的 endingBGM；重玩立即开始新一轮，尚未播完的音乐用 1 秒淡出。108 项单测、开发/测试 APK 构建及实验 API / SpatialUI 检查通过，头显试听待验证，见 [docs/ending-bgm-v1.md](docs/ending-bgm-v1.md)。保留 1.0.6 的固定附件、move-anchor-v4 输入策略与 petalDrop PCM gain 0.025。版本记录见 [docs/version-control.md](docs/version-control.md)。
+当前 APK 版本为 **1.0.8（versionCode 9）**：endingBGM 实际开始播放时，在容器顶部启动 bundle 内的粉色花瓣雨；音乐结束、重玩开始淡出或暂停时清掉特效。原有 1 秒音乐淡出保持。111 项单测、开发/测试 APK 构建及实验 API / SpatialUI 检查通过，APK 的 bundle 已确认未压缩。已安装到 PICO，日志确认 3 个发射器预加载；完整联动画面仍待验证，见 [docs/ending-petal-rain-v1.md](docs/ending-petal-rain-v1.md)。保留固定附件、move-anchor-v4 输入策略与 petalDrop PCM gain 0.025。版本记录见 [docs/version-control.md](docs/version-control.md)。
 
 冷启动在本地装配 17–30 片独立 3D 花瓣，从八种花色里抽取第一朵。重玩避开本次打开应用后最近三朵成功生成的花色。向任意方向拉离捏住时的位置达到 4 cm 后只结算一次，花瓣继续跟手，松手后飘落淡出。两种捏合都用位移驱动同一条三骨骼花茎。摘下时花茎从受力姿态开始来回轻摆，约 0.64 秒后回到原位。最后一瓣松手后显示祝福和重玩按钮。
 

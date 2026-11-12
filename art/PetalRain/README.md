@@ -23,7 +23,7 @@ Billboard、Unlit、透明混合，白色材质乘子。
 
 本次是粉色简易效果，使用新绘制的透明矢量花瓣精灵，源文件 `petal.svg`。
 `tools/create_petal_rain_texture.py` 可重复生成 PNG。
-未改正式花瓣贴图，未实现八色切换、音乐联动或接入 Android 应用。
+未改正式花瓣贴图；独立工程没有八色切换。后续 Android 1.0.8 的音乐联动接入见 `docs/ending-petal-rain-v1.md`，与本工程独立交付时的验证范围分开记录。
 
 ## 验证与限制
 

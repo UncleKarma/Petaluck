@@ -11,6 +11,58 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class EndingMusicTest {
+    @Test fun petalsStartAfterSuccessfulNativePlayAndStopImmediatelyOnReplay() {
+        val events = mutableListOf<String>()
+        val player = EndingMusicPlayback(
+            { events += "audioPlay" }, {}, { events += "audioStop" },
+            { events += "rainStart:$it" }, { events += "rainStop" },
+        )
+        player.blessing(4, 0, 14500)
+        player.blessing(4, 1, 14500)
+        assertEquals(listOf("audioPlay", "rainStart:4"), events)
+        player.replay(100)
+        assertTrue(player.active)
+        assertEquals("rainStop", events.last())
+        // The next flower can prepare a fresh effect while the old music is still fading.
+        player.replay(200)
+        player.tick(1100, false)
+        assertEquals(listOf("audioPlay", "rainStart:4", "rainStop", "audioStop"), events)
+    }
+
+    @Test fun naturalEndWatchdogAndPauseEachStopRainOnceWithoutResuming() {
+        for (mode in listOf("end", "watchdog", "pause")) {
+            var playing = false
+            var stops = 0
+            val player = EndingMusicPlayback({}, {}, {}, { playing = true }, { playing = false; stops++ })
+            player.blessing(1, 0, 14500)
+            assertTrue(playing)
+            when (mode) {
+                "end" -> player.tick(14500, true)
+                "watchdog" -> player.tick(14750, false)
+                else -> player.stop()
+            }
+            player.stop()
+            player.tick(16000, false)
+            assertFalse(playing)
+            assertEquals(1, stops)
+        }
+    }
+
+    @Test fun failedAudioStartNeverStartsRainAndStopFailureStillCleansVisuals() {
+        var rainStarts = 0
+        var rainStops = 0
+        val failed = EndingMusicPlayback({ error("native play failed") }, {}, {}, { rainStarts++ }, { rainStops++ })
+        assertThrows(IllegalStateException::class.java) { failed.blessing(1, 0, 14500) }
+        failed.stop()
+        assertEquals(0, rainStarts)
+        assertEquals(0, rainStops)
+        val stopFailure = EndingMusicPlayback({}, {}, { error("native stop failed") }, { rainStarts++ }, { rainStops++ })
+        stopFailure.blessing(2, 0, 14500)
+        assertThrows(IllegalStateException::class.java) { stopFailure.stop() }
+        assertEquals(1, rainStops)
+        assertFalse(stopFailure.active)
+    }
+
     private class Output {
         var starts = 0
         var stops = 0

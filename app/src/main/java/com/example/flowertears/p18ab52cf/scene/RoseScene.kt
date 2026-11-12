@@ -44,7 +44,13 @@ class RoseScene(context: Context) {
     // A Kotlin reference does not retain native resources after the last petal is destroyed.
     private val textures = RoundAssetSet<TextureResource>({it.valid},{it.toGlobal()},{it.close()})
     private val petalAudio = PetalSpatialAudio(context.applicationContext)
-    private val endingMusic = EndingMusic(context.applicationContext)
+    private val endingPetalRain = EndingPetalRain(context.applicationContext)
+    private val endingMusic = EndingMusic(context.applicationContext,
+        onStarted = { roundId ->
+            if(!disposed && !appPaused && roundId==generation)endingPetalRain.start(roundId,content)
+        },
+        onStopped = { endingPetalRain.stop() },
+    )
     private val petalSampler = MaterialTextureSampler().apply {sWrapMode=SamplerWrapMode.CLAMP_TO_EDGE;tWrapMode=SamplerWrapMode.CLAMP_TO_EDGE}
     private var root: Entity? = null
     private var stem: Entity? = null
@@ -296,6 +302,10 @@ class RoseScene(context: Context) {
                     if(disposed || s.id!=generation)throw CancellationException("Audio round no longer active")
                 }},
                 onFailure={Log.e(TAG,"PetalAudioPreparationFailed session=${s.id}; flower remains playable",it)},
+            )
+            prepareOptionalAudio(
+                prepare={endingPetalRain.prepare(s.id)},
+                onFailure={Log.e(TAG,"PetalRainPreparationFailed session=${s.id}; flower remains playable",it)},
             )
             prepareOptionalAudio(
                 prepare={endingMusic.prepare()},
@@ -600,6 +610,7 @@ class RoseScene(context: Context) {
         entrance.clear()
         entranceAwaitingFrame=false
         petalAudio.clearRound()
+        endingPetalRain.stop()
         // EndingMusic is scene-owned: its 1 s replay fade survives flower teardown/loading.
         skeleton=null;restPose=emptyList();stem=null;crown=null;stemMotion.reset();lostTime=-1f;trackingUnavailable=false;glowTime=0f;coreMaterials.clear()
         petalDrag.clear();remotePetalDrag.clear();pinchDrag.clear()
@@ -612,6 +623,7 @@ class RoseScene(context: Context) {
         subscription?.cancel();subscription=null;clearRound()
         petalAudio.close()
         endingMusic.close()
+        endingPetalRain.close()
         resultBinding.clear();messageBinding.clear();completionBinding.clear()
         resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()

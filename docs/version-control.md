@@ -24,6 +24,10 @@ git show 5879919 --stat
 
 每项用户请求单独提交，提交说明包含实际行为变化和验证结果。保留当前改动记录；修改开始前检查工作区，不混入用户并行修改，不改写既有提交。较大里程碑创建独立 tag；可安装 APK 单独保存并记录对应 commit/tag 和 SHA-256。
 
+### 2026-11-12：结束音乐花瓣雨接入
+
+1.0.8 / code 9：运行时加载已交付 Editor bundle，结束音乐成功开始时启用顶部粉色花瓣雨，音乐结束、重玩开始淡出、暂停或清理时销毁特效实例。111项单测、开发/测试APK、实验API、SpatialUI及bundle未压缩检查通过；头显确认3发射器预加载。完整联动自动验收被ROM TARGET_ROOT_TIMEOUT阻断，详见 `docs/ending-petal-rain-v1.md`。APK另存 `backups/ending-petal-rain-v1-2026-11-12/RoseTear-1.0.8.apk`，SHA-256 `32c7dd3af0330b374d0c313193092cf17c3e09ee93a0f68d6fdec709434724fa`。
+
 ### 2026-11-10：自然花瓣与茎叶基础贴图
 
 原基线快照保持不动。本次新增 `botanical-basecolor-v2`，包括八色独立花瓣底图、茎叶花蕊图集、UV 修正、按颜色保留共享纹理、可重建源图/提示词和离线对照。模型三角形位置、骨骼与蒙皮对照原归档验证一致；26 单测、APK 构建、资产/贴图和必要源码检查通过，实际头显待验证。修改与验证记录在 `docs/verification.md`、`docs/materials-v2-review.json`。

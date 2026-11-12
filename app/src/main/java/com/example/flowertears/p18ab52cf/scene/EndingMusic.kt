@@ -13,7 +13,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /** Non-positional stereo music, independent of the current flower and its spatial tear track. */
-internal class EndingMusic(context: Context) : AutoCloseable {
+internal class EndingMusic(
+    context: Context,
+    onStarted: (Long) -> Unit = {},
+    onStopped: () -> Unit = {},
+) : AutoCloseable {
     private val resources = context.applicationContext.resources
     private val handler = Handler(Looper.getMainLooper())
     private var track: AudioTrack? = null
@@ -29,6 +33,8 @@ internal class EndingMusic(context: Context) : AutoCloseable {
             check(checkNotNull(track).setVolume(gain) == AudioTrack.SUCCESS) { "Cannot set ending music gain" }
         },
         stopOutput = { track?.stop() },
+        onStarted = onStarted,
+        onStopped = onStopped,
     )
     private val pulse = object : Runnable {
         override fun run() {

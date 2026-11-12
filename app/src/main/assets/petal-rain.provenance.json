@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
+  "managed": false,
+  "generatedAt": "2026-11-12T08:47:44.420Z",
+  "bundle": {
+    "path": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.bundle",
+    "digest": {
+      "algorithm": "sha256",
+      "value": "b06853e011a307471dde8133fd0de386e226b07c9cf5a2bf129b481599fc17e9"
+    },
+    "scenesPath": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.scenes.json",
+    "scenesDigest": {
+      "algorithm": "sha256",
+      "value": "99e04949991dab16494eb9059f7ae2fec88c2049e83c79141d7213ae595a8b40"
+    },
+    "entryScene": "Sources/Scenes/PetalRain.usda",
+    "runtimeSceneKey": "Scenes/PetalRain",
+    "sceneCount": 1
+  },
+  "packageGate": {
+    "status": "pass",
+    "sceneManifestWritten": true,
+    "acceptedSceneMatched": true
+  },
+  "warnings": [
+    {
+      "code": "UNMANAGED_EDITOR_PACKAGE",
+      "message": "This bundle was packaged outside a managed Spatial Editor Workflow Run and has no accepted revision or gate proof."
+    }
+  ]
+}

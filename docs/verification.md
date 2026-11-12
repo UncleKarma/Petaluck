@@ -2,7 +2,14 @@
 
 日期：2026-11-12。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## 祝福音乐与重玩淡出（当前，ending-bgm-v1）
+## 结束音乐花瓣雨（当前，ending-petal-rain-v1）
+
+- APK 1.0.8 / code 9：bundle 的三发射器在音乐成功 play 后启动，直接挂 SpatialView、顶部 y=.33m；自然结束/超时/暂停/退出及重玩淡出开始清空粒子，旧 fade 结束不再次通知视觉停止。
+- 111 项单测零失败；开发/仪器测试 APK 构建、实验 API、SpatialUI 检查通过；pico-cli 验证 1 个 bundle 使用 ZIP method 0，且字节与 Editor 包一致。
+- 已升级安装到 PICO；实际日志出现 PetalRainReady round=1 emitters=3 y=0.33，随后 EndingMusicReady。Ready 阶段 A11Y 审核 0 errors；全 Contract 单次审核因阶段隐藏面板失败，未伪称全阶段 PASS。
+- 一次公开摘取动作成功；剩余 batch 第一步 TARGET_ROOT_TIMEOUT，0 步派发，未触发音乐。录屏停止、原相机与追踪恢复确认。启动及测试结束 crash buffer 均为空，不能据此声称全流程无崩溃或视觉验收。详情见 [ending-petal-rain-v1.md](ending-petal-rain-v1.md)。
+
+## 祝福音乐与重玩淡出（ending-bgm-v1）
 
 - APK 1.0.7 / code 8：祝福出现时单次播放 endingBGM；有效重玩以 1000 ms 淡出旧音乐，同时装配新花。自然结束停止，暂停/退出清理。
 - 108/108 主机单测及开发/仪器测试 APK 构建通过；实验 API 检查 PASS，SpatialUI 0 errors / 1 既有 warning。用户 WAV 与 APK 原字节一致。

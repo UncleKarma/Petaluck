@@ -12,8 +12,8 @@ android {
         applicationId = "com.example.flowertears.p18ab52cf"
         minSdk = 35
         targetSdk = 35
-        versionCode = 8
-        versionName = "1.0.7"
+        versionCode = 9
+        versionName = "1.0.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }
@@ -42,6 +42,7 @@ android {
         noCompress += "glb"
         // Keep the user-provided short spatial sound unchanged in the APK.
         noCompress += "wav"
+        noCompress += "bundle"
     }
 }
 
