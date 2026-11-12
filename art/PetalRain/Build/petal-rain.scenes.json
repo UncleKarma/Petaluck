@@ -1,0 +1,215 @@
+{
+  "activeScenePath": "Sources/Scenes/PetalRain.usda",
+  "detail": "full",
+  "scenes": [
+    {
+      "bundlePath": "Sources/Scenes/PetalRain.usda",
+      "container": {
+        "appContainer": "WindowContainer",
+        "bounded": true,
+        "contentHost": "SpatialView",
+        "coordinateSystem": "right-handed, meters",
+        "editorType": "Volume",
+        "isDefault": false,
+        "showUISample": false,
+        "sizeDp": [
+          320,
+          320,
+          320
+        ],
+        "sizeMeters": [
+          0.25599998235702515,
+          0.25599998235702515,
+          0.25599998235702515
+        ],
+        "source": "editor-viewport-container-settings",
+        "spaceRequirement": "SharedSpace",
+        "unit": "DevicePoint",
+        "usageHint": "Use WindowContainer with SpatialView and keep loaded content inside the authored volume."
+      },
+      "entities": [
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:petalrain:Root/PetalRain5",
+          "name": "PetalRain5",
+          "parentPath": "Root",
+          "path": "Root/PetalRain5",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:petalrain:Root/PetalRain6",
+          "name": "PetalRain6",
+          "parentPath": "Root",
+          "path": "Root/PetalRain6",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "bounds": null,
+          "components": [],
+          "entityId": "scene:petalrain:Root/PetalRain7",
+          "name": "PetalRain7",
+          "parentPath": "Root",
+          "path": "Root/PetalRain7",
+          "resources": {},
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "entityCount": 3,
+      "guid": "5679cdd3-3b81-4de8-82a3-41d8fd3688b8",
+      "hierarchy": [
+        {
+          "active": true,
+          "children": [],
+          "entityId": "scene:petalrain:Root/PetalRain5",
+          "name": "PetalRain5",
+          "path": "Root/PetalRain5",
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "children": [],
+          "entityId": "scene:petalrain:Root/PetalRain6",
+          "name": "PetalRain6",
+          "path": "Root/PetalRain6",
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        },
+        {
+          "active": true,
+          "children": [],
+          "entityId": "scene:petalrain:Root/PetalRain7",
+          "name": "PetalRain7",
+          "path": "Root/PetalRain7",
+          "transform": {
+            "position": [
+              0,
+              0.33000001311302185,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              1
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          "type": "Entity"
+        }
+      ],
+      "id": "scene:petalrain",
+      "name": "PetalRain",
+      "rootCount": 3,
+      "sourcePath": "Sources/Scenes/PetalRain.usda",
+      "warnings": [],
+      "runtimeSceneKey": "Scenes/PetalRain"
+    }
+  ],
+  "schemaVersion": "0.1",
+  "scope": "bundle_scenes",
+  "source": "pack_editor_bundle",
+  "sourceTool": "export_bundle_scene_manifest",
+  "warnings": [],
+  "runtimeSceneRoot": "Sources"
+}

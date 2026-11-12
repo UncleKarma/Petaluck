@@ -1,0 +1,1716 @@
+#usda 1.0
+(
+    customLayerData = {
+        string Copyright = "Copyright 2022 - 2024 PICO. All rights reserved."
+        string RuntimeVersion = "Runtime V6.2.0.0.mol.20261007"
+        string Version = "Spatial Editor V6.2.4"
+    }
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    def Xform "PetalRain5"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0) (
+            customData = {
+                float3 euler = (0, 0, 0)
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0.33, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def SpatialComponent "ParticleComponent"
+        {
+            bool autoplay = 1
+            uniform token info:id = "ParticleComponent"
+            uint64 info:typeId = 8238080634362682461
+
+            def SpatialStruct "main"
+            {
+                token descriptionSpace = "LOCAL"
+                bool enabled = 1
+                uint64 info:typeId = 14317711541678688046
+                int maxParticles = 32
+                token simulationSpace = "LOCAL"
+
+                def SpatialStruct "material"
+                {
+                    color4f baseColor = (1, 1, 1, 1)
+                    token blendingMode = "TRANSPARENT"
+                    token colorMode = "MULTIPLY"
+                    token cullingMode = "NONE"
+                    uint64 info:typeId = 2260151539714121966
+                    token type = "DEFAULT_UNLIT"
+
+                    def SpatialStruct "baseColorMap"
+                    {
+                        uint64 info:typeId = 7015777221540923446
+
+                        def SpatialStruct "texture"
+                        {
+                            int builtinTextureType = 0
+                            bool generateMipmap = 1
+                            uint64 info:typeId = 7057009229666234536
+                            token maxSize = "MAXSIZE_4096"
+                            token mipmapMode = "DEFAULT"
+                            string name = "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Sources/Textures/petal.png"
+                            string samplerName = ""
+                            token sourceColorSpace = "SRGB_REC709"
+                            token targetColorSpace = "SRGB_DISPLAY_P3"
+                            token textureFormat = "RGBA_ASTC_6x6"
+                            asset texturePath = @../Textures/petal.png@
+                            token textureShape = "TEXTURE_2D"
+                            token textureType = "DEFAULT"
+                        }
+                    }
+                }
+
+                def SpatialStruct "basic"
+                {
+                    uint64 info:typeId = 12399279384548294716
+
+                    def SpatialStruct "startColor"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "CONSTANT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+
+                    def SpatialStruct "startSize"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.025
+                        token type = "VARIANT"
+                        float value = 0.015
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startRotation"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 360
+                        token type = "VARIANT"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.09
+                        token type = "VARIANT"
+                        float value = 0.075
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "lifetime"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 5
+                        token type = "CONSTANT"
+                        float value = 5
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "emission"
+                {
+                    int burstCycles = 0
+                    bool emitting = 1
+                    uint64 info:typeId = 14544117792911128229
+                    bool loop = 1
+
+                    def SpatialStruct "emissionDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 14.5
+                        token type = "CONSTANT"
+                        float value = 14.5
+                    }
+
+                    def SpatialStruct "idleDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
+                    }
+
+                    def SpatialStruct "birthRate"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 4
+                        token type = "CONSTANT"
+                        float value = 4
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "burstCount"
+                    {
+                        uint64 info:typeId = 6167629100218338813
+                        int range = 0
+                        token type = "CONSTANT"
+                        int value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "shape"
+                {
+                    token birthDirection = "LOCAL"
+                    token birthLocation = "VOLUME"
+                    float3 emitDirection = (0, -1, 0)
+                    uint64 info:typeId = 289016186091072331
+                    token shape = "BOX"
+                    float3 size = (0.5, 0.001, 0.28)
+                    float spreadingAngle = 2
+                }
+
+                def SpatialStruct "size"
+                {
+                    uint64 info:typeId = 2561517522614737359
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "rotation"
+                {
+                    uint64 info:typeId = 12809088225558407444
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "angularSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 35
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "motion"
+                {
+                    uint64 info:typeId = 5520208337449961340
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "noise"
+                {
+                    float animationSpeed = 0.25
+                    int frequency = 2
+                    uint64 info:typeId = 1863982297342984
+                    bool modifierEnabled = 1
+                    int octaves = 2
+                    float scale = 0.14
+                    int seed = 187
+                    float strength = 0.0006
+                }
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "renderer"
+                {
+                    token facingMode = "CAMERA_POSITION"
+                    uint64 info:typeId = 14295403941869760597
+                    token orientationMode = "BILLBOARD"
+                    token particleType = "BILLBOARD"
+                    bool rendererEnabled = 1
+                    token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "GRADIENT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 4
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 0
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.2
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys2"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.8
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys3"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 0
+                            }
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+
+            def SpatialStruct "sub"
+            {
+                uint64 info:typeId = 14317711541678688046
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        token type = "GRADIENT"
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 2
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 1
+                            }
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+        }
+    }
+
+    def Xform "PetalRain6"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0) (
+            customData = {
+                float3 euler = (0, 0, 0)
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0.33, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def SpatialComponent "ParticleComponent"
+        {
+            bool autoplay = 1
+            uniform token info:id = "ParticleComponent"
+            uint64 info:typeId = 8238080634362682461
+
+            def SpatialStruct "main"
+            {
+                token descriptionSpace = "LOCAL"
+                bool enabled = 1
+                uint64 info:typeId = 14317711541678688046
+                int maxParticles = 32
+                token simulationSpace = "LOCAL"
+
+                def SpatialStruct "material"
+                {
+                    color4f baseColor = (1, 1, 1, 1)
+                    token blendingMode = "TRANSPARENT"
+                    token colorMode = "MULTIPLY"
+                    token cullingMode = "NONE"
+                    uint64 info:typeId = 2260151539714121966
+                    token type = "DEFAULT_UNLIT"
+
+                    def SpatialStruct "baseColorMap"
+                    {
+                        uint64 info:typeId = 7015777221540923446
+
+                        def SpatialStruct "texture"
+                        {
+                            int builtinTextureType = 0
+                            bool generateMipmap = 1
+                            uint64 info:typeId = 7057009229666234536
+                            token maxSize = "MAXSIZE_4096"
+                            token mipmapMode = "DEFAULT"
+                            string name = "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Sources/Textures/petal.png"
+                            string samplerName = ""
+                            token sourceColorSpace = "SRGB_REC709"
+                            token targetColorSpace = "SRGB_DISPLAY_P3"
+                            token textureFormat = "RGBA_ASTC_6x6"
+                            asset texturePath = @../Textures/petal.png@
+                            token textureShape = "TEXTURE_2D"
+                            token textureType = "DEFAULT"
+                        }
+                    }
+                }
+
+                def SpatialStruct "basic"
+                {
+                    uint64 info:typeId = 12399279384548294716
+
+                    def SpatialStruct "startColor"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "CONSTANT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+
+                    def SpatialStruct "startSize"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.025
+                        token type = "VARIANT"
+                        float value = 0.015
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startRotation"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 360
+                        token type = "VARIANT"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.09
+                        token type = "VARIANT"
+                        float value = 0.075
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "lifetime"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 6
+                        token type = "CONSTANT"
+                        float value = 6
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "emission"
+                {
+                    int burstCycles = 0
+                    bool emitting = 1
+                    uint64 info:typeId = 14544117792911128229
+                    bool loop = 1
+
+                    def SpatialStruct "emissionDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 14.5
+                        token type = "CONSTANT"
+                        float value = 14.5
+                    }
+
+                    def SpatialStruct "idleDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
+                    }
+
+                    def SpatialStruct "birthRate"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 4
+                        token type = "CONSTANT"
+                        float value = 4
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "burstCount"
+                    {
+                        uint64 info:typeId = 6167629100218338813
+                        int range = 0
+                        token type = "CONSTANT"
+                        int value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "shape"
+                {
+                    token birthDirection = "LOCAL"
+                    token birthLocation = "VOLUME"
+                    float3 emitDirection = (0, -1, 0)
+                    uint64 info:typeId = 289016186091072331
+                    token shape = "BOX"
+                    float3 size = (0.5, 0.001, 0.28)
+                    float spreadingAngle = 2
+                }
+
+                def SpatialStruct "size"
+                {
+                    uint64 info:typeId = 2561517522614737359
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "rotation"
+                {
+                    uint64 info:typeId = 12809088225558407444
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "angularSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 35
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "motion"
+                {
+                    uint64 info:typeId = 5520208337449961340
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "noise"
+                {
+                    float animationSpeed = 0.25
+                    int frequency = 2
+                    uint64 info:typeId = 1863982297342984
+                    bool modifierEnabled = 1
+                    int octaves = 2
+                    float scale = 0.14
+                    int seed = 188
+                    float strength = 0.0006
+                }
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "renderer"
+                {
+                    token facingMode = "CAMERA_POSITION"
+                    uint64 info:typeId = 14295403941869760597
+                    token orientationMode = "BILLBOARD"
+                    token particleType = "BILLBOARD"
+                    bool rendererEnabled = 1
+                    token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "GRADIENT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 4
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 0
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.16666667
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys2"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.8333333
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys3"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 0
+                            }
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+
+            def SpatialStruct "sub"
+            {
+                uint64 info:typeId = 14317711541678688046
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        token type = "GRADIENT"
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 2
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 1
+                            }
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+        }
+    }
+
+    def Xform "PetalRain7"
+    {
+        quatf xformOp:orient = (1, 0, 0, 0) (
+            customData = {
+                float3 euler = (0, 0, 0)
+            }
+        )
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0.33, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def SpatialComponent "ParticleComponent"
+        {
+            bool autoplay = 1
+            uniform token info:id = "ParticleComponent"
+            uint64 info:typeId = 8238080634362682461
+
+            def SpatialStruct "main"
+            {
+                token descriptionSpace = "LOCAL"
+                bool enabled = 1
+                uint64 info:typeId = 14317711541678688046
+                int maxParticles = 32
+                token simulationSpace = "LOCAL"
+
+                def SpatialStruct "material"
+                {
+                    color4f baseColor = (1, 1, 1, 1)
+                    token blendingMode = "TRANSPARENT"
+                    token colorMode = "MULTIPLY"
+                    token cullingMode = "NONE"
+                    uint64 info:typeId = 2260151539714121966
+                    token type = "DEFAULT_UNLIT"
+
+                    def SpatialStruct "baseColorMap"
+                    {
+                        uint64 info:typeId = 7015777221540923446
+
+                        def SpatialStruct "texture"
+                        {
+                            int builtinTextureType = 0
+                            bool generateMipmap = 1
+                            uint64 info:typeId = 7057009229666234536
+                            token maxSize = "MAXSIZE_4096"
+                            token mipmapMode = "DEFAULT"
+                            string name = "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Sources/Textures/petal.png"
+                            string samplerName = ""
+                            token sourceColorSpace = "SRGB_REC709"
+                            token targetColorSpace = "SRGB_DISPLAY_P3"
+                            token textureFormat = "RGBA_ASTC_6x6"
+                            asset texturePath = @../Textures/petal.png@
+                            token textureShape = "TEXTURE_2D"
+                            token textureType = "DEFAULT"
+                        }
+                    }
+                }
+
+                def SpatialStruct "basic"
+                {
+                    uint64 info:typeId = 12399279384548294716
+
+                    def SpatialStruct "startColor"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "CONSTANT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+
+                    def SpatialStruct "startSize"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.025
+                        token type = "VARIANT"
+                        float value = 0.015
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startRotation"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 360
+                        token type = "VARIANT"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "startSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0.09
+                        token type = "VARIANT"
+                        float value = 0.075
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "lifetime"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 7
+                        token type = "CONSTANT"
+                        float value = 7
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "emission"
+                {
+                    int burstCycles = 0
+                    bool emitting = 1
+                    uint64 info:typeId = 14544117792911128229
+                    bool loop = 1
+
+                    def SpatialStruct "emissionDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 14.5
+                        token type = "CONSTANT"
+                        float value = 14.5
+                    }
+
+                    def SpatialStruct "idleDuration"
+                    {
+                        uint64 info:typeId = 7312890686305071880
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
+                    }
+
+                    def SpatialStruct "birthRate"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 4
+                        token type = "CONSTANT"
+                        float value = 4
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "burstCount"
+                    {
+                        uint64 info:typeId = 6167629100218338813
+                        int range = 0
+                        token type = "CONSTANT"
+                        int value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "shape"
+                {
+                    token birthDirection = "LOCAL"
+                    token birthLocation = "VOLUME"
+                    float3 emitDirection = (0, -1, 0)
+                    uint64 info:typeId = 289016186091072331
+                    token shape = "BOX"
+                    float3 size = (0.5, 0.001, 0.28)
+                    float spreadingAngle = 2
+                }
+
+                def SpatialStruct "size"
+                {
+                    uint64 info:typeId = 2561517522614737359
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "rotation"
+                {
+                    uint64 info:typeId = 12809088225558407444
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "angularSpeed"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 35
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+                }
+
+                def SpatialStruct "motion"
+                {
+                    uint64 info:typeId = 5520208337449961340
+                    bool modifierEnabled = 0
+                }
+
+                def SpatialStruct "noise"
+                {
+                    float animationSpeed = 0.25
+                    int frequency = 2
+                    uint64 info:typeId = 1863982297342984
+                    bool modifierEnabled = 1
+                    int octaves = 2
+                    float scale = 0.14
+                    int seed = 189
+                    float strength = 0.0006
+                }
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "renderer"
+                {
+                    token facingMode = "CAMERA_POSITION"
+                    uint64 info:typeId = 14295403941869760597
+                    token orientationMode = "BILLBOARD"
+                    token particleType = "BILLBOARD"
+                    bool rendererEnabled = 1
+                    token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+                    bool modifierEnabled = 1
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        color4f range = (1, 1, 1, 1)
+                        token type = "GRADIENT"
+                        color4f value = (1, 1, 1, 1)
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 4
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 0
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.14285715
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys2"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0.85714287
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys3"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 0
+                            }
+                        }
+
+                        def SpatialStruct "rangeGradient"
+                        {
+                            uint alphaKeysCount = 0
+                            uint colorKeysCount = 0
+                            uint64 info:typeId = 16076115332520085486
+                            token mode = "LINEAR"
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+
+            def SpatialStruct "sub"
+            {
+                uint64 info:typeId = 14317711541678688046
+
+                def SpatialStruct "collision"
+                {
+                    uint64 info:typeId = 1889886362879287278
+                    uint planeCount = 1
+
+                    def SpatialStruct "planes0"
+                    {
+                        uint64 info:typeId = 14678668494774271056
+                        float3 normal = (0, 1, 0)
+                        float3 position = (0, 0, 0)
+
+                        def SpatialStruct "dampen"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 0
+                            token type = "CONSTANT"
+                            float value = 0
+                        }
+
+                        def SpatialStruct "bounce"
+                        {
+                            uint64 info:typeId = 7312890686305071880
+                            float range = 1
+                            token type = "CONSTANT"
+                            float value = 1
+                        }
+                    }
+                }
+
+                def SpatialStruct "colorGradient"
+                {
+                    uint64 info:typeId = 5228354564558978601
+
+                    def SpatialStruct "color"
+                    {
+                        uint64 info:typeId = 17307896503958113856
+                        token type = "GRADIENT"
+
+                        def SpatialStruct "gradient"
+                        {
+                            uint alphaKeysCount = 2
+                            uint colorKeysCount = 2
+                            uint64 info:typeId = 16076115332520085486
+
+                            def SpatialStruct "colorKeys0"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 0
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "colorKeys1"
+                            {
+                                uint64 info:typeId = 13026431045207930091
+                                float time = 1
+                                float3 value = (1, 1, 1)
+                            }
+
+                            def SpatialStruct "alphaKeys0"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 0
+                                float value = 1
+                            }
+
+                            def SpatialStruct "alphaKeys1"
+                            {
+                                uint64 info:typeId = 15367478023624661900
+                                float time = 1
+                                float value = 1
+                            }
+                        }
+                    }
+                }
+
+                def SpatialStruct "splinePath"
+                {
+                    uint64 info:typeId = 10037664398847086560
+                    string splineResource = ""
+                }
+
+                def SpatialStruct "customMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+
+                def SpatialStruct "trailCustomMaterial"
+                {
+                    uint64 info:typeId = 729712756366259562
+                    rel resource = None
+                    uint texturesCount = 0
+                }
+            }
+        }
+    }
+}
+
