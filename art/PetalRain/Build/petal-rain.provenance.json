@@ -1,31 +1,30 @@
 {
-  "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
+  "schemaVersion": "rosetear.native-editor-pack/v1",
   "managed": false,
-  "generatedAt": "2026-11-13T01:41:05.366Z",
+  "generatedAt": "2026-11-13T02:08:15.508842+00:00",
+  "sourceTool": "native Editor pack_project",
+  "packResult": {
+    "success": true,
+    "sceneCount": 1,
+    "durationMs": 3533
+  },
   "bundle": {
     "path": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.bundle",
-    "digest": {
-      "algorithm": "sha256",
-      "value": "7af798983236ca4cbe2d0bee0c46f34696f90bde2c1d36f83746e23e78b45ec5"
-    },
+    "sha256": "f5647755b773dbd6b388e717ae30c6140eb1e78fd4e8c563699c46b1d4348a4a",
     "scenesPath": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.scenes.json",
-    "scenesDigest": {
-      "algorithm": "sha256",
-      "value": "99e04949991dab16494eb9059f7ae2fec88c2049e83c79141d7213ae595a8b40"
-    },
-    "entryScene": "Sources/Scenes/PetalRain.usda",
-    "runtimeSceneKey": "Scenes/PetalRain",
-    "sceneCount": 1
+    "scenesSha256": "99e04949991dab16494eb9059f7ae2fec88c2049e83c79141d7213ae595a8b40",
+    "sourceSceneSha256": "ad10614b71442dbdbae959d2a57798964b4f7ee2d763c1f2c44c578c12121bac",
+    "runtimeSceneKey": "Scenes/PetalRain"
   },
-  "packageGate": {
-    "status": "pass",
-    "sceneManifestWritten": true,
-    "acceptedSceneMatched": true
+  "verification": {
+    "archiveCrc": "pass",
+    "packedRuntimeSceneKey": "pass",
+    "emitterNames": "pass"
   },
-  "warnings": [
-    {
-      "code": "UNMANAGED_EDITOR_PACKAGE",
-      "message": "This bundle was packaged outside a managed Spatial Editor Workflow Run and has no accepted revision or gate proof."
-    }
+  "notes": [
+    "Caller-authored receipt for native packaging, not a managed workflow gate.",
+    "CLI wrapper declined a user-owned GUI session mode change; native pack used the existing session.",
+    "Manifest exported by export_bundle_scene_manifest; runtime key added from packed AssetInfo.",
+    "Saved USDA inspected; script-based scene reopen was rejected by Editor security policy."
   ]
 }

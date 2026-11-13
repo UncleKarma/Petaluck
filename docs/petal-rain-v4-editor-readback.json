@@ -1,0 +1,281 @@
+{
+  "data": {
+    "entities": [
+      {
+        "entity_path": "/Root/PetalRain5",
+        "parameters": [
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 1,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": false,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 12,
+                    "to": 26
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 8,
+                    "to": 18
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 10,
+                    "to": 22
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain6",
+        "parameters": [
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 1,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": false,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 12,
+                    "to": 26
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 8,
+                    "to": 18
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 10,
+                    "to": 22
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain7",
+        "parameters": [
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 1,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": false,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 0,
+                    "to": 360
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 12,
+                    "to": 26
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 8,
+                    "to": 18
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 10,
+                    "to": 22
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      }
+    ]
+  },
+  "message": "",
+  "status": "ok"
+}

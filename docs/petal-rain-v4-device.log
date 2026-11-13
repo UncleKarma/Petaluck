@@ -1,0 +1,7 @@
+--------- beginning of main
+11-13 10:09:20.845 27317 27317 I FlowerTears: SpatialView first frame received; starting initial round
+11-13 10:09:22.041 27317 27317 I FlowerTears: Round assembled id=1 seed=7749428831549182433 N=29 color=2 layout=interleaved-petals-v6; entering
+11-13 10:09:22.851 27317 27317 I FlowerTears: RoseEntranceFinished session=1 scale=1 opacity=1; interactions enabled
+11-13 10:09:22.920 27317 27317 I FlowerTears: PetalAudioReady revision=pcm-gain-v3 tracks=1 spatialMode=OBJECT usage=SONIFICATION pcmGain=0.025 trackGain=1 frames=3600
+11-13 10:09:23.088 27317 27317 I FlowerTears: PetalRainReady round=1 color=2 emitters=3 y=0.33 revision=random-birth-v4 textures=[rose/petal-2-outer.png, rose/petal-2-middle.png, rose/petal-2-inner.png]
+11-13 10:09:23.103 27317 27317 I FlowerTears: EndingMusicReady frames=639450 durationMs=14500 channels=2

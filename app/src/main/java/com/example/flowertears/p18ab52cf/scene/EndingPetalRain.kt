@@ -112,7 +112,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     particles = controls
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=free-orientation-v3 textures=$paths")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=random-birth-v4 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }

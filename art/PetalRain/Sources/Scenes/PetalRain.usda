@@ -303,9 +303,9 @@ def Xform "Root"
                     def SpatialStruct "angularSpeed"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 35
-                        token type = "VARIANT"
-                        float value = 12
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
 
                         def SpatialStruct "curve"
                         {
@@ -378,12 +378,97 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    float3 orientationDirection = (0, 1, 0)
+                    float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 0.65
+                    float orientationVariation = 1
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationVelocityCurve"
+                {
+                    uint64 info:typeId = 7422361838897111774
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 26
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 18
+                        token type = "VARIANT"
+                        float value = 8
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 22
+                        token type = "VARIANT"
+                        float value = 10
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
                 }
 
                 def SpatialStruct "rotationCurve"
@@ -395,15 +480,15 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -416,21 +501,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.2
+                                    float x = 0.05666667
+                                    float y = 0.097222224
                                 }
                             }
 
@@ -442,22 +527,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.55
+                                    float x = 0.17
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.55
+                                    float x = 0.11333334
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.55
+                                    float x = 0.24333334
+                                    float y = 0.18055555
                                 }
                             }
 
@@ -469,22 +554,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.25
+                                    float x = 0.39
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.25
+                                    float x = 0.31666666
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.25
+                                    float x = 0.47333333
+                                    float y = 0.083333336
                                 }
                             }
 
@@ -496,22 +581,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.6
+                                    float x = 0.64
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.6
+                                    float x = 0.5566667
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.6
+                                    float x = 0.7033333
+                                    float y = 0.16666667
                                 }
                             }
 
@@ -523,22 +608,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.3
+                                    float x = 0.83
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.3
+                                    float x = 0.76666665
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.3
+                                    float x = 0.88666666
+                                    float y = 0.11111111
                                 }
                             }
 
@@ -551,21 +636,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.5
+                                    float x = 0.9433333
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.18055555
                                 }
                             }
                         }
@@ -574,7 +659,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -587,21 +672,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.4
+                                    float x = 0.05666667
+                                    float y = 0.29166666
                                 }
                             }
 
@@ -613,22 +698,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.8
+                                    float x = 0.17
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.8
+                                    float x = 0.11333334
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.8
+                                    float x = 0.24333334
+                                    float y = 0.375
                                 }
                             }
 
@@ -640,22 +725,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.45
+                                    float x = 0.39
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.45
+                                    float x = 0.31666666
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.45
+                                    float x = 0.47333333
+                                    float y = 0.2777778
                                 }
                             }
 
@@ -667,22 +752,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.85
+                                    float x = 0.64
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.85
+                                    float x = 0.5566667
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.85
+                                    float x = 0.7033333
+                                    float y = 0.3611111
                                 }
                             }
 
@@ -694,22 +779,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.5
+                                    float x = 0.83
+                                    float y = 0.30555555
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.5
+                                    float x = 0.76666665
+                                    float y = 0.30555555
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.5
+                                    float x = 0.88666666
+                                    float y = 0.30555555
                                 }
                             }
 
@@ -722,21 +807,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.75
+                                    float x = 0.9433333
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.375
                                 }
                             }
                         }
@@ -745,15 +830,15 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -766,21 +851,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.05
+                                    float x = 0.05666667
+                                    float y = 0.027777778
                                 }
                             }
 
@@ -792,22 +877,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.16
+                                    float x = 0.17
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.16
+                                    float x = 0.11333334
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.16
+                                    float x = 0.24333334
+                                    float y = 0.11111111
                                 }
                             }
 
@@ -819,22 +904,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.32
+                                    float x = 0.39
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.32
+                                    float x = 0.31666666
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.32
+                                    float x = 0.47333333
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -846,22 +931,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.48
+                                    float x = 0.64
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.48
+                                    float x = 0.5566667
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.48
+                                    float x = 0.7033333
+                                    float y = 0.1388889
                                 }
                             }
 
@@ -873,22 +958,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.7
+                                    float x = 0.83
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.7
+                                    float x = 0.76666665
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.7
+                                    float x = 0.88666666
+                                    float y = 0.041666668
                                 }
                             }
 
@@ -901,21 +986,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.85
+                                    float x = 0.9433333
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.097222224
                                 }
                             }
                         }
@@ -924,7 +1009,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -937,21 +1022,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.18
+                                    float x = 0.05666667
+                                    float y = 0.8611111
                                 }
                             }
 
@@ -963,22 +1048,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.33
+                                    float x = 0.17
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.33
+                                    float x = 0.11333334
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.33
+                                    float x = 0.24333334
+                                    float y = 0.9444444
                                 }
                             }
 
@@ -990,22 +1075,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.51
+                                    float x = 0.39
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.51
+                                    float x = 0.31666666
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.51
+                                    float x = 0.47333333
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -1017,22 +1102,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.7
+                                    float x = 0.64
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.7
+                                    float x = 0.5566667
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.7
+                                    float x = 0.7033333
+                                    float y = 0.9722222
                                 }
                             }
 
@@ -1044,22 +1129,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.85
+                                    float x = 0.83
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.85
+                                    float x = 0.76666665
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.85
+                                    float x = 0.88666666
+                                    float y = 0.875
                                 }
                             }
 
@@ -1072,21 +1157,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.9305556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 1
+                                    float x = 0.9433333
+                                    float y = 0.9305556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.9305556
                                 }
                             }
                         }
@@ -1095,15 +1180,15 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -1116,21 +1201,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.2
+                                    float x = 0.05666667
+                                    float y = 0.041666668
                                 }
                             }
 
@@ -1142,22 +1227,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.6
+                                    float x = 0.17
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.6
+                                    float x = 0.11333334
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.6
+                                    float x = 0.24333334
+                                    float y = 0.1388889
                                 }
                             }
 
@@ -1169,22 +1254,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.3
+                                    float x = 0.39
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.3
+                                    float x = 0.31666666
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.3
+                                    float x = 0.47333333
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -1196,22 +1281,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.65
+                                    float x = 0.64
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.65
+                                    float x = 0.5566667
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.65
+                                    float x = 0.7033333
+                                    float y = 0.15277778
                                 }
                             }
 
@@ -1223,22 +1308,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.25
+                                    float x = 0.83
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.25
+                                    float x = 0.76666665
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.25
+                                    float x = 0.88666666
+                                    float y = 0.027777778
                                 }
                             }
 
@@ -1251,21 +1336,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.5
+                                    float x = 0.9433333
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.11111111
                                 }
                             }
                         }
@@ -1274,7 +1359,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -1287,21 +1372,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.4
+                                    float x = 0.05666667
+                                    float y = 0.875
                                 }
                             }
 
@@ -1313,22 +1398,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.85
+                                    float x = 0.17
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.85
+                                    float x = 0.11333334
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.85
+                                    float x = 0.24333334
+                                    float y = 0.9722222
                                 }
                             }
 
@@ -1340,22 +1425,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.55
+                                    float x = 0.39
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.55
+                                    float x = 0.31666666
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.55
+                                    float x = 0.47333333
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -1367,22 +1452,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.9
+                                    float x = 0.64
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.9
+                                    float x = 0.5566667
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.9
+                                    float x = 0.7033333
+                                    float y = 0.9861111
                                 }
                             }
 
@@ -1394,22 +1479,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.5
+                                    float x = 0.83
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.5
+                                    float x = 0.76666665
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.5
+                                    float x = 0.88666666
+                                    float y = 0.8611111
                                 }
                             }
 
@@ -1422,21 +1507,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.75
+                                    float x = 0.9433333
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.9444444
                                 }
                             }
                         }
@@ -1929,9 +2014,9 @@ def Xform "Root"
                     def SpatialStruct "angularSpeed"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 35
-                        token type = "VARIANT"
-                        float value = 12
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
 
                         def SpatialStruct "curve"
                         {
@@ -2004,12 +2089,97 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    float3 orientationDirection = (0, 1, 0)
+                    float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 0.65
+                    float orientationVariation = 1
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationVelocityCurve"
+                {
+                    uint64 info:typeId = 7422361838897111774
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 26
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 18
+                        token type = "VARIANT"
+                        float value = 8
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 22
+                        token type = "VARIANT"
+                        float value = 10
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
                 }
 
                 def SpatialStruct "rotationCurve"
@@ -2021,15 +2191,15 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2042,21 +2212,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.55
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.55
+                                    float y = 0.18055555
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.55
+                                    float x = 0.05666667
+                                    float y = 0.18055555
                                 }
                             }
 
@@ -2068,22 +2238,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.2
+                                    float x = 0.17
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.2
+                                    float x = 0.11333334
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.2
+                                    float x = 0.24333334
+                                    float y = 0.097222224
                                 }
                             }
 
@@ -2095,22 +2265,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.6
+                                    float x = 0.39
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.6
+                                    float x = 0.31666666
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.6
+                                    float x = 0.47333333
+                                    float y = 0.16666667
                                 }
                             }
 
@@ -2122,22 +2292,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.25
+                                    float x = 0.64
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.25
+                                    float x = 0.5566667
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.25
+                                    float x = 0.7033333
+                                    float y = 0.083333336
                                 }
                             }
 
@@ -2149,22 +2319,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.65
+                                    float x = 0.83
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.65
+                                    float x = 0.76666665
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.65
+                                    float x = 0.88666666
+                                    float y = 0.15277778
                                 }
                             }
 
@@ -2177,21 +2347,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.3
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.3
+                                    float x = 0.9433333
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.3
+                                    float y = 0.11111111
                                 }
                             }
                         }
@@ -2200,7 +2370,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2213,21 +2383,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.75
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.75
+                                    float y = 0.375
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.75
+                                    float x = 0.05666667
+                                    float y = 0.375
                                 }
                             }
 
@@ -2239,22 +2409,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.4
+                                    float x = 0.17
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.4
+                                    float x = 0.11333334
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.4
+                                    float x = 0.24333334
+                                    float y = 0.29166666
                                 }
                             }
 
@@ -2266,22 +2436,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.85
+                                    float x = 0.39
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.85
+                                    float x = 0.31666666
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.85
+                                    float x = 0.47333333
+                                    float y = 0.3611111
                                 }
                             }
 
@@ -2293,22 +2463,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.45
+                                    float x = 0.64
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.45
+                                    float x = 0.5566667
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.45
+                                    float x = 0.7033333
+                                    float y = 0.2777778
                                 }
                             }
 
@@ -2320,22 +2490,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.8
+                                    float x = 0.83
+                                    float y = 0.3472222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.8
+                                    float x = 0.76666665
+                                    float y = 0.3472222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.8
+                                    float x = 0.88666666
+                                    float y = 0.3472222
                                 }
                             }
 
@@ -2348,21 +2518,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.55
+                                    float y = 0.30555555
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.55
+                                    float x = 0.9433333
+                                    float y = 0.30555555
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.55
+                                    float y = 0.30555555
                                 }
                             }
                         }
@@ -2371,15 +2541,15 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 225
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2392,21 +2562,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.05
+                                    float x = 0.05666667
+                                    float y = 0.125
                                 }
                             }
 
@@ -2418,22 +2588,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.16
+                                    float x = 0.17
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.16
+                                    float x = 0.11333334
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.16
+                                    float x = 0.24333334
+                                    float y = 0.041666668
                                 }
                             }
 
@@ -2445,22 +2615,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.32
+                                    float x = 0.39
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.32
+                                    float x = 0.31666666
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.32
+                                    float x = 0.47333333
+                                    float y = 0.11111111
                                 }
                             }
 
@@ -2472,22 +2642,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.48
+                                    float x = 0.64
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.48
+                                    float x = 0.5566667
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.48
+                                    float x = 0.7033333
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -2499,22 +2669,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.7
+                                    float x = 0.83
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.7
+                                    float x = 0.76666665
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.7
+                                    float x = 0.88666666
+                                    float y = 0.1388889
                                 }
                             }
 
@@ -2527,21 +2697,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.85
+                                    float x = 0.9433333
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.027777778
                                 }
                             }
                         }
@@ -2550,7 +2720,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 225
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2563,21 +2733,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.18
+                                    float x = 0.05666667
+                                    float y = 0.9583333
                                 }
                             }
 
@@ -2589,22 +2759,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.33
+                                    float x = 0.17
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.33
+                                    float x = 0.11333334
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.33
+                                    float x = 0.24333334
+                                    float y = 0.875
                                 }
                             }
 
@@ -2616,22 +2786,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.51
+                                    float x = 0.39
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.51
+                                    float x = 0.31666666
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.51
+                                    float x = 0.47333333
+                                    float y = 0.9444444
                                 }
                             }
 
@@ -2643,22 +2813,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.7
+                                    float x = 0.64
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.7
+                                    float x = 0.5566667
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.7
+                                    float x = 0.7033333
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -2670,22 +2840,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.85
+                                    float x = 0.83
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.85
+                                    float x = 0.76666665
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.85
+                                    float x = 0.88666666
+                                    float y = 0.9722222
                                 }
                             }
 
@@ -2698,21 +2868,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 1
+                                    float x = 0.9433333
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.8611111
                                 }
                             }
                         }
@@ -2721,15 +2891,15 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2742,21 +2912,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.2
+                                    float x = 0.05666667
+                                    float y = 0.15277778
                                 }
                             }
 
@@ -2768,22 +2938,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.6
+                                    float x = 0.17
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.6
+                                    float x = 0.11333334
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.6
+                                    float x = 0.24333334
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -2795,22 +2965,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.3
+                                    float x = 0.39
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.3
+                                    float x = 0.31666666
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.3
+                                    float x = 0.47333333
+                                    float y = 0.1388889
                                 }
                             }
 
@@ -2822,22 +2992,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.65
+                                    float x = 0.64
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.65
+                                    float x = 0.5566667
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.65
+                                    float x = 0.7033333
+                                    float y = 0.027777778
                                 }
                             }
 
@@ -2849,22 +3019,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.25
+                                    float x = 0.83
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.25
+                                    float x = 0.76666665
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.25
+                                    float x = 0.88666666
+                                    float y = 0.125
                                 }
                             }
 
@@ -2877,21 +3047,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.5
+                                    float x = 0.9433333
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.055555556
                                 }
                             }
                         }
@@ -2900,7 +3070,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -2913,21 +3083,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.4
+                                    float x = 0.05666667
+                                    float y = 0.9861111
                                 }
                             }
 
@@ -2939,22 +3109,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.85
+                                    float x = 0.17
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.85
+                                    float x = 0.11333334
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.85
+                                    float x = 0.24333334
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -2966,22 +3136,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.55
+                                    float x = 0.39
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.55
+                                    float x = 0.31666666
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.55
+                                    float x = 0.47333333
+                                    float y = 0.9722222
                                 }
                             }
 
@@ -2993,22 +3163,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.9
+                                    float x = 0.64
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.9
+                                    float x = 0.5566667
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.9
+                                    float x = 0.7033333
+                                    float y = 0.8611111
                                 }
                             }
 
@@ -3020,22 +3190,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.5
+                                    float x = 0.83
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.5
+                                    float x = 0.76666665
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.5
+                                    float x = 0.88666666
+                                    float y = 0.9583333
                                 }
                             }
 
@@ -3048,21 +3218,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.75
+                                    float x = 0.9433333
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.8888889
                                 }
                             }
                         }
@@ -3555,9 +3725,9 @@ def Xform "Root"
                     def SpatialStruct "angularSpeed"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 35
-                        token type = "VARIANT"
-                        float value = 12
+                        float range = 0
+                        token type = "CONSTANT"
+                        float value = 0
 
                         def SpatialStruct "curve"
                         {
@@ -3630,12 +3800,97 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    float3 orientationDirection = (0, 1, 0)
+                    float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 0.65
+                    float orientationVariation = 1
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationVelocityCurve"
+                {
+                    uint64 info:typeId = 7422361838897111774
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 26
+                        token type = "VARIANT"
+                        float value = 12
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 18
+                        token type = "VARIANT"
+                        float value = 8
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 22
+                        token type = "VARIANT"
+                        float value = 10
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 0
+                            float multiplier = 1
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+                        }
+                    }
                 }
 
                 def SpatialStruct "rotationCurve"
@@ -3647,15 +3902,15 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -3668,21 +3923,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.2
+                                    float x = 0.05666667
+                                    float y = 0.125
                                 }
                             }
 
@@ -3694,22 +3949,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.55
+                                    float x = 0.17
+                                    float y = 0.19444445
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.55
+                                    float x = 0.11333334
+                                    float y = 0.19444445
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.55
+                                    float x = 0.24333334
+                                    float y = 0.19444445
                                 }
                             }
 
@@ -3721,22 +3976,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.25
+                                    float x = 0.39
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.25
+                                    float x = 0.31666666
+                                    float y = 0.097222224
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.25
+                                    float x = 0.47333333
+                                    float y = 0.097222224
                                 }
                             }
 
@@ -3748,22 +4003,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.6
+                                    float x = 0.64
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.6
+                                    float x = 0.5566667
+                                    float y = 0.16666667
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.6
+                                    float x = 0.7033333
+                                    float y = 0.16666667
                                 }
                             }
 
@@ -3775,22 +4030,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.3
+                                    float x = 0.83
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.3
+                                    float x = 0.76666665
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.3
+                                    float x = 0.88666666
+                                    float y = 0.083333336
                                 }
                             }
 
@@ -3803,21 +4058,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.5
+                                    float x = 0.9433333
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.1388889
                                 }
                             }
                         }
@@ -3826,7 +4081,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 180
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -3839,21 +4094,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.31944445
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.31944445
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.4
+                                    float x = 0.05666667
+                                    float y = 0.31944445
                                 }
                             }
 
@@ -3865,22 +4120,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.8
+                                    float x = 0.17
+                                    float y = 0.3888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.8
+                                    float x = 0.11333334
+                                    float y = 0.3888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.8
+                                    float x = 0.24333334
+                                    float y = 0.3888889
                                 }
                             }
 
@@ -3892,22 +4147,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.45
+                                    float x = 0.39
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.45
+                                    float x = 0.31666666
+                                    float y = 0.29166666
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.45
+                                    float x = 0.47333333
+                                    float y = 0.29166666
                                 }
                             }
 
@@ -3919,22 +4174,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.85
+                                    float x = 0.64
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.85
+                                    float x = 0.5566667
+                                    float y = 0.3611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.85
+                                    float x = 0.7033333
+                                    float y = 0.3611111
                                 }
                             }
 
@@ -3946,22 +4201,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.5
+                                    float x = 0.83
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.5
+                                    float x = 0.76666665
+                                    float y = 0.2777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.5
+                                    float x = 0.88666666
+                                    float y = 0.2777778
                                 }
                             }
 
@@ -3974,21 +4229,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.33333334
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.75
+                                    float x = 0.9433333
+                                    float y = 0.33333334
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.33333334
                                 }
                             }
                         }
@@ -3997,15 +4252,15 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 270
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -4018,21 +4273,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.05
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.05
+                                    float x = 0.05666667
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -4044,22 +4299,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.16
+                                    float x = 0.17
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.16
+                                    float x = 0.11333334
+                                    float y = 0.1388889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.16
+                                    float x = 0.24333334
+                                    float y = 0.1388889
                                 }
                             }
 
@@ -4071,22 +4326,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.32
+                                    float x = 0.39
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.32
+                                    float x = 0.31666666
+                                    float y = 0.027777778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.32
+                                    float x = 0.47333333
+                                    float y = 0.027777778
                                 }
                             }
 
@@ -4098,22 +4353,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.48
+                                    float x = 0.64
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.48
+                                    float x = 0.5566667
+                                    float y = 0.11111111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.48
+                                    float x = 0.7033333
+                                    float y = 0.11111111
                                 }
                             }
 
@@ -4125,22 +4380,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.7
+                                    float x = 0.83
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.7
+                                    float x = 0.76666665
+                                    float y = 0.055555556
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.7
+                                    float x = 0.88666666
+                                    float y = 0.055555556
                                 }
                             }
 
@@ -4153,21 +4408,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.85
+                                    float x = 0.9433333
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.85
+                                    float y = 0.125
                                 }
                             }
                         }
@@ -4176,7 +4431,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 270
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -4189,21 +4444,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.18
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.18
+                                    float x = 0.05666667
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -4215,22 +4470,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.33
+                                    float x = 0.17
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.33
+                                    float x = 0.11333334
+                                    float y = 0.9722222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.33
+                                    float x = 0.24333334
+                                    float y = 0.9722222
                                 }
                             }
 
@@ -4242,22 +4497,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.51
+                                    float x = 0.39
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.51
+                                    float x = 0.31666666
+                                    float y = 0.8611111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.51
+                                    float x = 0.47333333
+                                    float y = 0.8611111
                                 }
                             }
 
@@ -4269,22 +4524,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.7
+                                    float x = 0.64
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.7
+                                    float x = 0.5566667
+                                    float y = 0.9444444
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.7
+                                    float x = 0.7033333
+                                    float y = 0.9444444
                                 }
                             }
 
@@ -4296,22 +4551,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.85
+                                    float x = 0.83
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.85
+                                    float x = 0.76666665
+                                    float y = 0.8888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.85
+                                    float x = 0.88666666
+                                    float y = 0.8888889
                                 }
                             }
 
@@ -4324,21 +4579,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 1
+                                    float x = 0.9433333
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 1
+                                    float y = 0.9583333
                                 }
                             }
                         }
@@ -4347,15 +4602,15 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 0
-                        token type = "STRIP"
+                        float range = 360
+                        token type = "VARIANT"
                         float value = 0
 
                         def SpatialStruct "curve"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -4368,21 +4623,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.2
+                                    float y = 0.083333336
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.2
+                                    float x = 0.05666667
+                                    float y = 0.083333336
                                 }
                             }
 
@@ -4394,22 +4649,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.6
+                                    float x = 0.17
+                                    float y = 0.013888889
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.6
+                                    float x = 0.11333334
+                                    float y = 0.013888889
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.6
+                                    float x = 0.24333334
+                                    float y = 0.013888889
                                 }
                             }
 
@@ -4421,22 +4676,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.3
+                                    float x = 0.39
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.3
+                                    float x = 0.31666666
+                                    float y = 0.125
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.3
+                                    float x = 0.47333333
+                                    float y = 0.125
                                 }
                             }
 
@@ -4448,22 +4703,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.65
+                                    float x = 0.64
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.65
+                                    float x = 0.5566667
+                                    float y = 0.041666668
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.65
+                                    float x = 0.7033333
+                                    float y = 0.041666668
                                 }
                             }
 
@@ -4475,22 +4730,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.25
+                                    float x = 0.83
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.25
+                                    float x = 0.76666665
+                                    float y = 0.15277778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.25
+                                    float x = 0.88666666
+                                    float y = 0.15277778
                                 }
                             }
 
@@ -4503,21 +4758,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.06944445
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.5
+                                    float x = 0.9433333
+                                    float y = 0.06944445
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.5
+                                    float y = 0.06944445
                                 }
                             }
                         }
@@ -4526,7 +4781,7 @@ def Xform "Root"
                         {
                             uint64 info:typeId = 5800504984346734226
                             uint keysCount = 6
-                            float multiplier = 75
+                            float multiplier = 360
                             token postWrapMode = "CLAMPED"
                             token preWrapMode = "CLAMPED"
 
@@ -4539,21 +4794,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.9166667
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 0
-                                    float y = 0.4
+                                    float y = 0.9166667
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.06666667
-                                    float y = 0.4
+                                    float x = 0.05666667
+                                    float y = 0.9166667
                                 }
                             }
 
@@ -4565,22 +4820,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.2
-                                    float y = 0.85
+                                    float x = 0.17
+                                    float y = 0.8472222
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.13333334
-                                    float y = 0.85
+                                    float x = 0.11333334
+                                    float y = 0.8472222
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.26666668
-                                    float y = 0.85
+                                    float x = 0.24333334
+                                    float y = 0.8472222
                                 }
                             }
 
@@ -4592,22 +4847,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.4
-                                    float y = 0.55
+                                    float x = 0.39
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.33333334
-                                    float y = 0.55
+                                    float x = 0.31666666
+                                    float y = 0.9583333
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.46666667
-                                    float y = 0.55
+                                    float x = 0.47333333
+                                    float y = 0.9583333
                                 }
                             }
 
@@ -4619,22 +4874,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6
-                                    float y = 0.9
+                                    float x = 0.64
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.53333336
-                                    float y = 0.9
+                                    float x = 0.5566667
+                                    float y = 0.875
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.6666667
-                                    float y = 0.9
+                                    float x = 0.7033333
+                                    float y = 0.875
                                 }
                             }
 
@@ -4646,22 +4901,22 @@ def Xform "Root"
                                 def SpatialStruct "value"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8
-                                    float y = 0.5
+                                    float x = 0.83
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.73333335
-                                    float y = 0.5
+                                    float x = 0.76666665
+                                    float y = 0.9861111
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.8666667
-                                    float y = 0.5
+                                    float x = 0.88666666
+                                    float y = 0.9861111
                                 }
                             }
 
@@ -4674,21 +4929,21 @@ def Xform "Root"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.9027778
                                 }
 
                                 def SpatialStruct "left"
                                 {
                                     uint64 info:typeId = 8026404162961861934
-                                    float x = 0.93333334
-                                    float y = 0.75
+                                    float x = 0.9433333
+                                    float y = 0.9027778
                                 }
 
                                 def SpatialStruct "right"
                                 {
                                     uint64 info:typeId = 8026404162961861934
                                     float x = 1
-                                    float y = 0.75
+                                    float y = 0.9027778
                                 }
                             }
                         }
