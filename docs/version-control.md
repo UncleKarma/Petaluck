@@ -24,6 +24,10 @@ git show 5879919 --stat
 
 每项用户请求单独提交，提交说明包含实际行为变化和验证结果。保留当前改动记录；修改开始前检查工作区，不混入用户并行修改，不改写既有提交。较大里程碑创建独立 tag；可安装 APK 单独保存并记录对应 commit/tag 和 SHA-256。
 
+### 2026-11-13：花瓣雨自然收尾与旋转调整
+
+1.0.12 / code13：三轴角速度增加25%，出生方向偏向尖端朝上/朝侧；10秒停发射，15秒清理，每片5秒并保留末尾1秒淡出，BGM自然结束不提前清理。118单测、构建、实验API/SpatialUI及APK内包核验通过，已安装。设备初始化遇到未返回唯一蒙皮网格，完整原生播放仍阻塞，详见`docs/ending-petal-rain-v5.md`。APK归档`backups/petal-rain-drain-v5-2026-11-13/RoseTear-1.0.12.apk`，SHA-256 `dd0b3c422fe372af9325effe35ea25590b2220d41cac9ee28087c90529b2672a`。
+
 ### 2026-11-13：花瓣雨取消朝向相机
 
 1.0.10 / code11：原生Editor改FREE朝向、随机XYZ曲线翻转/摇摆，关闭旧匀速旋转并保留双面Unlit及同花色联动；重打bundle。111单测、构建/静态检查、Editor正侧面和参数检查通过；真机确认预加载、播放及自然结束清理。APK另存 `backups/petal-rain-rotation-v3-2026-11-13/RoseTear-1.0.10.apk`，SHA-256 `ddd531f4f33e89562c8f04dc55eda21c001542c9a2cc518edee9f7e6e9182cc7`。详情 `docs/ending-petal-rain-v3.md`。

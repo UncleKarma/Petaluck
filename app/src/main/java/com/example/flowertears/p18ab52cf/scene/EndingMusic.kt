@@ -17,6 +17,7 @@ internal class EndingMusic(
     context: Context,
     onStarted: (Long) -> Unit = {},
     onStopped: () -> Unit = {},
+    onFinished: () -> Unit = onStopped,
 ) : AutoCloseable {
     private val resources = context.applicationContext.resources
     private val handler = Handler(Looper.getMainLooper())
@@ -35,6 +36,7 @@ internal class EndingMusic(
         stopOutput = { track?.stop() },
         onStarted = onStarted,
         onStopped = onStopped,
+        onFinished = onFinished,
     )
     private val pulse = object : Runnable {
         override fun run() {

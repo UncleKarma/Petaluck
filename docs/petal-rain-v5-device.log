@@ -1,0 +1,23 @@
+# Filtered FlowerTears startup excerpt; device PB311XHGKC150135G, APK 1.0.12/code13.
+# No PetalRainReady/Started observed during this attempt.
+11-13 10:32:36.963 30876 30876 I FlowerTears: SpatialView first frame received; starting initial round
+11-13 10:32:37.868 30876 30876 E FlowerTears: Round assembly failed session=1 seed=-6547250050377827499 stage=load stem
+11-13 10:32:37.868 30876 30876 E FlowerTears: java.lang.IllegalStateException: Stem must have exactly one skinned mesh
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at com.example.flowertears.p18ab52cf.scene.RoseScene.newRound(RoseScene.kt:213)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at com.example.flowertears.p18ab52cf.scene.RoseScene.access$newRound(RoseScene.kt:33)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at com.example.flowertears.p18ab52cf.scene.RoseScene$newRound$1.invokeSuspend(Unknown Source:14)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:101)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at androidx.compose.ui.platform.AndroidUiDispatcher.performTrampolineDispatch(AndroidUiDispatcher.android.kt:79)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at androidx.compose.ui.platform.AndroidUiDispatcher.access$performTrampolineDispatch(AndroidUiDispatcher.android.kt:41)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at androidx.compose.ui.platform.AndroidUiDispatcher$dispatchCallback$1.run(AndroidUiDispatcher.android.kt:57)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at android.os.Handler.handleCallback(Handler.java:995)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at android.os.Handler.dispatchMessage(Handler.java:103)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at android.os.Looper.loopOnce(Looper.java:284)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at android.os.Looper.loop(Looper.java:384)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at android.app.ActivityThread.main(ActivityThread.java:10432)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at java.lang.reflect.Method.invoke(Native Method)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:621)
+11-13 10:32:37.868 30876 30876 E FlowerTears: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:946)
+# CLI query after restart:
+# Error: No accessibility root matched package=com.example.flowertears.p18ab52cf, windowId=-1 within 2000 ms.

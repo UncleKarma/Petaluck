@@ -31,6 +31,7 @@ def Xform "Root"
 
             def SpatialStruct "main"
             {
+                token cullMode = "ALWAYS_SIMULATE"
                 token descriptionSpace = "LOCAL"
                 bool enabled = 1
                 uint64 info:typeId = 14317711541678688046
@@ -126,8 +127,8 @@ def Xform "Root"
                     def SpatialStruct "startRotation"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -212,9 +213,9 @@ def Xform "Root"
                     def SpatialStruct "emissionDuration"
                     {
                         uint64 info:typeId = 7312890686305071880
-                        float range = 14.5
+                        float range = 10
                         token type = "CONSTANT"
-                        float value = 14.5
+                        float value = 10
                     }
 
                     def SpatialStruct "idleDuration"
@@ -380,7 +381,7 @@ def Xform "Root"
                     uint64 info:typeId = 14295403941869760597
                     float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 1
+                    float orientationVariation = 0.55
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
@@ -395,9 +396,9 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 26
+                        float range = 32.5
                         token type = "VARIANT"
-                        float value = 12
+                        float value = 15
 
                         def SpatialStruct "curve"
                         {
@@ -421,9 +422,9 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 18
+                        float range = 22.5
                         token type = "VARIANT"
-                        float value = 8
+                        float value = 10
 
                         def SpatialStruct "curve"
                         {
@@ -447,9 +448,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 22
+                        float range = 27.5
                         token type = "VARIANT"
-                        float value = 10
+                        float value = 12.5
 
                         def SpatialStruct "curve"
                         {
@@ -480,8 +481,8 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -830,8 +831,8 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -1180,9 +1181,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
+                        float range = 220
                         token type = "VARIANT"
-                        float value = 0
+                        float value = 100
 
                         def SpatialStruct "curve"
                         {
@@ -1742,6 +1743,7 @@ def Xform "Root"
 
             def SpatialStruct "main"
             {
+                token cullMode = "ALWAYS_SIMULATE"
                 token descriptionSpace = "LOCAL"
                 bool enabled = 1
                 uint64 info:typeId = 14317711541678688046
@@ -1837,8 +1839,8 @@ def Xform "Root"
                     def SpatialStruct "startRotation"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -1889,9 +1891,9 @@ def Xform "Root"
                     def SpatialStruct "lifetime"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 6
+                        float range = 5
                         token type = "CONSTANT"
-                        float value = 6
+                        float value = 5
 
                         def SpatialStruct "curve"
                         {
@@ -1923,9 +1925,9 @@ def Xform "Root"
                     def SpatialStruct "emissionDuration"
                     {
                         uint64 info:typeId = 7312890686305071880
-                        float range = 14.5
+                        float range = 10
                         token type = "CONSTANT"
-                        float value = 14.5
+                        float value = 10
                     }
 
                     def SpatialStruct "idleDuration"
@@ -2091,7 +2093,7 @@ def Xform "Root"
                     uint64 info:typeId = 14295403941869760597
                     float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 1
+                    float orientationVariation = 0.55
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
@@ -2106,9 +2108,9 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 26
+                        float range = 32.5
                         token type = "VARIANT"
-                        float value = 12
+                        float value = 15
 
                         def SpatialStruct "curve"
                         {
@@ -2132,9 +2134,9 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 18
+                        float range = 22.5
                         token type = "VARIANT"
-                        float value = 8
+                        float value = 10
 
                         def SpatialStruct "curve"
                         {
@@ -2158,9 +2160,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 22
+                        float range = 27.5
                         token type = "VARIANT"
-                        float value = 10
+                        float value = 12.5
 
                         def SpatialStruct "curve"
                         {
@@ -2191,8 +2193,8 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -2541,8 +2543,8 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -2891,9 +2893,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
+                        float range = 220
                         token type = "VARIANT"
-                        float value = 0
+                        float value = 100
 
                         def SpatialStruct "curve"
                         {
@@ -3282,14 +3284,14 @@ def Xform "Root"
                             def SpatialStruct "alphaKeys1"
                             {
                                 uint64 info:typeId = 15367478023624661900
-                                float time = 0.16666667
+                                float time = 0.2
                                 float value = 1
                             }
 
                             def SpatialStruct "alphaKeys2"
                             {
                                 uint64 info:typeId = 15367478023624661900
-                                float time = 0.8333333
+                                float time = 0.8
                                 float value = 1
                             }
 
@@ -3453,6 +3455,7 @@ def Xform "Root"
 
             def SpatialStruct "main"
             {
+                token cullMode = "ALWAYS_SIMULATE"
                 token descriptionSpace = "LOCAL"
                 bool enabled = 1
                 uint64 info:typeId = 14317711541678688046
@@ -3548,8 +3551,8 @@ def Xform "Root"
                     def SpatialStruct "startRotation"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -3600,9 +3603,9 @@ def Xform "Root"
                     def SpatialStruct "lifetime"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 7
+                        float range = 5
                         token type = "CONSTANT"
-                        float value = 7
+                        float value = 5
 
                         def SpatialStruct "curve"
                         {
@@ -3634,9 +3637,9 @@ def Xform "Root"
                     def SpatialStruct "emissionDuration"
                     {
                         uint64 info:typeId = 7312890686305071880
-                        float range = 14.5
+                        float range = 10
                         token type = "CONSTANT"
-                        float value = 14.5
+                        float value = 10
                     }
 
                     def SpatialStruct "idleDuration"
@@ -3802,7 +3805,7 @@ def Xform "Root"
                     uint64 info:typeId = 14295403941869760597
                     float3 orientationDirection = (0, 0, 1)
                     token orientationMode = "FREE"
-                    float orientationVariation = 1
+                    float orientationVariation = 0.55
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
@@ -3817,9 +3820,9 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 26
+                        float range = 32.5
                         token type = "VARIANT"
-                        float value = 12
+                        float value = 15
 
                         def SpatialStruct "curve"
                         {
@@ -3843,9 +3846,9 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 18
+                        float range = 22.5
                         token type = "VARIANT"
-                        float value = 8
+                        float value = 10
 
                         def SpatialStruct "curve"
                         {
@@ -3869,9 +3872,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 22
+                        float range = 27.5
                         token type = "VARIANT"
-                        float value = 10
+                        float value = 12.5
 
                         def SpatialStruct "curve"
                         {
@@ -3902,8 +3905,8 @@ def Xform "Root"
                     def SpatialStruct "x"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -4252,8 +4255,8 @@ def Xform "Root"
                     def SpatialStruct "y"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
-                        token type = "VARIANT"
+                        float range = 0
+                        token type = "CONSTANT"
                         float value = 0
 
                         def SpatialStruct "curve"
@@ -4602,9 +4605,9 @@ def Xform "Root"
                     def SpatialStruct "z"
                     {
                         uint64 info:typeId = 8541522365040381580
-                        float range = 360
+                        float range = 220
                         token type = "VARIANT"
-                        float value = 0
+                        float value = 100
 
                         def SpatialStruct "curve"
                         {
@@ -4993,14 +4996,14 @@ def Xform "Root"
                             def SpatialStruct "alphaKeys1"
                             {
                                 uint64 info:typeId = 15367478023624661900
-                                float time = 0.14285715
+                                float time = 0.2
                                 float value = 1
                             }
 
                             def SpatialStruct "alphaKeys2"
                             {
                                 uint64 info:typeId = 15367478023624661900
-                                float time = 0.85714287
+                                float time = 0.8
                                 float value = 1
                             }
 

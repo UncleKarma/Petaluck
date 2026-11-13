@@ -2,7 +2,13 @@
 
 日期：2026-11-13。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## 自由朝向花瓣雨（当前，ending-petal-rain-v3）
+## 花瓣雨自然收尾（当前，drain-tail-v5）
+
+- 1.0.12 / code13：旋转统一加快25%，出生方向偏向尖端朝上/朝侧；每片5秒，10秒停止发射、15秒清理，14.5秒音乐自然结束保留尾段。
+- 118单测与开发/测试APK构建通过；实验API、SpatialUI、包CRC/场景键/未压缩字节核验通过；原生Editor正面/斜侧面已查看。
+- 已安装；设备唤醒后花朵装配报`Stem must have exactly one skinned mesh`，重启后公开操作节点不可用，未完成本版原生播放验证。该花茎资产/加载断言未在本轮改动，原因待定位。详见 [ending-petal-rain-v5.md](ending-petal-rain-v5.md)。
+
+## 自由朝向花瓣雨（历史，ending-petal-rain-v3）
 
 - APK1.0.10 / code11：Editor粒子FREE朝向、双面Unlit、随机XYZ曲线摇摆翻转，替代camera-facing和单轴匀速旋转；已重新打包并安装。
 - Editor暂停同批粒子做正面/侧面检查，看到不同倾斜与细边；参数及保存文件检查通过。111单测、构建、实验API、SpatialUI、A11Y及APK包完整性检查通过。

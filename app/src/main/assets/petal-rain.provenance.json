@@ -1,19 +1,24 @@
 {
   "schemaVersion": "rosetear.native-editor-pack/v1",
   "managed": false,
-  "generatedAt": "2026-11-13T02:08:15.508842+00:00",
+  "generatedAt": "2026-11-13T02:31:23.561937+00:00",
+  "revision": "drain-tail-v5",
   "sourceTool": "native Editor pack_project",
   "packResult": {
-    "success": true,
+    "bundlePath": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.bundle",
+    "durationMs": 3879,
     "sceneCount": 1,
-    "durationMs": 3533
+    "success": true,
+    "warnings": [
+      "Deprecated pack_project parameter mode is ignored for bundle packing."
+    ]
   },
   "bundle": {
     "path": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.bundle",
-    "sha256": "f5647755b773dbd6b388e717ae30c6140eb1e78fd4e8c563699c46b1d4348a4a",
+    "sha256": "9e698b82efa4f7da8a63001a0050f4f3721e68191c05a286ed437a1864c5ed40",
     "scenesPath": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.scenes.json",
     "scenesSha256": "99e04949991dab16494eb9059f7ae2fec88c2049e83c79141d7213ae595a8b40",
-    "sourceSceneSha256": "ad10614b71442dbdbae959d2a57798964b4f7ee2d763c1f2c44c578c12121bac",
+    "sourceSceneSha256": "5c271dd1670994f5c01604eaab98aeaa882b96e85a293da0e6d294e30a0d5942",
     "runtimeSceneKey": "Scenes/PetalRain"
   },
   "verification": {
@@ -23,8 +28,9 @@
   },
   "notes": [
     "Caller-authored receipt for native packaging, not a managed workflow gate.",
-    "CLI wrapper declined a user-owned GUI session mode change; native pack used the existing session.",
+    "Native pack used the existing user-owned GUI session.",
     "Manifest exported by export_bundle_scene_manifest; runtime key added from packed AssetInfo.",
-    "Saved USDA inspected; script-based scene reopen was rejected by Editor security policy."
+    "Saved USDA and live Editor readback inspected; script-based scene reopen was rejected by Editor security policy.",
+    "Runtime owns emission cutoff at 10s and owner cleanup at 15s; authored loop remains enabled."
   ]
 }

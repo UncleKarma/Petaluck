@@ -1,0 +1,467 @@
+{
+  "data": {
+    "entities": [
+      {
+        "entity_path": "/Root/PetalRain5",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 5,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": 0,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.emissionDuration",
+            "value": 10,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.loop",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.emission.emitting",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.cullMode",
+            "value": "ALWAYS_SIMULATE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.20000000298023224,
+                  "value": 1
+                },
+                {
+                  "time": 0.800000011920929,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 0.550000011920929,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "y": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 100,
+                    "to": 220
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 15,
+                    "to": 32.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 10,
+                    "to": 22.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 12.5,
+                    "to": 27.5
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain6",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 5,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": 0,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.emissionDuration",
+            "value": 10,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.loop",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.emission.emitting",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.cullMode",
+            "value": "ALWAYS_SIMULATE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.20000000298023224,
+                  "value": 1
+                },
+                {
+                  "time": 0.800000011920929,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 0.550000011920929,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "y": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 100,
+                    "to": 220
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 15,
+                    "to": 32.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 10,
+                    "to": 22.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 12.5,
+                    "to": 27.5
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain7",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 5,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": 0,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.emissionDuration",
+            "value": 10,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.emission.loop",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.emission.emitting",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.cullMode",
+            "value": "ALWAYS_SIMULATE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.20000000298023224,
+                  "value": 1
+                },
+                {
+                  "time": 0.800000011920929,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "FREE",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationDirection",
+            "value": {
+              "x": 0,
+              "y": 0,
+              "z": 1
+            },
+            "value_type": "float3"
+          },
+          {
+            "name": "main.renderer.orientationVariation",
+            "value": 0.550000011920929,
+            "value_type": "float"
+          },
+          {
+            "name": "main.rotationCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "y": {
+                  "value": 0,
+                  "value_type": "constant_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 100,
+                    "to": 220
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          },
+          {
+            "name": "main.rotationVelocityCurve",
+            "value": {
+              "axes": {
+                "x": {
+                  "value": {
+                    "from": 15,
+                    "to": 32.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "y": {
+                  "value": {
+                    "from": 10,
+                    "to": 22.5
+                  },
+                  "value_type": "two_constants_float"
+                },
+                "z": {
+                  "value": {
+                    "from": 12.5,
+                    "to": 27.5
+                  },
+                  "value_type": "two_constants_float"
+                }
+              },
+              "enabled": true,
+              "separate_axes": true
+            },
+            "value_type": "axis_float_curve"
+          }
+        ]
+      }
+    ]
+  },
+  "message": "",
+  "status": "ok"
+}

@@ -1,6 +1,8 @@
 package com.example.flowertears.p18ab52cf.scene
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.example.flowertears.p18ab52cf.domain.RoundConfig
 import com.example.flowertears.p18ab52cf.domain.RoseLayout
@@ -34,6 +36,29 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
     private var epoch = 0L
     private var loading = false
     private var closed = false
+    private val handler = Handler(Looper.getMainLooper())
+    private val playback = PetalRainSchedule(
+        schedule = { delay, action -> handler.postDelayed({ action() }, delay); Unit },
+        cancelScheduled = { handler.removeCallbacksAndMessages(null) },
+        onDrain = { roundId ->
+            if (!closed && preparedRound == roundId) {
+                try {
+                    // Keep the owners alive: already-born petals finish their five-second life.
+                    particles.forEach { it.isEmitting = false }
+                    Log.i(TAG, "PetalRainEmissionEnded round=$roundId elapsedMs=10000")
+                } catch (e: Exception) {
+                    stop()
+                    Log.e(TAG, "Petal rain emission stop failed", e)
+                }
+            }
+        },
+        onFinished = { roundId ->
+            if (preparedRound == roundId) {
+                Log.i(TAG, "PetalRainTailFinished round=$roundId elapsedMs=15000")
+                stop()
+            }
+        },
+    )
 
     suspend fun prepare(roundId: Long, config: RoundConfig) = loadingMutex.withLock {
         if (closed || preparedRound == roundId) return@withLock
@@ -112,7 +137,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     particles = controls
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=random-birth-v4 textures=$paths")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=drain-tail-v5 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }
@@ -134,6 +159,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
             // Direct SpatialView child: independent of RoseAnchor entrance, bend and teardown.
             content.addEntity(owner)
             owner.enabled = true
+            playback.start(roundId)
             Log.i(TAG, "PetalRainStarted round=$roundId")
         } catch (e: Exception) {
             stop()
@@ -143,6 +169,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
 
     fun stop() {
         epoch++
+        playback.cancel()
         val previous = instance
         val previousRound = preparedRound
         instance = null

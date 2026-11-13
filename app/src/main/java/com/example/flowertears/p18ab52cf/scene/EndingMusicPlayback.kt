@@ -7,6 +7,7 @@ internal class EndingMusicPlayback(
     private val stopOutput: () -> Unit,
     private val onStarted: (Long) -> Unit = {},
     private val onStopped: () -> Unit = {},
+    private val onFinished: () -> Unit = onStopped,
 ) {
     var active = false; private set
     private var lastRound: Long? = null
@@ -35,7 +36,11 @@ internal class EndingMusicPlayback(
 
     fun tick(nowMs: Long, ended: Boolean) {
         if (!active) return
-        if (ended || nowMs >= deadlineMs) { stop(); return }
+        if (ended || nowMs >= deadlineMs) {
+            // A natural end may leave an independently timed visual tail alive.
+            stop(naturalEnd = fadeStartMs == null)
+            return
+        }
         fadeStartMs?.let { start ->
             val gain = (1f - (nowMs - start).coerceAtLeast(0L) / FADE_MS.toFloat()).coerceIn(0f, 1f)
             setGain(gain)
@@ -43,19 +48,19 @@ internal class EndingMusicPlayback(
         }
     }
 
-    fun stop() {
+    fun stop(naturalEnd: Boolean = false) {
         val wasActive = active
         active = false
         fadeStartMs = null
         if (wasActive) {
-            try { stopOutput() } finally { stopVisual() }
+            try { stopOutput() } finally { stopVisual(naturalEnd) }
         }
     }
 
-    private fun stopVisual() {
+    private fun stopVisual(naturalEnd: Boolean = false) {
         if (!visualActive) return
         visualActive = false
-        onStopped()
+        if (naturalEnd) onFinished() else onStopped()
     }
 
     companion object { const val FADE_MS = 1000L }

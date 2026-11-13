@@ -50,6 +50,7 @@ class RoseScene(context: Context) {
             if(!disposed && !appPaused && roundId==generation)endingPetalRain.start(roundId,content)
         },
         onStopped = { endingPetalRain.stop() },
+        onFinished = { /* Rain owns its 15 s deadline, beyond the 14.5 s audio clip. */ },
     )
     private val petalSampler = MaterialTextureSampler().apply {sWrapMode=SamplerWrapMode.CLAMP_TO_EDGE;tWrapMode=SamplerWrapMode.CLAMP_TO_EDGE}
     private var root: Entity? = null
@@ -167,6 +168,7 @@ class RoseScene(context: Context) {
         // Reject stale/duplicate clicks after loading or the next round has begun.
         if(ui.roundId!=roundId || (ui.phase!=Phase.Completed && ui.phase!=Phase.Error))return
         if(disposed || busy || appPaused)return
+        endingPetalRain.stop()
         endingMusic.replay()
         newRound()
     }
@@ -569,6 +571,7 @@ class RoseScene(context: Context) {
         appPaused=true
         cancelInput()
         petalAudio.stop()
+        endingPetalRain.stop()
         endingMusic.stop()
         applyBend(stemMotion.reset())
         appPaused=true;session?.pause()

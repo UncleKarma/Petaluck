@@ -11,6 +11,44 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class EndingMusicTest {
+    @Test fun naturalCompletionAndWatchdogLeaveTheRainTailAlive() {
+        for (ended in listOf(true, false)) {
+            val events = mutableListOf<String>()
+            val player = EndingMusicPlayback(
+                {}, {}, { events += "audioStop" }, {},
+                { events += "rainStop" }, { events += "naturalEnd" },
+            )
+            player.blessing(1, 1000, 14500)
+            player.tick(15499, false)
+            assertTrue(player.active)
+            player.tick(if (ended) 15500 else 15750, ended)
+            assertFalse(player.active)
+            assertEquals(listOf("audioStop", "naturalEnd"), events)
+            player.stop()
+            player.tick(17000, true)
+            assertEquals(2, events.size)
+        }
+    }
+
+    @Test fun replayAndPauseUseImmediateStopWithoutNaturalCompletionCallback() {
+        for (mode in listOf("replay", "pause", "endDuringFade")) {
+            val events = mutableListOf<String>()
+            val player = EndingMusicPlayback(
+                {}, {}, { events += "audioStop" }, {},
+                { events += "rainStop" }, { events += "naturalEnd" },
+            )
+            player.blessing(1, 0, 14500)
+            if (mode == "pause") player.stop() else {
+                player.replay(14000)
+                assertEquals(listOf("rainStop"), events)
+                player.tick(if (mode == "replay") 15000 else 14500, mode == "endDuringFade")
+            }
+            assertEquals(1, events.count { it == "rainStop" })
+            assertEquals(1, events.count { it == "audioStop" })
+            assertFalse(events.contains("naturalEnd"))
+        }
+    }
+
     @Test fun petalsStartAfterSuccessfulNativePlayAndStopImmediatelyOnReplay() {
         val events = mutableListOf<String>()
         val player = EndingMusicPlayback(

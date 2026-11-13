@@ -5,20 +5,20 @@
 
 ## 交付
 
-- `Build/petal-rain.bundle`：15,204 bytes（2026-11-13 随机初始角度v4）。
+- `Build/petal-rain.bundle`：15,184 bytes（2026-11-13 drain-tail-v5）。
 - `Build/petal-rain.scenes.json`：Editor 导出的场景清单。
 - `Build/petal-rain.provenance.json`：直接打包记录。
 - 加载场景键：`Scenes/PetalRain`，以 sidecar 为准。
-- SHA-256：`f5647755b773dbd6b388e717ae30c6140eb1e78fd4e8c563699c46b1d4348a4a`。
+- SHA-256：`9e698b82efa4f7da8a63001a0050f4f3721e68191c05a286ed437a1864c5ed40`。
 
 ## 效果
 
 三个自动播放、循环发射的 ParticleComponent：`PetalRain5/6/7`。
 各 4 片/秒，总计 12 片/秒；各最多 32 片，总上限 96。
-寿命分别为 5/6/7 秒，alpha 各淡入 1 秒、淡出 1 秒。
+寿命均为5秒，alpha淡入1秒、保持3秒、淡出1秒。Android运行时在10秒停止发射，15秒销毁存活实例；音乐自然结束不提前销毁。重玩、暂停立即停止。Editor资源保留loop=true，单独预览会循环，10/15秒时序由应用拥有。
 发射器位置 `(0, 0.33, 0)` 米，BOX 区域 `0.50 × 0.001 × 0.28` 米。
 初速 0.075–0.09 米/秒、向下发射、2° 随机偏角、弱噪声漂移。
-15–25 mm 花瓣，FREE方向(0,0,1)、variation 1，XYZ初始角均为0–360°随机常量，角速度X12–26/Y8–18/Z10–22°/秒；旧单轴angularSpeed模块关闭并归零。无碰撞、无交互。
+15–25 mm 花瓣，FREE方向(0,0,1)、variation .55，初始角X/Y为0、Z为100–220°随机常量，偏向尖端朝上/朝侧；角速度X15–32.5/Y10–22.5/Z12.5–27.5°/秒，较v4统一增加25%。旧单轴angularSpeed模块关闭并归零。无碰撞、无交互。
 轻量四边形粒子（primitive枚举BILLBOARD，orientationMode为FREE）、双面Unlit、透明混合，白色材质乘子；不追随camera。
 
 本次是粉色简易效果，使用新绘制的透明矢量花瓣精灵，源文件 `petal.svg`。
@@ -31,7 +31,7 @@ Android 1.0.9 在加载此包后，将三个发射器的贴图替换为本轮月
 
 ## 验证与限制
 
-当前v4使用原生`pack_project`在现有GUI会话打包，manifest由Editor导出，runtimeSceneKey从包内AssetInfo验证补充；provenance是调用方记录的native receipt，不是CLI/托管gate。保存USDA已检查；脚本重开场景被Editor安全策略拒绝，未声称重载验证。`rotation-v4-front.png`与`rotation-v4-side.png`均为已检查的最终设置截图，参数见`docs/petal-rain-v4-editor-readback.json`。111单测与构建通过，1.0.11设备日志确认3组同花色粒子准备完成，连续姿态仍待佩戴验证。下列打包gate说明仅适用于早期版本。
+当前v5使用原生`pack_project`在现有GUI会话打包，manifest由Editor导出，runtimeSceneKey从包内AssetInfo验证补充；provenance是调用方记录的native receipt，不是CLI/托管gate。保存USDA已检查；脚本重开场景被Editor安全策略拒绝，未声称重载验证。`rotation-v5-front.png`与`rotation-v5-oblique.png`已检查，参数见`docs/petal-rain-v5-editor-readback.json`。118单测与构建通过，1.0.12已安装，实机限制见`docs/ending-petal-rain-v5.md`。下列打包gate说明仅适用于早期版本。
 
 - `preview-front.png` 和 `preview-angle.png` 是 Editor 实际视口截图：检查了正面分布、透明轮廓及斜侧面的深度分布；包含 Editor 辅助线。
 - Editor 保存成功；正式 pack 完成；归档可读，含 scene、texture 数据，scene 数据中含 ParticleComponent 及三个发射器名称。
