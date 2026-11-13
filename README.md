@@ -4,7 +4,7 @@
 
 应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「RoseTear」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
 
-当前构建版本为 **1.0.15（versionCode 16）**：Direct/Gaze捏合摘下花瓣后，拖拽同时跟随手部旋转；松手保留最终姿态接续原下落淡出。保留第1项完成面板透明缓冲门控和第2项文字下移。126项单测、开发/测试APK构建和静态检查通过；当前未连接头显，本版尚未安装及实机验证。详见 [拖拽旋转记录](docs/held-rotation-v1.md)、[位置调整记录](docs/panel-offset-v1.md)、[闪帧修订记录](docs/completion-buffer-v1.md)。版本记录见 [docs/version-control.md](docs/version-control.md)。
+当前构建版本为 **1.0.16（versionCode 17）**：针对实机反馈的部分旋转轴反向，移除设备旋转输入中的额外X/Z反转，保留Direct/Gaze相对旋转、位置拖拽及松手下落淡出。126项既有单测、开发/测试APK构建和静态检查通过，已安装并启动；修订后的三轴跟手方向仍待头显复测。详见 [旋转轴向修订](docs/held-rotation-v2.md)、[位置调整记录](docs/panel-offset-v1.md)、[闪帧修订记录](docs/completion-buffer-v1.md)。版本记录见 [docs/version-control.md](docs/version-control.md)。
 
 冷启动在本地装配 17–30 片独立 3D 花瓣，从八种花色里抽取第一朵。重玩避开本次打开应用后最近三朵成功生成的花色。向任意方向拉离捏住时的位置达到 4 cm 后只结算一次，花瓣继续跟手，松手后飘落淡出。两种捏合都用位移驱动同一条三骨骼花茎。摘下时花茎从受力姿态开始来回轻摆，约 0.64 秒后回到原位。最后一瓣松手后显示祝福和重玩按钮。
 

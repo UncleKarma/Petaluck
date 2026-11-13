@@ -405,9 +405,11 @@ class RoseScene(context: Context) {
             (p.x==0f && p.y==0f && p.z==0f))return@runCatching null
         val raw=pose.rawRotation.toQuaternion()
         if(!raw.isFinite())return@runCatching null
-        // Both pinch kinds expose device rotation in view coordinates. SDK maps (-x,y,-z,w).
-        // RoseAnchor has translation/uniform scale only, so its rotational axes equal the scene.
-        content.convertRotation(raw,ViewCoordinateSpace.Global,content.localSpatialCoordinateSpace)
+        // Device orientation is consumed independently of the view-position conversion.
+        // convertRotation negates X/Z; remove it following the headset report of reversed axes.
+        // RoseAnchor has translation/uniform scale only; retain the device quaternion axes.
+        gazeTrace {"handRotation revision=device-rotation-v2 pointer=${e.pointerId.value} kind=${e.kind} raw=$raw"}
+        raw.normalize()
     }.getOrNull()
     private fun applyHeldRotation() {
         val s=session ?: return
@@ -415,7 +417,7 @@ class RoseScene(context: Context) {
         if(s.state(p.spec.id)!=PetalState.DetachedHeld)return
         val rotation=heldPetalRotation.rotation ?: return
         p.owner.components[TransformComponent::class.java]!!.setQuaternion(rotation)
-        gazeTrace {"rotation revision=held-rotation-v1 petal=${p.spec.id} remote=${remotePetalDrag.active} rotation=$rotation"}
+        gazeTrace {"rotation revision=device-rotation-v2 petal=${p.spec.id} remote=${remotePetalDrag.active} rotation=$rotation"}
     }
     private fun pointerPosition(e:SpatialPointerInfo,source:PinchDragTracker.PositionSource):Vec? {
         val direct=source==PinchDragTracker.PositionSource.LocalPointer
