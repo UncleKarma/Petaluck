@@ -1,12 +1,12 @@
 {
   "schemaVersion": "spatialcraft.editor-pack-provenance/v1",
   "managed": false,
-  "generatedAt": "2026-11-12T08:47:44.420Z",
+  "generatedAt": "2026-11-13T01:41:05.366Z",
   "bundle": {
     "path": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.bundle",
     "digest": {
       "algorithm": "sha256",
-      "value": "b06853e011a307471dde8133fd0de386e226b07c9cf5a2bf129b481599fc17e9"
+      "value": "7af798983236ca4cbe2d0bee0c46f34696f90bde2c1d36f83746e23e78b45ec5"
     },
     "scenesPath": "/Volumes/ZCQThunderbolt4SSD/MyProjects/VibeCodingApp/art/PetalRain/Build/petal-rain.scenes.json",
     "scenesDigest": {

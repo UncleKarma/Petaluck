@@ -1,0 +1,19 @@
+11-13 09:44:48.320 25056 25056 I FlowerTears: PetalRainStarted round=1
+11-13 09:44:48.320 25056 25056 I FlowerTears: EndingMusicBlessing round=1
+11-13 09:45:02.828 25056 25056 I FlowerTears: PetalRainStopped round=1 instanceDestroyed=true
+11-13 09:45:02.828 25056 25056 I FlowerTears: EndingMusicStopped
+11-13 09:45:28.437 25056 25056 I FlowerTears: Round assembled id=2 seed=-1938380248717261664 N=17 color=0 layout=interleaved-petals-v6; entering
+11-13 09:45:29.363 25056 25056 I FlowerTears: PetalRainReady round=2 color=0 emitters=3 y=0.33 revision=free-orientation-v3 textures=[rose/petal-0-outer.png, rose/petal-0-middle.png, rose/petal-0-inner.png]
+11-13 09:46:24.087 25056 25056 I FlowerTears: PetalRainStarted round=2
+11-13 09:46:24.087 25056 25056 I FlowerTears: EndingMusicBlessing round=2
+11-13 09:46:38.605 25056 25056 I FlowerTears: PetalRainStopped round=2 instanceDestroyed=true
+11-13 09:46:38.605 25056 25056 I FlowerTears: EndingMusicStopped
+11-13 09:47:29.267 25056 25056 I FlowerTears: Round assembled id=3 seed=-369339172741902279 N=20 color=6 layout=interleaved-petals-v6; entering
+11-13 09:47:30.183 25056 25056 I FlowerTears: PetalRainReady round=3 color=6 emitters=3 y=0.33 revision=free-orientation-v3 textures=[rose/petal-6-outer.png, rose/petal-6-middle.png, rose/petal-6-inner.png]
+11-13 09:48:42.732 25056 25056 I FlowerTears: PetalRainStarted round=3
+11-13 09:48:42.732 25056 25056 I FlowerTears: EndingMusicBlessing round=3
+11-13 09:48:45.958 25056 25056 I FlowerTears: PetalRainStopped round=3 instanceDestroyed=true
+11-13 09:48:45.958 25056 25056 I FlowerTears: EndingMusicFadeOut durationMs=1000
+11-13 09:48:46.435 25056 25056 I FlowerTears: Round assembled id=4 seed=2445225510694233129 N=23 color=7 layout=interleaved-petals-v6; entering
+11-13 09:48:46.966 25056 25056 I FlowerTears: EndingMusicStopped
+11-13 09:48:47.350 25056 25056 I FlowerTears: PetalRainReady round=4 color=7 emitters=3 y=0.33 revision=free-orientation-v3 textures=[rose/petal-7-outer.png, rose/petal-7-middle.png, rose/petal-7-inner.png]

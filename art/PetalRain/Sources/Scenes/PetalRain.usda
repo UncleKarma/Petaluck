@@ -298,7 +298,7 @@ def Xform "Root"
                 def SpatialStruct "rotation"
                 {
                     uint64 info:typeId = 12809088225558407444
-                    bool modifierEnabled = 1
+                    bool modifierEnabled = 0
 
                     def SpatialStruct "angularSpeed"
                     {
@@ -378,10 +378,1069 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    token orientationMode = "BILLBOARD"
+                    float3 orientationDirection = (0, 1, 0)
+                    token orientationMode = "FREE"
+                    float orientationVariation = 0.65
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationCurve"
+                {
+                    uint64 info:typeId = 6720045552424274239
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.3
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.8
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.45
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.5
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.05
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.16
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.32
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.48
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.18
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.33
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.51
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.3
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.65
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.9
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.5
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+                            }
+                        }
+                    }
                 }
 
                 def SpatialStruct "colorGradient"
@@ -865,7 +1924,7 @@ def Xform "Root"
                 def SpatialStruct "rotation"
                 {
                     uint64 info:typeId = 12809088225558407444
-                    bool modifierEnabled = 1
+                    bool modifierEnabled = 0
 
                     def SpatialStruct "angularSpeed"
                     {
@@ -945,10 +2004,1069 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    token orientationMode = "BILLBOARD"
+                    float3 orientationDirection = (0, 1, 0)
+                    token orientationMode = "FREE"
+                    float orientationVariation = 0.65
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationCurve"
+                {
+                    uint64 info:typeId = 6720045552424274239
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.65
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.3
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.75
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.45
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.8
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.55
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 225
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.05
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.16
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.32
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.48
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 225
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.18
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.33
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.51
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.3
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.65
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.9
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.5
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+                            }
+                        }
+                    }
                 }
 
                 def SpatialStruct "colorGradient"
@@ -1432,7 +3550,7 @@ def Xform "Root"
                 def SpatialStruct "rotation"
                 {
                     uint64 info:typeId = 12809088225558407444
-                    bool modifierEnabled = 1
+                    bool modifierEnabled = 0
 
                     def SpatialStruct "angularSpeed"
                     {
@@ -1512,10 +3630,1069 @@ def Xform "Root"
                 {
                     token facingMode = "CAMERA_POSITION"
                     uint64 info:typeId = 14295403941869760597
-                    token orientationMode = "BILLBOARD"
+                    float3 orientationDirection = (0, 1, 0)
+                    token orientationMode = "FREE"
+                    float orientationVariation = 0.65
                     token particleType = "BILLBOARD"
                     bool rendererEnabled = 1
                     token sortOrder = "DECREASING_DISTANCE"
+                }
+
+                def SpatialStruct "rotationCurve"
+                {
+                    uint64 info:typeId = 6720045552424274239
+                    bool modifierEnabled = 1
+                    bool separateAxes = 1
+
+                    def SpatialStruct "x"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.3
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 180
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.8
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.8
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.45
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.45
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.5
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "y"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 270
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.05
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.05
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.16
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.16
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.32
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.32
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.48
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.48
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.85
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 270
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.18
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.18
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.33
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.33
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.51
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.51
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.7
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.7
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 1
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 1
+                                }
+                            }
+                        }
+                    }
+
+                    def SpatialStruct "z"
+                    {
+                        uint64 info:typeId = 8541522365040381580
+                        float range = 0
+                        token type = "STRIP"
+                        float value = 0
+
+                        def SpatialStruct "curve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.2
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.2
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.6
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.6
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.3
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.3
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.65
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.65
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.25
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.25
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.5
+                                }
+                            }
+                        }
+
+                        def SpatialStruct "rangeCurve"
+                        {
+                            uint64 info:typeId = 5800504984346734226
+                            uint keysCount = 6
+                            float multiplier = 75
+                            token postWrapMode = "CLAMPED"
+                            token preWrapMode = "CLAMPED"
+
+                            def SpatialStruct "keys0"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0
+                                    float y = 0.4
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.06666667
+                                    float y = 0.4
+                                }
+                            }
+
+                            def SpatialStruct "keys1"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.2
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.13333334
+                                    float y = 0.85
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.26666668
+                                    float y = 0.85
+                                }
+                            }
+
+                            def SpatialStruct "keys2"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.4
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.33333334
+                                    float y = 0.55
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.46666667
+                                    float y = 0.55
+                                }
+                            }
+
+                            def SpatialStruct "keys3"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.53333336
+                                    float y = 0.9
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.6666667
+                                    float y = 0.9
+                                }
+                            }
+
+                            def SpatialStruct "keys4"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.73333335
+                                    float y = 0.5
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.8666667
+                                    float y = 0.5
+                                }
+                            }
+
+                            def SpatialStruct "keys5"
+                            {
+                                uint flags = 33554944
+                                uint64 info:typeId = 4767864605451998354
+
+                                def SpatialStruct "value"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "left"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 0.93333334
+                                    float y = 0.75
+                                }
+
+                                def SpatialStruct "right"
+                                {
+                                    uint64 info:typeId = 8026404162961861934
+                                    float x = 1
+                                    float y = 0.75
+                                }
+                            }
+                        }
+                    }
                 }
 
                 def SpatialStruct "colorGradient"

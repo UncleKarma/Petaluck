@@ -5,11 +5,11 @@
 
 ## 交付
 
-- `Build/petal-rain.bundle`：14,182 bytes。
+- `Build/petal-rain.bundle`：14,871 bytes（2026-11-13 自由朝向v3）。
 - `Build/petal-rain.scenes.json`：Editor 导出的场景清单。
 - `Build/petal-rain.provenance.json`：直接打包记录。
 - 加载场景键：`Scenes/PetalRain`，以 sidecar 为准。
-- SHA-256：`b06853e011a307471dde8133fd0de386e226b07c9cf5a2bf129b481599fc17e9`。
+- SHA-256：`7af798983236ca4cbe2d0bee0c46f34696f90bde2c1d36f83746e23e78b45ec5`。
 
 ## 效果
 
@@ -18,14 +18,16 @@
 寿命分别为 5/6/7 秒，alpha 各淡入 1 秒、淡出 1 秒。
 发射器位置 `(0, 0.33, 0)` 米，BOX 区域 `0.50 × 0.001 × 0.28` 米。
 初速 0.075–0.09 米/秒、向下发射、2° 随机偏角、弱噪声漂移。
-15–25 mm 花瓣，随机初始旋转、12–35°/秒旋转；无碰撞、无交互。
-Billboard、Unlit、透明混合，白色材质乘子。
+15–25 mm 花瓣，FREE三维朝向、variation .65，随机XYZ曲线摇摆与翻转；旧12–35°/秒常速旋转已关闭。无碰撞、无交互。
+轻量四边形粒子（primitive枚举BILLBOARD，orientationMode为FREE）、双面Unlit、透明混合，白色材质乘子；不追随camera。
 
 本次是粉色简易效果，使用新绘制的透明矢量花瓣精灵，源文件 `petal.svg`。
 `tools/create_petal_rain_texture.py` 可重复生成 PNG。
 未改正式花瓣贴图；独立工程没有八色切换。后续 Android 1.0.8 的音乐联动接入见 `docs/ending-petal-rain-v1.md`，与本工程独立交付时的验证范围分开记录。
 
 Android 1.0.9 在加载此包后，将三个发射器的贴图替换为本轮月季 outer/middle/inner albedo 绘制的透明花瓣，并按轮次 seed 变化微风；包本身与独立 Editor 预览不变。保留 Billboard/Unlit、1+3/4/5+1秒生命周期及随机旋转。设备 Canvas 24贴图检查通过；原生动态效果仍待验。见 `docs/ending-petal-rain-v2.md`。
+
+2026-11-13 v3更新已打入Android1.0.10：取消朝向camera，正面/侧面暂停视图 `rotation-v3-front.png` / `rotation-v3-side.png` 已查看，存在宽面/斜面/细边。原生日志验证播放和自然结束停止；连续运动观感仍待佩戴验证。详情 `docs/ending-petal-rain-v3.md`。以下旧验证记录保留历史范围。
 
 ## 验证与限制
 

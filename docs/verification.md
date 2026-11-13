@@ -2,7 +2,13 @@
 
 日期：2026-11-13。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## 同花色花瓣雨（当前，ending-petal-rain-v2）
+## 自由朝向花瓣雨（当前，ending-petal-rain-v3）
+
+- APK1.0.10 / code11：Editor粒子FREE朝向、双面Unlit、随机XYZ曲线摇摆翻转，替代camera-facing和单轴匀速旋转；已重新打包并安装。
+- Editor暂停同批粒子做正面/侧面检查，看到不同倾斜与细边；参数及保存文件检查通过。111单测、构建、实验API、SpatialUI、A11Y及APK包完整性检查通过。
+- 真机确认两轮音乐开始时启动、约14.5秒后自然停止销毁；第三轮播放中重玩，粒子与1000ms音乐fade开始同刻停止，音乐约1秒后结束；第四轮正常预加载。头显连续运动观感仍待验证；当前空间截图主体离开画面，不能作动态效果验收。见 [ending-petal-rain-v3.md](ending-petal-rain-v3.md)。
+
+## 同花色花瓣雨（ending-petal-rain-v2）
 
 - APK1.0.9 / code10：粒子直接使用本轮三层albedo，透明花瓣轮廓、Billboard/Unlit、1秒淡入+3/4/5秒保持+1秒淡出；每轮独立微风随机流。沿用现有音乐联动和停止销毁。
 - 111单测、开发/测试APK、实验API、SpatialUI及bundle完整性检查通过；设备测试遍历24张生产贴图，颜色/alpha/边缘/独立性检查PASS，检查图已查看。源码A11Y审核0 errors/warnings。
