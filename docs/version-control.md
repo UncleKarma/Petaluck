@@ -24,6 +24,10 @@ git show 5879919 --stat
 
 每项用户请求单独提交，提交说明包含实际行为变化和验证结果。保留当前改动记录；修改开始前检查工作区，不混入用户并行修改，不改写既有提交。较大里程碑创建独立 tag；可安装 APK 单独保存并记录对应 commit/tag 和 SHA-256。
 
+### 2026-11-13：花瓣雨跟随本轮花色
+
+1.0.9 / code10：使用本轮外/中/内层albedo渲染透明花瓣精灵，三张纹理受原生生命周期管理；每轮独立随机微风，保留Editor Billboard/Unlit、首尾各1秒渐隐及旋转。111单测、构建、必要静态检查和设备24贴图测试通过。已安装，启动后容器隐藏，原生动态播放待验。APK另存 `backups/petal-rain-colors-v2-2026-11-13/RoseTear-1.0.9.apk`，SHA-256 `4897abd167b75bb9111a36e1c4231b12419d06b030b3d015759f18b87669d0fd`。详见 `docs/ending-petal-rain-v2.md`。
+
 ### 2026-11-12：结束音乐花瓣雨接入
 
 1.0.8 / code 9：运行时加载已交付 Editor bundle，结束音乐成功开始时启用顶部粉色花瓣雨，音乐结束、重玩开始淡出、暂停或清理时销毁特效实例。111项单测、开发/测试APK、实验API、SpatialUI及bundle未压缩检查通过；头显确认3发射器预加载。完整联动自动验收被ROM TARGET_ROOT_TIMEOUT阻断，详见 `docs/ending-petal-rain-v1.md`。APK另存 `backups/ending-petal-rain-v1-2026-11-12/RoseTear-1.0.8.apk`，SHA-256 `32c7dd3af0330b374d0c313193092cf17c3e09ee93a0f68d6fdec709434724fa`。

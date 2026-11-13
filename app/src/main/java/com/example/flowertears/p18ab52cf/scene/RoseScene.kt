@@ -304,7 +304,7 @@ class RoseScene(context: Context) {
                 onFailure={Log.e(TAG,"PetalAudioPreparationFailed session=${s.id}; flower remains playable",it)},
             )
             prepareOptionalAudio(
-                prepare={endingPetalRain.prepare(s.id)},
+                prepare={endingPetalRain.prepare(s.id,s.config)},
                 onFailure={Log.e(TAG,"PetalRainPreparationFailed session=${s.id}; flower remains playable",it)},
             )
             prepareOptionalAudio(

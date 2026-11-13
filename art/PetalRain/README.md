@@ -25,6 +25,8 @@ Billboard、Unlit、透明混合，白色材质乘子。
 `tools/create_petal_rain_texture.py` 可重复生成 PNG。
 未改正式花瓣贴图；独立工程没有八色切换。后续 Android 1.0.8 的音乐联动接入见 `docs/ending-petal-rain-v1.md`，与本工程独立交付时的验证范围分开记录。
 
+Android 1.0.9 在加载此包后，将三个发射器的贴图替换为本轮月季 outer/middle/inner albedo 绘制的透明花瓣，并按轮次 seed 变化微风；包本身与独立 Editor 预览不变。保留 Billboard/Unlit、1+3/4/5+1秒生命周期及随机旋转。设备 Canvas 24贴图检查通过；原生动态效果仍待验。见 `docs/ending-petal-rain-v2.md`。
+
 ## 验证与限制
 
 - `preview-front.png` 和 `preview-angle.png` 是 Editor 实际视口截图：检查了正面分布、透明轮廓及斜侧面的深度分布；包含 Editor 辅助线。

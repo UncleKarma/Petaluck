@@ -1,8 +1,14 @@
 # 验证记录与继续工作
 
-日期：2026-11-12。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
+日期：2026-11-13。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
-## 结束音乐花瓣雨（当前，ending-petal-rain-v1）
+## 同花色花瓣雨（当前，ending-petal-rain-v2）
+
+- APK1.0.9 / code10：粒子直接使用本轮三层albedo，透明花瓣轮廓、Billboard/Unlit、1秒淡入+3/4/5秒保持+1秒淡出；每轮独立微风随机流。沿用现有音乐联动和停止销毁。
+- 111单测、开发/测试APK、实验API、SpatialUI及bundle完整性检查通过；设备测试遍历24张生产贴图，颜色/alpha/边缘/独立性检查PASS，检查图已查看。源码A11Y审核0 errors/warnings。
+- 已安装1.0.9，启动后原生容器隐藏，未到场景首帧，本版原生预加载/动态播放仍待验证。记录、图及APK哈希见 [ending-petal-rain-v2.md](ending-petal-rain-v2.md)。
+
+## 结束音乐花瓣雨（ending-petal-rain-v1）
 
 - APK 1.0.8 / code 9：bundle 的三发射器在音乐成功 play 后启动，直接挂 SpatialView、顶部 y=.33m；自然结束/超时/暂停/退出及重玩淡出开始清空粒子，旧 fade 结束不再次通知视觉停止。
 - 111 项单测零失败；开发/仪器测试 APK 构建、实验 API、SpatialUI 检查通过；pico-cli 验证 1 个 bundle 使用 ZIP method 0，且字节与 Editor 包一致。

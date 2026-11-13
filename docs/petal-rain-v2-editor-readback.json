@@ -1,0 +1,365 @@
+{
+  "data": {
+    "entities": [
+      {
+        "entity_path": "/Root/PetalRain5",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 5,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": {
+              "from": 0,
+              "to": 360
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotation.angularSpeed",
+            "value": {
+              "from": 12,
+              "to": 35
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.colorGradient.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.20000000298023224,
+                  "value": 1
+                },
+                {
+                  "time": 0.800000011920929,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.material.type",
+            "value": "DEFAULT_UNLIT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.material.blendingMode",
+            "value": "TRANSPARENT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.particleType",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.noise.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.noise.strength",
+            "value": 0.0006000000284984708,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.scale",
+            "value": 0.14000000059604645,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.animationSpeed",
+            "value": 0.25,
+            "value_type": "float"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain6",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 6,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": {
+              "from": 0,
+              "to": 360
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotation.angularSpeed",
+            "value": {
+              "from": 12,
+              "to": 35
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.colorGradient.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.1666666716337204,
+                  "value": 1
+                },
+                {
+                  "time": 0.8333333134651184,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.material.type",
+            "value": "DEFAULT_UNLIT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.material.blendingMode",
+            "value": "TRANSPARENT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.particleType",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.noise.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.noise.strength",
+            "value": 0.0006000000284984708,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.scale",
+            "value": 0.14000000059604645,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.animationSpeed",
+            "value": 0.25,
+            "value_type": "float"
+          }
+        ]
+      },
+      {
+        "entity_path": "/Root/PetalRain7",
+        "parameters": [
+          {
+            "name": "main.basic.lifetime",
+            "value": 7,
+            "value_type": "constant_float"
+          },
+          {
+            "name": "main.basic.startRotation",
+            "value": {
+              "from": 0,
+              "to": 360
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.rotation.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.rotation.angularSpeed",
+            "value": {
+              "from": 12,
+              "to": 35
+            },
+            "value_type": "two_constants_float"
+          },
+          {
+            "name": "main.colorGradient.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.colorGradient.color",
+            "value": {
+              "alpha_keys": [
+                {
+                  "time": 0,
+                  "value": 0
+                },
+                {
+                  "time": 0.1428571492433548,
+                  "value": 1
+                },
+                {
+                  "time": 0.8571428656578064,
+                  "value": 1
+                },
+                {
+                  "time": 1,
+                  "value": 0
+                }
+              ],
+              "color_keys": [
+                {
+                  "time": 0,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                },
+                {
+                  "time": 1,
+                  "value": {
+                    "b": 1,
+                    "g": 1,
+                    "r": 1
+                  }
+                }
+              ],
+              "mode": "linear"
+            },
+            "value_type": "color_gradient"
+          },
+          {
+            "name": "main.material.type",
+            "value": "DEFAULT_UNLIT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.material.blendingMode",
+            "value": "TRANSPARENT",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.particleType",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.renderer.orientationMode",
+            "value": "BILLBOARD",
+            "value_type": "enum"
+          },
+          {
+            "name": "main.noise.enabled",
+            "value": true,
+            "value_type": "boolean"
+          },
+          {
+            "name": "main.noise.strength",
+            "value": 0.0006000000284984708,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.scale",
+            "value": 0.14000000059604645,
+            "value_type": "float"
+          },
+          {
+            "name": "main.noise.animationSpeed",
+            "value": 0.25,
+            "value_type": "float"
+          }
+        ]
+      }
+    ]
+  },
+  "message": "",
+  "status": "ok"
+}

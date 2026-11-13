@@ -2,11 +2,15 @@ package com.example.flowertears.p18ab52cf.scene
 
 import android.content.Context
 import android.util.Log
+import com.example.flowertears.p18ab52cf.domain.RoundConfig
+import com.example.flowertears.p18ab52cf.domain.RoseLayout
 import com.pico.spatial.core.container.SpatialViewContent
 import com.pico.spatial.core.ecs.Entity
 import com.pico.spatial.core.ecs.ParticleComponent
 import com.pico.spatial.core.ecs.TransformComponent
 import com.pico.spatial.core.ecs.resource.AssetBundle
+import com.pico.spatial.core.ecs.resource.TextureCreateOption
+import com.pico.spatial.core.ecs.resource.TextureResource
 import com.pico.spatial.core.math.Vector3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
@@ -16,11 +20,13 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import kotlin.random.Random
 
 /** Optional scene-owned bundle; each round gets a fresh instance so stop leaves no live petals. */
 internal class EndingPetalRain(context: Context) : AutoCloseable {
     private val assets = context.applicationContext.assets
     private val loadingMutex = Mutex()
+    private val textures = RoundAssetSet<TextureResource>({ it.valid }, { it.toGlobal() }, { it.close() })
     private var bundle: AssetBundle? = null
     private var instance: Entity? = null
     private var particles = emptyList<ParticleComponent>()
@@ -29,7 +35,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
     private var loading = false
     private var closed = false
 
-    suspend fun prepare(roundId: Long) = loadingMutex.withLock {
+    suspend fun prepare(roundId: Long, config: RoundConfig) = loadingMutex.withLock {
         if (closed || preparedRound == roundId) return@withLock
         stop()
         val token = epoch
@@ -75,20 +81,38 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     check(children.map { it.getName() }.sorted() == names.sorted()) {
                         "Petal rain manifest/runtime scope mismatch"
                     }
-                    val controls = names.map { name ->
+                    val paths = RoseLayout.layerNames.map { RoseLayout.texturePath(config.colorId, "${it}_01") }
+                    textures.retain(paths.toSet()) { path ->
+                        withContext(Dispatchers.IO) {
+                            val bitmap = PetalRainSprite.draw(assets, path)
+                            try { TextureResource.create(bitmap, TextureCreateOption()) }
+                            finally { bitmap.recycle() }
+                        }
+                    }
+                    if (closed || token != epoch || !caller.isActive) return@withContext
+                    // Own PRNG: decorative motion never consumes the gameplay/layout random stream.
+                    val breeze = Random(config.seed xor 0x504554414CL)
+                    val controls = EMITTERS.mapIndexed { index, name ->
                         val owner = children.single { it.getName() == name }
                         // Authored emitter is already near the +0.35 m container ceiling.
                         checkNotNull(owner.components[TransformComponent::class.java])
                             .setPosition(Vector3(0f, .33f, 0f))
                         checkNotNull(owner.components[ParticleComponent::class.java]).also {
                             it.isEmitting = false
+                            it.mainSimulation.apply {
+                                material.baseColorMap = checkNotNull(textures[paths[index]])
+                                noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
+                                noiseStrength = .00045f + breeze.nextFloat() * .0003f
+                                noiseScale = .12f + breeze.nextFloat() * .04f
+                                noiseAnimationSpeed = .2f + breeze.nextFloat() * .1f
+                            }
                         }
                     }
                     instance = candidate
                     particles = controls
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId emitters=${controls.size} y=0.33")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=rose-albedo-v2 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }
@@ -148,6 +172,8 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         catch (e: Exception) { Log.e(TAG, "Petal rain model release failed", e) }
         try { previous?.close() }
         catch (e: Exception) { Log.e(TAG, "Petal rain bundle release failed", e) }
+        try { textures.close() }
+        catch (e: Exception) { Log.e(TAG, "Petal rain texture release failed", e) }
     }
 
     companion object {
