@@ -5,7 +5,8 @@ User references are in `requirements/model-references/`. No pre-existing app was
 
 - Identity: `com.example.flowertears.p18ab52cf` (temporary development identity; preserve for APK upgrades).
 - Display name: Chinese `一瓣欢喜` (`values-zh/strings.xml` and `values-b+zh+Hant/strings.xml`, preserving the user's exact name for all Chinese regions), English/default fallback `RoseTear` (`values/strings.xml`). Keep the manifest label bound to `@string/app_name`; product naming does not rename the package, assets, or code classes.
-- Current built APK version: versionCode **14**, versionName **1.0.13** (completion surface waits for a fresh transparent frame before revealing). Not yet installed: no ADB device was connected for this increment. Preserve the development application ID for upgrades.
+- Current built APK version: versionCode **15**, versionName **1.0.14** (result lowered 8 cm, completion group lowered 5 cm). Not yet installed: no ADB device was connected for this increment. Preserve the development application ID for upgrades.
+- Panel offset update 2026-11-13: fixed result anchor is (0,.175,.075)m; completion anchor is (0,-.05,.12)m, superseding earlier completion positions below. Message anchor and surface sizes remain unchanged. Keep completion buffer gate/fades.
 - Spatial BOM **6.2.8**, AGP 8.11.2, Kotlin 2.0.0, API 35, arm64.
 - DefaultWindowContainer, manifest style 2, physical bounds 0.60 × 0.70 × 0.40 m; transparent background and no base panel. Never replace with Stage.
 - Every 2D control uses SpatialUI and PicoTheme; no Material/Material3.

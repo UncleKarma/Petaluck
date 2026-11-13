@@ -24,6 +24,10 @@ git show 5879919 --stat
 
 每项用户请求单独提交，提交说明包含实际行为变化和验证结果。保留当前改动记录；修改开始前检查工作区，不混入用户并行修改，不改写既有提交。较大里程碑创建独立 tag；可安装 APK 单独保存并记录对应 commit/tag 和 SHA-256。
 
+### 2026-11-13：第2项文字位置调整
+
+1.0.14 / code15：喜欢/不喜欢下移8cm，祝福与重玩按钮整体下移5cm。118项回归测试、开发/测试APK及实验API、SpatialUI检查通过。无ADB设备，实机位置待验。归档`backups/panel-offset-v1-2026-11-13/RoseTear-1.0.14.apk`，SHA-256 `cd0af129cdfee3f99271dbf4e7b8e934bbb987da700d6476df89999f8ad69ddc`。详见`docs/panel-offset-v1.md`。
+
 ### 2026-11-13：第二轮完成面板闪帧修订
 
 1.0.13 / code14：原生完成面板先以opacity0启用，等待本轮透明帧提交后再显示并启动600ms/450ms淡入。118项现有回归测试、构建及静态检查通过；无ADB设备，未安装和完成原生闪帧复测。APK归档`backups/completion-buffer-v1-2026-11-13/RoseTear-1.0.13.apk`，SHA-256 `8f871fc0b71973292f7a5c39b2a789463c69bc11c287bbd1738f39f5e77dcc18`。详见`docs/completion-buffer-v1.md`。

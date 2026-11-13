@@ -97,7 +97,7 @@ class RoseScene(context: Context) {
             if(resultPanel!=null) {
                 resultPanel.components.set(AccessibilityComponent("占卜回应","尚未摘取"))
                 resultPanel.enabled=false
-                resultPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,.255f,.075f))
+                resultPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,.175f,.075f))
                 content.addEntity(resultPanel)
                 content.setAccessibilityActions(resultPanel,"rose.result") {}
             }
@@ -116,7 +116,7 @@ class RoseScene(context: Context) {
                 completionPresentedRound=null
                 completionPanel.components.set(OpacityControllerComponent(0f))
                 completionPanel.components.set(AccessibilityComponent("祝福与重玩操作区",""))
-                completionPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,0f,.12f))
+                completionPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,-.05f,.12f))
                 content.addEntity(completionPanel)
                 content.setAccessibilityActions(completionPanel,"rose.completion") {}
             }
