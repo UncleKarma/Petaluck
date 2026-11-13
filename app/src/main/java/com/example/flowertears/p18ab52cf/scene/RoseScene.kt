@@ -70,6 +70,7 @@ class RoseScene(context: Context) {
     private val pinchDrag = PinchDragTracker()
     private val petalDrag = PetalDragMotion()
     private val remotePetalDrag = RemotePetalDrag()
+    private val heldPetalRotation = HeldPetalRotation()
     private var lostTime = -1f
     private val stemMotion = StemMotion()
     private val entrance = RoseEntrance()
@@ -358,7 +359,7 @@ class RoseScene(context: Context) {
                     handled=true
                     stemMotion.grab()
                     if(p.returning>=0f){p.returning=-1f;p.owner.components.set(TransformComponent(p.rest))}
-                    petalDrag.clear();remotePetalDrag.clear();lostTime=-1f;trackingUnavailable=false
+                    petalDrag.clear();remotePetalDrag.clear();heldPetalRotation.clear();lostTime=-1f;trackingUnavailable=false
                     if(step.source==PinchDragTracker.PositionSource.GlobalDevicePose)remotePetalDrag.start()
                     p.owner.components[AccessibilityComponent::class.java]?.value="正在拉取"
                     Log.i(TAG,"PetalGrab session=${s.id} petal=${p.spec.id} kind=${e.kind} source=${step.source} pointer=$hand")
@@ -370,6 +371,9 @@ class RoseScene(context: Context) {
                 }
                 is PinchDragTracker.Step.Moved -> {
                     handled=true;lostTime=-1f;trackingUnavailable=false
+                    // Only the captured pointer reaches this branch, even when kind/hit changes.
+                    // Observe before detach so the crossing sample is the rotation baseline.
+                    heldPetalRotation.observe(pointerRotation(e))
                     if(remotePetalDrag.active) {
                         remotePetalDrag.moveBy(step.frameDelta)
                         gazeTrace {"queued pointer=$hand delta=${step.frameDelta} total=${step.delta}"}
@@ -380,13 +384,38 @@ class RoseScene(context: Context) {
                         // Keep DirectPinch's existing absolute-delta path unchanged.
                         petalDrag.move(step.delta);pull(hand)
                     }
+                    applyHeldRotation()
                 }
-                is PinchDragTracker.Step.Unavailable -> {handled=true;if(lostTime<0)lostTime=0f}
+                is PinchDragTracker.Step.Unavailable -> {
+                    handled=true;if(lostTime<0)lostTime=0f
+                    heldPetalRotation.observe(pointerRotation(e));applyHeldRotation()
+                }
                 is PinchDragTracker.Step.Released -> {handled=true;release(hand,step.cancelled)}
                 null -> Unit
             }
         }
         return handled
+    }
+    private fun pointerRotation(e:SpatialPointerInfo):Quat? = runCatching {
+        val pose=e.inputDevicePose
+        val p=pose.rawPosition
+        // SDK uses a zero position + identity rotation when no device pose is supplied.
+        // A valid identity orientation at a nonzero position must remain usable.
+        if(!p.x.isFinite() || !p.y.isFinite() || !p.z.isFinite() ||
+            (p.x==0f && p.y==0f && p.z==0f))return@runCatching null
+        val raw=pose.rawRotation.toQuaternion()
+        if(!raw.isFinite())return@runCatching null
+        // Both pinch kinds expose device rotation in view coordinates. SDK maps (-x,y,-z,w).
+        // RoseAnchor has translation/uniform scale only, so its rotational axes equal the scene.
+        content.convertRotation(raw,ViewCoordinateSpace.Global,content.localSpatialCoordinateSpace)
+    }.getOrNull()
+    private fun applyHeldRotation() {
+        val s=session ?: return
+        val p=petals[s.heldId] ?: return
+        if(s.state(p.spec.id)!=PetalState.DetachedHeld)return
+        val rotation=heldPetalRotation.rotation ?: return
+        p.owner.components[TransformComponent::class.java]!!.setQuaternion(rotation)
+        gazeTrace {"rotation revision=held-rotation-v1 petal=${p.spec.id} remote=${remotePetalDrag.active} rotation=$rotation"}
     }
     private fun pointerPosition(e:SpatialPointerInfo,source:PinchDragTracker.PositionSource):Vec? {
         val direct=source==PinchDragTracker.PositionSource.LocalPointer
@@ -445,6 +474,7 @@ class RoseScene(context: Context) {
         val world=p.owner.convertTransformTo(Transform(),root)
         p.owner.removeFromParent();root!!.addChild(p.owner);p.owner.components.set(TransformComponent(world))
         petalDrag.detach(Vec(world.position.x,world.position.y,world.position.z))
+        heldPetalRotation.detach(world.quaternion)
         if(Log.isLoggable(GAZE_TAG,Log.DEBUG) || remotePetalDrag.active) {
             val after=p.owner.convertTransformTo(Transform(),root)
             Log.i(GAZE_TAG,"revision=move-anchor-v4 stage=reparent remote=${remotePetalDrag.active} session=$token petal=${p.spec.id} " +
@@ -461,6 +491,7 @@ class RoseScene(context: Context) {
         val s=session ?: return;val p=petals[s.heldId] ?: return
         // Preserve ordered draining before capture cleanup and fallStart, including cancellation.
         applyRemotePetalDrag()
+        applyHeldRotation()
         pinchDrag.clear()
         when(s.release(s.id,hand)) {
             PetalState.Falling -> {
@@ -480,7 +511,7 @@ class RoseScene(context: Context) {
             else -> Unit
         }
         if(immediate)applyBend(stemMotion.reset())
-        lostTime=-1f;petalDrag.clear();remotePetalDrag.clear();publish()
+        lostTime=-1f;petalDrag.clear();remotePetalDrag.clear();heldPetalRotation.clear();publish()
     }
     private fun applyRemotePetalDrag() {
         val s=session ?: return
@@ -635,7 +666,7 @@ class RoseScene(context: Context) {
         endingPetalRain.stop()
         // EndingMusic is scene-owned: its 1 s replay fade survives flower teardown/loading.
         skeleton=null;restPose=emptyList();stem=null;crown=null;stemMotion.reset();lostTime=-1f;trackingUnavailable=false;glowTime=0f;coreMaterials.clear()
-        petalDrag.clear();remotePetalDrag.clear();pinchDrag.clear()
+        petalDrag.clear();remotePetalDrag.clear();heldPetalRotation.clear();pinchDrag.clear()
         root?.let {if(it.valid)it.destroy()};root=null
         for(p in petals.values){p.material.close();p.shape.close()};petals.clear()
     }

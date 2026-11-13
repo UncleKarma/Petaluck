@@ -24,6 +24,10 @@ git show 5879919 --stat
 
 每项用户请求单独提交，提交说明包含实际行为变化和验证结果。保留当前改动记录；修改开始前检查工作区，不混入用户并行修改，不改写既有提交。较大里程碑创建独立 tag；可安装 APK 单独保存并记录对应 commit/tag 和 SHA-256。
 
+### 2026-11-13：第3项脱落花瓣跟手旋转
+
+1.0.15 / code16：Direct/Gaze共用场景坐标手部旋转，以摘下姿态建立相对旋转基准，释放从最终TRS开始原有下落淡出。126项测试（新增8项）、开发/测试APK和必要静态检查通过。无ADB设备，原生旋转方向与连续性待验。归档`backups/held-rotation-v1-2026-11-13/RoseTear-1.0.15.apk`，SHA-256 `9e5bab56abfc23c13ee745fe8954b88398719f3fbb07cf44720b4be81a7cd328`。详见`docs/held-rotation-v1.md`。
+
 ### 2026-11-13：第2项文字位置调整
 
 1.0.14 / code15：喜欢/不喜欢下移8cm，祝福与重玩按钮整体下移5cm。118项回归测试、开发/测试APK及实验API、SpatialUI检查通过。无ADB设备，实机位置待验。归档`backups/panel-offset-v1-2026-11-13/RoseTear-1.0.14.apk`，SHA-256 `cd0af129cdfee3f99271dbf4e7b8e934bbb987da700d6476df89999f8ad69ddc`。详见`docs/panel-offset-v1.md`。
