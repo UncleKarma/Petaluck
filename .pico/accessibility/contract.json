@@ -8,8 +8,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 100,
-        "endLine": 100,
+        "line": 105,
+        "endLine": 105,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.result",
@@ -34,8 +34,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 108,
-        "endLine": 108,
+        "line": 113,
+        "endLine": 113,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.message",
@@ -60,8 +60,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 117,
-        "endLine": 117,
+        "line": 126,
+        "endLine": 126,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.completion",
@@ -69,7 +69,9 @@
       "runtimeSelector": {
         "semanticId": "rose.completion"
       },
-      "stateSources": ["value"],
+      "stateSources": [
+        "value"
+      ],
       "actions": [],
       "binding": {
         "kind": "spatial",
@@ -84,8 +86,8 @@
       "kind": "entity",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 318,
-        "endLine": 318,
+        "line": 328,
+        "endLine": 328,
         "symbol": "registerStemAccessibility"
       },
       "semanticId": "rose.stem",
@@ -105,13 +107,13 @@
       }
     },
     {
-      "contractId": "entity:76c4822692386ac3",
-      "semanticAnchor": "76c4822692386ac3",
+      "contractId": "entity:28d3d2349143b419",
+      "semanticAnchor": "28d3d2349143b419",
       "kind": "entity",
       "source": {
         "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 322,
-        "endLine": 324,
+        "line": 332,
+        "endLine": 334,
         "symbol": "registerPetalAccessibility"
       },
       "semanticId": "rose.petal.0",

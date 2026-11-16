@@ -34,6 +34,8 @@ class RoseScene(context: Context) {
     var ui by mutableStateOf(RoseUi()); private set
     var attachmentsReady by mutableStateOf(false); private set
     var completionPresentedRound by mutableStateOf<Long?>(null); private set
+    var completionBlankRequest by mutableStateOf<CompletionBufferGate.Request?>(null); private set
+    private val completionBuffer = CompletionBufferGate()
     private lateinit var content: SpatialViewContent
     private lateinit var sceneScope: CoroutineScope
     private var subscription: Cancellable? = null
@@ -114,7 +116,9 @@ class RoseScene(context: Context) {
         completionBinding.bind(completionPanel) {
             if(completionPanel!=null) {
                 completionPanel.enabled=false
+                completionBuffer.reset()
                 completionPresentedRound=null
+                completionBlankRequest=null
                 completionPanel.components.set(OpacityControllerComponent(0f))
                 completionPanel.components.set(AccessibilityComponent("祝福与重玩操作区",""))
                 completionPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,-.05f,.12f))
@@ -622,21 +626,16 @@ class RoseScene(context: Context) {
             val blessingAppeared = state.phase==Phase.Completing &&
                 (ui.roundId!=state.roundId || ui.phase!=Phase.Completing)
             ui=state
-            if(state.roundId!=completionPresentedRound ||
-                (state.phase!=Phase.Completing && state.phase!=Phase.Completed)) {
-                completionPresentedRound=null
-            }
             syncPanels(state)
             if(blessingAppeared && !appPaused)endingMusic.blessing(state.roundId)
         }
     }
-    /** Called only after the current completion attachment submitted its transparent buffer. */
-    fun completionFrameCommitted(roundId:Long) {
-        if(disposed || roundId!=ui.roundId || completionPresentedRound==roundId ||
-            (ui.phase!=Phase.Completing && ui.phase!=Phase.Completed))return
-        completionPresentedRound=roundId
+    /** Acknowledges the exact blank draw, including the outgoing round's erase. */
+    fun completionFrameCommitted(frame:CompletionBufferGate.Request) {
+        if(disposed || !completionBuffer.committed(frame))return
         syncPanels(ui)
-        Log.i(TAG,"CompletionFrameCommitted round=$roundId revision=buffer-gate-v1")
+        Log.i(TAG,"CompletionFrameCommitted round=${frame.revealRound} serial=${frame.serial} " +
+            "stage=${if(frame.revealRound==null) "erased" else "reveal"} revision=buffer-gate-v2")
     }
     private fun syncPanels(state:RoseUi) {
         resultPanel?.components?.get(AccessibilityComponent::class.java)?.value=state.result.ifEmpty{"尚未摘取"}
@@ -649,14 +648,17 @@ class RoseScene(context: Context) {
             else->"继续摘取"
         }
         val completing=state.phase==Phase.Completing || state.phase==Phase.Completed
+        completionBuffer.update(state.roundId,completing)
+        completionPresentedRound=completionBuffer.presentedRound
+        completionBlankRequest=completionBuffer.request
         val presented=completing && completionPresentedRound==state.roundId
         completionPanel?.components?.get(AccessibilityComponent::class.java)?.value=if(presented)state.blessing else ""
-        // A disabled attachment may retain its previous round's opaque buffer. Mask it BEFORE
-        // enabling; Compose acknowledges a new transparent buffer before lifting this mask.
+        // Mask before enabling. On replay, keep drawing ONLY until the panel's own blank
+        // buffer commits; disabling immediately would preserve the old opaque text/button.
         completionPanel?.components?.get(OpacityControllerComponent::class.java)?.opacity=if(presented)1f else 0f
         // Hide the outgoing surface synchronously, before its Compose buffer catches up.
         // Inactive panels must not leave transparent hit areas over the flower or replay button.
-        completionPanel?.enabled=completing
+        completionPanel?.enabled=completionBuffer.enabled
         messagePanel?.enabled=!completing
         resultPanel?.enabled=state.result.isNotEmpty()
     }
@@ -680,6 +682,8 @@ class RoseScene(context: Context) {
         endingMusic.close()
         endingPetalRain.close()
         resultBinding.clear();messageBinding.clear();completionBinding.clear()
+        completionBuffer.reset()
+        completionBlankRequest=null
         completionPresentedRound=null
         resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()

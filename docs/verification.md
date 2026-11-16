@@ -1,5 +1,10 @@
 # 验证记录与继续工作
 
+## 第二轮结束闪帧（buffer-gate-v2）
+
+1.0.17/code18补上重玩空白提交后停用面板，并将提交回调绑定到实际空白绘制。132单测、构建、API/样式/A11Y和bundle检查通过，已安装；连续第二/第三轮头显验证尚未完成，详见 [completion-buffer-v2.md](completion-buffer-v2.md)。
+
+
 日期：2026-11-13。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
 ## 花瓣雨自然收尾（当前，drain-tail-v5）

@@ -1,0 +1,160 @@
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-FTimer: SpatialInstance::init cost 26.598228ms
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialInstance: initInstanceWithInfo ret: SUCCESS
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialContext: canRegisterNewSession:true | current size: 0 | max size:1
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialInstance: try create session with name: com.example.flowertears.p18ab52cf-session
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialContext: current thread id:481867632824 not found session
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-Session: create session with name: com.example.flowertears.p18ab52cf-session
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialSession:  12970367401488106896 setState from [UNKNOWN] to [IDLE]
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-MetricsManager: onSessionPostCreated, mode:0
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialSession: 12970367401488106896:SpatialSession
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-SpatialContext: registerSession sess:12970367401488106896 ret:1
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialSession: init name:com.example.flowertears.p18ab52cf-session type:0 index:1
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-SpatialSession: com.example.flowertears.p18ab52cf-session 12970367401488106896 setState from [IDLE] to [READY]
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-MetricsManager: onSessionPreInit:com.example.flowertears.p18ab52cf-session
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:perf_event_topic E:spatial::performance::RenderPerfExceptionEvent
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:perf_event_topic E:spatial::performance::ClientResourcePerfExceptionEvent
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:home_event_topic E:spatial::custom_gesture::event::HomeGestureEvent
+11-13 18:57:54.814 28509 28509 W SPC-p18a33-SpatialSession: setExposedComponentTypes, exposedTypesCount = 124
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-AsyncTaskHandlerRegister: set callback
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-AsyncTaskHandlerRegister: set callback success
+11-13 18:57:54.814 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.814 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:UnscaleAndConvertMatrixData E:spatial::input_callback::UnscaleAndConvertMatrixEvent
+11-13 18:57:54.815 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:SeeThrough_Topic E:spatial::interaction::ArmSeeThroughEffectChangedEvent
+11-13 18:57:54.815 28509 28509 I tears.p18ab52cf: registerSpatialSessionCallback
+11-13 18:57:54.815 28509 28509 E SPC-p18a33-MetricsManager: onSessionReady
+11-13 18:57:54.815 28509 28509 E SPC-p18a33-SpatialSession: beginSession:com.example.flowertears.p18ab52cf-instance
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-SpatialFrameTiming: SpatialFrameTiming memoryId:125384109848526855 content:pid:28509
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-Validate: [ECS VALIDATE]Config: EnableValidateThreadSafe=true, EnableValidateSceneValid=true, AbortWhenThreadNotSafe=true,true
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-Validate: World Create: 0xb400006e4406f9c0, ThreadId: 28509, ProcessName: com.example.flowertears.p18ab52cf
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-BehaviorTriggerSystem: Subscribe to scene notification event topic: Timeline.Notification.Event.Topic
+11-13 18:57:54.815 28509 28509 E SPC-p18a33-SpatialSession: onSessionBegin: com.example.flowertears.p18ab52cf-instance
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-SpatialContext: doMainSessionBegin
+11-13 18:57:54.815 28509 28509 I tears.p18ab52cf: reportCriticalThreads pid 28509 type 2 event 1 updateType 1 tids 28509
+11-13 18:57:54.815 28509 28509 I THREAD_PRIORITY: thread priority update: pid=28509, tid=28509, thread=tears.p18ab52cf, action=set, level=30, systemType=2
+11-13 18:57:54.815 28509 28509 E SPC-p18a33-Global: JobSystem::initInMainThread() can only call one time!
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-Statistics: Statistics::SetEnable = false, force=false
+11-13 18:57:54.815 28509 28509 I SPC-p18a33-SpatialSynchronize: ClientSynchronizeManager::Initialize, localPeer=Pname=com.example.flowertears.p18ab52cf.28509, id=12856699510590554082, world=0xb400006e4406f9c0
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-SpatialSynchronize: SynchronizeManager::Initialize, peer=12856699510590554082,com.example.flowertears.p18ab52cf.28509
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-SpatialSynchronize: SynchronizeWorldManager::CreateManagerForWorld, world=0xb400006e4406f9c0, worldThread=28509, currentThread=28509, currentProcess=com.example.flowertears.p18ab52cf, curWorldCount=1,1
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-SpatialSession: initSynchronizer done, world=0xb400006e4406f9c0, process=com.example.flowertears.p18ab52cf
+11-13 18:57:54.816 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:OnBufferReleased E:spatial::graphic::internal::BufferReleaseEvent
+11-13 18:57:54.816 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:OnSurfaceReady E:spatial::graphic::internal::SurfaceReadyEvent
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-AsyncTaskHandlerRegister: set main loop start flag: true
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-SpatialSession: com.example.flowertears.p18ab52cf-session 12970367401488106896 setState from [READY] to [VISIBLE]
+11-13 18:57:54.816 28509 28509 E SPC-p18a33-PerfProfiler: perfL: PerfProfiler::OnSessionBegin 1
+11-13 18:57:54.816 28509 28509 E SPC-p18a33-MetricsManager: onSessionPostBegin
+11-13 18:57:54.816 28509 28509 I SPC-p18a33-FTimer: beginSession cost 1.124427ms
+11-13 18:57:54.811 28509 28509 I binder:28509_4: type=1400 audit(0.0:19646): avc:  denied  { write } for  name="property_service" dev="tmpfs" ino=629 scontext=u:r:untrusted_app:s0:c157,c256,c512,c768 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=1 app=com.example.flowertears.p18ab52cf
+11-13 18:57:54.811 28509 28509 I binder:28509_4: type=1400 audit(0.0:19647): avc:  denied  { connectto } for  path="/dev/socket/property_service" scontext=u:r:untrusted_app:s0:c157,c256,c512,c768 tcontext=u:r:init:s0 tclass=unix_stream_socket permissive=1 app=com.example.flowertears.p18ab52cf
+11-13 18:57:54.816 28509 15880 I tears.p18ab52cf: [PxrScopeExecuteTime.h][printExecuteTime:96]: setPersistModuleLevel Totaltime:501us start:0us get level from memory:26us set level to property:473us set level to memory:1us
+11-13 18:57:54.817 28509 28509 I SpatialPack: initializeEngine JNIEnv ptr: 0xb400006e1400d9d0
+11-13 18:57:54.817 28509 28509 I SpatialPack: Current Spatial Loader SDK version is 6.3.1, commit 38afdf35f7
+11-13 18:57:54.817 28509 15880 W tears.p18ab52cf: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-13 18:57:54.817 28509 28509 I SpatialPackProvider: LoadLibrary.begin
+11-13 18:57:54.817 28509 28509 E SimpleTimeTrace: loadLibraryContext:0.317000 ms
+11-13 18:57:54.818 28509 15880 I PxrNotificationClient: [PxrScopeExecuteTime.h][printExecuteTime:96]: addPxrCallback Totaltime:1078us checkParma:0us checkCache:2us waiteBinder:1074us
+11-13 18:57:54.818 28509 28509 E SPPackGlue: type check failed: cannot find function with [17930309529353681995][13393341083583212811]
+11-13 18:57:54.818 28509 15880 E PxrConfigServiceClient: [PxrConfigurationClient.cpp][copyPropertyToOutput:64]: config value is null, please check it!
+11-13 18:57:54.819 28509 28509 E SPPackGlue: function check failed: cannot find function with [1768618577859435151][14385361839429281007]
+11-13 18:57:54.819 28509 28509 E SPPackGlue: function check failed: cannot find function with [11691095347036426998][184930492360834361]
+11-13 18:57:54.820 28509 28509 E SPPackGlue: function check failed: cannot find function with [12969150163399609][4994770933281326877]
+11-13 18:57:54.821 28509 28509 E SPPackGlue: type check failed: [12423309027427213622][12313712703045756264] has different sizeof p:[32] :e[96] ControllerActionResult:[int64_t]
+11-13 18:57:54.824 28509 28509 E SPPackGlue: function check failed: cannot find function with [1787190511071095271][6480488187438731974]
+11-13 18:57:54.824 28509 28509 E SPPackGlue: function check failed: cannot find function with [9941453678292630137][9448952976023008709]
+11-13 18:57:54.824 28509 28509 E SPPackGlue: function check failed: cannot find function with [2524020564203077471][2936564868729910949]
+11-13 18:57:54.824 28509 28509 E SPPackGlue: function check failed: cannot find function with [4872262935031584805][12265862644881987001]
+11-13 18:57:54.827 28509 28509 E SPPackGlue: function check failed: cannot find function with [4957047263236426647][3497883566889438784]
+11-13 18:57:54.827 28509 28509 E SPPackGlue: function check failed: cannot find function with [12202292557700413466][7898116093024889595]
+11-13 18:57:54.828 28509 28509 E SPPackGlue: function check failed: cannot find function with [12638860714637466627][7111440990001778684]
+11-13 18:57:54.828 28509 28509 E SPPackGlue: function check failed: cannot find function with [856233507573462976][4190224555229358628]
+11-13 18:57:54.829 28509 28509 E SimpleTimeTrace: Bindings:11.992001 ms
+11-13 18:57:54.829 28509 28509 I SpatialPack: SpatialPackLoader loaded success!
+11-13 18:57:54.829 28509 28509 I SPC-p18a33-SpatialContext: current thread id:481867632824 found session:0xb400006e84014590
+11-13 18:57:54.829 28509 28509 I SPC-p18a33-SpatialContext: current thread id:481867632824 found session:0xb400006e84014590
+11-13 18:57:54.829 28509 28509 I SpatialPack: SpatialApp retrieve session result 0
+11-13 18:57:54.836 28509 28509 I SPC-p18a33-Validate: Scene Create: 0xb400006de401aed0, id=125384109848526856, ThreadId:28509, ProcessName:com.example.flowertears.p18ab52cf
+11-13 18:57:54.852 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local:
+11-13 18:57:54.852 28509 28509 I SpatialPack_SpatialContainer: [main] onAppContainerCreate: com.spatial.app.BaseWindowContainer@2e25873
+11-13 18:57:54.855 28509 28509 I tears.p18ab52cf: hiddenapi: Accessing hidden field Lcom/spatial/app/SpatialContainerInfo;->hasFocus:Z (runtime_flags=0, domain=platform, api=blocked) from /data/app/~~_Iwu1X5hGdKGKKsdjYZFlQ==/com.example.flowertears.p18ab52cf-ZjpYR7hi9jgK8YKJKaxhrA==/base.apk!classes7.dex (domain=app) using linking: allowed
+11-13 18:57:54.856 28509 28509 I SpatialPack_SpatialContainer: [main] WindowContainer-flower_tears_volume onContainerCreate: com.spatial.app.BaseWindowContainer@2e25873
+11-13 18:57:54.856 28509 28509 I tears.p18ab52cf: hiddenapi: Accessing hidden field Lcom/spatial/app/SpatialContainerInfo;->isStaged:Z (runtime_flags=0, domain=platform, api=blocked) from /data/app/~~_Iwu1X5hGdKGKKsdjYZFlQ==/com.example.flowertears.p18ab52cf-ZjpYR7hi9jgK8YKJKaxhrA==/base.apk!classes7.dex (domain=app) using linking: allowed
+11-13 18:57:54.856 28509 28509 I tears.p18ab52cf: hiddenapi: Accessing hidden field Lcom/spatial/app/SpatialContainerInfo;->isSighted:Z (runtime_flags=0, domain=platform, api=blocked) from /data/app/~~_Iwu1X5hGdKGKKsdjYZFlQ==/com.example.flowertears.p18ab52cf-ZjpYR7hi9jgK8YKJKaxhrA==/base.apk!classes7.dex (domain=app) using linking: allowed
+11-13 18:57:54.860 28509 28509 I LifeCycle: dispatch container create, info: Info{id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, visible=true, focus=false, type=window_group, stageMode=0, containerLevel=0, cat=none, life=create, size(1500, 1750, 1000), min size(640, 640, 640), max size(5400, 5400, 5400), density=320, fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, wcStyle=2, volumeAlignment=0, volumeViewpoint=-1, volumeBasePanelStyle=1, rotatable=false, isSighted=true, isStaged=true, resizeType=0, resizeRestriction=1, isVergenceEnabled=true, scaleType=2, placementOffset=112, callerContainerId=0, callerPkg=null, createTime=9524341, lastActiveTime=9524347, baseIntent=Intent { cmp=com.example.flowertears.p18ab52cf/.platform.LaunchActivity }, launchedFromPid=15850, launchedFromUid=0, lastActionPid=15850}
+11-13 18:57:54.860 28509 28509 E SpatialPack: [main] There is no change of SpatialContainerInfo!
+11-13 18:57:54.860 28509 28509 I Java.AppFormBridge: SpatialContainerStateListener onCreate id:17 name:flower_tears_volume type:1 size:1500,1750,1000
+11-13 18:57:54.860 28509 28509 W Container: space state changed, from [-1] to [0]
+11-13 18:57:54.861 28509 28509 W ActivityThread: notifyAppLaunchStatus com.example.flowertears.p18ab52cf com.example.flowertears.p18ab52cf.platform.LaunchActivity
+11-13 18:57:54.862 28509 15904 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+11-13 18:57:54.862 28509 15904 I HWUI    : hwui-debug, RenderThread::threadLoop!!!
+11-13 18:57:54.863 28509 15904 I PXR-HWUI: [SpatialMemManager.cpp][initialize:36]: smm name: com.example.flowertears.p18ab52cf, init size: 117440512.
+11-13 18:57:54.863 28509 15906 W PXR-HWUI: [SpatialSessionLinkHelper.cpp][initSfReadyCheckFn:167]: #hwui-debug# sf fn missing.
+11-13 18:57:54.863 28509 15906 I PXR-HWUI: [SpatialSession.cpp][createAndInitSpatialInstance:129]: #hwui-debug# in initialized
+11-13 18:57:54.863 28509 15906 I PXR-HWUI: [RenderThreadExt.cpp][operator():50]: ss init success
+11-13 18:57:54.863 28509 15904 I tears.p18ab52cf: Allocator::initialize: mAddress: 0x6bae000000, mSize: 117440512
+11-13 18:57:54.863 28509 15904 I PXR-HWUI: [SpatialMemManager.cpp][initialize:36]: smm name: com.example.flowertears.p18ab52cf, init size: 117440512.
+11-13 18:57:54.863 28509 15904 I tears.p18ab52cf: Allocator::initialize: mAddress: 0x6ba7000000, mSize: 117440512
+11-13 18:57:54.863 28509 28509 I tears.p18ab52cf: AssetManager2(0xb400006de401c7f8) locale list changing from [] to [zh-Hans-CN]
+11-13 18:57:54.867 28509 15904 I AdrenoVK-0: ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+11-13 18:57:54.867 28509 15904 I AdrenoVK-0: ===== END DUMP OF OVERRIDDEN SETTINGS =====
+11-13 18:57:54.868 28509 15904 I AdrenoVK-0: ===== BEGIN DUMP OF OVERRIDDEN SETTINGS =====
+11-13 18:57:54.868 28509 15904 I AdrenoVK-0: ===== END DUMP OF OVERRIDDEN SETTINGS =====
+11-13 18:57:54.870 28509 28509 E SYS_DEFAULT_LOG: class android.app.ISysMonitorFwFactory$12|IRecoverActions|setCurActivity|SYS_DEFAULT_FUN_CONTENT
+11-13 18:57:54.876 28509 28509 W Activity: onCreate com.example.flowertears.p18ab52cf.platform.LaunchActivity@c5ab1f2
+11-13 18:57:54.876 28509 28509 E SYS_DEFAULT_LOG: class android.app.ISysMonitorFwFactory$12|IRecoverActions|setCurActivity|SYS_DEFAULT_FUN_CONTENT
+11-13 18:57:54.878 28509 28509 I Container: getContainerByContext containerId: 17
+11-13 18:57:54.879 28509 28509 I tears.p18ab52cf: hiddenapi: Accessing hidden field Landroid/os/PicoOSBuild;->IS_SPACE_OS:Z (runtime_flags=0, domain=platform, api=blocked) from /data/app/~~_Iwu1X5hGdKGKKsdjYZFlQ==/com.example.flowertears.p18ab52cf-ZjpYR7hi9jgK8YKJKaxhrA==/base.apk!classes7.dex (domain=app) using linking: allowed
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: QUALCOMM build          : 204954ac78, I13c8e7b910
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Build Date              : 10/19/26
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Shader Compiler Version : E031.50.31.01
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Local Branch            :
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Remote Branch           : refs/tags/AU_LINUX_ANDROID_LA.VENDOR.16.2.0.11.00.00.1195.683
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Remote Branch           : NONE
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Reconstruct Branch      : NOTHING
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Build Config            : C P 20.0.0 AArch64
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Driver Path             : /vendor/lib64/hw/vulkan.adreno.so
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Driver Version          : 0855.0.13
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: PFP                     : 0x01510103
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: ME                      : 0x01510026
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Application Name    : android framework
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Process Name        : com.example.flowertears.p18ab52cf
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Application Version : 0x00000000
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Engine Name         : android framework
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Engine Version      : 0x00000000
+11-13 18:57:54.883 28509 15904 I AdrenoVK-0: Api Version         : 0x00401000
+11-13 18:57:54.889 28509 28509 W Activity: onResume com.example.flowertears.p18ab52cf.platform.LaunchActivity@c5ab1f2
+11-13 18:57:54.889 28509 28509 E SYS_DEFAULT_LOG: class android.app.ISysMonitorFwFactory$12|IRecoverActions|setCurActivity|SYS_DEFAULT_FUN_CONTENT
+11-13 18:57:54.895 28509 15904 I tears.p18ab52cf: Allocator::initialize: mAddress: 0x6b9bc00000, mSize: 67108864
+11-13 18:57:54.899 28509 28509 I InputTransport: TouchBoost: 0
+11-13 18:57:54.900 28509 15904 I PXR-HWUI: [SkiaPipelineExt.cpp][setWindowGroupAndStage:378]: set wg = 2, st = -1, this = 0xb400006e54103440.
+11-13 18:57:54.902 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local: id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null)
+11-13 18:57:54.902 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local: id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null)
+11-13 18:57:54.902 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local: id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null)
+11-13 18:57:54.902 28509 28509 W Activity: onPause com.example.flowertears.p18ab52cf.platform.LaunchActivity@c5ab1f2
+11-13 18:57:54.997 28509 28509 I tears.p18ab52cf: hiddenapi: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/compose/ui/platform/AndroidComposeView$Companion; (domain=app) using reflection: allowed
+11-13 18:57:55.054 28509 28509 I SpatialPack_SceneInspector: [main] entityId = 1048576, create entity
+11-13 18:57:55.061 28509 28509 I SpatialPack_SceneInspector: [main] entityId = 1048576, add component TransformComponent, size = 1
+11-13 18:57:55.067 28509 28509 I SpatialPack_SpatialView: [main] SpatialView [com.pico.spatial.core.container.SpatialView{3b16da6 V.E...... ......I. 0,0-0,0}] onSpaceViewCreated
+11-13 18:57:55.067 28509 28509 I Container: getContainerByContext containerId: 17
+11-13 18:57:55.067 28509 28509 I WindowManager: [ec-ui]addContainerWithFrameCallbac: ContainerId=17, frameCallback=com.pico.spatial.core.container.q0@bae3d87
+11-13 18:57:55.068 28509 28509 I SpatialPack: Entity set name: RootEntity_View_125384109848526858
+11-13 18:57:55.071 28509 15859 I tears.p18ab52cf: Compiler allocated 5481KB to compile void android.view.ViewRootImpl.performTraversals()
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView: [main] SpatialView [com.pico.spatial.core.container.SpatialView{3b16da6 V.E...... ......ID 0,0-1500,1750}] onSpaceViewShow
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView: [main]
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView:             onSpaceViewChanged:
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView:                 size : 1500 , 1750 , 1000
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView:                 onSpaceViewChanged clip : Rect(0, 0 - 0, 0), 0, 0
+11-13 18:57:55.082 28509 28509 I SpatialPack_SpatialView:
+11-13 18:57:55.084 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=false, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local: id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=true, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null)
+11-13 18:57:55.091 28509 28509 W Activity: onStop com.example.flowertears.p18ab52cf.platform.LaunchActivity@c5ab1f2
+11-13 18:57:55.092 28509 28509 I SpatialPack_SpatialView: [main] SpatialView [com.pico.spatial.core.container.SpatialView{3b16da6 V.E...... ......ID 0,0-1500,1750}] onSpaceViewHide
+11-13 18:57:55.102 28509 28509 E SPC-p18a33-IPCClientService: send async, cb is null
+11-13 18:57:55.102 28509 28509 I SPC-p18a33-ChannelManager: register remote topic success: T:XR_HMD_DATA_TOPIC E:spatial::xr::OpenXRHMDPoseEvent
+11-13 18:57:55.103 28509 28509 I LifeCycle: handleContainerStateChanged id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=false, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null), local: id=17, pkg=com.example.flowertears.p18ab52cf, name=flower_tears_volume, v=false, f=false, t=window_group, stageMode=0, containerLevel=0, c=none, life=create, size(1500, 1750, 1000), fullSpaceResolutionMode=0, spatialApp=true, entityId=97121386794844426, contentId=97121386794844425, caller (0, pkg=null)
+11-13 18:57:55.103 28509 28509 I LifeCycle: dispatch container info changed, 17, com.example.flowertears.p18ab52cf, Changed info: , boundary min(1500, 1750, 1000), max(1500, 1750, 1000)
+11-13 18:57:56.103 28509 28509 I SPC-p18a33-SpatialFrameTiming: Spatial FPS:4 com.example.flowertears.p18ab52cf-session Container Id:17 Count:1

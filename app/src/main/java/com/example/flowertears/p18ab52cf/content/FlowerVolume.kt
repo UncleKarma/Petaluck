@@ -111,15 +111,12 @@ fun FlowerVolume(modifier:Modifier) {
                     val ui=scene.ui
                     val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
                     val presented=scene.completionPresentedRound==ui.roundId
+                    val blankFrame=completionFrameBarrier(scene.completionBlankRequest,scene::completionFrameCommitted)
                     val replay = { scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
                     // Stable surface size also avoids a resize racing the outgoing text buffer.
                     // Center the original wish/button group inside it without changing its spacing.
-                    Box(Modifier.width(560.dp).height(384.dp),contentAlignment=Alignment.Center) {
+                    Box(Modifier.width(560.dp).height(384.dp).then(blankFrame),contentAlignment=Alignment.Center) {
                         if(completing) key(ui.roundId) {
-                            CompletionFrameBarrier(
-                                pending=!presented,
-                                onCommitted={scene.completionFrameCommitted(ui.roundId)},
-                            )
                             CompletionFooter(ui,presented,replay)
                         }
                     }
