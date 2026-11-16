@@ -1,8 +1,8 @@
-# 一瓣欢喜 / RoseTear
+# 一瓣欢喜 / Petaluck
 
 依据 `flowerTears.zip` 中 PRD v1.8 与参考图实现的 PICO Shared Space **Volume 开发版**。工程可在 Android Studio 打开，应用使用 Spatial SDK 6.2.8、Android API 35。
 
-应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「RoseTear」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
+应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「Petaluck」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
 
 当前构建版本为 **1.0.17（versionCode 18）**：针对第二次摘完花瓣闪帧，补上重玩时完成面板的空白缓冲提交，再停用面板；新一轮提交确认绑定到面板自身的空白绘制。132项主机测试、开发/测试APK构建和静态检查通过，已安装。头显连续第二/第三轮视觉验证仍待完成。详见 [闪帧修订记录](docs/completion-buffer-v2.md)。此前的文字位置、手部旋转及花瓣雨保持；版本记录见 [docs/version-control.md](docs/version-control.md)。
 

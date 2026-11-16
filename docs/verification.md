@@ -1,5 +1,9 @@
 # 验证记录与继续工作
 
+## 英文显示名 Petaluck
+
+2026-11-16：默认资源 `app_name` 改为 `Petaluck`，中文简体和繁体资源仍为「一瓣欢喜」。`assembleDebug` 通过；AAPT2 核对 APK 默认/英文标签为 `Petaluck`、中文各地区为「一瓣欢喜」，包名和 1.0.17/code18 保持。实验 API 检查通过；SpatialUI 0 errors、1 条既有的大字号 warning。本节只记录本次名称变更；旧版 APK 的历史名称记录保留。
+
 ## 第二轮结束闪帧（buffer-gate-v2）
 
 1.0.17/code18补上重玩空白提交后停用面板，并将提交回调绑定到实际空白绘制。132单测、构建、API/样式/A11Y和bundle检查通过，已安装；连续第二/第三轮头显验证尚未完成，详见 [completion-buffer-v2.md](completion-buffer-v2.md)。

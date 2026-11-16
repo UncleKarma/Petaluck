@@ -2,10 +2,12 @@
 
 ## 第二轮闪帧修订 v2
 
-APK1.0.17/code18另存于`backups/completion-buffer-v2-2026-11-13/`并附SHA-256。132主机测试和构建通过；本增量已暂存，独立提交受已有`.git/HEAD.lock`阻断，HEAD仍为`c59e4fe`；实机闪帧消失仍待验证。见 [completion-buffer-v2.md](completion-buffer-v2.md)。
+APK1.0.17/code18另存于`backups/completion-buffer-v2-2026-11-13/`并附SHA-256。132主机测试和构建通过；本增量独立提交为`6e58860`；实机闪帧消失仍待验证。见 [completion-buffer-v2.md](completion-buffer-v2.md)。
 
 
-当前基线内容为「一瓣欢喜 / RoseTear」：中英文应用名、PICO 图标、分层花瓣、任意方向 4 cm 摘取、首帧与二维附件绑定修复、12 条随机居中祝福，以及祝福 600 ms / 重玩按钮 450 ms 淡入。
+当前基线内容为「一瓣欢喜 / Petaluck」：中英文应用名、PICO 图标、分层花瓣、任意方向 4 cm 摘取、首帧与二维附件绑定修复、12 条随机居中祝福，以及祝福 600 ms / 重玩按钮 450 ms 淡入。
+
+2026-11-16：英文和默认系统语言的启动器显示名改为 `Petaluck`；中文各地区仍显示「一瓣欢喜」。Manifest 继续引用 `@string/app_name`，开发包名及资源路径不变。
 
 ## 当前状态
 
