@@ -87,8 +87,6 @@ object RoseLayout {
         // Appearance uses its own seeded stream so the layout and round draws stay stable.
         val appearance = Random(seed xor 0x4F89_25C3_5D37_82E1L)
         val placement = Random(seed xor 0x3D82_E16A_79C4_05B7L)
-        val palette = Random(seed xor 0x434F4C4F52L)
-        var previousColor = -1
         counts.forEachIndexed { layer, count ->
             val prefix = layerNames[layer]
             val phase = layer * 137.508f + (placement.nextFloat()*2-1)*WHORL_PHASE_JITTER
@@ -117,19 +115,14 @@ object RoseLayout {
                 val tilt = profile.tilt + lift + (random.nextFloat()*2-1)*PETAL_TILT_JITTER
                 val roll = (appearance.nextFloat()*2-1)*ROLL_JITTER
                 val scale = ringScale * (1f + (random.nextFloat()*2-1)*PETAL_SCALE_JITTER)
-                val petalColor = if (color == MULTICOLOR) {
-                    val eligible = (0 until BASE_COLOR_COUNT).filter { it != previousColor &&
-                        (i != count - 1 || it != petals[petals.size - i].colorId) }
-                    eligible[palette.nextInt(eligible.size)]
-                } else color
-                previousColor = petalColor
                 petals += PetalSpec(petals.size, variant,
                     Vec(-sin(a)*radius, cos(a)*radius, profile.height), angle,
                     tilt, roll, scale, uvChannels[i],
-                    .86f + .14f * (shadeRanks[i] + .5f) / count, petalColor)
+                    .86f + .14f * (shadeRanks[i] + .5f) / count, if (color == MULTICOLOR) 0 else color)
             }
         }
-        return RoundConfig(seed, n, color, petals).also { it.validate() }
+        val colored = if (color == MULTICOLOR) MulticolorPalette.apply(petals, seed) else petals
+        return RoundConfig(seed, n, color, colored).also { it.validate() }
     }
 }
 

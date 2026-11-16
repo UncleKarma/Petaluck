@@ -23,6 +23,26 @@ class MulticolorRoseTest {
             }
         }
     }
+    @Test fun nearbyPetalsAcrossAllLayersNeverShareAColor() {
+        repeat(256) { seed ->
+            for (count in 17..30) {
+                val c = RoseLayout.assemble(seed.toLong(), count, RoseLayout.MULTICOLOR)
+                val layers = c.petals.groupBy { it.variant.substringBefore('_') }.values.toList()
+                for (a in layers.indices) for (b in a + 1 until layers.size) {
+                    val cutoff = Math.toRadians((180.0 / layers[a].size + 180.0 / layers[b].size))
+                    for (p in layers[a]) for (q in layers[b]) {
+                        // Independent geometric check: crown-plane unit vectors, including 0/360 wrap.
+                        val dot = (p.position.x * q.position.x + p.position.y * q.position.y) /
+                            kotlin.math.sqrt((p.position.x*p.position.x + p.position.y*p.position.y) *
+                                (q.position.x*q.position.x + q.position.y*q.position.y))
+                        if (dot >= kotlin.math.cos(cutoff) - 0.00001) {
+                            assertNotEquals("seed=$seed n=$count petals=${p.id},${q.id}", p.colorId, q.colorId)
+                        }
+                    }
+                }
+            }
+        }
+    }
     @Test fun nineRoundColorsHaveEqualDrawOpportunityAndRainbowCanBeExcluded() {
         val frequencies = IntArray(RoseLayout.COLOR_COUNT)
         repeat(9000) { frequencies[RoseLayout.sample(it.toLong()).colorId]++ }
