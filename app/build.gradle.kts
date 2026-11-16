@@ -5,15 +5,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flowertears.p18ab52cf"
+    namespace = "com.unclekarma.petaluck"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.flowertears.p18ab52cf"
+        applicationId = "com.unclekarma.petaluck"
         minSdk = 35
         targetSdk = 35
-        versionCode = 21
-        versionName = "1.0.20"
+        versionCode = 22
+        versionName = "1.0.21"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }

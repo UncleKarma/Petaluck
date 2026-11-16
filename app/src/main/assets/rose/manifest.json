@@ -2,7 +2,7 @@
   "assetLibraryVersion": "rose-llm-v8",
   "layoutVersion": "interleaved-petals-v6",
   "coordinates": "meters, Y-up, +Z front",
-  "source": "New LLM-authored meshes based on user-provided flowerTears.zip reference images. No third-party stock models.",
+  "source": "New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.",
   "petals": [
     {
       "variantId": "outer_01",

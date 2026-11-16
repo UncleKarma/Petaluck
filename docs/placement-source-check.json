@@ -2,14 +2,14 @@
   "advisories": [
     {
       "evidence": "import com.pico.spatial.core.container.SpatialViewContent",
-      "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+      "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
       "line": 9,
       "rationale": "The focused source contains containment logic but no visible named owner, epsilon, revision or size key; review whether another selected file supplies that evidence.",
       "rule": "containment-evidence-incomplete"
     },
     {
       "evidence": "onClick(label=\"\u6458\u53d6\u82b1\u74e3\") {accessiblePluck(token,id)}",
-      "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+      "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
       "line": 291,
       "rationale": "Foreground-facing details appear in a scene with depth transforms but no visible body/detail depth contract; review whether Z is being used only for front-view visibility.",
       "rule": "surface-detail-depth-without-body-contract"
@@ -18,7 +18,7 @@
   "kotlin_file_count": 1,
   "passed": true,
   "scan_inputs": [
-    "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt"
+    "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt"
   ],
   "schema_version": 3,
   "signals": {

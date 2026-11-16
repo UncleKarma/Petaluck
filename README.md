@@ -1,10 +1,10 @@
 # 一瓣欢喜 / Petaluck
 
-依据 `flowerTears.zip` 中 PRD v1.8 与参考图实现的 PICO Shared Space **Volume 开发版**。工程可在 Android Studio 打开，应用使用 Spatial SDK 6.2.8、Android API 35。
+依据 `petaluck.zip` 中 PRD v1.8 与参考图实现的 PICO Shared Space **Volume 开发版**。工程可在 Android Studio 打开，应用使用 Spatial SDK 6.2.8、Android API 35。
 
-应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「Petaluck」。开发包名仍为 `com.example.flowertears.p18ab52cf`，可继续覆盖升级。
+应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「Petaluck」。应用包名为 `com.unclekarma.petaluck`，从 1.0.21 起作为新应用安装；旧开发包可并存。
 
-当前构建版本为 **1.0.20（versionCode 21）**，新增 ADB 持续指定后续花色的调试命令，-1随机，0–8指定颜色，重启恢复随机。139项测试及构建/静态检查通过，已安装头显验证广播与重启重置。详见 [ADB 花色调试](docs/debug-rose-color.md)。
+当前开发构建版本为 **1.0.21（versionCode 22）**，包名、Kotlin 源码目录及旧品牌源文件统一迁移为 Petaluck。139 项测试、构建及静态检查通过，已安装头显并核对新包启动和花色广播回执；原生场景显示仍待复核。详见 [包名迁移记录](docs/package-petaluck.md)。
 
 上一构建版本为 **1.0.17（versionCode 18）**：针对第二次摘完花瓣闪帧，补上重玩时完成面板的空白缓冲提交，再停用面板；新一轮提交确认绑定到面板自身的空白绘制。132项主机测试、开发/测试APK构建和静态检查通过，已安装。头显连续第二/第三轮视觉验证仍待完成。详见 [闪帧修订记录](docs/completion-buffer-v2.md)。此前的文字位置、手部旋转及花瓣雨保持；版本记录见 [docs/version-control.md](docs/version-control.md)。
 
@@ -24,7 +24,7 @@
 
 冷启动修复：生命周期/宿主 View 的监听重绑不再销毁仍被界面记住的场景；窗口初始化回调立即返回，模型加载等待实际首帧后开始；骨骼按实际出帧就绪，不再因冷启动超过约一秒就失败。退出时取消未完成的初始化/装配任务。本次仍无设备日志，首次启动效果待头显验收。
 
-底部全部提示现固定白色，包括加载、错误、追踪提示、结束祝福和首次操作教学；重玩按钮通过原生 Button 颜色 API 使用白色前景。已保留工程中基于 `roseTear.png` 的 PICO 图标配置。另生成的紧凑透明图标备选与提示词见 `art/app-icon/generation.md`，当前启动器仍使用 `ic_spatial_launcher` 及其立体图层。
+底部全部提示现固定白色，包括加载、错误、追踪提示、结束祝福和首次操作教学；重玩按钮通过原生 Button 颜色 API 使用白色前景。已保留工程中基于 `petaluck.png` 的 PICO 图标配置。另生成的紧凑透明图标备选与提示词见 `art/app-icon/generation.md`，当前启动器仍使用 `ic_spatial_launcher` 及其立体图层。
 
 针对“首次只有模型、没有文字”的补充修复：二维附件延后到空间视图首帧后创建，并通过更新回调与首次等待补齐绑定；两处文字 owner 绑定后再装配模型。结束时从 12 条温暖祝福中随机选一句，本轮保持不变；祝福与重玩按钮整体居中，祝福与结果共用 80sp 白字样式，容器自动增高并换行。
 
@@ -55,14 +55,14 @@ python3 tools/render_rose_review.py --stem
 python3 tools/render_rose_review.py --v4
 ```
 
-APK：`app/build/outputs/apk/debug/app-debug.apk`，开发包名：`com.example.flowertears.p18ab52cf`。
+APK：`app/build/outputs/apk/debug/app-debug.apk`，开发包名：`com.unclekarma.petaluck`。
 
 在可访问设备的主机环境中：
 
 ```bash
 pico-cli device list --format json
 pico-cli app install app/build/outputs/apk/debug/app-debug.apk --device <serial> --replace
-pico-cli app launch com.example.flowertears.p18ab52cf --activity .platform.LaunchActivity --device <serial>
+pico-cli app launch com.unclekarma.petaluck --activity .platform.LaunchActivity --device <serial>
 ```
 
 ## 资产与预览
@@ -91,7 +91,7 @@ pico-cli app launch com.example.flowertears.p18ab52cf --activity .platform.Launc
 
 ![17/30 瓣分层布局三视预览](art/rose-layout-v2-threeviews.png)
 
-`art/FlowerTears` 和旧 `rose-production-*.png` 保留历史 Editor 审阅内容，未在本次同步到新的运行时姿态。
+`art/Petaluck` 和旧 `rose-production-*.png` 保留历史 Editor 审阅内容，未在本次同步到新的运行时姿态。
 
 ## 验证范围
 

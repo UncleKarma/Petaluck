@@ -6,12 +6,12 @@
 -- R1b native ColorScheme preservation and custom colors
 -- R2 built-in design preference (soft check)
 -- R3 hover effect
-[info] R3 animateFloatAsState detected near hover scope — confirm it is not hand-rolling hover; prefer Modifier.spatialHoverEffect :: app/src/main/java/com/example/flowertears/p18ab52cf/content/FlowerVolume.kt:81:                        val alpha by animateFloatAsState(targetAlpha,tween(90),label="resultFade")
+[info] R3 animateFloatAsState detected near hover scope — confirm it is not hand-rolling hover; prefer Modifier.spatialHoverEffect :: app/src/main/java/com/unclekarma/petaluck/content/FlowerVolume.kt:81:                        val alpha by animateFloatAsState(targetAlpha,tween(90),label="resultFade")
 -- R4 window-root background
 -- R4b view-level material shape
 -- R5 theme-role routing
 -- R5b explicit Text typography ceiling
-[warning] R5b app/src/main/java/com/example/flowertears/p18ab52cf/content/FlowerVolume.kt:151 explicitly uses PicoTheme.typography.headlineMedium (20sp), which is at or above Title Large (20sp); confirm that this emphasis is necessary and traceable to the accepted design :: Text(text=text,modifier=modifier,style=PicoTheme.typography.headlineMedium,
+[warning] R5b app/src/main/java/com/unclekarma/petaluck/content/FlowerVolume.kt:151 explicitly uses PicoTheme.typography.headlineMedium (20sp), which is at or above Title Large (20sp); confirm that this emphasis is necessary and traceable to the accepted design :: Text(text=text,modifier=modifier,style=PicoTheme.typography.headlineMedium,
 -- R6 indication & optional haptics
 -- R7 library-private token imports
 -- R8 migrated SpatialUI checklist heuristics

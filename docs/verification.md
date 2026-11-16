@@ -1,5 +1,9 @@
 # 验证记录与继续工作
 
+## Petaluck 包名迁移 1.0.21
+
+新包名 `com.unclekarma.petaluck`，源码、测试和工程品牌路径同步迁移。139 单测及构建/静态检查通过；头显安装、启动及新 action 的花色广播回执正常。运行时审核仍为 TARGET_ROOT_TIMEOUT，场景显示待复核。见 [package-petaluck.md](package-petaluck.md)。
+
 ## ADB 花色调试 1.0.20
 
 新增持续指定后续花色的调试命令，139测试及构建/静态检查通过；已安装并验证广播校验与重启恢复随机。详见 [debug-rose-color.md](debug-rose-color.md)。
@@ -24,7 +28,7 @@
 1.0.17/code18补上重玩空白提交后停用面板，并将提交回调绑定到实际空白绘制。132单测、构建、API/样式/A11Y和bundle检查通过，已安装；连续第二/第三轮头显验证尚未完成，详见 [completion-buffer-v2.md](completion-buffer-v2.md)。
 
 
-日期：2026-11-13。输入为 PRD v1.8（`requirements/flower-tears-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
+日期：2026-11-13。输入为 PRD v1.8（`requirements/petaluck-prd.md`）。本交付为可构建开发版，尚未完成全部 P0 真机验收。
 
 ## 花瓣雨自然收尾（当前，drain-tail-v5）
 
@@ -324,7 +328,7 @@ UI 样式：继续使用 `com.pico.spatial.ui.design.Text` / `Button`，根 Main
 ## 底部白字与图标打包
 
 - 用户要求底部全部提示为白色：Loading、Error、追踪不可用、Completing/Completed 祝福与两条首次教学文字均改用 `roseTextWhite=#FFFFFF`。结果文字继续共用白色且保持 80/104sp。原生重玩 Button 通过 `ButtonDefaults.buttonColors(contentColor=roseTextWhite)` 统一前景，内部 Text 继续继承组件颜色，默认背景和 hover 保留。原生 PicoTheme/ColorScheme 未替换，窗口仍透明，无新增面板、背景、边框或材质。
-- 图标请求的原图为工程根目录 `roseTear.png`。内置 ImageGen 生成了 `art/app-icon/rose-tear-foreground.png`，已检查透明背景合成效果，生成提示词和保存记录在 `art/app-icon/generation.md`。
+- 图标请求的原图为工程根目录 `petaluck.png`。内置 ImageGen 生成了 `art/app-icon/petaluck-foreground.png`，已检查透明背景合成效果，生成提示词和保存记录在 `art/app-icon/generation.md`。
 - 工作恢复时工程已有更新的 PICO 立体图标和 manifest 配置：icon/roundIcon 为 `@mipmap/ic_spatial_launcher`，`icon.3d.list` / `icon.sdf.list` 引用各两层 PNG。已查看其原图花朵与心形花瓣效果并保留这套当前配置；生成的紧凑图是备选，没有覆盖这些现有资源，也没有改动现有应用名/locale 配置。
 - 本次为颜色与资源打包修改，执行 `assembleDebug`、实验 API 检查、SpatialUI 样式 verifier 和无障碍源码审计。样式 0 errors / 1 warning，唯一 warning 为既有结果大字号；未新增或重跑行为单测，19 项通过记录来自前次启动修复。设备连接权限限制保留，白字实际对比度与 PICO 启动器立体图标显示未在头显验证。
 

@@ -10,14 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_spatial_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FlowerTearsTheme"
+        android:theme="@style/Theme.PetaluckTheme"
         tools:targetApi="31"
         android:localeConfig="@xml/locales_config">
 
         <activity
             android:name=".platform.LaunchActivity"
             android:exported="true"
-            android:theme="@style/Theme.FlowerTearsTheme">
+            android:theme="@style/Theme.PetaluckTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,7 +28,7 @@
             <!-- The unique name/id of a WindowContainer -->
             <meta-data
                 android:name="pico.spatial.windowcontainer.id"
-                android:value="flower_tears_volume" />
+                android:value="petaluck_volume" />
 
             <!-- Form/style of the WindowContainer
                 "0": Form.Automatic, a system default setting, set to Form.Planar currently (default)

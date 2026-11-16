@@ -1,9 +1,9 @@
 # ADB 指定后续花色
 
-版本 1.0.20 / code21。先打开调试版应用，再执行：
+命令自 1.0.20 引入；以下使用 1.0.21 / code22 的新包名。先打开调试版应用，再执行：
 
 ```sh
-adb shell am broadcast -a com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR -p com.example.flowertears.p18ab52cf --ei color 8
+adb shell am broadcast -a com.unclekarma.petaluck.DEBUG_ROSE_COLOR -p com.unclekarma.petaluck --ei color 8
 ```
 
 把最后的数字改为目标值即可：
@@ -31,3 +31,5 @@ adb shell am broadcast -a com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR -p 
 
 APK：`backups/debug-rose-color-v1-2026-11-16/Petaluck-1.0.20.apk`
 SHA-256：`9a9e66b4053fbc7fe09f3ba4726221c574b4e18a90419af31fa90bdfe1466bfb`
+
+1.0.21 新包名的安装、启动及 8/-1 广播验证见 [包名迁移记录](package-petaluck.md)；上面的 1.0.20 回执和 APK 哈希保留为旧包历史证据。

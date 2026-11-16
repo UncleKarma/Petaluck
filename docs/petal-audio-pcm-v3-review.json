@@ -10,7 +10,7 @@
     "versionCode": 4,
     "versionName": "1.0.3",
     "applicationId": "com.example.flowertears.p18ab52cf",
-    "productionDiffAgainstV2": ["app/src/main/java/com/example/flowertears/p18ab52cf/scene/PetalAudioSamples.kt"],
+    "productionDiffAgainstV2": ["app/src/main/java/com/unclekarma/petaluck/scene/PetalAudioSamples.kt"],
     "sourceWavPreserved": true,
     "sourceWavSha256": "ea4338224bc3db7a417aade1cacc897069c9f3ae94302c2ebac433e269368982"
   },

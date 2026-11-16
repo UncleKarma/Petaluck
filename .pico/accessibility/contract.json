@@ -1,15 +1,15 @@
 {
   "contractVersion": 1,
-  "packageName": "com.example.flowertears.p18ab52cf",
+  "packageName": "com.unclekarma.petaluck",
   "components": [
     {
-      "contractId": "attachment:9628d1e0c0f0cc2f",
-      "semanticAnchor": "9628d1e0c0f0cc2f",
+      "contractId": "attachment:5300f163bdf6fbe1",
+      "semanticAnchor": "5300f163bdf6fbe1",
       "kind": "attachment",
       "source": {
-        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 105,
-        "endLine": 105,
+        "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
+        "line": 106,
+        "endLine": 106,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.result",
@@ -29,13 +29,13 @@
       }
     },
     {
-      "contractId": "attachment:03fa02a16dd4b179",
-      "semanticAnchor": "03fa02a16dd4b179",
+      "contractId": "attachment:4240b5557de26297",
+      "semanticAnchor": "4240b5557de26297",
       "kind": "attachment",
       "source": {
-        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 113,
-        "endLine": 113,
+        "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
+        "line": 114,
+        "endLine": 114,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.message",
@@ -55,13 +55,13 @@
       }
     },
     {
-      "contractId": "attachment:9aad24a5c699fc24",
-      "semanticAnchor": "9aad24a5c699fc24",
+      "contractId": "attachment:cb177db5867a9a9f",
+      "semanticAnchor": "cb177db5867a9a9f",
       "kind": "attachment",
       "source": {
-        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 126,
-        "endLine": 126,
+        "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
+        "line": 127,
+        "endLine": 127,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.completion",
@@ -81,13 +81,13 @@
       }
     },
     {
-      "contractId": "entity:b02d3225d26bdcac",
-      "semanticAnchor": "b02d3225d26bdcac",
+      "contractId": "entity:dc17952da23974c6",
+      "semanticAnchor": "dc17952da23974c6",
       "kind": "entity",
       "source": {
-        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
-        "line": 328,
-        "endLine": 328,
+        "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
+        "line": 329,
+        "endLine": 329,
         "symbol": "registerStemAccessibility"
       },
       "semanticId": "rose.stem",
@@ -107,11 +107,11 @@
       }
     },
     {
-      "contractId": "entity:3972f765c60a3e00",
-      "semanticAnchor": "3972f765c60a3e00",
+      "contractId": "entity:756cc184288fb445",
+      "semanticAnchor": "756cc184288fb445",
       "kind": "entity",
       "source": {
-        "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+        "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
         "line": 333,
         "endLine": 335,
         "symbol": "registerPetalAccessibility"

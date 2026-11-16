@@ -1,6 +1,6 @@
 # RoseTear icon artwork
 
-Input: `/roseTear.png` (user-provided original).
+Input: `/petaluck.png` (user-provided original).
 
 `rose-tear-foreground.png` is a compact transparent foreground study made with the built-in ImageGen tool. The generated master was copied into this workspace without modifying the source image. It is an optional alternative, not the current PICO launcher resource.
 

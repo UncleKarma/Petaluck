@@ -1,5 +1,5 @@
 {
-  "sourceArtwork": "roseTear.png",
+  "sourceArtwork": "petaluck.png",
   "activeIcon": "@mipmap/ic_spatial_launcher",
   "picoMetadata": {
     "icon.3d.list": "@array/icon_3d_list",
@@ -52,7 +52,7 @@
       "pixelsMatchSource": true
     }
   ],
-  "alternateImageGenForeground": "art/app-icon/rose-tear-foreground.png",
+  "alternateImageGenForeground": "art/app-icon/petaluck-foreground.png",
   "promptAndProvenance": "art/app-icon/generation.md",
   "launcherRuntimeVerified": false
 }

@@ -66,7 +66,7 @@
       "advisories": [
         {
           "evidence": "import com.pico.spatial.core.container.SpatialViewContent",
-          "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+          "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
           "line": 8,
           "rationale": "The focused source contains containment logic but no visible named owner, epsilon, revision or size key; review whether another selected file supplies that evidence.",
           "rule": "containment-evidence-incomplete",
@@ -74,7 +74,7 @@
         },
         {
           "evidence": "onClick(label=\"摘取花瓣\") {accessiblePluck(token,id)}",
-          "file": "app/src/main/java/com/example/flowertears/p18ab52cf/scene/RoseScene.kt",
+          "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
           "line": 257,
           "rationale": "Foreground-facing details appear in a scene with depth transforms but no visible body/detail depth contract; review whether Z is being used only for front-view visibility.",
           "rule": "surface-detail-depth-without-body-contract",

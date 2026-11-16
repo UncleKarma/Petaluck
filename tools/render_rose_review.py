@@ -92,7 +92,7 @@ def main():
     canvas=Image.new('RGB',(1800,1460),(245,244,240))
     draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=21)
-    draw.text((30,18),'FlowerTears | layered-bowl-v2 | actual GLB geometry + production Kotlin layouts',fill='#292929',font=font)
+    draw.text((30,18),'Petaluck | layered-bowl-v2 | actual GLB geometry + production Kotlin layouts',fill='#292929',font=font)
     draw.text((30,50),'Offline diagnostic lighting. No runtime, material, input or headset validation.',fill='#666666',font=font)
     views=[('FRONT',(0,.12,1)),('SIDE',(1,.12,.15)),('TOP',(0,1,.001))]
     for row,count in enumerate([17,30]):
@@ -121,7 +121,7 @@ def main():
 def material_review():
     canvas=Image.new('RGB',(2000,1320),(245,244,240));draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=22)
-    draw.text((24,14),'RoseTear | botanical-basecolor-v2 | 8 palettes | actual GLB UVs + textures',fill='#292929',font=font)
+    draw.text((24,14),'Petaluck | botanical-basecolor-v2 | 8 palettes | actual GLB UVs + textures',fill='#292929',font=font)
     draw.text((24,47),'Offline Unlit preview / sRGB base color. No diagnostic lights. Not a headset capture.',fill='#666666',font=font)
     for i in range(8):
         x=(i%4)*500;y=90+(i//4)*610
@@ -144,12 +144,12 @@ def material_review():
 def stem_review():
     import tarfile
     # Read the previous immutable snapshot; never replace production assets for a preview.
-    previous=ROOT/'backups/materials-v2-2026-11-10/RoseTear-materials-v2-2026-11-10-source.tar.gz'
+    previous=next((ROOT/'backups/materials-v2-2026-11-10').glob('*-materials-v2-2026-11-10-source.tar.gz'))
     before=Path('/tmp/rose-stem-v3-before-review.glb')
     with tarfile.open(previous,'r:gz') as archive:
         before.write_bytes(archive.extractfile('VibeCodingApp/art/review-models/stem_only.glb').read())
     canvas=Image.new('RGB',(1800,1480),(245,244,240));draw=ImageDraw.Draw(canvas);font=ImageFont.load_default(size=21)
-    draw.text((24,14),'RoseTear | organic-stem-v3 | curved resting mesh + one shared blossom transform',fill='#292929',font=font)
+    draw.text((24,14),'Petaluck | organic-stem-v3 | curved resting mesh + one shared blossom transform',fill='#292929',font=font)
     draw.text((24,48),'Actual GLB geometry / UVs / base color. Offline Unlit. Not a headset capture.',fill='#666666',font=font)
     views=[
         ('Before / stem front',before,(0,.12,1),2000,(0,-.075,0)),
@@ -195,7 +195,7 @@ def layered_v4_review():
     import tarfile
     font=ImageFont.load_default(size=22)
     canvas=Image.new('RGB',(2000,1320),(245,244,240));draw=ImageDraw.Draw(canvas)
-    draw.text((24,14),'RoseTear | 24 separate albedos | outer lighter / middle / inner deeper',fill='#292929',font=font)
+    draw.text((24,14),'Petaluck | 24 separate albedos | outer lighter / middle / inner deeper',fill='#292929',font=font)
     draw.text((24,47),'Actual production layer bindings + GLB UVs. Offline Unlit, not a headset capture.',fill='#666666',font=font)
     names=['Red','Pink','Pale pink','White','Blue enchantress','Yellow','Orange','Lavender']
     for i,name in enumerate(names):
@@ -209,12 +209,12 @@ def layered_v4_review():
     for col,direction in enumerate([(0,.12,1),(1,.12,.15)]):
         canvas.paste(render(DEST/'color_4.glb',direction,(590,650),True,2700,(0,.066,.015)),(col*600,95))
     path=ROOT/'art/rose-layered-v4-blue-detail.png';canvas.save(path);print(path)
-    previous=ROOT/'backups/stem-v3-2026-11-10/RoseTear-stem-v3-2026-11-10-source.tar.gz'
+    previous=next((ROOT/'backups/stem-v3-2026-11-10').glob('*-stem-v3-2026-11-10-source.tar.gz'))
     before=Path('/tmp/rose-v4-previous-stem.glb')
     with tarfile.open(previous,'r:gz') as archive:
         before.write_bytes(archive.extractfile('VibeCodingApp/art/review-models/stem_only.glb').read())
     canvas=Image.new('RGB',(1800,820),(245,244,240));draw=ImageDraw.Draw(canvas)
-    draw.text((24,14),'RoseTear | almost straight leaning body + small weighted bend at the top',fill='#292929',font=font)
+    draw.text((24,14),'Petaluck | almost straight leaning body + small weighted bend at the top',fill='#292929',font=font)
     draw.text((24,48),'Same Unlit view / actual GLB bytes. No S-shaped sway in the lower body.',fill='#666666',font=font)
     for col,(label,path,direction) in enumerate([
         ('Before / S curve',before,(0,.12,1)),('After / front',DEST/'stem_only.glb',(0,.12,1)),('After / side',DEST/'stem_only.glb',(1,.06,.08))]):
@@ -242,7 +242,7 @@ def layered_v5_review():
     canvas=Image.new('RGB',(1920,1030),(245,244,240))
     draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=22)
-    draw.text((20,16),'RoseTear / Eight palettes with secondary pigment',fill='#292929',font=font)
+    draw.text((20,16),'Petaluck / Eight palettes with secondary pigment',fill='#292929',font=font)
     draw.text((20,48),'Offline Unlit preview of packaged GLB and albedo textures',fill='#666666',font=font)
     with TemporaryDirectory(prefix='rose-palette-v5-') as temporary:
         assembly.DEST=Path(temporary)
@@ -265,11 +265,11 @@ def variation_v6_review():
     import create_review_assemblies as assembly
 
     parameters=json.loads((ROOT/'app/build/reports/rose-layouts.json').read_text())
-    previous=ROOT/'backups/replay-palettes-v5-2026-11-11/RoseTear-replay-palettes-v5-2026-11-11-source.tar.gz'
+    previous=next((ROOT/'backups/replay-palettes-v5-2026-11-11').glob('*-replay-palettes-v5-2026-11-11-source.tar.gz'))
     canvas=Image.new('RGB',(1800,1160),(245,244,240))
     draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=22)
-    draw.text((20,16),'RoseTear / Individual petal UV and pigment-depth variation',fill='#292929',font=font)
+    draw.text((20,16),'Petaluck / Individual petal UV and pigment-depth variation',fill='#292929',font=font)
     draw.text((20,48),'Same exported layout, GLB geometry and albedos / offline Unlit',fill='#666666',font=font)
     with TemporaryDirectory(prefix='rose-variation-v6-') as temporary:
         before=Path(temporary)/'before'
@@ -302,7 +302,7 @@ def layout_review(cupped=False):
     draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=22)
     heading='Cupped middle and inner petals' if cupped else 'Seated roots and spiral petal overlap'
-    draw.text((20,16),f'RoseTear / {heading}',fill='#292929',font=font)
+    draw.text((20,16),f'Petaluck / {heading}',fill='#292929',font=font)
     draw.text((20,48),'Production Kotlin layouts and exported GLB triangles / offline Unlit',fill='#666666',font=font)
     with TemporaryDirectory(prefix='rose-layout-v3-') as temporary:
         assembly.DEST=Path(temporary)
@@ -335,7 +335,7 @@ def natural_layout_review(interleaved=False):
     draw=ImageDraw.Draw(canvas)
     font=ImageFont.load_default(size=22)
     heading='Interleaved petal openings' if interleaved else 'Cupped outer petals and varied arrangements'
-    draw.text((20,16),f'RoseTear / {heading}',fill='#292929',font=font)
+    draw.text((20,16),f'Petaluck / {heading}',fill='#292929',font=font)
     draw.text((20,48),'Three 24-petal pink roses / production layouts and GLB textures / offline Unlit',fill='#666666',font=font)
     with TemporaryDirectory(prefix='rose-layout-v5-') as temporary:
         assembly.DEST=Path(temporary)

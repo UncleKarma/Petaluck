@@ -121,7 +121,7 @@ def atlas_uv(tile,u,v):
 
 class Glb:
     def __init__(self):
-        self.data=bytearray();self._textures={};self.doc={'asset':{'version':'2.0','generator':'FlowerTears LLM mesh authoring v1 / botanical base color v2'},'buffers':[{}],'bufferViews':[],'accessors':[],'meshes':[],'nodes':[],'materials':[],'scenes':[{'nodes':[]}],'scene':0,'extensionsUsed':['KHR_materials_unlit']}
+        self.data=bytearray();self._textures={};self.doc={'asset':{'version':'2.0','generator':'Petaluck LLM mesh authoring v1 / botanical base color v2'},'buffers':[{}],'bufferViews':[],'accessors':[],'meshes':[],'nodes':[],'materials':[],'scenes':[{'nodes':[]}],'scene':0,'extensionsUsed':['KHR_materials_unlit']}
     def buf(self,data):
         while len(self.data)%4:self.data.append(0)
         idx=len(self.doc['bufferViews']);self.doc['bufferViews'].append({'buffer':0,'byteOffset':len(self.data),'byteLength':len(data)});self.data.extend(data);return idx
@@ -410,7 +410,7 @@ def main():
         g.save(p)
         records.append({'variantId':spec[0],'layer':spec[0].split('_')[0],'triangles':len(f),'surfaceRows':8,'surfaceColumns':15 if spec[0].startswith('inner') else 13,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'method':'Independent LLM-authored parametric mesh, not cloud text-to-3D','brief':spec[-1],'shapeParameters':list(spec[1:-1]),'pivot':[0,0,0],'bounds':[[min(x[k] for x in v) for k in range(3)],[max(x[k] for x in v) for k in range(3)]]})
     stem=build_stem()
-    manifest={'assetLibraryVersion':'rose-llm-v8','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided flowerTears.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
+    manifest={'assetLibraryVersion':'rose-llm-v8','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
     manifest['petalCupProfiles'] = PETAL_CUP_PROFILES
     manifest['petalOverlapSlope'] = PETAL_OVERLAP_SLOPE
     manifest['petalOverlapSlopeOverrides'] = PETAL_OVERLAP_SLOPES
