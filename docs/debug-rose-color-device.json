@@ -1,0 +1,50 @@
+[
+  {
+    "case": "out-of-range preserves 8",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=1, data=\"Invalid color; use integer -1..8; selectedColor=8 unchanged\"",
+    "error": ""
+  },
+  {
+    "case": "wrong type preserves 8",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=1, data=\"Invalid color; use integer -1..8; selectedColor=8 unchanged\"",
+    "error": ""
+  },
+  {
+    "case": "random",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=0, data=\"selectedColor=-1; applies to future new rounds until changed or restarted\"",
+    "error": ""
+  },
+  {
+    "case": "red",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=0, data=\"selectedColor=0; applies to future new rounds until changed or restarted\"",
+    "error": ""
+  },
+  {
+    "case": "colorful before restart",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=0, data=\"selectedColor=8; applies to future new rounds until changed or restarted\"",
+    "error": ""
+  },
+  {
+    "case": "stop",
+    "exitCode": 0,
+    "output": "Stopped com.example.flowertears.p18ab52cf on PB311XHGKC150135G",
+    "error": ""
+  },
+  {
+    "case": "launch",
+    "exitCode": 0,
+    "output": "Launching com.example.flowertears.p18ab52cf -> PB311XHGKC150135G...\nStarting: Intent { cmp=com.example.flowertears.p18ab52cf/.platform.LaunchActivity }",
+    "error": ""
+  },
+  {
+    "case": "restart reset readback",
+    "exitCode": 0,
+    "output": "Broadcasting: Intent { act=com.example.flowertears.p18ab52cf.DEBUG_ROSE_COLOR flg=0x400000 pkg=com.example.flowertears.p18ab52cf (has extras) }\nBroadcast completed: result=1, data=\"Invalid color; use integer -1..8; selectedColor=-1 unchanged\"",
+    "error": ""
+  }
+]

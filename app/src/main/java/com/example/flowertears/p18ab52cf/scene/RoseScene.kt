@@ -31,6 +31,7 @@ data class RoseUi(val phase: Phase = Phase.Loading, val result: String = "", val
 
 /** All 3D writes happen on the main thread, in input callbacks or scene update events. */
 class RoseScene(context: Context) {
+    private val debugRoseColor = (context.applicationContext as com.example.flowertears.p18ab52cf.platform.SpatialApplication).debugRoseColor
     var ui by mutableStateOf(RoseUi()); private set
     var attachmentsReady by mutableStateOf(false); private set
     var completionPresentedRound by mutableStateOf<Long?>(null); private set
@@ -187,7 +188,7 @@ class RoseScene(context: Context) {
         assemblyJob=job
         updateUi(RoseUi(Phase.Loading))
         // Error retry preserves legal sampled parameters; completed replay draws anew.
-        val config = session?.takeIf { it.phase == Phase.Error }?.config ?: recentColors.sample(Random.nextLong())
+        val config = debugRoseColor.sample(Random.nextLong(), recentColors, session?.takeIf { it.phase == Phase.Error }?.config)
         val token = ++generation
         var stage = "clear previous round"
         try {
