@@ -46,6 +46,12 @@ android {
     }
 }
 
+androidComponents {
+    onVariants(selector().withBuildType("release")) { variant ->
+        variant.outputs.forEach { output -> output.versionName.set("V1.0.0") }
+    }
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.spatial.bom))

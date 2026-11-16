@@ -10,7 +10,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven {
-            url = uri("https://maven.byted.org/repository/android_public")
+            url = uri("https://artifact.bytedance.com/repository/Volcengine")
             name = ""
         }
     }
@@ -21,7 +21,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
-            url = uri("https://maven.byted.org/repository/android_public")
+            url = uri("https://artifact.bytedance.com/repository/Volcengine")
             name = ""
         }
     }

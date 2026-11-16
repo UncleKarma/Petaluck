@@ -1,0 +1,32 @@
+app:
+  id: "7708103971520380971"
+  name: "一瓣欢喜"
+  slogan: "《一瓣欢喜》是一段藏在花朵中的温柔时光。"
+  description: |-
+    《一瓣欢喜》是一段藏在花朵中的温柔时光。
+    心里想着一个人，也可以只为自己。轻轻捏住花瓣，一片片摘下，让“喜欢”与“不喜欢”随花瓣飘落。最后一瓣落下时，答案交给偶然，欢喜留给自己。
+
+    在眼前捏住一片立体玫瑰花瓣，轻轻拉开。花瓣会随手移动和转动，松手后飘落，花茎也会轻轻回弹。每摘一片，花朵上方就会在「喜欢」和「不喜欢」之间切换。你可以靠近花瓣伸手摘取，也可以看向花瓣后捏合。每轮的花瓣数量和花色会变化，摘完会收到一句随机祝福，伴随音乐和同色花瓣雨。点「再试一次」就能开启新一轮。
+  tags: [ "休闲益智" ]
+  category: "application"
+  icon: "assets/icon.jpg"
+  landscape: "assets/cover.jpeg"
+  detail_images:
+    - "assets/Screenshot_2026.11.13-14.12.18.jpeg"
+    - "assets/Screenshot_2026.11.13-14.12.58.jpeg"
+    - "assets/Screenshot_2026.11.16-11.10.31.jpeg"
+    - "assets/vibelab-detail-replay.jpeg"
+  videos:
+    - file: "assets/vibelab-demo.mp4"
+      cover: "assets/vibelab-demo-cover.jpeg"
+version:
+  name: "V1.0.0"
+  notes: "首次上线空间摘花瓣体验，包含八种花色、随机祝福、结束音乐、同色花瓣雨和重玩。"
+build:
+  repo_url: "https://github.com/UncleKarma/Petaluck"
+  repo_visibility: "private"
+  tech_stack: "android_spatial"
+  ai_tool: "Codex CLI"
+  ai_model: "GPT-6"
+  features: [ "none" ]
+  teammates: []

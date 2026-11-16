@@ -20,3 +20,6 @@ __pycache__/
 art/**/.CacheData/
 art/**/UserSettings/
 art/**/Library/
+.vibelab/
+/.pico-env.json
+/assets/
