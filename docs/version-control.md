@@ -1,5 +1,10 @@
 # 版本基线与回滚
 
+## 彩色月季 1.0.18
+
+新增第九种等概率花色、逐瓣随机基础色和八色花瓣雨；135测试、构建和静态检查通过，当前无连接设备，原生效果待验证。详见 [multicolor-v1.md](multicolor-v1.md)。
+
+
 ## 第二轮闪帧修订 v2
 
 APK1.0.17/code18另存于`backups/completion-buffer-v2-2026-11-13/`并附SHA-256。132主机测试和构建通过；本增量独立提交为`6e58860`；实机闪帧消失仍待验证。见 [completion-buffer-v2.md](completion-buffer-v2.md)。

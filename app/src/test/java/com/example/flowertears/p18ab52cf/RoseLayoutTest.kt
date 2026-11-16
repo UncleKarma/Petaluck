@@ -44,7 +44,7 @@ class RoseLayoutTest {
             (17..30).flatMap {n->(0L..19L).map {seed->RoseLayout.assemble(seed,n,1)}}
         val rounds=configs.joinToString(",") {c->
             val petals=c.petals.joinToString(",") {p->
-                """{"id":${p.id},"variant":"${p.variant}","textureFile":"${RoseLayout.texturePath(c.colorId,p.variant)}","uvIndex":${p.uvIndex},"albedoScale":${p.albedoScale},"position":[${p.position.x},${p.position.y},${p.position.z}],"angle":${p.angle},"tilt":${p.tilt},"roll":${p.roll},"scale":${p.scale}}"""
+                """{"id":${p.id},"variant":"${p.variant}","textureFile":"${RoseLayout.texturePath(p)}","uvIndex":${p.uvIndex},"albedoScale":${p.albedoScale},"position":[${p.position.x},${p.position.y},${p.position.z}],"angle":${p.angle},"tilt":${p.tilt},"roll":${p.roll},"scale":${p.scale}}"""
             }
             """{"seed":${c.seed},"count":${c.count},"colorId":${c.colorId},"petals":[$petals]}"""
         }

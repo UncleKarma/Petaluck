@@ -9,6 +9,7 @@ import com.example.flowertears.p18ab52cf.domain.RoseLayout
 import com.pico.spatial.core.container.SpatialViewContent
 import com.pico.spatial.core.ecs.Entity
 import com.pico.spatial.core.ecs.ParticleComponent
+import com.pico.spatial.core.ecs.particle.ParticleFloatVaryingProperty
 import com.pico.spatial.core.ecs.TransformComponent
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.pico.spatial.core.ecs.resource.TextureCreateOption
@@ -106,7 +107,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     check(children.map { it.getName() }.sorted() == names.sorted()) {
                         "Petal rain manifest/runtime scope mismatch"
                     }
-                    val paths = RoseLayout.layerNames.map { RoseLayout.texturePath(config.colorId, "${it}_01") }
+                    val paths = RoseLayout.rainTexturePaths(config)
                     textures.retain(paths.toSet()) { path ->
                         withContext(Dispatchers.IO) {
                             val bitmap = PetalRainSprite.draw(assets, path)
@@ -117,13 +118,30 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     if (closed || token != epoch || !caller.isActive) return@withContext
                     // Own PRNG: decorative motion never consumes the gameplay/layout random stream.
                     val breeze = Random(config.seed xor 0x504554414CL)
-                    val controls = EMITTERS.mapIndexed { index, name ->
-                        val owner = children.single { it.getName() == name }
+                    val originals = EMITTERS.map { name -> children.single { it.getName() == name } }
+                    val rates = originals.map { checkNotNull(it.components[ParticleComponent::class.java]).birthRateFull }
+                    // Clone before editing any source material/rate. Every clone belongs to candidate
+                    // immediately, so cancellation/failure destroys the entire prepared effect.
+                    val owners = paths.indices.map { index ->
+                        if (index < originals.size) originals[index] else {
+                            val copy = checkNotNull(originals[index % 3].clone(
+                                Entity.CloneOptions(recursive = true, shouldShareMaterialInstance = false)))
+                            if (!scope.addChild(copy)) {
+                                copy.destroy()
+                                error("Cannot attach multicolor rain emitter")
+                            }
+                            copy
+                        }
+                    }
+                    val controls = owners.mapIndexed { index, owner ->
                         // Authored emitter is already near the +0.35 m container ceiling.
                         checkNotNull(owner.components[TransformComponent::class.java])
                             .setPosition(Vector3(0f, .33f, 0f))
                         checkNotNull(owner.components[ParticleComponent::class.java]).also {
                             it.isEmitting = false
+                            val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
+                            val rate = rates[index % 3]
+                            it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
                             it.mainSimulation.apply {
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
                                 noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
@@ -137,7 +155,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     particles = controls
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=drain-tail-v5 textures=$paths")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=multicolor-v1 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }

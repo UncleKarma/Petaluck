@@ -132,8 +132,8 @@ class RoseScene(context: Context) {
         syncPanels(ui)
         return this.resultPanel!=null && this.messagePanel!=null && this.completionPanel!=null
     }
-    private suspend fun ensureAssets(colorId:Int) {
-        textures.retain(RoseLayout.texturePaths(colorId)) {path->withContext(Dispatchers.IO){TextureResource.load(path,option=TextureCreateOption())}}
+    private suspend fun ensureAssets(config:RoundConfig) {
+        textures.retain(RoseLayout.texturePaths(config)) {path->withContext(Dispatchers.IO){TextureResource.load(path,option=TextureCreateOption())}}
         if(disposed){textures.close();return}
         for(variant in RoseLayout.variantIds)if(prototypes[variant]?.valid!=true) {
             val entity=Entity.loadSuspend("asset://rose/$variant.glb")
@@ -193,7 +193,7 @@ class RoseScene(context: Context) {
         try {
             clearRound()
             stage = "retain shared assets"
-            ensureAssets(config.colorId)
+            ensureAssets(config)
             if(disposed)return
             val s = RoseSession(token, config); session=s
             // Hide the complete hierarchy during assembly without disabling native rig updates.
@@ -249,7 +249,7 @@ class RoseScene(context: Context) {
                     val shade=spec.albedoScale
                     setBaseColor(Color4(shade,shade,shade,1f))
                     setBaseColorTextureParameter(MaterialTextureParameter(
-                        checkNotNull(textures[RoseLayout.texturePath(config.colorId,spec.variant)]){"Layered rose texture unavailable"},
+                        checkNotNull(textures[RoseLayout.texturePath(spec)]){"Layered rose texture unavailable"},
                         petalSampler, spec.uvIndex))
                     setCullingMode(MaterialCullingMode.NONE)
                 }

@@ -15,7 +15,7 @@ class RecentRoseColorsTest {
             assertEquals(RoseLayout.sample(seed), sampled)
             seen += sampled.colorId
         }
-        assertEquals((0..7).toSet(), seen)
+        assertEquals((0 until RoseLayout.COLOR_COUNT).toSet(), seen)
     }
 
     @Test fun replaysExcludeExactlyTheAvailableRecentColors() {
@@ -28,7 +28,7 @@ class RecentRoseColorsTest {
                 3 -> setOf(7, 0, 3)
                 else -> setOf(0, 3, 2)
             }
-            val eligible = (0..7).toSet() - recent
+            val eligible = (0 until RoseLayout.COLOR_COUNT).toSet() - recent
             val draws = (0L..127L).map(history::sample)
             assertEquals(eligible, draws.map { it.colorId }.toSet())
             assertTrue(draws.all { it.count == RoseLayout.sample(it.seed).count })

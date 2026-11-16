@@ -13,7 +13,7 @@ data class Vec(val x: Float = 0f, val y: Float = 0f, val z: Float = 0f) {
 }
 data class PetalSpec(
     val id: Int, val variant: String, val position: Vec, val angle: Float, val tilt: Float, val roll: Float, val scale: Float,
-    val uvIndex: Int, val albedoScale: Float
+    val uvIndex: Int, val albedoScale: Float, val colorId: Int = 0
 )
 data class PetalCupProfile(val radius: Float, val height: Float, val tilt: Float)
 data class RoundConfig(val seed: Long, val count: Int, val colorId: Int, val petals: List<PetalSpec>) {
@@ -21,12 +21,15 @@ data class RoundConfig(val seed: Long, val count: Int, val colorId: Int, val pet
         require(count in 17..30 && colorId in 0 until RoseLayout.COLOR_COUNT)
         require(petals.size == count && petals.map { it.id }.toSet().size == count)
         require(petals.all { it.variant in available && it.position.length().isFinite() && it.scale > 0 })
+        require(petals.all { it.colorId in 0 until RoseLayout.BASE_COLOR_COUNT })
         require(petals.all { it.uvIndex in 0..1 && it.albedoScale in .86f..1f })
     }
 }
 object RoseLayout {
     const val VERSION = "interleaved-petals-v6"
-    const val COLOR_COUNT = 8
+    const val BASE_COLOR_COUNT = 8
+    const val MULTICOLOR = BASE_COLOR_COUNT
+    const val COLOR_COUNT = BASE_COLOR_COUNT + 1
     const val WHORL_PHASE_JITTER = 20f
     const val ANGLE_JITTER_FRACTION = .09f
     const val WHORL_TILT_JITTER = .075f
@@ -56,10 +59,17 @@ object RoseLayout {
     )
     val variantIds = cupProfiles.keys
     fun texturePath(colorId: Int, variant: String): String {
-        require(colorId in 0 until COLOR_COUNT && variant in variantIds)
+        require(colorId in 0 until BASE_COLOR_COUNT && variant in variantIds)
         return "rose/petal-$colorId-${variant.substringBefore('_')}.png"
     }
     fun texturePaths(colorId: Int): Set<String> = layerNames.map { texturePath(colorId, "${it}_01") }.toSet()
+    fun texturePath(petal: PetalSpec): String = texturePath(petal.colorId, petal.variant)
+    fun texturePaths(config: RoundConfig): Set<String> = config.petals.map(::texturePath).toSet()
+    fun rainTexturePaths(config: RoundConfig): List<String> =
+        if (config.colorId == MULTICOLOR) (0 until BASE_COLOR_COUNT)
+            .shuffled(Random(config.seed xor 0x5241494EL))
+            .mapIndexed { i, color -> texturePath(color, "${layerNames[i % 3]}_01") }
+        else layerNames.map { texturePath(config.colorId, "${it}_01") }
     fun sample(seed: Long, random: Random = Random(seed), excludedColors: Set<Int> = emptySet()): RoundConfig {
         val colors = (0 until COLOR_COUNT).filterNot(excludedColors::contains)
         require(colors.isNotEmpty())
@@ -77,6 +87,8 @@ object RoseLayout {
         // Appearance uses its own seeded stream so the layout and round draws stay stable.
         val appearance = Random(seed xor 0x4F89_25C3_5D37_82E1L)
         val placement = Random(seed xor 0x3D82_E16A_79C4_05B7L)
+        val palette = Random(seed xor 0x434F4C4F52L)
+        var previousColor = -1
         counts.forEachIndexed { layer, count ->
             val prefix = layerNames[layer]
             val phase = layer * 137.508f + (placement.nextFloat()*2-1)*WHORL_PHASE_JITTER
@@ -105,10 +117,16 @@ object RoseLayout {
                 val tilt = profile.tilt + lift + (random.nextFloat()*2-1)*PETAL_TILT_JITTER
                 val roll = (appearance.nextFloat()*2-1)*ROLL_JITTER
                 val scale = ringScale * (1f + (random.nextFloat()*2-1)*PETAL_SCALE_JITTER)
+                val petalColor = if (color == MULTICOLOR) {
+                    val eligible = (0 until BASE_COLOR_COUNT).filter { it != previousColor &&
+                        (i != count - 1 || it != petals[petals.size - i].colorId) }
+                    eligible[palette.nextInt(eligible.size)]
+                } else color
+                previousColor = petalColor
                 petals += PetalSpec(petals.size, variant,
                     Vec(-sin(a)*radius, cos(a)*radius, profile.height), angle,
                     tilt, roll, scale, uvChannels[i],
-                    .86f + .14f * (shadeRanks[i] + .5f) / count)
+                    .86f + .14f * (shadeRanks[i] + .5f) / count, petalColor)
             }
         }
         return RoundConfig(seed, n, color, petals).also { it.validate() }

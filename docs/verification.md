@@ -1,5 +1,10 @@
 # 验证记录与继续工作
 
+## 彩色月季 1.0.18
+
+新增第九种等概率花色、逐瓣随机基础色和八色花瓣雨；135测试、构建和静态检查通过，当前无连接设备，原生效果待验证。详见 [multicolor-v1.md](multicolor-v1.md)。
+
+
 ## 英文显示名 Petaluck
 
 2026-11-16：默认资源 `app_name` 改为 `Petaluck`，中文简体和繁体资源仍为「一瓣欢喜」。`assembleDebug` 通过；AAPT2 核对 APK 默认/英文标签为 `Petaluck`、中文各地区为「一瓣欢喜」，包名和 1.0.17/code18 保持。实验 API 检查通过；SpatialUI 0 errors、1 条既有的大字号 warning。本节只记录本次名称变更；旧版 APK 的历史名称记录保留。

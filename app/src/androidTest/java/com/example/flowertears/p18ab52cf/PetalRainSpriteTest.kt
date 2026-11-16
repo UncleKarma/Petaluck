@@ -24,7 +24,7 @@ class PetalRainSpriteTest {
         val signatures = mutableSetOf<Int>()
         val sheet = Bitmap.createBitmap(3 * 256, 8 * 256, Bitmap.Config.ARGB_8888)
         try {
-            for (color in 0 until RoseLayout.COLOR_COUNT) {
+            for (color in 0 until RoseLayout.BASE_COLOR_COUNT) {
                 RoseLayout.layerNames.forEachIndexed { layer, name ->
                     val path = RoseLayout.texturePath(color, "${name}_01")
                     val sprite = PetalRainSprite.draw(context.assets, path)

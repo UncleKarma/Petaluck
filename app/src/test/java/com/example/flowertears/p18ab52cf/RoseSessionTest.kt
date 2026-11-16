@@ -41,14 +41,14 @@ class RoseSessionTest {
     @Test fun randomIsReproducibleAndAllCountsAndColorsAreReachable() {
         val counts=mutableSetOf<Int>();val colors=mutableSetOf<Int>();val pairs=mutableSetOf<Pair<Int,Int>>()
         repeat(3000) { seed -> val a=RoseLayout.sample(seed.toLong());assertEquals(a,RoseLayout.sample(seed.toLong()));counts+=a.count;colors+=a.colorId;pairs+=a.count to a.colorId }
-        assertEquals((17..30).toSet(),counts);assertEquals((0..7).toSet(),colors);assertEquals(112,pairs.size)
+        assertEquals((17..30).toSet(),counts);assertEquals((0 until RoseLayout.COLOR_COUNT).toSet(),colors);assertEquals(14 * RoseLayout.COLOR_COUNT,pairs.size)
     }
     @Test fun invalidAssetsFailBeforePlayAndEvenCountsAreValid() {
         RoseLayout.assemble(1,18,0).validate();RoseLayout.assemble(1,30,7).validate()
         for (bad in listOf(16,31)) assertThrows(IllegalArgumentException::class.java) {RoseLayout.assemble(1,bad,0)}
         val c=RoseLayout.assemble(1,17,0)
         assertThrows(IllegalArgumentException::class.java) {c.copy(petals=c.petals.drop(1)).validate()}
-        assertThrows(IllegalArgumentException::class.java) {c.copy(colorId=8).validate()}
+        assertThrows(IllegalArgumentException::class.java) {c.copy(colorId=RoseLayout.COLOR_COUNT).validate()}
         assertThrows(IllegalArgumentException::class.java) {c.copy(petals=c.petals.map {it.copy(id=0)}).validate()}
         assertThrows(IllegalArgumentException::class.java) {c.validate(emptySet())}
     }
