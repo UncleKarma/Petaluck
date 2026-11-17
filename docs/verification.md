@@ -1,5 +1,9 @@
 # 验证记录与继续工作
 
+## 第二朵花开始眼手交互失效 1.0.24
+
+撤销完成面板跨轮常驻：显式清屏并收到对应空白提交后停用面板，确认 gate 和 native owner 均停用后才开始下一轮装配。修复前日志显示第一轮28次 GazePinch 摘取成功，第二轮 Ready 后没有抓取记录，符合透明结束面板遮挡命中的推断；未取得原生命中链证据，不将推断当成完整根因验证。139主机测试、debug/AndroidTest构建、实验API与SpatialUI检查通过；1.0.24/code25已安装启动，首轮 Ready 的 completionEnabled=false。连续第二/第三轮 GazePinch、DirectPinch 与结束闪帧仍待头显复测。见 [replay-hit-surface-v1.md](replay-hit-surface-v1.md)。
+
 ## Petaluck 包名迁移 1.0.21
 
 新包名 `com.unclekarma.petaluck`，源码、测试和工程品牌路径同步迁移。139 单测及构建/静态检查通过；头显安装、启动及新 action 的花色广播回执正常。运行时审核仍为 TARGET_ROOT_TIMEOUT，场景显示待复核。见 [package-petaluck.md](package-petaluck.md)。

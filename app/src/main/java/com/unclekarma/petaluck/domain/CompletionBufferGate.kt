@@ -1,6 +1,6 @@
 package com.unclekarma.petaluck.domain
 
-/** Keep an initialized surface alive and masked between rounds to avoid stale-buffer reactivation. */
+/** Erase while masked, then disable the empty surface so it cannot intercept the next flower. */
 class CompletionBufferGate {
     data class Request(val serial: Long, val revealRound: Long?)
 
@@ -26,7 +26,7 @@ class CompletionBufferGate {
         if (request != frame) return false
         request = null
         presentedRound = frame.revealRound
-        enabled = true
+        enabled = frame.revealRound != null
         return true
     }
 

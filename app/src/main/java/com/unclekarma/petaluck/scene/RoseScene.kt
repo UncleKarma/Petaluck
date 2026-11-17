@@ -195,6 +195,13 @@ class RoseScene(context: Context) {
         var stage = "clear previous round"
         try {
             clearRound()
+            stage = "wait for completion surface erase and disable"
+            // Native opacity and empty Compose content do not remove an attachment's hit area.
+            // Do not expose a new flower beneath the outgoing surface, even if its blank draw
+            // commits late. This waits for the actual acknowledgement, with the existing bound.
+            frameGate.awaitReady {
+                if(!completionBuffer.enabled && completionPanel?.enabled==false)Unit else null
+            }
             stage = "retain shared assets"
             ensureAssets(config)
             if(disposed)return
@@ -307,6 +314,7 @@ class RoseScene(context: Context) {
         s.ready();publish()
         recentColors.recordReady(s.config.colorId)
         Log.i(TAG,"RoseEntranceFinished session=${s.id} scale=1 opacity=1; interactions enabled")
+        Log.i(TAG,"RoundInputReady session=${s.id} petals=${petals.size} completionEnabled=${completionPanel?.enabled} revision=replay-hit-surface-v1")
         // Keep the audio failure boundary outside model assembly and entrance readiness.
         audioPreparationJob=sceneScope.launch {
             prepareOptionalAudio(
@@ -638,7 +646,7 @@ class RoseScene(context: Context) {
         if(disposed || !completionBuffer.committed(frame))return
         syncPanels(ui)
         Log.i(TAG,"CompletionFrameCommitted round=${frame.revealRound} serial=${frame.serial} " +
-            "stage=${if(frame.revealRound==null) "erased" else "reveal"} revision=buffer-gate-v2")
+            "stage=${if(frame.revealRound==null) "erased" else "reveal"} enabled=${completionPanel?.enabled} revision=replay-hit-surface-v1")
     }
     private fun syncPanels(state:RoseUi) {
         resultPanel?.components?.get(AccessibilityComponent::class.java)?.value=state.result.ifEmpty{"尚未摘取"}
@@ -659,9 +667,8 @@ class RoseScene(context: Context) {
         // Mask before enabling. On replay, keep drawing ONLY until the panel's own blank
         // buffer commits; disabling immediately would preserve the old opaque text/button.
         completionPanel?.components?.get(OpacityControllerComponent::class.java)?.opacity=if(presented)1f else 0f
-        // Hide the outgoing surface synchronously, before its Compose buffer catches up.
-        // Completion stays alive with native opacity zero and no Compose children between rounds.
-        // This avoids reactivating a surface whose compositor may retain an older buffer.
+        // Opacity zero still leaves a native attachment hit area over the flower. Keep the
+        // owner enabled only through the blank commit, then disable it between rounds.
         completionPanel?.enabled=completionBuffer.enabled
         messagePanel?.enabled=!completing
         resultPanel?.enabled=state.result.isNotEmpty()
