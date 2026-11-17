@@ -141,7 +141,9 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                         // Authored emitter is already near the +0.35 m container ceiling.
                         val position = if(surrounding) {
                             val angle = (index % 8) * (2.0 * PI / 8.0) + (index / 8) * .23
-                            val radius = .7 + (index / 8) * .65
+                            // Three rings within the 5 m disk around the Stage user origin;
+                            // leave room at the boundary for the authored spawn shape and drift.
+                            val radius = .8 + (index / 8) * 1.8
                             Vector3((sin(angle) * radius).toFloat(), 2.15f + (index % 3) * .15f,
                                 (cos(angle) * radius).toFloat())
                         } else Vector3(0f, .33f, 0f)
@@ -150,8 +152,10 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                             it.isEmitting = false
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
                             val rate = rates[index % 3]
-                            it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
+                            val density = if(surrounding) 2f else 1f
+                            it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value * density / copies, rate.range * density / copies)
                             it.mainSimulation.apply {
+                                if(surrounding) maxParticleCount *= 2
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
                                 noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
                                 noiseStrength = .00045f + breeze.nextFloat() * .0003f
