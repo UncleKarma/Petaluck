@@ -126,16 +126,16 @@ object RoseLayout {
     }
 }
 
-/** The last three flowers that became playable in this scene, oldest first. */
+/** Colors that became playable in this scene. Normal play visits every solid color once. */
 class RecentRoseColors {
-    private var colors = emptyList<Int>()
+    private val seen = mutableSetOf<Int>()
 
-    fun sample(seed: Long): RoundConfig = RoseLayout.sample(seed, excludedColors = colors.toSet())
+    fun sample(seed: Long): RoundConfig = if (seen.size == RoseLayout.BASE_COLOR_COUNT)
+        RoseLayout.sample(seed, excludedColors = (0 until RoseLayout.BASE_COLOR_COUNT).toSet())
+    else RoseLayout.sample(seed, excludedColors = seen + RoseLayout.MULTICOLOR)
 
     fun recordReady(colorId: Int) {
-        // Retrying the same round after a runtime error should not advance the window.
-        if (colors.lastOrNull() == colorId) return
-        colors = (colors + colorId).takeLast(3)
+        if (colorId in 0 until RoseLayout.BASE_COLOR_COUNT) seen += colorId
     }
 }
 

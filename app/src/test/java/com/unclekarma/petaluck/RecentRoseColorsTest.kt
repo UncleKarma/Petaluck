@@ -6,46 +6,31 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class RecentRoseColorsTest {
-    @Test fun firstDrawHasAllEightColorsAndKeepsTheOriginalSeededLayout() {
-        val history = RecentRoseColors()
-        val seen = mutableSetOf<Int>()
-        repeat(128) {
-            val seed = it.toLong()
-            val sampled = history.sample(seed)
-            assertEquals(RoseLayout.sample(seed), sampled)
-            seen += sampled.colorId
-        }
-        assertEquals((0 until RoseLayout.COLOR_COUNT).toSet(), seen)
-    }
-
-    @Test fun replaysExcludeExactlyTheAvailableRecentColors() {
-        val history = RecentRoseColors()
-        for (played in listOf(7, 0, 3, 2)) {
-            history.recordReady(played)
-            val recent = when (played) {
-                7 -> setOf(7)
-                0 -> setOf(7, 0)
-                3 -> setOf(7, 0, 3)
-                else -> setOf(0, 3, 2)
+    @Test fun normalSessionVisitsEachSolidColorOnceThenColorful() {
+        for (start in 0L..80L) {
+            val history = RecentRoseColors()
+            val seen = mutableSetOf<Int>()
+            repeat(RoseLayout.BASE_COLOR_COUNT) { index ->
+                val seed = start * 100 + index
+                val round = history.sample(seed)
+                assertTrue(round.colorId in 0 until RoseLayout.BASE_COLOR_COUNT)
+                assertTrue(seen.add(round.colorId))
+                assertEquals(round, history.sample(seed))
+                history.recordReady(round.colorId)
+                history.recordReady(round.colorId)
             }
-            val eligible = (0 until RoseLayout.COLOR_COUNT).toSet() - recent
-            val draws = (0L..127L).map(history::sample)
-            assertEquals(eligible, draws.map { it.colorId }.toSet())
-            assertTrue(draws.all { it.count == RoseLayout.sample(it.seed).count })
+            assertEquals((0 until RoseLayout.BASE_COLOR_COUNT).toSet(), seen)
+            assertEquals(RoseLayout.MULTICOLOR, history.sample(start + 10000).colorId)
         }
     }
 
-    @Test fun onlyReadyRoundsAdvanceTheWindowAndRetryOfReadyRoundDoesNotEvictAColor() {
+    @Test fun onlyReadySolidRoundsCountAndDebugColorfulDoesNotUnlock() {
         val history = RecentRoseColors()
-        val ready = mutableListOf<Int>()
-        repeat(100) {
-            val seed = it.toLong()
-            val candidate = history.sample(seed)
-            assertFalse(candidate.colorId in ready.takeLast(3))
-            assertEquals(candidate, history.sample(seed)) // An assembly attempt has no effect until ready.
-            history.recordReady(candidate.colorId)
-            history.recordReady(candidate.colorId)
-            ready += candidate.colorId
-        }
+        val first = history.sample(12)
+        assertEquals(first, history.sample(12))
+        history.recordReady(RoseLayout.MULTICOLOR)
+        assertEquals(first, history.sample(12))
+        history.recordReady(first.colorId)
+        assertNotEquals(first.colorId, history.sample(12).colorId)
     }
 }
