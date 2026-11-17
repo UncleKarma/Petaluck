@@ -169,7 +169,7 @@ def verify():
                     for x,y in [(a,c),(c,e),(e,a)]:edges[tuple(sorted((x,y)))]+=1
                 assert all(n==2 for n in edges.values()),'Petal must be a closed thin solid with a back and edge'
                 assert all(0<=i<len(v) for i in idx)
-        assert total==rec['triangles'] and total<=500;results.append({'asset':p.name,'triangles':total,'closedSolid':True})
+        assert total==rec['triangles'] and total<=1800;results.append({'asset':p.name,'triangles':total,'closedSolid':True})
         profile=manifest['petalCupProfiles'][rec['variantId']]
         if profile:
             # A mid-blade cross section must curve around the core on both sides.
@@ -253,7 +253,9 @@ def verify():
     assert all(abs(sum(w)-1)<1e-5 and min(w)>=0 for w in weights)
     assert all(all(0<=j<3 for j in v) for v in joints)
     assert any(w[0]>.1 and w[1]>.1 for w in weights),'Skin must blend across joints'
-    maximum=stem+30*max(r['triangles'] for r in results);assert maximum<=20000
+    maximum=stem+30*max(r['triangles'] for r in results);assert maximum<=60000
+    assert manifest['triangleBudgets']['petal']==1800 and manifest['triangleBudgets']['max30Assembly']==60000
+    assert maximum==manifest['max30PetalTriangles']
     report={'passed':True,'petals':results,'stemTriangles':stem,'jointCount':3,'weightSumsValid':True,'max30PetalTriangles':maximum,'organicStem':{'version':stem_rec['geometryVersion'],'ringCount':len(centers),'bodyInclineDegrees':incline,'bodyLineDeviationMeters':max(deviations),'forwardOverhangMeters':centers[-1][2]-centers[0][2],'rigPivotsMeetCenterline':True,'restBindProductsIdentity':True,'closedAfterUvWelding':True,'tipAndCoreAxis':axis,'matchesProductionCrownAxis':True},'textures':texture_report,'palettes':palette_report,'all24TexturesDistinct':True,'allColorsOuterLighterThanInner':True,'textureMapping':{'productionLayerBindingsVerified':True,'petalRootAtImageBottom':True,'stemAtlasShared':True,'noCrossQuadrantTriangles':True,'longitudinalUVs':True},'scope':'Actual exported GLB/UV/skin, 24 layered textures, production Kotlin texture paths, weighted neck and exported crown axes; not headset rendering, comfort or performance.'}
     report['flowerContacts'] = contacts
     report['petalVariation']={'uniqueUvMaps':len(uv_maps),'channelsPerVariant':2,'productionAppearanceVerified':True,

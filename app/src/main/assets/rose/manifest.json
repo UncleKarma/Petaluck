@@ -1,5 +1,5 @@
 {
-  "assetLibraryVersion": "rose-llm-v9",
+  "assetLibraryVersion": "rose-llm-v10",
   "layoutVersion": "interleaved-petals-v6",
   "coordinates": "meters, Y-up, +Z front",
   "source": "New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.",
@@ -7,10 +7,10 @@
     {
       "variantId": "outer_01",
       "layer": "outer",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "68848c00f1b10a3f01046e33ac8636053d939b4c782b56c6916ff855083cb078",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "ff3572f870f48232fa8f9dbb8fa9ee0cb74870774f218a254d5c9fb0b26f4970",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Broad rounded fan, shallow cup, rolled back upper rim.",
       "shapeParameters": [
@@ -35,7 +35,7 @@
         ],
         [
           0.038409527267744874,
-          0.09416928086364526,
+          0.09437003406632549,
           0.005336175904525212
         ]
       ]
@@ -43,10 +43,10 @@
     {
       "variantId": "outer_02",
       "layer": "outer",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "5c8286c9c947837a47cb6edb2e0915ae4f7371d4a21cfdf4cdc7ed93b57c0fab",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "fc2a073cdad3a62b3b668453cf5d39009de691127a7ea4e6a4e8fbc7296b18db",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Wide oval fan, wavy lip, asymmetric left shoulder.",
       "shapeParameters": [
@@ -67,22 +67,22 @@
         [
           -0.03856605921400497,
           -0.0004292056803957083,
-          -0.004502258240569296
+          -0.00465853783512649
         ],
         [
           0.037367330479593446,
           0.09117049580609309,
-          0.00701299615238434
+          0.007033575625444429
         ]
       ]
     },
     {
       "variantId": "outer_03",
       "layer": "outer",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "a8705c9a6c4220982d53e0f24db0056d3728befb2e3b71e453f2f9066ef6c1bc",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "79e0561c36d2fb39132d41150edffd2f8a10c5347cb8ee929e597b17860625fd",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Broad fan, shallow central notch, gentle saddle bend.",
       "shapeParameters": [
@@ -103,11 +103,11 @@
         [
           -0.04114740706305331,
           -0.00044214570790906006,
-          -0.003526257759601331
+          -0.0035686727452461098
         ],
         [
           0.03873867395609509,
-          0.0902640087152678,
+          0.09031422049006674,
           0.009286604827046435
         ]
       ]
@@ -115,10 +115,10 @@
     {
       "variantId": "outer_04",
       "layer": "outer",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "bc150306211dfba5a09a3a6a5eaf86383f058a99e95679c5b0b16d5e81650cec",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "dbe4f4be19511eeb418cf320a00d662828c275229fbd10e883d1fbf7f0cf15d6",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Rounded silhouette, right lip curls outward.",
       "shapeParameters": [
@@ -144,17 +144,17 @@
         [
           0.03614228828439881,
           0.08943923711099222,
-          0.012576782502529766
+          0.01260760682365207
         ]
       ]
     },
     {
       "variantId": "middle_01",
       "layer": "middle",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "11e3982fbf62cbb639e037460ac83899864eba4b619b88c15e2c5c4d73ae337d",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "4a54bec76f73dea3e949971d3bbe30ec41bdfcd414d4ed42b6e79b4c22205de3",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Rounded fan, deeper bowl, smooth lip.",
       "shapeParameters": [
@@ -179,18 +179,18 @@
         ],
         [
           0.031079264384777254,
-          0.08131076111261222,
-          0.008864672974510487
+          0.08154331782683497,
+          0.008912070423680588
         ]
       ]
     },
     {
       "variantId": "middle_02",
       "layer": "middle",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "5098685067ef4cd7f156ba80386eca28298e6f833e9ef4bcdc55c1e38db37e3e",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "337c08f85057845fe960d74e0df191fee07e277175901e10ef69056a641f657e",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Left rim folded inward, asymmetric bowl.",
       "shapeParameters": [
@@ -215,18 +215,18 @@
         ],
         [
           0.029659996977299527,
-          0.08114415224581623,
-          0.011425454997118379
+          0.08126952475033557,
+          0.01142843383703767
         ]
       ]
     },
     {
       "variantId": "middle_03",
       "layer": "middle",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "6669c7dba4cf8f5a0e6fa6d84132faf3d3f7509aea4bf276f92b84624cdb4b50",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "fad7c3137d1c04ebf6e93097618e1b5de59319635d3358dbc9464c622cb7a2aa",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Tall rounded fan, softly undulating lip.",
       "shapeParameters": [
@@ -252,17 +252,17 @@
         [
           0.02867498106575372,
           0.08888175482787286,
-          0.011788632335830572
+          0.011847156733773328
         ]
       ]
     },
     {
       "variantId": "middle_04",
       "layer": "middle",
-      "triangles": 412,
-      "surfaceRows": 8,
-      "surfaceColumns": 13,
-      "sha256": "f934cac132e579f94f1166ebf9ed7ec7d91190d69a827c1443c0fa2327f0908e",
+      "triangles": 1496,
+      "surfaceRows": 15,
+      "surfaceColumns": 25,
+      "sha256": "54e18cbc13e7e2b65161ae138f88a2404b19524ead93338b1899c243b0abebe3",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Rounded spoon, gentle diagonal twist.",
       "shapeParameters": [
@@ -281,24 +281,24 @@
       ],
       "bounds": [
         [
-          -0.02921383479710241,
+          -0.029217136304458283,
           -0.00028162674521507556,
           -5.48122302211397e-05
         ],
         [
           0.027518075241062333,
-          0.08429198553087527,
-          0.016048179519221755
+          0.08451657071304462,
+          0.016049656453024592
         ]
       ]
     },
     {
       "variantId": "inner_01",
       "layer": "inner",
-      "triangles": 476,
-      "surfaceRows": 8,
-      "surfaceColumns": 15,
-      "sha256": "8d1ba682e1fb14b544048c3631f3b6d00a25b5b49d01bda14a3bb76e4effc273",
+      "triangles": 1736,
+      "surfaceRows": 15,
+      "surfaceColumns": 29,
+      "sha256": "4b2c47f4cfca1e8eba4caf0dcddb6b7e1a79a52cdddf3fdc1af3ad66a055177a",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Narrow rounded petal, inward curl, open front.",
       "shapeParameters": [
@@ -317,13 +317,13 @@
       ],
       "bounds": [
         [
-          -0.02111948754360626,
+          -0.021158990772457118,
           -0.00021564396609244287,
           -6.832775820320746e-05
         ],
         [
           0.020270788587647078,
-          0.06350152548719393,
+          0.06359772057921163,
           0.009733499603320525
         ]
       ]
@@ -331,10 +331,10 @@
     {
       "variantId": "inner_02",
       "layer": "inner",
-      "triangles": 476,
-      "surfaceRows": 8,
-      "surfaceColumns": 15,
-      "sha256": "f6330f7d17e77c77b00b1ef3cbbd78df5896be9807609800fa6bc5675cdca306",
+      "triangles": 1736,
+      "surfaceRows": 15,
+      "surfaceColumns": 29,
+      "sha256": "ee0339008ec8c32179dfa88cb33411b1a7736b6689cbd748b1d0f8658a6f0a00",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Small cupped fan, softly folded left rim.",
       "shapeParameters": [
@@ -353,24 +353,24 @@
       ],
       "bounds": [
         [
-          -0.019917998377581993,
+          -0.02004099938501326,
           -0.00022413453695490222,
           -4.1451011031329516e-05
         ],
         [
           0.01975520139291469,
           0.06272326358769277,
-          0.013315359615545917
+          0.013322609352283382
         ]
       ]
     },
     {
       "variantId": "inner_03",
       "layer": "inner",
-      "triangles": 476,
-      "surfaceRows": 8,
-      "surfaceColumns": 15,
-      "sha256": "6a4bb10b3281444946066223eeab946619baee109eccf22399ff0fa8bf559450",
+      "triangles": 1736,
+      "surfaceRows": 15,
+      "surfaceColumns": 29,
+      "sha256": "149383141f560731f9ce5c212bdd607e1fa181ec7a276ff4ca2336e959f71f86",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Small oval, softly folded right rim.",
       "shapeParameters": [
@@ -389,7 +389,7 @@
       ],
       "bounds": [
         [
-          -0.018021015558331833,
+          -0.018144767637413857,
           -0.0002070730520337914,
           -2.7381147833700845e-05
         ],
@@ -403,10 +403,10 @@
     {
       "variantId": "inner_04",
       "layer": "inner",
-      "triangles": 476,
-      "surfaceRows": 8,
-      "surfaceColumns": 15,
-      "sha256": "b77f3853d22308cb8cbdfb3fa937a0bf2e5369a8956330f62cdc722e6cca8cf7",
+      "triangles": 1736,
+      "surfaceRows": 15,
+      "surfaceColumns": 29,
+      "sha256": "c04d2723321d2af4fdd864bb8066bbbd7386686fa255e3a834f289cb875ac35c",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Small open cup with mild S profile and rounded lip.",
       "shapeParameters": [
@@ -425,13 +425,13 @@
       ],
       "bounds": [
         [
-          -0.016509421930178757,
+          -0.016565261890265526,
           -0.00025245491633914025,
           -1.849316284947478e-05
         ],
         [
           0.01634402983688448,
-          0.06604683982855288,
+          0.06606370518649161,
           0.01566960982445485
         ]
       ]
@@ -667,7 +667,7 @@
     "standaloneCorePitch": 35,
     "runtimeCoreLocalPitch": 90
   },
-  "max30PetalTriangles": 19122,
+  "max30PetalTriangles": 56922,
   "petalCupProfiles": {
     "outer_01": {
       "radius": 0.0074,
@@ -742,6 +742,24 @@
     "version": "outer-curl-v1",
     "extraRollMeters": 0.0025,
     "sideCupMeters": 0.0012
+  },
+  "petalTessellation": {
+    "version": "smooth-edges-v1",
+    "method": "Double both segment counts, retain every original sample; preserve the triangulated first root strip and smoothstep into the analytic blade over the second strip",
+    "rows": 15,
+    "columnsByLayer": {
+      "outer": 25,
+      "middle": 25,
+      "inner": 29
+    },
+    "preservedRootFraction": 0.14285714285714285,
+    "analyticBladeStartFraction": 0.2857142857142857
+  },
+  "triangleBudgets": {
+    "petal": 1800,
+    "stem": 5000,
+    "max30Assembly": 60000,
+    "authority": "User request 2026-11-17: increase triangles to smooth the edges of all petals; supersedes original 500/20000 limits"
   },
   "runtimeLayoutNotes": "Interleaved-petals-v6 gives each mesh its own seated cup profile. Outer openings span 18-42 degrees, middle 36-66, inner 60-82, so neighboring families overlap. All membranes wrap around the blossom with nearly zero local roll. Outer rims curl gently outward. Seeded placement varies angular spacing and fine pose offsets. A small baked surface offset separates overlapping edges. Each mesh has two asymmetric UV maps. Per-petal neutral brightness and the three layer albedos are shared with the prior material revision. Petals and core share CrownMotion.",
   "textures": {

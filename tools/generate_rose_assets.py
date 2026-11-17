@@ -2,7 +2,8 @@
 
 Each variant has its own shape specification and mesh, not a rescaled copy.
 Meters, Y up, +Z front. Petal attachment pivot is the local origin.
-Hard limits: petal <=500 triangles (including back/edge); entire stem <=5000.
+User-requested edge refinement: petal <=1800 triangles (including back/edge),
+30-petal assembly <=60000; entire stem remains <=5000.
 """
 from pathlib import Path
 import json, math, struct, hashlib, io
@@ -46,6 +47,10 @@ PETAL_COLLAR_LIFT_STEP = .0007
 # The root, authored opening angles and middle/inner surfaces stay unchanged.
 OUTER_EXTRA_ROLL = .0025
 OUTER_SIDE_CUP = .0012
+PETAL_ROWS = 15 # Double the seven old longitudinal segments; retain all old sample locations.
+PETAL_COLUMNS = {'outer': 25, 'middle': 25, 'inner': 29}
+PETAL_TRIANGLE_LIMIT = 1800
+ROSE_TRIANGLE_LIMIT = 60000
 SPECS = [
     ('outer_01', .082, .096, .010, -.010, .002, .000, .000, 'Broad rounded fan, shallow cup, rolled back upper rim.'),
     ('outer_02', .079, .092, .012, -.005, .004, -.006, .000, 'Wide oval fan, wavy lip, asymmetric left shoulder.'),
@@ -70,9 +75,11 @@ def normals(v, f):
             for k in range(3): n[i][k]+=q[k]
     return [[x/max(1e-15,math.sqrt(sum(y*y for y in q))) for x in q] for q in n]
 
-def petal(spec):
+def petal(spec, rows=None, cols=None):
     name,width,length,cup,curl,wave,twist,notch,_=spec
-    v=[];uv=[];f=[];rows=8;cols=15 if name.startswith('inner') else 13
+    rows = PETAL_ROWS if rows is None else rows
+    cols = PETAL_COLUMNS[name.split('_')[0]] if cols is None else cols
+    v=[];uv=[];f=[]
     for back in range(2):
         for i in range(rows):
             t=i/(rows-1)
@@ -95,7 +102,7 @@ def petal(spec):
     border=list(range(cols))+[i*cols+cols-1 for i in range(1,rows)]+list(range(rows*cols-2,(rows-1)*cols-1,-1))+[i*cols for i in range(rows-2,0,-1)]
     for a,b in zip(border,border[1:]+border[:1]):
         f.extend([(a,a+rows*cols,b),(b,a+rows*cols,b+rows*cols)])
-    assert len(f)<=500
+    assert len(f)<=PETAL_TRIANGLE_LIMIT
     return v,f,uv
 
 @lru_cache(maxsize=26)
@@ -413,19 +420,50 @@ def cup_petal(vertices, variant):
     return wrapped
 
 
+def refined_petal(spec):
+    """Smooth the blade while preserving the original triangulated mounting collar."""
+    vertices, faces, uv = petal(spec)
+    vertices = cup_petal(vertices, spec[0])
+    rows, cols = PETAL_ROWS, PETAL_COLUMNS[spec[0].split('_')[0]]
+    old_rows, old_cols = 8, 15 if spec[0].startswith('inner') else 13
+    original = cup_petal(petal(spec, old_rows, old_cols)[0], spec[0])
+    for back in range(2):
+        for i in range(rows):
+            t = i/(rows-1)
+            blend = min(1., max(0., t*7-1))
+            blend = blend*blend*(3-2*blend)
+            if blend == 1:
+                continue
+            for j in range(cols):
+                # Preserve the exact historical vertices, including their floating-point values.
+                if (i*7) % (rows-1) == 0 and (j*(old_cols-1)) % (cols-1) == 0:
+                    continue
+                row, column = t*7, j/(cols-1)*(old_cols-1)
+                r, c = min(int(row), old_rows-2), min(int(column), old_cols-2)
+                fy, fx = row-r, column-c
+                a = back*old_rows*old_cols+r*old_cols+c
+                p, q, s, u = [original[k] for k in (a, a+1, a+old_cols, a+old_cols+1)]
+                if fx+fy <= 1:
+                    coarse = [(1-fx-fy)*p[k]+fx*q[k]+fy*s[k] for k in range(3)]
+                else:
+                    coarse = [(1-fy)*q[k]+(1-fx)*s[k]+(fx+fy-1)*u[k] for k in range(3)]
+                index = back*rows*cols+i*cols+j
+                vertices[index] = [coarse[k]*(1-blend)+vertices[index][k]*blend for k in range(3)]
+    return vertices, faces, uv
+
+
 def main():
     records=[]
     for i,spec in enumerate(SPECS):
-        v,f,uv=petal(spec)
-        v=cup_petal(v,spec[0])
+        v,f,uv=refined_petal(spec)
         g=Glb()
         mat=g.material('Neutral_botanical_membrane',[1,1,1,1],True)
         g.mesh(spec[0],v,f,petal_uvs(uv,i,0),mat,uv1=petal_uvs(uv,i,1))
         p=OUT/(spec[0]+'.glb')
         g.save(p)
-        records.append({'variantId':spec[0],'layer':spec[0].split('_')[0],'triangles':len(f),'surfaceRows':8,'surfaceColumns':15 if spec[0].startswith('inner') else 13,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'method':'Independent LLM-authored parametric mesh, not cloud text-to-3D','brief':spec[-1],'shapeParameters':list(spec[1:-1]),'pivot':[0,0,0],'bounds':[[min(x[k] for x in v) for k in range(3)],[max(x[k] for x in v) for k in range(3)]]})
+        records.append({'variantId':spec[0],'layer':spec[0].split('_')[0],'triangles':len(f),'surfaceRows':PETAL_ROWS,'surfaceColumns':PETAL_COLUMNS[spec[0].split('_')[0]],'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'method':'Independent LLM-authored parametric mesh, not cloud text-to-3D','brief':spec[-1],'shapeParameters':list(spec[1:-1]),'pivot':[0,0,0],'bounds':[[min(x[k] for x in v) for k in range(3)],[max(x[k] for x in v) for k in range(3)]]})
     stem=build_stem()
-    manifest={'assetLibraryVersion':'rose-llm-v9','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
+    manifest={'assetLibraryVersion':'rose-llm-v10','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
     manifest['petalCupProfiles'] = PETAL_CUP_PROFILES
     manifest['petalOverlapSlope'] = PETAL_OVERLAP_SLOPE
     manifest['petalOverlapSlopeOverrides'] = PETAL_OVERLAP_SLOPES
@@ -433,6 +471,9 @@ def main():
     manifest['petalCupAxialHalfThickness'] = PETAL_CUP_HALF_THICKNESS
     manifest['petalCollarLiftStep'] = PETAL_COLLAR_LIFT_STEP
     manifest['outerCurlRefinement'] = {'version': 'outer-curl-v1', 'extraRollMeters': OUTER_EXTRA_ROLL, 'sideCupMeters': OUTER_SIDE_CUP}
+    manifest['petalTessellation'] = {'version': 'smooth-edges-v1', 'method': 'Double both segment counts, retain every original sample; preserve the triangulated first root strip and smoothstep into the analytic blade over the second strip', 'rows': PETAL_ROWS, 'columnsByLayer': PETAL_COLUMNS, 'preservedRootFraction': 1/7, 'analyticBladeStartFraction': 2/7}
+    manifest['triangleBudgets'] = {'petal': PETAL_TRIANGLE_LIMIT, 'stem': 5000, 'max30Assembly': ROSE_TRIANGLE_LIMIT, 'authority': 'User request 2026-11-17: increase triangles to smooth the edges of all petals; supersedes original 500/20000 limits'}
+    assert manifest['max30PetalTriangles'] <= ROSE_TRIANGLE_LIMIT
     manifest['runtimeLayoutNotes']='Interleaved-petals-v6 gives each mesh its own seated cup profile. Outer openings span 18-42 degrees, middle 36-66, inner 60-82, so neighboring families overlap. All membranes wrap around the blossom with nearly zero local roll. Outer rims curl gently outward. Seeded placement varies angular spacing and fine pose offsets. A small baked surface offset separates overlapping edges. Each mesh has two asymmetric UV maps. Per-petal neutral brightness and the three layer albedos are shared with the prior material revision. Petals and core share CrownMotion.'
     manifest['textures']={'version':TEXTURE_VERSION,'provenance':'art/textures/generation-v5.md; built-in ImageGen edits with localized secondary pigment, locally cropped and resized only',
         'petal':{'file':'neutral.png','size':[512,512],'sha256':hashlib.sha256(texture_png()).hexdigest(),'tintable':True,'uv':'root V=1, rim V=0; same mapping on both faces'},

@@ -57,30 +57,30 @@
   },
   "restAndEntranceBounds": {
     "min": [
-      -0.09942703479948534,
+      -0.09946492039446526,
       -0.3002394711971283,
-      -0.07166405546914137
+      -0.0734458861588761
     ],
     "max": [
-      0.09911390471039488,
+      0.09922020456621901,
       0.03221523229418691,
-      0.09495202283221076
+      0.09377004313407962
     ]
   },
   "allVerticesTranslatedDownMeters": 0.1,
   "sourceMeshSha256": {
-    "inner_01.glb": "8d1ba682e1fb14b544048c3631f3b6d00a25b5b49d01bda14a3bb76e4effc273",
-    "inner_02.glb": "f6330f7d17e77c77b00b1ef3cbbd78df5896be9807609800fa6bc5675cdca306",
-    "inner_03.glb": "6a4bb10b3281444946066223eeab946619baee109eccf22399ff0fa8bf559450",
-    "inner_04.glb": "b77f3853d22308cb8cbdfb3fa937a0bf2e5369a8956330f62cdc722e6cca8cf7",
-    "middle_01.glb": "11e3982fbf62cbb639e037460ac83899864eba4b619b88c15e2c5c4d73ae337d",
-    "middle_02.glb": "5098685067ef4cd7f156ba80386eca28298e6f833e9ef4bcdc55c1e38db37e3e",
-    "middle_03.glb": "6669c7dba4cf8f5a0e6fa6d84132faf3d3f7509aea4bf276f92b84624cdb4b50",
-    "middle_04.glb": "f934cac132e579f94f1166ebf9ed7ec7d91190d69a827c1443c0fa2327f0908e",
-    "outer_01.glb": "9a1ee58c1aedf9995dd014812f9bc7c11671d31ddd9840061a9d92f69728cf6c",
-    "outer_02.glb": "3e1d3d477d69967943a1e1d37773cc726cc50551a33060cb35b8f916097b5947",
-    "outer_03.glb": "ca73a5f993e5721bb3277478912a72cb7f9df2c92ebd4961d6046709e0972172",
-    "outer_04.glb": "5b9360b67a48d03dcf6310808fd3986031ae4096912cbec3dd7c7bb512a11481",
+    "inner_01.glb": "4b2c47f4cfca1e8eba4caf0dcddb6b7e1a79a52cdddf3fdc1af3ad66a055177a",
+    "inner_02.glb": "ee0339008ec8c32179dfa88cb33411b1a7736b6689cbd748b1d0f8658a6f0a00",
+    "inner_03.glb": "149383141f560731f9ce5c212bdd607e1fa181ec7a276ff4ca2336e959f71f86",
+    "inner_04.glb": "c04d2723321d2af4fdd864bb8066bbbd7386686fa255e3a834f289cb875ac35c",
+    "middle_01.glb": "4a54bec76f73dea3e949971d3bbe30ec41bdfcd414d4ed42b6e79b4c22205de3",
+    "middle_02.glb": "337c08f85057845fe960d74e0df191fee07e277175901e10ef69056a641f657e",
+    "middle_03.glb": "fad7c3137d1c04ebf6e93097618e1b5de59319635d3358dbc9464c622cb7a2aa",
+    "middle_04.glb": "54e18cbc13e7e2b65161ae138f88a2404b19524ead93338b1899c243b0abebe3",
+    "outer_01.glb": "ff3572f870f48232fa8f9dbb8fa9ee0cb74870774f218a254d5c9fb0b26f4970",
+    "outer_02.glb": "fc2a073cdad3a62b3b668453cf5d39009de691127a7ea4e6a4e8fbc7296b18db",
+    "outer_03.glb": "79e0561c36d2fb39132d41150edffd2f8a10c5347cb8ee929e597b17860625fd",
+    "outer_04.glb": "dbe4f4be19511eeb418cf320a00d662828c275229fbd10e883d1fbf7f0cf15d6",
     "stem.glb": "5010f4644821f4c73688c0bf9e5f82a7efc25dc88b8e772a80d8fdce4e4278f1"
   },
   "scope": "Actual exported rest-pose mesh vertices under uniform entrance scale and translated RoseAnchor. Intermediate scales fit by convexity. Native opacity, skin playback, input and fall animation pending."

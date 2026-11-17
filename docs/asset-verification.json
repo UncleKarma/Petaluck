@@ -3,73 +3,73 @@
   "petals": [
     {
       "asset": "outer_01.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "outer_02.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "outer_03.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "outer_04.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "middle_01.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "middle_02.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "middle_03.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "middle_04.glb",
-      "triangles": 412,
+      "triangles": 1496,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "inner_01.glb",
-      "triangles": 476,
+      "triangles": 1736,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "inner_02.glb",
-      "triangles": 476,
+      "triangles": 1736,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "inner_03.glb",
-      "triangles": 476,
+      "triangles": 1736,
       "closedSolid": true,
       "bothSidesCupInward": true
     },
     {
       "asset": "inner_04.glb",
-      "triangles": 476,
+      "triangles": 1736,
       "closedSolid": true,
       "bothSidesCupInward": true
     }
@@ -77,7 +77,7 @@
   "stemTriangles": 4842,
   "jointCount": 3,
   "weightSumsValid": true,
-  "max30PetalTriangles": 19122,
+  "max30PetalTriangles": 56922,
   "organicStem": {
     "version": "curved-stem-seated-core-v5",
     "ringCount": 41,

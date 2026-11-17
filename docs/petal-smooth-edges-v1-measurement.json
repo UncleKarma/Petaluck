@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "assetLibraryVersion": "rose-llm-v10",
+  "petals": [
+    {
+      "variant": "outer_01",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.3583992652801882,
+      "maxEdgeChordErrorAfterMm": 0.12406791588188341,
+      "crossSectionTurnDegrees": 78.0290772275236
+    },
+    {
+      "variant": "outer_02",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.5112534906029451,
+      "maxEdgeChordErrorAfterMm": 0.1585363885237208,
+      "crossSectionTurnDegrees": 80.72865501130352
+    },
+    {
+      "variant": "outer_03",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.5769961147192344,
+      "maxEdgeChordErrorAfterMm": 0.1539153391416639,
+      "crossSectionTurnDegrees": 83.88461465827429
+    },
+    {
+      "variant": "outer_04",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.4024055027649944,
+      "maxEdgeChordErrorAfterMm": 0.135737938535291,
+      "crossSectionTurnDegrees": 91.48984621490501
+    },
+    {
+      "variant": "middle_01",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.4424850732495887,
+      "maxEdgeChordErrorAfterMm": 0.19747890187326356,
+      "crossSectionTurnDegrees": 84.38313845193858
+    },
+    {
+      "variant": "middle_02",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.5065584529238568,
+      "maxEdgeChordErrorAfterMm": 0.21018528913158796,
+      "crossSectionTurnDegrees": 91.72930181032265
+    },
+    {
+      "variant": "middle_03",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.5195061139015444,
+      "maxEdgeChordErrorAfterMm": 0.16899281201760488,
+      "crossSectionTurnDegrees": 97.4666416955749
+    },
+    {
+      "variant": "middle_04",
+      "triangles": 1496,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.4208907436023047,
+      "maxEdgeChordErrorAfterMm": 0.20448869414448734,
+      "crossSectionTurnDegrees": 117.92835473833843
+    },
+    {
+      "variant": "inner_01",
+      "triangles": 1736,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.3558924042168902,
+      "maxEdgeChordErrorAfterMm": 0.16166120668277678,
+      "crossSectionTurnDegrees": 98.69645803079099
+    },
+    {
+      "variant": "inner_02",
+      "triangles": 1736,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.34854846387887295,
+      "maxEdgeChordErrorAfterMm": 0.16134989426239402,
+      "crossSectionTurnDegrees": 128.8842076271584
+    },
+    {
+      "variant": "inner_03",
+      "triangles": 1736,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.3555042052778805,
+      "maxEdgeChordErrorAfterMm": 0.1402243924911192,
+      "crossSectionTurnDegrees": 134.51013498227303
+    },
+    {
+      "variant": "inner_04",
+      "triangles": 1736,
+      "originalSamplesUnchanged": true,
+      "maxEdgeChordErrorBeforeMm": 0.3664918956168172,
+      "maxEdgeChordErrorAfterMm": 0.16517867431550262,
+      "crossSectionTurnDegrees": 158.4335509793841
+    }
+  ],
+  "max30PetalTriangles": 56922,
+  "scope": "Actual GLB vertex preservation, nondegenerate faces and contour approximation; paired-family cross-section comparison. Not headset appearance or performance."
+}

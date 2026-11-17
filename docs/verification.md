@@ -1,5 +1,9 @@
 # 验证记录与继续工作
 
+## 全部花瓣平滑与外层轻微卷曲 1.0.25
+
+四种外层增加轻微回卷/侧缘浅兜；全部12种花瓣加密为1496/1736面，保留原顶点与根部安装曲面。实际30瓣组合51,402面。资产/边缘误差/入场边界验证和构建通过；302布局/82,323对花瓣SAT复查通过。已安装1.0.25/code26，恢复首帧后花瓣导入正常，但花茎蒙皮节点唯一性检查失败，需单独修正；原生观感、输入和性能未验收。见 [petal-smooth-edges-v1.md](petal-smooth-edges-v1.md)。
+
 ## 第二朵花开始眼手交互失效 1.0.24
 
 撤销完成面板跨轮常驻：显式清屏并收到对应空白提交后停用面板，确认 gate 和 native owner 均停用后才开始下一轮装配。修复前日志显示第一轮28次 GazePinch 摘取成功，第二轮 Ready 后没有抓取记录，符合透明结束面板遮挡命中的推断；未取得原生命中链证据，不将推断当成完整根因验证。139主机测试、debug/AndroidTest构建、实验API与SpatialUI检查通过；1.0.24/code25已安装启动，首轮 Ready 的 completionEnabled=false。连续第二/第三轮 GazePinch、DirectPinch 与结束闪帧仍待头显复测。见 [replay-hit-surface-v1.md](replay-hit-surface-v1.md)。
