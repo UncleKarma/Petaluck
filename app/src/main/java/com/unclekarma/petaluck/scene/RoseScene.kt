@@ -228,7 +228,14 @@ class RoseScene(context: Context) {
                     coreMaterials+=mat to mat.getBaseColor()
                 }
             }
-            val skinned=base.findSkinnedMeshEntity().singleOrNull() ?: error("Stem must have exactly one skinned mesh")
+            // Some native loaders also return the animation/root owner. It has no model and
+            // must not be mistaken for an additional skinned render mesh (or receive our pose).
+            val skinCandidates=base.findSkinnedMeshEntity().distinctBy {it.id}
+            val skinMeshes=skinCandidates.filter {it.components.has(ModelComponent::class.java)}
+            val candidateSummary=skinCandidates.joinToString {"${it.getName()}:${it.id}:model=${it.components.has(ModelComponent::class.java)}"}
+            val skinned=skinMeshes.singleOrNull()?.takeIf {it.getName()=="Stem_Skinned"}
+                ?: error("Stem must have exactly one authored skinned render mesh; candidates=[$candidateSummary]")
+            Log.i(TAG,"StemSkinSelected owner=${skinned.id} candidates=[$candidateSummary] revision=skin-render-owner-v1")
             val pose=SkeletonPoseComponent();skinned.components.set(pose)
             stage = "wait for stem rig"
             // Imported skeletons may become available after the component's attachment frame.
