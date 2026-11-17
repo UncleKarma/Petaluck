@@ -27,7 +27,7 @@ import kotlinx.coroutines.withContext
 import kotlin.math.*
 import kotlin.random.Random
 
-data class RoseUi(val phase: Phase = Phase.Loading, val result: String = "", val teaching: Boolean = true, val trackingLost: Boolean = false, val blessing: String = "", val roundId: Long = 0)
+data class RoseUi(val phase: Phase = Phase.Loading, val result: String = "", val teaching: Boolean = true, val trackingLost: Boolean = false, val blessing: String = "", val roundId: Long = 0, val colorfulFinale: Boolean = false)
 
 /** All 3D writes happen on the main thread, in input callbacks or scene update events. */
 class RoseScene(context: Context) {
@@ -178,6 +178,7 @@ class RoseScene(context: Context) {
         // Reject stale/duplicate clicks after loading or the next round has begun.
         if(ui.roundId!=roundId || (ui.phase!=Phase.Completed && ui.phase!=Phase.Error))return
         if(disposed || busy || appPaused)return
+        if(session?.config?.colorId==RoseLayout.MULTICOLOR && ui.phase==Phase.Completed)return
         endingPetalRain.stop()
         endingMusic.replay()
         newRound()
@@ -197,7 +198,7 @@ class RoseScene(context: Context) {
             stage = "retain shared assets"
             ensureAssets(config)
             if(disposed)return
-            val s = RoseSession(token, config, sessionBlessings::next); session=s
+            val s = RoseSession(token, config, if(config.colorId==RoseLayout.MULTICOLOR) ({RoseBlessings.COLORFUL_FINALE}) else sessionBlessings::next); session=s
             // Hide the complete hierarchy during assembly without disabling native rig updates.
             val anchor=Entity().apply {
                 setName("RoseAnchor")
@@ -621,7 +622,7 @@ class RoseScene(context: Context) {
     fun resume(){appPaused=false;session?.resume()}
     private fun publish() {
         val s=session ?: return
-        updateUi(RoseUi(s.phase,s.result,s.detachedCount==0,trackingUnavailable,s.blessing,s.id))
+        updateUi(RoseUi(s.phase,s.result,s.detachedCount==0,trackingUnavailable,s.blessing,s.id,s.config.colorId==RoseLayout.MULTICOLOR))
     }
     private fun updateUi(state:RoseUi) {
         if(state!=ui){
@@ -629,7 +630,7 @@ class RoseScene(context: Context) {
                 (ui.roundId!=state.roundId || ui.phase!=Phase.Completing)
             ui=state
             syncPanels(state)
-            if(blessingAppeared && !appPaused)endingMusic.blessing(state.roundId)
+            if(blessingAppeared && !appPaused && !state.colorfulFinale)endingMusic.blessing(state.roundId)
         }
     }
     /** Acknowledges the exact blank draw, including the outgoing round's erase. */

@@ -8,8 +8,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
-        "line": 106,
-        "endLine": 106,
+        "line": 107,
+        "endLine": 107,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.result",
@@ -34,8 +34,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
-        "line": 114,
-        "endLine": 114,
+        "line": 115,
+        "endLine": 115,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.message",
@@ -60,8 +60,8 @@
       "kind": "attachment",
       "source": {
         "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
-        "line": 127,
-        "endLine": 127,
+        "line": 128,
+        "endLine": 128,
         "symbol": "bindPanels"
       },
       "semanticId": "rose.completion",
@@ -86,8 +86,8 @@
       "kind": "entity",
       "source": {
         "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
-        "line": 329,
-        "endLine": 329,
+        "line": 331,
+        "endLine": 331,
         "symbol": "registerStemAccessibility"
       },
       "semanticId": "rose.stem",
@@ -107,13 +107,13 @@
       }
     },
     {
-      "contractId": "entity:756cc184288fb445",
-      "semanticAnchor": "756cc184288fb445",
+      "contractId": "entity:296ae0bca1191022",
+      "semanticAnchor": "296ae0bca1191022",
       "kind": "entity",
       "source": {
         "file": "app/src/main/java/com/unclekarma/petaluck/scene/RoseScene.kt",
-        "line": 333,
-        "endLine": 335,
+        "line": 335,
+        "endLine": 337,
         "symbol": "registerPetalAccessibility"
       },
       "semanticId": "rose.petal.0",
@@ -143,6 +143,32 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "contractId": "attachment:81dfcc728d2e2af3",
+      "semanticAnchor": "81dfcc728d2e2af3",
+      "kind": "attachment",
+      "source": {
+        "file": "app/src/main/java/com/unclekarma/petaluck/content/ColorfulFinaleStage.kt",
+        "line": 68,
+        "endLine": 68,
+        "symbol": "ColorfulFinaleStage"
+      },
+      "semanticId": "rose.finale",
+      "label": "最后的祝福与退出按钮",
+      "runtimeSelector": {
+        "semanticId": "rose.finale"
+      },
+      "stateSources": [
+        "value"
+      ],
+      "actions": [],
+      "binding": {
+        "kind": "spatial",
+        "ownerExpression": "panel",
+        "sdkComponentDeclaration": true,
+        "sdkActionRegistration": true
       }
     }
   ],

@@ -24,6 +24,9 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import kotlin.random.Random
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.PI
 
 /** Optional scene-owned bundle; each round gets a fresh instance so stop leaves no live petals. */
 internal class EndingPetalRain(context: Context) : AutoCloseable {
@@ -61,7 +64,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         },
     )
 
-    suspend fun prepare(roundId: Long, config: RoundConfig) = loadingMutex.withLock {
+    suspend fun prepare(roundId: Long, config: RoundConfig, surrounding: Boolean = false) = loadingMutex.withLock {
         if (closed || preparedRound == roundId) return@withLock
         stop()
         val token = epoch
@@ -107,7 +110,8 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     check(children.map { it.getName() }.sorted() == names.sorted()) {
                         "Petal rain manifest/runtime scope mismatch"
                     }
-                    val paths = RoseLayout.rainTexturePaths(config)
+                    val colors = RoseLayout.rainTexturePaths(config)
+                    val paths = if(surrounding) List(24) { colors[it % colors.size] } else colors
                     textures.retain(paths.toSet()) { path ->
                         withContext(Dispatchers.IO) {
                             val bitmap = PetalRainSprite.draw(assets, path)
@@ -135,8 +139,13 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     }
                     val controls = owners.mapIndexed { index, owner ->
                         // Authored emitter is already near the +0.35 m container ceiling.
-                        checkNotNull(owner.components[TransformComponent::class.java])
-                            .setPosition(Vector3(0f, .33f, 0f))
+                        val position = if(surrounding) {
+                            val angle = (index % 8) * (2.0 * PI / 8.0) + (index / 8) * .23
+                            val radius = .7 + (index / 8) * .65
+                            Vector3((sin(angle) * radius).toFloat(), 2.15f + (index % 3) * .15f,
+                                (cos(angle) * radius).toFloat())
+                        } else Vector3(0f, .33f, 0f)
+                        checkNotNull(owner.components[TransformComponent::class.java]).setPosition(position)
                         checkNotNull(owner.components[ParticleComponent::class.java]).also {
                             it.isEmitting = false
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
@@ -166,7 +175,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         }
     }
 
-    fun start(roundId: Long, content: SpatialViewContent) {
+    fun start(roundId: Long, content: SpatialViewContent, endless: Boolean = false) {
         if (closed || preparedRound != roundId) {
             Log.w(TAG, "PetalRainNotReady round=$roundId")
             return
@@ -177,7 +186,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
             // Direct SpatialView child: independent of RoseAnchor entrance, bend and teardown.
             content.addEntity(owner)
             owner.enabled = true
-            playback.start(roundId)
+            if (!endless) playback.start(roundId)
             Log.i(TAG, "PetalRainStarted round=$roundId")
         } catch (e: Exception) {
             stop()

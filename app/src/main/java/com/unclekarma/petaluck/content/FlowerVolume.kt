@@ -32,6 +32,8 @@ import com.pico.spatial.ui.design.Text
 import com.pico.spatial.ui.foundation.content.SpatialView
 import com.pico.spatial.ui.foundation.gesture.TargetEntity
 import com.pico.spatial.ui.foundation.gesture.detectSpatialPointerEvent
+import com.pico.spatial.ui.platform.containers.LocalSpatialNavigator
+import com.pico.spatial.ui.platform.containers.StageStyle
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
@@ -44,6 +46,11 @@ fun FlowerVolume(modifier:Modifier) {
     val scope=rememberCoroutineScope()
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val view=LocalView.current
+    val navigator=LocalSpatialNavigator.current
+    val ui=scene.ui
+    LaunchedEffect(ui.roundId,ui.phase,ui.colorfulFinale) {
+        if(ui.colorfulFinale && ui.phase==Phase.Completing) navigator.openStage("petaluck_finale",StageStyle.Mixed)
+    }
     // Host lifecycle/view bindings may change while this remembered scene remains in composition.
     DisposableEffect(scene) {onDispose {scene.close()}}
     DisposableEffect(scene,lifecycle,view) {
@@ -112,7 +119,8 @@ fun FlowerVolume(modifier:Modifier) {
                     val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
                     val presented=scene.completionPresentedRound==ui.roundId
                     val blankFrame=completionFrameBarrier(scene.completionBlankRequest,scene::completionFrameCommitted)
-                    val replay = { scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
+                    val replay = { if(ui.colorfulFinale) context.findActivity()?.finishAffinity()
+                        else scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
                     // Stable surface size also avoids a resize racing the outgoing text buffer.
                     // Center the original wish/button group inside it without changing its spacing.
                     Box(Modifier.width(560.dp).height(384.dp).then(blankFrame),contentAlignment=Alignment.Center) {
@@ -155,7 +163,8 @@ private fun CompletionFooter(ui: RoseUi, presented: Boolean, onReplay: () -> Uni
         Box(Modifier.align(Alignment.BottomCenter).height(buttonHeight).alpha(if(presented)replayFade.value else 0f)
             .then(if (canReplay) Modifier else Modifier.clearAndSetSemantics {}),
             contentAlignment = Alignment.Center) {
-            ReplayButton("再试一次", enabled = completed, onClick = { if (canReplay) onReplay() })
+            ReplayButton(if(ui.colorfulFinale) "就此别过" else "再试一次", enabled = completed,
+                onClick = { if (canReplay) onReplay() })
         }
     }
 }
@@ -168,7 +177,7 @@ private fun ReplayButton(label: String, enabled: Boolean, onClick: () -> Unit) {
 }
 
 @Composable
-private fun RoseLargeText(text:String,modifier:Modifier=Modifier,maxLines:Int=1) {
+internal fun RoseLargeText(text:String,modifier:Modifier=Modifier,maxLines:Int=1) {
     // User: completion blessing must match the result text exactly (80/104sp in SDK 6.2.8).
     Text(text=text,modifier=modifier,style=PicoTheme.typography.headlineMedium,
         fontSize=PicoTheme.typography.headlineMedium.fontSize*4,
@@ -176,4 +185,4 @@ private fun RoseLargeText(text:String,modifier:Modifier=Modifier,maxLines:Int=1)
         color=roseTextWhite,textAlign=TextAlign.Center,maxLines=maxLines,softWrap=maxLines>1)
 }
 
-private val roseTextWhite = Color(0xFFFFFFFF) // design-style: fixed-figma-color User request 2026-11-10: result and all footer text are white.
+internal val roseTextWhite = Color(0xFFFFFFFF) // design-style: fixed-figma-color User request 2026-11-10: result and all footer text are white.

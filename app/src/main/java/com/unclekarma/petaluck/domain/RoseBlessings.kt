@@ -3,6 +3,7 @@ package com.unclekarma.petaluck.domain
 import kotlin.random.Random
 
 object RoseBlessings {
+    const val COLORFUL_FINALE = "你已经摘尽所有花色，但生活的色彩远不止于此。谢谢你陪我走到这里；接下来的，请替我去发现。"
     val messages = listOf(
         "愿你一直被温柔以待。",
         "愿你心有暖阳，笑意常在。",
