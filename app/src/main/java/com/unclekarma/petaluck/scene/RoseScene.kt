@@ -45,6 +45,8 @@ class RoseScene(context: Context) {
     private var assemblyJob: Job? = null
     private var audioPreparationJob: Job? = null
     private val prototypes = mutableMapOf<String,Entity>()
+    // Never attached to SpatialView: these only supply the pre-subdivision collision meshes.
+    private val collisionPrototypes = mutableMapOf<String,Entity>()
     // A Kotlin reference does not retain native resources after the last petal is destroyed.
     private val textures = RoundAssetSet<TextureResource>({it.valid},{it.toGlobal()},{it.close()})
     private val petalAudio = PetalSpatialAudio(context.applicationContext)
@@ -141,6 +143,11 @@ class RoseScene(context: Context) {
             val entity=Entity.loadSuspend("asset://rose/$variant.glb")
             if(disposed){entity.destroy();return}
             prototypes[variant]=entity
+        }
+        for(variant in RoseLayout.variantIds)if(collisionPrototypes[variant]?.valid!=true) {
+            val entity=Entity.loadSuspend("asset://rose/collision/$variant.glb")
+            if(disposed){entity.destroy();return}
+            collisionPrototypes[variant]=entity
         }
     }
     fun initialize(c: SpatialViewContent,scope:CoroutineScope,attachments:SpatialViewAttachments) {
@@ -271,9 +278,13 @@ class RoseScene(context: Context) {
                     setCullingMode(MaterialCullingMode.NONE)
                 }
                 for(i in 0 until model.materials.size) model.materials[i]=material
-                // Exact mesh shape preserves frontmost occlusion, rather than broad overlapping boxes.
+                // Same variant/pivot/local frame, using the previous low-poly membrane for hits.
+                // The high-poly mesh above remains the sole rendered/hover/gesture owner.
+                val collisionMesh=walk(collisionPrototypes.getValue(spec.variant))
+                    .single {it.components.has(ModelComponent::class.java)}
+                    .components[ModelComponent::class.java]!!.mesh
                 // Retain the shape while the entrance deliberately has no CollisionComponent.
-                val shape=ShapeResource.createStaticMesh(model.mesh).apply {toGlobal()}
+                val shape=ShapeResource.createStaticMesh(collisionMesh).apply {toGlobal()}
                 // Keep colliders, hover and all click/gesture actions absent until full scale.
                 val visual=PetalVisual(spec,owner,meshOwner,material,shape,rest);petals[spec.id]=visual
             }
@@ -322,6 +333,7 @@ class RoseScene(context: Context) {
         recentColors.recordReady(s.config.colorId)
         Log.i(TAG,"RoseEntranceFinished session=${s.id} scale=1 opacity=1; interactions enabled")
         Log.i(TAG,"RoundInputReady session=${s.id} petals=${petals.size} completionEnabled=${completionPanel?.enabled} revision=replay-hit-surface-v1")
+        Log.i(TAG,"PetalCollisionReady session=${s.id} petals=${petals.size} variants=${petals.values.map {it.spec.variant}.toSet().sorted()} revision=low-poly-collision-v1 source=rose-llm-v9 triangles=412/476")
         // Keep the audio failure boundary outside model assembly and entrance readiness.
         audioPreparationJob=sceneScope.launch {
             prepareOptionalAudio(
@@ -705,6 +717,7 @@ class RoseScene(context: Context) {
         completionPresentedRound=null
         resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()
+        collisionPrototypes.values.forEach {if(it.valid)it.destroy()};collisionPrototypes.clear()
     }
     private fun walk(entity:Entity):Sequence<Entity> = sequence {yield(entity);for(c in entity.getChildren())yieldAll(walk(c))}
     private fun Vec.vector()=Vector3(x,y,z)

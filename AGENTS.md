@@ -1,5 +1,7 @@
 # 一瓣欢喜 / Petaluck
 
+- Low-poly collision v1 (2026-11-17): current debug **1.0.27 / code28**. Keep improved rose-llm-v10 render GLBs; create each petal's static ShapeResource from its matching `rose/collision/<variant>.glb`, frozen byte-identical from `95872b9` rose-llm-v9 (outer curl before subdivision), 412/476 triangles. This supersedes using the displayed mesh for petal collision. Collision source entities never enter SpatialView; existing high-poly mesh remains Collision/Interactable/Hover and gesture owner. Preserve all input/movement and round shape retention/cleanup. Twelve-pair geometry verification, 139 tests, build and static checks pass; installed Ready with all twelve variants. Physical Gaze improvement, Direct regression and second-round input remain pending. See `docs/petal-collision-v1.md`.
+
 PICO Shared Space Volumetric Android/Kotlin app from `requirements/petaluck-prd.md` v1.8.
 User references are in `requirements/model-references/`. No pre-existing app was present.
 
