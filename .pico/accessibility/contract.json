@@ -144,32 +144,6 @@
           }
         ]
       }
-    },
-    {
-      "contractId": "attachment:81dfcc728d2e2af3",
-      "semanticAnchor": "81dfcc728d2e2af3",
-      "kind": "attachment",
-      "source": {
-        "file": "app/src/main/java/com/unclekarma/petaluck/content/ColorfulFinaleStage.kt",
-        "line": 68,
-        "endLine": 68,
-        "symbol": "ColorfulFinaleStage"
-      },
-      "semanticId": "rose.finale",
-      "label": "最后的祝福与退出按钮",
-      "runtimeSelector": {
-        "semanticId": "rose.finale"
-      },
-      "stateSources": [
-        "value"
-      ],
-      "actions": [],
-      "binding": {
-        "kind": "spatial",
-        "ownerExpression": "panel",
-        "sdkComponentDeclaration": true,
-        "sdkActionRegistration": true
-      }
     }
   ],
   "unresolved": []
