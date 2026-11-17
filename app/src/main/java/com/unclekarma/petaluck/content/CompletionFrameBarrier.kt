@@ -7,6 +7,8 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
 import com.unclekarma.petaluck.domain.CompletionBufferGate
 
@@ -29,6 +31,8 @@ internal fun completionFrameBarrier(
         onDispose { submission?.dispose() }
     }
     return Modifier.drawWithContent {
+        // Transparent SrcOver does not erase retained pixels. Clear the target explicitly.
+        drawRect(Color.Transparent, blendMode = BlendMode.Clear)
         if (submission == null) drawContent() else submission.drawn()
     }
 }

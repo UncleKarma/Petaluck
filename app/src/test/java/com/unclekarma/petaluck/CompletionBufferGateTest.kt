@@ -5,10 +5,10 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class CompletionBufferGateTest {
-    @Test fun threeRoundsEraseBeforeDisablingAndRequireFreshReveal() {
+    @Test fun threeRoundsKeepBlankSurfaceAliveAndRequireFreshReveal() {
         val gate = CompletionBufferGate()
         for (round in 1L..3L) {
-            assertFalse(gate.enabled)
+            assertEquals(round > 1, gate.enabled)
             gate.update(round, true)
             assertTrue(gate.enabled)
             assertNull(gate.presentedRound)
@@ -25,7 +25,7 @@ class CompletionBufferGateTest {
             gate.update(round + 1, false)
             assertEquals("Loading ID changes must not invalidate the erase", erase, gate.request)
             assertTrue(gate.committed(erase))
-            assertFalse(gate.enabled)
+            assertTrue(gate.enabled)
             assertNull(gate.request)
             assertFalse(gate.committed(reveal))
         }
@@ -63,7 +63,7 @@ class CompletionBufferGateTest {
         assertFalse(gate.committed(reveal))
         assertNull(gate.presentedRound)
         assertTrue(gate.committed(checkNotNull(gate.request)))
-        assertFalse(gate.enabled)
+        assertTrue(gate.enabled)
     }
 
     @Test fun ownerReplacementRejectsSameRoundOldCallback() {

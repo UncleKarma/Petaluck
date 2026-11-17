@@ -660,7 +660,8 @@ class RoseScene(context: Context) {
         // buffer commits; disabling immediately would preserve the old opaque text/button.
         completionPanel?.components?.get(OpacityControllerComponent::class.java)?.opacity=if(presented)1f else 0f
         // Hide the outgoing surface synchronously, before its Compose buffer catches up.
-        // Inactive panels must not leave transparent hit areas over the flower or replay button.
+        // Completion stays alive with native opacity zero and no Compose children between rounds.
+        // This avoids reactivating a surface whose compositor may retain an older buffer.
         completionPanel?.enabled=completionBuffer.enabled
         messagePanel?.enabled=!completing
         resultPanel?.enabled=state.result.isNotEmpty()

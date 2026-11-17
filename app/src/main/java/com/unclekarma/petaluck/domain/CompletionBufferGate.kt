@@ -1,6 +1,6 @@
 package com.unclekarma.petaluck.domain
 
-/** Keep the outgoing surface drawing until it has submitted an empty buffer. */
+/** Keep an initialized surface alive and masked between rounds to avoid stale-buffer reactivation. */
 class CompletionBufferGate {
     data class Request(val serial: Long, val revealRound: Long?)
 
@@ -26,7 +26,7 @@ class CompletionBufferGate {
         if (request != frame) return false
         request = null
         presentedRound = frame.revealRound
-        enabled = frame.revealRound != null
+        enabled = true
         return true
     }
 
