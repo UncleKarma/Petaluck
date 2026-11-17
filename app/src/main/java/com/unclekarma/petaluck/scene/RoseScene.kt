@@ -66,6 +66,7 @@ class RoseScene(context: Context) {
     private var tipIndex = -1
     private var session: RoseSession? = null
     private val recentColors = RecentRoseColors()
+    private val sessionBlessings = SessionBlessings()
     private var generation = 0L
     private var disposed = false
     private var busy = false
@@ -196,7 +197,7 @@ class RoseScene(context: Context) {
             stage = "retain shared assets"
             ensureAssets(config)
             if(disposed)return
-            val s = RoseSession(token, config); session=s
+            val s = RoseSession(token, config, sessionBlessings::next); session=s
             // Hide the complete hierarchy during assembly without disabling native rig updates.
             val anchor=Entity().apply {
                 setName("RoseAnchor")
