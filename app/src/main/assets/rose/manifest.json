@@ -1,5 +1,5 @@
 {
-  "assetLibraryVersion": "rose-llm-v8",
+  "assetLibraryVersion": "rose-llm-v9",
   "layoutVersion": "interleaved-petals-v6",
   "coordinates": "meters, Y-up, +Z front",
   "source": "New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.",
@@ -10,7 +10,7 @@
       "triangles": 412,
       "surfaceRows": 8,
       "surfaceColumns": 13,
-      "sha256": "9a1ee58c1aedf9995dd014812f9bc7c11671d31ddd9840061a9d92f69728cf6c",
+      "sha256": "68848c00f1b10a3f01046e33ac8636053d939b4c782b56c6916ff855083cb078",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Broad rounded fan, shallow cup, rolled back upper rim.",
       "shapeParameters": [
@@ -31,12 +31,12 @@
         [
           -0.04055130805665477,
           -0.0004634924671646701,
-          -0.0041745425798680805
+          -0.006653886908045036
         ],
         [
           0.038409527267744874,
-          0.09497813751621009,
-          0.005280470763032901
+          0.09416928086364526,
+          0.005336175904525212
         ]
       ]
     },
@@ -46,7 +46,7 @@
       "triangles": 412,
       "surfaceRows": 8,
       "surfaceColumns": 13,
-      "sha256": "3e1d3d477d69967943a1e1d37773cc726cc50551a33060cb35b8f916097b5947",
+      "sha256": "5c8286c9c947837a47cb6edb2e0915ae4f7371d4a21cfdf4cdc7ed93b57c0fab",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Wide oval fan, wavy lip, asymmetric left shoulder.",
       "shapeParameters": [
@@ -67,12 +67,12 @@
         [
           -0.03856605921400497,
           -0.0004292056803957083,
-          -0.002493502830481477
+          -0.004502258240569296
         ],
         [
           0.037367330479593446,
-          0.09210381091787,
-          0.006941991435786709
+          0.09117049580609309,
+          0.00701299615238434
         ]
       ]
     },
@@ -82,7 +82,7 @@
       "triangles": 412,
       "surfaceRows": 8,
       "surfaceColumns": 13,
-      "sha256": "ca73a5f993e5721bb3277478912a72cb7f9df2c92ebd4961d6046709e0972172",
+      "sha256": "a8705c9a6c4220982d53e0f24db0056d3728befb2e3b71e453f2f9066ef6c1bc",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Broad fan, shallow central notch, gentle saddle bend.",
       "shapeParameters": [
@@ -103,12 +103,12 @@
         [
           -0.04114740706305331,
           -0.00044214570790906006,
-          -0.001753861529988257
+          -0.003526257759601331
         ],
         [
           0.03873867395609509,
-          0.09136489389487171,
-          0.00923070802398138
+          0.0902640087152678,
+          0.009286604827046435
         ]
       ]
     },
@@ -118,7 +118,7 @@
       "triangles": 412,
       "surfaceRows": 8,
       "surfaceColumns": 13,
-      "sha256": "5b9360b67a48d03dcf6310808fd3986031ae4096912cbec3dd7c7bb512a11481",
+      "sha256": "bc150306211dfba5a09a3a6a5eaf86383f058a99e95679c5b0b16d5e81650cec",
       "method": "Independent LLM-authored parametric mesh, not cloud text-to-3D",
       "brief": "Rounded silhouette, right lip curls outward.",
       "shapeParameters": [
@@ -139,12 +139,12 @@
         [
           -0.03867591751288481,
           -0.00040806205644471544,
-          -0.00016485506982204245
+          -0.0016613976684691292
         ],
         [
           0.03614228828439881,
-          0.09081870969453815,
-          0.012521415312123411
+          0.08943923711099222,
+          0.012576782502529766
         ]
       ]
     },
@@ -738,6 +738,11 @@
   "petalCollarLength": 0.006,
   "petalCupAxialHalfThickness": 0.00013,
   "petalCollarLiftStep": 0.0007,
+  "outerCurlRefinement": {
+    "version": "outer-curl-v1",
+    "extraRollMeters": 0.0025,
+    "sideCupMeters": 0.0012
+  },
   "runtimeLayoutNotes": "Interleaved-petals-v6 gives each mesh its own seated cup profile. Outer openings span 18-42 degrees, middle 36-66, inner 60-82, so neighboring families overlap. All membranes wrap around the blossom with nearly zero local roll. Outer rims curl gently outward. Seeded placement varies angular spacing and fine pose offsets. A small baked surface offset separates overlapping edges. Each mesh has two asymmetric UV maps. Per-petal neutral brightness and the three layer albedos are shared with the prior material revision. Petals and core share CrownMotion.",
   "textures": {
     "version": "layered-basecolor-v5",

@@ -42,6 +42,10 @@ PETAL_OVERLAP_SLOPES = {"outer_04": .06, "inner_04": .08}
 PETAL_COLLAR_LENGTH = .006
 PETAL_CUP_HALF_THICKNESS = .00013
 PETAL_COLLAR_LIFT_STEP = .0007
+# User refinement: a modest backward roll and shallow side cup on the outer layer only.
+# The root, authored opening angles and middle/inner surfaces stay unchanged.
+OUTER_EXTRA_ROLL = .0025
+OUTER_SIDE_CUP = .0012
 SPECS = [
     ('outer_01', .082, .096, .010, -.010, .002, .000, .000, 'Broad rounded fan, shallow cup, rolled back upper rim.'),
     ('outer_02', .079, .092, .012, -.005, .004, -.006, .000, 'Wide oval fan, wavy lip, asymmetric left shoulder.'),
@@ -161,6 +165,14 @@ class Glb:
     def save(self,path):
         self.doc['buffers'][0]['byteLength']=len(self.data)
         j=json.dumps(self.doc,separators=(',',':')).encode();j+=b' '*((-len(j))%4);d=bytes(self.data);d+=b'\0'*((-len(d))%4)
+        if path.exists():
+            previous = path.read_bytes()
+            json_size = struct.unpack_from('<I', previous, 12)[0]
+            old_doc = json.loads(previous[20:20+json_size])
+            # A product rename alone must not rewrite unchanged model provenance.
+            old_doc['asset']['generator'] = self.doc['asset']['generator']
+            if old_doc == self.doc and previous[28+json_size:] == d:
+                return
         path.write_bytes(struct.pack('<III',0x46546c67,2,12+8+len(j)+8+len(d))+struct.pack('<I4s',len(j),b'JSON')+j+struct.pack('<I4s',len(d),b'BIN\0')+d)
 
 def tube(v,f,uv,start,end,r1,r2,segments=8,tile='stem'):
@@ -382,6 +394,7 @@ def cup_petal(vertices, variant):
     order = sorted(PETAL_CUP_PROFILES, key=lambda name: PETAL_CUP_PROFILES[name]['tilt'])
     rank = order.index(variant)
     wrapped = []
+    width = next(spec[1] for spec in SPECS if spec[0] == variant)
     for index, (x, y, _) in enumerate(vertices):
         radial = radius + y*c
         angle = x/radial
@@ -390,6 +403,8 @@ def cup_petal(vertices, variant):
         height = y*s + x*PETAL_OVERLAP_SLOPES.get(variant, PETAL_OVERLAP_SLOPE) + lift
         if variant.startswith('outer'):
             height -= .004*(y/.095)**6
+            height -= OUTER_EXTRA_ROLL*(y/.095)**4
+            height += OUTER_SIDE_CUP*(2*x/width)**2*(y/.095)**2
         height += PETAL_CUP_HALF_THICKNESS if index < front_count else -PETAL_CUP_HALF_THICKNESS
         tangent = radial*math.sin(angle)
         outward = radial*math.cos(angle) - radius
@@ -410,13 +425,14 @@ def main():
         g.save(p)
         records.append({'variantId':spec[0],'layer':spec[0].split('_')[0],'triangles':len(f),'surfaceRows':8,'surfaceColumns':15 if spec[0].startswith('inner') else 13,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'method':'Independent LLM-authored parametric mesh, not cloud text-to-3D','brief':spec[-1],'shapeParameters':list(spec[1:-1]),'pivot':[0,0,0],'bounds':[[min(x[k] for x in v) for k in range(3)],[max(x[k] for x in v) for k in range(3)]]})
     stem=build_stem()
-    manifest={'assetLibraryVersion':'rose-llm-v8','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
+    manifest={'assetLibraryVersion':'rose-llm-v9','layoutVersion':'interleaved-petals-v6','coordinates':'meters, Y-up, +Z front','source':'New LLM-authored meshes based on user-provided petaluck.zip reference images. No third-party stock models.','petals':records,'stem':{'file':'stem.glb','triangles':stem,'sha256':hashlib.sha256((OUT/'stem.glb').read_bytes()).hexdigest(),'geometryVersion':STEM_VERSION,'joints':['stem_root','stem_mid','stem_tip'],'skinned':True,'bodyRings':STEM_RINGS,'bodyRingStride':STEM_SEGMENTS+1,'bodySegments':STEM_SEGMENTS,'centerline':[stem_center(i/(STEM_RINGS-1)) for i in range(STEM_RINGS)],'neckStartFraction':NECK_START,'tipAxis':[0,math.cos(math.radians(35)),math.sin(math.radians(35))],'standaloneCorePitch':35,'runtimeCoreLocalPitch':90},'max30PetalTriangles':stem+30*max(r['triangles'] for r in records)}
     manifest['petalCupProfiles'] = PETAL_CUP_PROFILES
     manifest['petalOverlapSlope'] = PETAL_OVERLAP_SLOPE
     manifest['petalOverlapSlopeOverrides'] = PETAL_OVERLAP_SLOPES
     manifest['petalCollarLength'] = PETAL_COLLAR_LENGTH
     manifest['petalCupAxialHalfThickness'] = PETAL_CUP_HALF_THICKNESS
     manifest['petalCollarLiftStep'] = PETAL_COLLAR_LIFT_STEP
+    manifest['outerCurlRefinement'] = {'version': 'outer-curl-v1', 'extraRollMeters': OUTER_EXTRA_ROLL, 'sideCupMeters': OUTER_SIDE_CUP}
     manifest['runtimeLayoutNotes']='Interleaved-petals-v6 gives each mesh its own seated cup profile. Outer openings span 18-42 degrees, middle 36-66, inner 60-82, so neighboring families overlap. All membranes wrap around the blossom with nearly zero local roll. Outer rims curl gently outward. Seeded placement varies angular spacing and fine pose offsets. A small baked surface offset separates overlapping edges. Each mesh has two asymmetric UV maps. Per-petal neutral brightness and the three layer albedos are shared with the prior material revision. Petals and core share CrownMotion.'
     manifest['textures']={'version':TEXTURE_VERSION,'provenance':'art/textures/generation-v5.md; built-in ImageGen edits with localized secondary pigment, locally cropped and resized only',
         'petal':{'file':'neutral.png','size':[512,512],'sha256':hashlib.sha256(texture_png()).hexdigest(),'tintable':True,'uv':'root V=1, rim V=0; same mapping on both faces'},
