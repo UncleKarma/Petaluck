@@ -13,6 +13,10 @@ import com.pico.spatial.core.ecs.particle.ParticleFloatVaryingProperty
 import com.pico.spatial.core.ecs.particle.ParticleCurveType
 import com.pico.spatial.core.ecs.particle.ParticleSimulation
 import com.pico.spatial.core.ecs.particle.ParticleVaryingPropertyType
+import com.pico.spatial.core.ecs.particle.ParticleEmitterShape
+import com.pico.spatial.core.ecs.particle.ParticleEmitterShapeType
+import com.pico.spatial.core.ecs.particle.ParticleEmissionLocation
+import com.pico.spatial.core.ecs.particle.ParticleEmissionSpace
 import com.pico.spatial.core.ecs.TransformComponent
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.pico.spatial.core.ecs.resource.TextureCreateOption
@@ -28,9 +32,6 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import kotlin.random.Random
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.PI
 
 /** Optional scene-owned bundle; each round gets a fresh instance so stop leaves no live petals. */
 internal class EndingPetalRain(context: Context) : AutoCloseable {
@@ -114,8 +115,8 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     check(children.map { it.getName() }.sorted() == names.sorted()) {
                         "Petal rain manifest/runtime scope mismatch"
                     }
-                    val colors = RoseLayout.rainTexturePaths(config)
-                    val paths = if(surrounding) List(24) { colors[it % colors.size] } else colors
+                    val paths = RoseLayout.rainTexturePaths(config)
+                    if (surrounding) check(paths.size == RoseLayout.BASE_COLOR_COUNT)
                     textures.retain(paths.toSet()) { path ->
                         withContext(Dispatchers.IO) {
                             val bitmap = PetalRainSprite.draw(assets, path)
@@ -128,6 +129,10 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     val breeze = Random(config.seed xor 0x504554414CL)
                     val originals = EMITTERS.map { name -> children.single { it.getName() == name } }
                     val rates = originals.map { checkNotNull(it.components[ParticleComponent::class.java]).birthRateFull }
+                    val finaleRate = if (surrounding) {
+                        check(rates.all { it.type == ParticleVaryingPropertyType.CONSTANT })
+                        rates.sumOf { it.value.toDouble() }.toFloat() * 6f
+                    } else 0f
                     // Clone before editing any source material/rate. Every clone belongs to candidate
                     // immediately, so cancellation/failure destroys the entire prepared effect.
                     val owners = paths.indices.map { index ->
@@ -143,24 +148,17 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     }
                     val controls = owners.mapIndexed { index, owner ->
                         // Authored emitter is already near the +0.35 m container ceiling.
-                        val position = if(surrounding) {
-                            val angle = (index % 8) * (2.0 * PI / 8.0) + (index / 8) * .23
-                            // Three rings within the 5 m disk around the Stage user origin;
-                            // leave room at the boundary for the authored spawn shape and drift.
-                            val radius = .8 + (index / 8) * 1.8
-                            Vector3((sin(angle) * radius).toFloat(), 2.15f + (index % 3) * .15f,
-                                (cos(angle) * radius).toFloat())
-                        } else Vector3(0f, .33f, 0f)
+                        // Each color covers the full overhead disk at the Stage entry origin.
+                        val position = if(surrounding) Vector3(0f, 2.15f + (index % 3) * .15f, 0f)
+                            else Vector3(0f, .33f, 0f)
                         checkNotNull(owner.components[TransformComponent::class.java]).setPosition(position)
                         checkNotNull(owner.components[ParticleComponent::class.java]).also {
                             it.isEmitting = false
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
                             val rate = rates[index % 3]
-                            // Finale was already 2x authored emission; this increment triples it.
-                            val density = if(surrounding) 6f else 1f
-                            it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value * density / copies, rate.range * density / copies)
+                            if (surrounding) it.configureFinaleEmitter(finaleRate)
+                            else it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
                             it.mainSimulation.apply {
-                                if(surrounding) configureFinaleRain()
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
                                 noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
                                 noiseStrength = .00045f + breeze.nextFloat() * .0003f
@@ -173,7 +171,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     particles = controls
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} y=0.33 revision=multicolor-v1 textures=$paths")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} surrounding=$surrounding revision=eight-emitters-v4 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }
@@ -244,6 +242,25 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         private const val SCENE_KEY = "Scenes/PetalRain"
         private val EMITTERS = listOf("PetalRain5", "PetalRain6", "PetalRain7")
     }
+}
+
+/** Eight overlapping color emitters share the previous Stage's total emission rate. */
+internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
+    val rate = totalBirthRate / RoseLayout.BASE_COLOR_COUNT
+    birthRateFull = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, rate, rate)
+    val authored = emitterShape
+    emitterShape = ParticleEmitterShape(
+        type = ParticleEmitterShapeType.CYLINDER,
+        // Thin horizontal disk, 9.4 m across; leave drift room inside the 5 m Stage radius.
+        size = Vector3(9.4f, .001f, 9.4f),
+        emissionLocation = ParticleEmissionLocation.VOLUME,
+        vertexCount = authored.vertexCount,
+        emissionSpace = ParticleEmissionSpace.LOCAL,
+        emissionDirection = Vector3(0f, -1f, 0f),
+        radialSpan = 360f,
+        torusInnerRadius = authored.torusInnerRadius,
+    )
+    mainSimulation.configureFinaleRain()
 }
 
 /** Applied once to each attached, freshly cloned Stage emitter; volume rain keeps its asset values. */
