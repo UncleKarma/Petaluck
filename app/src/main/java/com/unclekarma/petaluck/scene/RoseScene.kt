@@ -649,7 +649,7 @@ class RoseScene(context: Context) {
     fun resume(){appPaused=false;session?.resume()}
     private fun publish() {
         val s=session ?: return
-        updateUi(RoseUi(s.phase,s.result,s.detachedCount==0,trackingUnavailable,s.blessing,s.id,s.config.colorId==RoseLayout.MULTICOLOR))
+        updateUi(RoseUi(s.phase,s.displayedResult,s.detachedCount==0,trackingUnavailable,s.blessing,s.id,s.config.colorId==RoseLayout.MULTICOLOR))
     }
     private fun updateUi(state:RoseUi) {
         if(state!=ui){

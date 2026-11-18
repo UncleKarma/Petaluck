@@ -150,6 +150,9 @@ class RoseSession(val id: Long, val config: RoundConfig, private val pickBlessin
     var blessing: String = ""; private set
     private var finalPetalId: Int? = null
     val result: String get() = if (detachedCount == 0) "" else if ((config.count - detachedCount) % 2 == 0) "喜欢" else "不喜欢"
+    val displayedResult: String
+        get() = if (config.colorId == RoseLayout.MULTICOLOR && detachedCount == config.count) "" else result
+
     fun ready() { config.validate(); if (phase == Phase.Loading) phase = Phase.Ready }
     fun state(petal: Int) = states[petal]
     fun grab(sessionId: Long, petal: Int, hand: Long): Boolean {

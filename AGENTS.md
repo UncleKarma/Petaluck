@@ -1,5 +1,7 @@
 # 一瓣欢喜 / Petaluck
 
+- **1.0.35 / code36**: hide the colorful round’s result panel when the last petal detaches. On final release, show the couplet 掌上观花花有尽 / 人间赏景景无穷. The finale exit button reads 有缘再会. Ordinary rounds keep the existing presentation. Host tests cover both paths through final detach, release and removal. Headset finale appearance pending.
+
 - **1.0.34 / code35**, finale poem: `RoseBlessings.COLORFUL_FINALE` is now two explicit seven-character lines, `此间花色终有尽\n人间万彩待君寻`, inviting the player from the game's finite palette back to everyday colors. Keep existing centered white typography, fades and exit button. 139 host tests/build/static checks pass; installed on PB311XHGKC150135G. Native finale text wrapping remains to retest. See `docs/special-colorful-blessing-copy.md`.
 
 - **1.0.33 / code34**, lifetime-v7: Stage lifetime extends4s by independently sampling3–5s per emitter during preparation (7–9s total, millisecond granularity). Sampling is per emitter, not independently per particle: normalized alpha keys1/L and1-1/L keep exact1s fades for every particle while retaining8 emitters. Never mutate these keys while particles are alive. Preserve120–160/s total emission, motion, dimensions and192 capacity per emitter; maximum theoretical180 live particles per emitter at20/s and9s. Ordinary volume rain unchanged. See `docs/finale-lifetime-v7.md`.

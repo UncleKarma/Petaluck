@@ -6,6 +6,24 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class RoseBlessingsTest {
+    @Test fun onlyColorfulFinaleHidesTheResultAsSoonAsTheLastPetalDetaches() {
+        for (color in listOf(0, RoseLayout.MULTICOLOR)) {
+            val session = RoseSession(1, RoseLayout.assemble(7, 18, color)) { RoseBlessings.COLORFUL_FINALE }
+            session.ready()
+            for ((index, petal) in session.config.petals.withIndex()) {
+                assertTrue(session.grab(session.id, petal.id, 1))
+                assertTrue(session.detach(session.id, petal.id, 1))
+                val last = index == session.config.petals.lastIndex
+                val expected = if (last && color == RoseLayout.MULTICOLOR) "" else session.result
+                assertEquals(expected, session.displayedResult)
+                session.release(session.id, 1)
+                assertEquals(expected, session.displayedResult)
+                session.removed(petal.id)
+                assertEquals(expected, session.displayedResult)
+            }
+        }
+    }
+
     @Test fun chooseOnlyOnFinalReleaseAndKeepTheSameWishThroughCompletion() {
         var draws=0
         val expected=RoseBlessings.messages[2]

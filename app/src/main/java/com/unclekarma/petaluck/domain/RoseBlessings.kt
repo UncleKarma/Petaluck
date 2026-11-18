@@ -3,7 +3,7 @@ package com.unclekarma.petaluck.domain
 import kotlin.random.Random
 
 object RoseBlessings {
-    const val COLORFUL_FINALE = "此间花色终有尽\n人间万彩待君寻"
+    const val COLORFUL_FINALE = "掌上观花花有尽\n人间赏景景无穷"
     val messages = listOf(
         "愿你一直被温柔以待。",
         "愿你心有暖阳，笑意常在。",

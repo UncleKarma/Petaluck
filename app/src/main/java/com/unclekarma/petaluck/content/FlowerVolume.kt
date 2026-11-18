@@ -171,7 +171,7 @@ private fun CompletionFooter(ui: RoseUi, presented: Boolean, onReplay: () -> Uni
         Box(Modifier.align(Alignment.BottomCenter).height(buttonHeight).alpha(if(presented)replayFade.value else 0f)
             .then(if (canReplay) Modifier else Modifier.clearAndSetSemantics {}),
             contentAlignment = Alignment.Center) {
-            ReplayButton(if(ui.colorfulFinale) "就此别过" else "再试一次", enabled = completed,
+            ReplayButton(if(ui.colorfulFinale) "有缘再会" else "再试一次", enabled = completed,
                 onClick = { if (canReplay) onReplay() })
         }
     }
