@@ -6,11 +6,13 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.util.Log
 import com.pico.spatial.ui.platform.containers.SpatialNavigator
+import com.unclekarma.petaluck.platform.SpatialApplication
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
 
 /** Spatial content may have no Activity. Close its native containers before finishing app tasks. */
 internal suspend fun exitPetaluck(context: Context, navigator: SpatialNavigator) = withContext(NonCancellable) {
+    (context.applicationContext as SpatialApplication).endFinale()
     // Closing a container disposes its composition and cancels its scope. Finish all cleanup anyway.
     try {
         navigator.closeStage()

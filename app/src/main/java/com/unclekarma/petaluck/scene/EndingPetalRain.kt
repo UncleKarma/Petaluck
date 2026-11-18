@@ -160,7 +160,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
                             val rate = rates[index % 3]
                             if (surrounding) {
-                                val lifetimeSeconds = lifetimeRandom.nextInt(7_000, 9_001) * 13 / 10_000f
+                                val lifetimeSeconds = lifetimeRandom.nextInt(7_000, 9_001) * 1.625f / 1_000f
                                 it.configureFinaleEmitter(finaleRate, lifetimeSeconds)
                                 Log.i(TAG, "FinaleEmitterLifetime index=$index seconds=$lifetimeSeconds fadeIn=1 fadeOut=1")
                             }
@@ -190,12 +190,12 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         }
     }
 
-    fun start(roundId: Long, content: SpatialViewContent, endless: Boolean = false) {
+    fun start(roundId: Long, content: SpatialViewContent, endless: Boolean = false): Boolean {
         if (closed || preparedRound != roundId) {
             Log.w(TAG, "PetalRainNotReady round=$roundId")
-            return
+            return false
         }
-        try {
+        return try {
             val owner = checkNotNull(instance)
             particles.forEach { it.isEmitting = true }
             // Direct SpatialView child: independent of RoseAnchor entrance, bend and teardown.
@@ -203,9 +203,11 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
             owner.enabled = true
             if (!endless) playback.start(roundId)
             Log.i(TAG, "PetalRainStarted round=$roundId")
+            true
         } catch (e: Exception) {
             stop()
             Log.e(TAG, "Petal rain start failed; music and flower remain playable", e)
+            false
         }
     }
 
@@ -296,8 +298,8 @@ internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float, lif
 
 /** Applied once to each attached, freshly cloned Stage emitter; volume rain keeps its asset values. */
 internal fun ParticleSimulation.configureFinaleRain(lifetimeSeconds: Float) {
-    require(lifetimeSeconds in 9.1f..11.7f)
-    maxParticleCount = 256 // Up to 20 births/s × 11.7 s = 234 live petals per color.
+    require(lifetimeSeconds in 11.375f..14.625f)
+    maxParticleCount = 320 // Up to ceil(20 births/s × 14.625 s) = 293 live petals per color.
     startSize = startSize.let { ParticleFloatVaryingProperty(it.type, it.value * 2f, it.range * 2f) }
     // Authored motion has no gravity/drag module; falling is driven by downward startSpeed.
     // Sample per particle at birth: a wider spread with almost the same mean falling speed.

@@ -9,6 +9,7 @@ import com.pico.spatial.core.ecs.particle.ParticleCurveType
 import com.pico.spatial.core.ecs.particle.ParticleVaryingPropertyType
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.unclekarma.petaluck.platform.LaunchActivity
+import com.unclekarma.petaluck.platform.SpatialApplication
 import com.unclekarma.petaluck.scene.configureFinaleEmitter
 import com.unclekarma.petaluck.scene.setFinaleEmissionRate
 import com.unclekarma.petaluck.scene.EndingPetalRain
@@ -18,6 +19,7 @@ import com.pico.spatial.core.ecs.particle.ParticleEmissionLocation
 import com.pico.spatial.core.ecs.particle.ParticleEmissionSpace
 import androidx.test.platform.app.InstrumentationRegistry
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.junit.Assert.assertEquals
@@ -61,7 +63,7 @@ class FinaleRainNativeTest {
                             try {
                                 assertTrue(scope.addChild(clone))
                                 val component = checkNotNull(clone.components[ParticleComponent::class.java])
-                                val lifetimeSeconds = listOf(9.1f, 10.4f, 11.7f)[index]
+                                val lifetimeSeconds = listOf(11.375f, 13f, 14.625f)[index]
                                 component.configureFinaleEmitter(totalRate, lifetimeSeconds)
                                 val target = component.mainSimulation
                                 // These getters pull from native outside SceneEvents.Update batching.
@@ -85,7 +87,7 @@ class FinaleRainNativeTest {
                                 assertEquals(ParticleVaryingPropertyType.RANDOM, target.startSpeed.type)
                                 assertEquals(.05f, target.startSpeed.value, .0001f)
                                 assertEquals(.20f, target.startSpeed.range, .0001f)
-                                assertEquals(256, target.maxParticleCount)
+                                assertEquals(320, target.maxParticleCount)
                                 assertEquals(ParticleVaryingPropertyType.CONSTANT, target.lifetime.type)
                                 assertEquals(lifetimeSeconds, target.lifetime.value, .0001f)
                                 assertEquals(lifetimeSeconds, target.lifetime.range, .0001f)
@@ -121,6 +123,28 @@ class FinaleRainNativeTest {
                     bundle.close()
                 }
             }
+        }
+    }
+
+    @Test fun soundtrackLoopsPastTheEndAndCannotRestartAfterExit() = runBlocking {
+        val app = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as SpatialApplication
+        withContext(Dispatchers.Main) {
+            app.beginFinale()
+            val music = checkNotNull(app.finaleMusic)
+            try {
+                assertFalse(music.isPlaying)
+                music.play()
+                assertTrue(music.isPlaying)
+                music.pause()
+                assertFalse(music.isPlaying)
+                music.play()
+                delay(38_000) // The packaged song is 36 seconds long.
+                assertTrue(music.isPlaying)
+                app.endFinale()
+                assertFalse(music.isPlaying)
+                music.play() // A late Stage start/resume after the exit click.
+                assertFalse(music.isPlaying)
+            } finally { app.endFinale() }
         }
     }
 

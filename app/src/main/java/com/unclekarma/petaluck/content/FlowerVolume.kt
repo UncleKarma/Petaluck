@@ -23,6 +23,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.unclekarma.petaluck.domain.Phase
+import com.unclekarma.petaluck.platform.SpatialApplication
 import com.unclekarma.petaluck.scene.RoseScene
 import com.unclekarma.petaluck.scene.RoseUi
 import com.pico.spatial.ui.design.Button
@@ -50,7 +51,10 @@ fun FlowerVolume(modifier:Modifier) {
     var exiting by remember { mutableStateOf(false) }
     val ui=scene.ui
     LaunchedEffect(ui.roundId,ui.phase,ui.colorfulFinale,exiting) {
-        if(!exiting && ui.colorfulFinale && ui.phase==Phase.Completing) navigator.openStage("petaluck_finale",StageStyle.Mixed)
+        if(!exiting && ui.colorfulFinale && ui.phase==Phase.Completing) {
+            (context.applicationContext as SpatialApplication).beginFinale()
+            navigator.openStage("petaluck_finale",StageStyle.Mixed)
+        }
     }
     // Host lifecycle/view bindings may change while this remembered scene remains in composition.
     DisposableEffect(scene) {onDispose {scene.close()}}
