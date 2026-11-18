@@ -9,6 +9,7 @@ import com.pico.spatial.core.ecs.particle.ParticleCurveType
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.unclekarma.petaluck.platform.LaunchActivity
 import com.unclekarma.petaluck.scene.configureFinaleEmitter
+import com.unclekarma.petaluck.scene.setFinaleEmissionRate
 import com.unclekarma.petaluck.scene.EndingPetalRain
 import com.unclekarma.petaluck.domain.RoseLayout
 import com.pico.spatial.core.ecs.particle.ParticleEmitterShapeType
@@ -38,10 +39,7 @@ class FinaleRainNativeTest {
                         val scope = root.getChildren().single()
                         val originals = scope.getChildren()
                         assertEquals(3, originals.size)
-                        val totalRate = originals.sumOf {
-                            checkNotNull(it.components[ParticleComponent::class.java]).birthRateFull.value.toDouble()
-                        }.toFloat() * 6f
-                        assertEquals(72f, totalRate, .0001f)
+                        val totalRate = 160f
                         for (original in originals) {
                             val sourceComponent = checkNotNull(original.components[ParticleComponent::class.java])
                             val source = sourceComponent.mainSimulation
@@ -65,7 +63,13 @@ class FinaleRainNativeTest {
                                 component.configureFinaleEmitter(totalRate)
                                 val target = component.mainSimulation
                                 // These getters pull from native outside SceneEvents.Update batching.
-                                assertEquals(9f, component.birthRateFull.value, .0001f)
+                                assertEquals(20f, component.birthRateFull.value, .0001f)
+                                // Cover both bounds and fractional per-emitter rates without
+                                // reconfiguring shape/lifetime or multiplying animation twice.
+                                for (total in listOf(120f, 137f, 160f)) {
+                                    component.setFinaleEmissionRate(total)
+                                    assertEquals(total, component.birthRateFull.value * 8, .0001f)
+                                }
                                 assertEquals(ParticleEmitterShapeType.CYLINDER, component.emitterShape.type)
                                 assertEquals(ParticleEmissionLocation.VOLUME, component.emitterShape.emissionLocation)
                                 assertEquals(ParticleEmissionSpace.LOCAL, component.emitterShape.emissionSpace)
@@ -115,6 +119,9 @@ class FinaleRainNativeTest {
                     assertEquals(8, RoseLayout.rainTexturePaths(config).distinct().size)
                     rain.prepare(1, config, surrounding = true)
                     // Production emits PetalRainReady only after all eight native owners/materials bind.
+                    repeat(3) { assertTrue(rain.randomizeFinaleEmissionRate()) }
+                    rain.stop()
+                    assertFalse(rain.randomizeFinaleEmissionRate())
                 }
             }
         }

@@ -41,6 +41,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
     private var bundle: AssetBundle? = null
     private var instance: Entity? = null
     private var particles = emptyList<ParticleComponent>()
+    private var finaleEmissionRandom: Random? = null
     private var preparedRound: Long? = null
     private var epoch = 0L
     private var loading = false
@@ -129,10 +130,9 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     val breeze = Random(config.seed xor 0x504554414CL)
                     val originals = EMITTERS.map { name -> children.single { it.getName() == name } }
                     val rates = originals.map { checkNotNull(it.components[ParticleComponent::class.java]).birthRateFull }
-                    val finaleRate = if (surrounding) {
-                        check(rates.all { it.type == ParticleVaryingPropertyType.CONSTANT })
-                        rates.sumOf { it.value.toDouble() }.toFloat() * 6f
-                    } else 0f
+                    // Independent from gameplay, palette and breeze sampling.
+                    val emissionRandom = if (surrounding) Random(config.seed xor 0x454d49544cL) else null
+                    val finaleRate = emissionRandom?.nextInt(120, 161)?.toFloat() ?: 0f
                     // Clone before editing any source material/rate. Every clone belongs to candidate
                     // immediately, so cancellation/failure destroys the entire prepared effect.
                     val owners = paths.indices.map { index ->
@@ -169,9 +169,10 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     }
                     instance = candidate
                     particles = controls
+                    finaleEmissionRandom = emissionRandom
                     preparedRound = roundId
                     retained = true
-                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} surrounding=$surrounding revision=eight-emitters-v4 textures=$paths")
+                    Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} surrounding=$surrounding initialFinaleRate=$finaleRate revision=random-rate-v5 textures=$paths")
                 } finally {
                     if (!retained && candidate.valid) candidate.destroy()
                 }
@@ -201,6 +202,22 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         }
     }
 
+    /** Called once per second by the Stage's composition-owned playback coroutine. */
+    fun randomizeFinaleEmissionRate(): Boolean {
+        val random = finaleEmissionRandom ?: return false
+        if (closed || particles.isEmpty()) return false
+        return try {
+            val total = random.nextInt(120, 161).toFloat()
+            particles.forEach { it.setFinaleEmissionRate(total) }
+            Log.d(TAG, "FinaleEmissionRate total=$total emitters=${particles.size}")
+            true
+        } catch (e: Exception) {
+            stop()
+            Log.e(TAG, "Finale emission update failed", e)
+            false
+        }
+    }
+
     fun stop() {
         epoch++
         playback.cancel()
@@ -208,6 +225,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         val previousRound = preparedRound
         instance = null
         particles = emptyList()
+        finaleEmissionRandom = null
         preparedRound = null
         try {
             // isEmitting=false alone leaves surviving particles; disable and destroy the instance.
@@ -244,10 +262,16 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
     }
 }
 
-/** Eight overlapping color emitters share the previous Stage's total emission rate. */
-internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
+/** Apply a shared total rate without resetting live particles, shape or animation. */
+internal fun ParticleComponent.setFinaleEmissionRate(totalBirthRate: Float) {
+    require(totalBirthRate in 120f..160f)
     val rate = totalBirthRate / RoseLayout.BASE_COLOR_COUNT
     birthRateFull = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, rate, rate)
+}
+
+/** Eight overlapping color emitters share the Stage's sampled total emission rate. */
+internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
+    setFinaleEmissionRate(totalBirthRate)
     val authored = emitterShape
     emitterShape = ParticleEmitterShape(
         type = ParticleEmitterShapeType.CYLINDER,

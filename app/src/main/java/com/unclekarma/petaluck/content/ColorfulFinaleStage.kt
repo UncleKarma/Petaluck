@@ -10,6 +10,8 @@ import com.pico.spatial.ui.foundation.content.SpatialView
 import com.unclekarma.petaluck.domain.RoseLayout
 import com.unclekarma.petaluck.scene.EndingPetalRain
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 
 /** Stage owns only the surrounding rain. The original volume owns the sole wish and exit button. */
 @Composable
@@ -25,6 +27,11 @@ fun ColorfulFinaleStage() {
                 val config=RoseLayout.assemble(0x46494e414cL,24,RoseLayout.MULTICOLOR)
                 rain.prepare(1,config,surrounding=true)
                 rain.start(1,content,endless=true)
+                // One shared random total each second; disposing the Stage cancels this loop.
+                while (isActive) {
+                    delay(1_000)
+                    if (!rain.randomizeFinaleEmissionRate()) break
+                }
             }
         },
     )

@@ -12,8 +12,8 @@ android {
         applicationId = "com.unclekarma.petaluck"
         minSdk = 35
         targetSdk = 35
-        versionCode = 31
-        versionName = "1.0.30"
+        versionCode = 32
+        versionName = "1.0.31"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }
