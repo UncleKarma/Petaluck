@@ -1,0 +1,89 @@
+{
+  "source": "rose/collision",
+  "petals": [
+    {
+      "variantId": "outer_01",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.1802,
+      "sourceSha256": "68848c00f1b10a3f01046e33ac8636053d939b4c782b56c6916ff855083cb078",
+      "sha256": "149ea6ab474f51b40df18d4a035edcb31f20ac34621d3f49f43520b8ee1c95d5"
+    },
+    {
+      "variantId": "outer_02",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0905,
+      "sourceSha256": "5c8286c9c947837a47cb6edb2e0915ae4f7371d4a21cfdf4cdc7ed93b57c0fab",
+      "sha256": "0cb5eae30181aa478814ca27bb6e24fd388876333b11d8805eddcb8456c6cdcb"
+    },
+    {
+      "variantId": "outer_03",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.1324,
+      "sourceSha256": "a8705c9a6c4220982d53e0f24db0056d3728befb2e3b71e453f2f9066ef6c1bc",
+      "sha256": "3ec0d87952b492f28ea5e27ee274b38b369f4ab64063fc7bc62fe1fff73549b1"
+    },
+    {
+      "variantId": "outer_04",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0803,
+      "sourceSha256": "bc150306211dfba5a09a3a6a5eaf86383f058a99e95679c5b0b16d5e81650cec",
+      "sha256": "3c3377557d2f125a2ec7f2b6fd9a3802031c82cb3b9d1d4a659cb9e2883d7d69"
+    },
+    {
+      "variantId": "middle_01",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0567,
+      "sourceSha256": "11e3982fbf62cbb639e037460ac83899864eba4b619b88c15e2c5c4d73ae337d",
+      "sha256": "0a6fe473809153570e4a0f991f2f3d2d38629763e0dba43e023882b946dcc45a"
+    },
+    {
+      "variantId": "middle_02",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0502,
+      "sourceSha256": "5098685067ef4cd7f156ba80386eca28298e6f833e9ef4bcdc55c1e38db37e3e",
+      "sha256": "7dbfb9816fdd3257a0c0c6b0936532bc912278b32bef72c6864ea55996da7ef1"
+    },
+    {
+      "variantId": "middle_03",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0448,
+      "sourceSha256": "6669c7dba4cf8f5a0e6fa6d84132faf3d3f7509aea4bf276f92b84624cdb4b50",
+      "sha256": "e39601d64ebc717a7ede97b5e6e06539cc11927ccacbb40bcc7635b922d35176"
+    },
+    {
+      "variantId": "middle_04",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.0493,
+      "sourceSha256": "f934cac132e579f94f1166ebf9ed7ec7d91190d69a827c1443c0fa2327f0908e",
+      "sha256": "e949e30de1d71264393cb0659f71a5f107ccc196a581901f067b825c7a514f7a"
+    },
+    {
+      "variantId": "inner_01",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.1516,
+      "sourceSha256": "8d1ba682e1fb14b544048c3631f3b6d00a25b5b49d01bda14a3bb76e4effc273",
+      "sha256": "ef89a00e9ca3387748fd9cfc5cf0a93b71687f7536b12b20ffddc4714edac15a"
+    },
+    {
+      "variantId": "inner_02",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.2541,
+      "sourceSha256": "f6330f7d17e77c77b00b1ef3cbbd78df5896be9807609800fa6bc5675cdca306",
+      "sha256": "d509ca967a0e0b6d7a1774981d6c7dcf2b75e298c457150189dc2bb4e1e6b16d"
+    },
+    {
+      "variantId": "inner_03",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.2528,
+      "sourceSha256": "6a4bb10b3281444946066223eeab946619baee109eccf22399ff0fa8bf559450",
+      "sha256": "66941b1c44913e976088bfee87875bae6ad0188672b62b7e80680e8bcf835c04"
+    },
+    {
+      "variantId": "inner_04",
+      "triangles": 152,
+      "maxBoundaryErrorMm": 0.3098,
+      "sourceSha256": "b77f3853d22308cb8cbdfb3fa937a0bf2e5369a8956330f62cdc722e6cca8cf7",
+      "sha256": "0d6c41cf4fd3e86564018aa70c4ee41c3eb4fad7520160b3a1b38bfa58722d24"
+    }
+  ]
+}
