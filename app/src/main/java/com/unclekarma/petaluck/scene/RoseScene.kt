@@ -45,7 +45,7 @@ class RoseScene(context: Context) {
     private var assemblyJob: Job? = null
     private var audioPreparationJob: Job? = null
     private val prototypes = mutableMapOf<String,Entity>()
-    // Never attached to SpatialView: these only supply the pre-subdivision collision meshes.
+    // Never attached to SpatialView: these only supply the 152-triangle collision meshes.
     private val collisionPrototypes = mutableMapOf<String,Entity>()
     // A Kotlin reference does not retain native resources after the last petal is destroyed.
     private val textures = RoundAssetSet<TextureResource>({it.valid},{it.toGlobal()},{it.close()})
@@ -145,7 +145,7 @@ class RoseScene(context: Context) {
             prototypes[variant]=entity
         }
         for(variant in RoseLayout.variantIds)if(collisionPrototypes[variant]?.valid!=true) {
-            val entity=Entity.loadSuspend("asset://rose/collision/$variant.glb")
+            val entity=Entity.loadSuspend("asset://rose/collision-low/$variant.glb")
             if(disposed){entity.destroy();return}
             collisionPrototypes[variant]=entity
         }
@@ -278,7 +278,7 @@ class RoseScene(context: Context) {
                     setCullingMode(MaterialCullingMode.NONE)
                 }
                 for(i in 0 until model.materials.size) model.materials[i]=material
-                // Same variant/pivot/local frame, using the previous low-poly membrane for hits.
+                // Same variant/pivot/local frame, using the reduced membrane for hits.
                 // The high-poly mesh above remains the sole rendered/hover/gesture owner.
                 val collisionMesh=walk(collisionPrototypes.getValue(spec.variant))
                     .single {it.components.has(ModelComponent::class.java)}
@@ -333,7 +333,7 @@ class RoseScene(context: Context) {
         recentColors.recordReady(s.config.colorId)
         Log.i(TAG,"RoseEntranceFinished session=${s.id} scale=1 opacity=1; interactions enabled")
         Log.i(TAG,"RoundInputReady session=${s.id} petals=${petals.size} completionEnabled=${completionPanel?.enabled} revision=replay-hit-surface-v1")
-        Log.i(TAG,"PetalCollisionReady session=${s.id} petals=${petals.size} variants=${petals.values.map {it.spec.variant}.toSet().sorted()} revision=low-poly-collision-v1 source=rose-llm-v9 triangles=412/476")
+        Log.i(TAG,"PetalCollisionReady session=${s.id} petals=${petals.size} variants=${petals.values.map {it.spec.variant}.toSet().sorted()} revision=low-poly-collision-v2 source=collision-low triangles=152")
         // Keep the audio failure boundary outside model assembly and entrance readiness.
         audioPreparationJob=sceneScope.launch {
             prepareOptionalAudio(
