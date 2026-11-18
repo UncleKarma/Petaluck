@@ -10,11 +10,15 @@ import com.pico.spatial.core.container.SpatialViewContent
 import com.pico.spatial.core.ecs.Entity
 import com.pico.spatial.core.ecs.ParticleComponent
 import com.pico.spatial.core.ecs.particle.ParticleFloatVaryingProperty
+import com.pico.spatial.core.ecs.particle.ParticleCurveType
+import com.pico.spatial.core.ecs.particle.ParticleSimulation
+import com.pico.spatial.core.ecs.particle.ParticleVaryingPropertyType
 import com.pico.spatial.core.ecs.TransformComponent
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.pico.spatial.core.ecs.resource.TextureCreateOption
 import com.pico.spatial.core.ecs.resource.TextureResource
 import com.pico.spatial.core.math.Vector3
+import com.pico.spatial.core.math.Color3
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.currentCoroutineContext
@@ -152,10 +156,11 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                             it.isEmitting = false
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
                             val rate = rates[index % 3]
-                            val density = if(surrounding) 2f else 1f
+                            // Finale was already 2x authored emission; this increment triples it.
+                            val density = if(surrounding) 6f else 1f
                             it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value * density / copies, rate.range * density / copies)
                             it.mainSimulation.apply {
-                                if(surrounding) maxParticleCount *= 2
+                                if(surrounding) configureFinaleRain()
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
                                 noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
                                 noiseStrength = .00045f + breeze.nextFloat() * .0003f
@@ -239,4 +244,36 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         private const val SCENE_KEY = "Scenes/PetalRain"
         private val EMITTERS = listOf("PetalRain5", "PetalRain6", "PetalRain7")
     }
+}
+
+/** Applied once to each attached, freshly cloned Stage emitter; volume rain keeps its asset values. */
+internal fun ParticleSimulation.configureFinaleRain() {
+    maxParticleCount *= 6 // Previous Stage capacity was 2x; now triple that capacity.
+    startSize = startSize.let { ParticleFloatVaryingProperty(it.type, it.value * 2f, it.range * 2f) }
+    // Authored motion has no gravity/drag module; falling is driven by downward startSpeed.
+    startSpeed = startSpeed.let { ParticleFloatVaryingProperty(it.type, it.value * 1.5f, it.range * 1.5f) }
+    lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, 4f, 4f)
+    listOf(rotationVelocityCurveX, rotationVelocityCurveY, rotationVelocityCurveZ).forEach { curve ->
+        // Scale the active representation, not both its values and multiplier.
+        when (curve.curveType) {
+            ParticleCurveType.CONSTANT -> curve.value *= 1.5f
+            ParticleCurveType.RANDOM, ParticleCurveType.LINEAR -> {
+                val start = curve.start
+                val end = curve.end
+                curve.start = start * 1.5f
+                curve.end = end * 1.5f
+            }
+            ParticleCurveType.CURVE, ParticleCurveType.RANDOM_BETWEEN_TWO_CURVES -> curve.multiplier *= 1.5f
+            ParticleCurveType.UNKNOWN -> error("Unsupported finale rotation velocity curve")
+        }
+    }
+    // Normalized lifetime keys: 1s fade in + 2s opaque + 1s fade out.
+    // The bundled component is attached already; these immediate native key writes require it.
+    clearColorGradientKeys()
+    addColorGradientColorKey(Color3(1f, 1f, 1f), 0f)
+    addColorGradientColorKey(Color3(1f, 1f, 1f), 1f)
+    addColorGradientAlphaKey(0f, 0f)
+    addColorGradientAlphaKey(1f, .25f)
+    addColorGradientAlphaKey(1f, .75f)
+    addColorGradientAlphaKey(0f, 1f)
 }

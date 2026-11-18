@@ -1,8 +1,5 @@
 package com.unclekarma.petaluck.content
 
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
@@ -31,10 +28,4 @@ fun ColorfulFinaleStage() {
             }
         },
     )
-}
-
-internal fun Context.findActivity(): Activity? = when(this) {
-    is Activity -> this
-    is ContextWrapper -> baseContext.findActivity()
-    else -> null
 }

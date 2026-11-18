@@ -47,9 +47,10 @@ fun FlowerVolume(modifier:Modifier) {
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val view=LocalView.current
     val navigator=LocalSpatialNavigator.current
+    var exiting by remember { mutableStateOf(false) }
     val ui=scene.ui
-    LaunchedEffect(ui.roundId,ui.phase,ui.colorfulFinale) {
-        if(ui.colorfulFinale && ui.phase==Phase.Completing) navigator.openStage("petaluck_finale",StageStyle.Mixed)
+    LaunchedEffect(ui.roundId,ui.phase,ui.colorfulFinale,exiting) {
+        if(!exiting && ui.colorfulFinale && ui.phase==Phase.Completing) navigator.openStage("petaluck_finale",StageStyle.Mixed)
     }
     // Host lifecycle/view bindings may change while this remembered scene remains in composition.
     DisposableEffect(scene) {onDispose {scene.close()}}
@@ -119,8 +120,15 @@ fun FlowerVolume(modifier:Modifier) {
                     val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
                     val presented=scene.completionPresentedRound==ui.roundId
                     val blankFrame=completionFrameBarrier(scene.completionBlankRequest,scene::completionFrameCommitted)
-                    val replay = { if(ui.colorfulFinale) context.findActivity()?.finishAffinity()
-                        else scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}; Unit }
+                    val replay = {
+                        if(ui.colorfulFinale) {
+                            if(!exiting) {
+                                exiting=true
+                                scope.launch(start=CoroutineStart.UNDISPATCHED) { exitPetaluck(context,navigator) }
+                            }
+                        } else scope.launch(start=CoroutineStart.UNDISPATCHED) {scene.replay(ui.roundId)}
+                        Unit
+                    }
                     // Stable surface size also avoids a resize racing the outgoing text buffer.
                     // Center the original wish/button group inside it without changing its spacing.
                     Box(Modifier.width(560.dp).height(384.dp).then(blankFrame),contentAlignment=Alignment.Center) {
