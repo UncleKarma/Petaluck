@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.pico.spatial.core.ecs.Entity
 import com.pico.spatial.core.ecs.ParticleComponent
 import com.pico.spatial.core.ecs.particle.ParticleCurveType
+import com.pico.spatial.core.ecs.particle.ParticleVaryingPropertyType
 import com.pico.spatial.core.ecs.resource.AssetBundle
 import com.unclekarma.petaluck.platform.LaunchActivity
 import com.unclekarma.petaluck.scene.configureFinaleEmitter
@@ -74,21 +75,31 @@ class FinaleRainNativeTest {
                                 assertEquals(ParticleEmissionLocation.VOLUME, component.emitterShape.emissionLocation)
                                 assertEquals(ParticleEmissionSpace.LOCAL, component.emitterShape.emissionSpace)
                                 assertEquals(-1f, component.emitterShape.emissionDirection.y, .0001f)
-                                assertEquals(9.4f, component.emitterShape.size.x, .0001f)
+                                assertEquals(9.4f * .75f, component.emitterShape.size.x, .0001f)
                                 assertEquals(.001f, component.emitterShape.size.y, .0001f)
-                                assertEquals(9.4f, component.emitterShape.size.z, .0001f)
+                                assertEquals(9.4f * .75f, component.emitterShape.size.z, .0001f)
                                 assertEquals(360f, component.emitterShape.radialSpan, .0001f)
                                 assertEquals(size.value * 2f, target.startSize.value, .0001f)
                                 assertEquals(size.range * 2f, target.startSize.range, .0001f)
-                                assertEquals(speed.value * 1.5f, target.startSpeed.value, .0001f)
-                                assertEquals(speed.range * 1.5f, target.startSpeed.range, .0001f)
+                                assertEquals(ParticleVaryingPropertyType.RANDOM, target.startSpeed.type)
+                                assertEquals(.05f, target.startSpeed.value, .0001f)
+                                assertEquals(.20f, target.startSpeed.range, .0001f)
                                 assertEquals(capacity * 6, target.maxParticleCount)
                                 assertEquals(4f, target.lifetime.value, .0001f)
                                 assertTrue(target.isColorGradientEnabled)
+                                assertTrue(target.isRotationVelocityCurveEnabled)
+                                val spinLimits = listOf(72f, 50f, 60f)
                                 listOf(target.rotationVelocityCurveX, target.rotationVelocityCurveY,
                                     target.rotationVelocityCurveZ).forEachIndexed { axis, curve ->
-                                    assertEquals(originalSpin[axis].first * 1.5f, curve.start, .0001f)
-                                    assertEquals(originalSpin[axis].second * 1.5f, curve.end, .0001f)
+                                    assertEquals(ParticleCurveType.RANDOM, curve.curveType)
+                                    assertEquals(-spinLimits[axis], curve.start, .0001f)
+                                    assertEquals(spinLimits[axis], curve.end, .0001f)
+                                    assertEquals(1f, curve.multiplier, .0001f)
+                                }
+                                listOf(source.rotationVelocityCurveX, source.rotationVelocityCurveY,
+                                    source.rotationVelocityCurveZ).forEachIndexed { axis, curve ->
+                                    assertEquals(originalSpin[axis].first, curve.start, .0001f)
+                                    assertEquals(originalSpin[axis].second, curve.end, .0001f)
                                 }
                                 assertEquals(size, source.startSize)
                                 assertEquals(speed, source.startSpeed)

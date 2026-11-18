@@ -275,8 +275,8 @@ internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
     val authored = emitterShape
     emitterShape = ParticleEmitterShape(
         type = ParticleEmitterShapeType.CYLINDER,
-        // Thin horizontal disk, 9.4 m across; leave drift room inside the 5 m Stage radius.
-        size = Vector3(9.4f, .001f, 9.4f),
+        // Shrink both horizontal dimensions by 25%; rate and particle capacity stay unchanged.
+        size = Vector3(7.05f, .001f, 7.05f),
         emissionLocation = ParticleEmissionLocation.VOLUME,
         vertexCount = authored.vertexCount,
         emissionSpace = ParticleEmissionSpace.LOCAL,
@@ -292,21 +292,18 @@ internal fun ParticleSimulation.configureFinaleRain() {
     maxParticleCount *= 6 // Previous Stage capacity was 2x; now triple that capacity.
     startSize = startSize.let { ParticleFloatVaryingProperty(it.type, it.value * 2f, it.range * 2f) }
     // Authored motion has no gravity/drag module; falling is driven by downward startSpeed.
-    startSpeed = startSpeed.let { ParticleFloatVaryingProperty(it.type, it.value * 1.5f, it.range * 1.5f) }
+    // Sample per particle at birth: a wider spread with almost the same mean falling speed.
+    startSpeed = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.RANDOM, .05f, .20f)
     lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, 4f, 4f)
-    listOf(rotationVelocityCurveX, rotationVelocityCurveY, rotationVelocityCurveZ).forEach { curve ->
-        // Scale the active representation, not both its values and multiplier.
-        when (curve.curveType) {
-            ParticleCurveType.CONSTANT -> curve.value *= 1.5f
-            ParticleCurveType.RANDOM, ParticleCurveType.LINEAR -> {
-                val start = curve.start
-                val end = curve.end
-                curve.start = start * 1.5f
-                curve.end = end * 1.5f
-            }
-            ParticleCurveType.CURVE, ParticleCurveType.RANDOM_BETWEEN_TWO_CURVES -> curve.multiplier *= 1.5f
-            ParticleCurveType.UNKNOWN -> error("Unsupported finale rotation velocity curve")
-        }
+    isRotationVelocityCurveEnabled = true
+    // Signed, per-particle XYZ sampling mixes slow turns and fast flips in both directions.
+    // Mean absolute speeds remain close to v5's 35.6 / 24.4 / 30 degrees per second.
+    listOf(rotationVelocityCurveX to 72f, rotationVelocityCurveY to 50f,
+        rotationVelocityCurveZ to 60f).forEach { (curve, limit) ->
+        curve.curveType = ParticleCurveType.RANDOM
+        curve.multiplier = 1f
+        curve.start = -limit
+        curve.end = limit
     }
     // Normalized lifetime keys: 1s fade in + 2s opaque + 1s fade out.
     // The bundled component is attached already; these immediate native key writes require it.
