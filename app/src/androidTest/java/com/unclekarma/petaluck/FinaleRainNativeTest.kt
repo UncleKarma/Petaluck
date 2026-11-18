@@ -61,7 +61,7 @@ class FinaleRainNativeTest {
                             try {
                                 assertTrue(scope.addChild(clone))
                                 val component = checkNotNull(clone.components[ParticleComponent::class.java])
-                                val lifetimeSeconds = 7f + index
+                                val lifetimeSeconds = listOf(9.1f, 10.4f, 11.7f)[index]
                                 component.configureFinaleEmitter(totalRate, lifetimeSeconds)
                                 val target = component.mainSimulation
                                 // These getters pull from native outside SceneEvents.Update batching.
@@ -85,7 +85,7 @@ class FinaleRainNativeTest {
                                 assertEquals(ParticleVaryingPropertyType.RANDOM, target.startSpeed.type)
                                 assertEquals(.05f, target.startSpeed.value, .0001f)
                                 assertEquals(.20f, target.startSpeed.range, .0001f)
-                                assertEquals(capacity * 6, target.maxParticleCount)
+                                assertEquals(256, target.maxParticleCount)
                                 assertEquals(ParticleVaryingPropertyType.CONSTANT, target.lifetime.type)
                                 assertEquals(lifetimeSeconds, target.lifetime.value, .0001f)
                                 assertEquals(lifetimeSeconds, target.lifetime.range, .0001f)

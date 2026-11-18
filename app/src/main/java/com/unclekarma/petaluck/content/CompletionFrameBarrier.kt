@@ -13,8 +13,8 @@ import androidx.compose.ui.platform.LocalView
 import com.unclekarma.petaluck.domain.CompletionBufferGate
 
 /**
- * Register only from this panel's blank draw, not the ViewTree's earlier OnDraw notification.
- * Skipping drawContent also excludes retained child graphics layers (including the native button).
+ * Register only from this panel's requested draw, not the ViewTree's earlier OnDraw notification.
+ * Blank draws exclude retained child layers. Blessing draws submit this round’s text under the native mask.
  * Android submission is not a spatial compositor presentation fence; erase on exit as well.
  */
 @Composable
@@ -24,7 +24,7 @@ internal fun completionFrameBarrier(
 ): Modifier {
     val view = LocalView.current
     val submission = remember(view, request) {
-        request?.let { BlankSubmission(view) { onCommitted(it) } }
+        request?.let { FrameSubmission(view) { onCommitted(it) } }
     }
     DisposableEffect(submission) {
         view.invalidate()
@@ -33,11 +33,12 @@ internal fun completionFrameBarrier(
     return Modifier.drawWithContent {
         // Transparent SrcOver does not erase retained pixels. Clear the target explicitly.
         drawRect(Color.Transparent, blendMode = BlendMode.Clear)
-        if (submission == null) drawContent() else submission.drawn()
+        if (request?.draw != CompletionBufferGate.Draw.Blank) drawContent()
+        submission?.drawn()
     }
 }
 
-private class BlankSubmission(private val view: View, private val committed: () -> Unit) {
+private class FrameSubmission(private val view: View, private val committed: () -> Unit) {
     private var active = true
     private var registered = false
     private var observer = view.viewTreeObserver

@@ -1,5 +1,7 @@
 # 一瓣欢喜 / Petaluck
 
+- **1.0.36 / code37**: Scale each colorful Stage emitter’s seeded lifetime by 1.30 (9.1–11.7 s), preserving the eight independent draws and one-second fades. Capacity is 256 per color to cover up to 234 live particles. The fixed blessing panel stays masked through both a fresh blank submission and the current round’s blessing submission. Its native opacity then eases in over 600 ms of active scene time. Replay erases before disabling the hit surface. 140 host tests and two headset particle tests passed. Consecutive-round visual verification of the old-text flash is pending because the headset hid the volume. APK SHA-256 `be29f3f1452ee0f9dbdb68e038945980ea93884b8000766187b1bcca00b2762d` in `backups/blessing-transition-1.0.36/`.
+
 - **1.0.35 / code36**: hide the colorful round’s result panel when the last petal detaches. On final release, show the couplet 掌上观花花有尽 / 人间赏景景无穷. The finale exit button reads 有缘再会. Ordinary rounds keep the existing presentation. Host tests cover both paths through final detach, release and removal. Headset finale appearance pending.
 
 - **1.0.34 / code35**, finale poem: `RoseBlessings.COLORFUL_FINALE` is now two explicit seven-character lines, `此间花色终有尽\n人间万彩待君寻`, inviting the player from the game's finite palette back to everyday colors. Keep existing centered white typography, fades and exit button. 139 host tests/build/static checks pass; installed on PB311XHGKC150135G. Native finale text wrapping remains to retest. See `docs/special-colorful-blessing-copy.md`.

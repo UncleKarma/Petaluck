@@ -119,7 +119,7 @@ fun FlowerVolume(modifier:Modifier) {
                     val ui=scene.ui
                     val completing=ui.phase==Phase.Completing || ui.phase==Phase.Completed
                     val presented=scene.completionPresentedRound==ui.roundId
-                    val blankFrame=completionFrameBarrier(scene.completionBlankRequest,scene::completionFrameCommitted)
+                    val frameBarrier=completionFrameBarrier(scene.completionFrameRequest,scene::completionFrameCommitted)
                     val replay = {
                         if(ui.colorfulFinale) {
                             if(!exiting) {
@@ -131,9 +131,9 @@ fun FlowerVolume(modifier:Modifier) {
                     }
                     // Stable surface size also avoids a resize racing the outgoing text buffer.
                     // Center the original wish/button group inside it without changing its spacing.
-                    Box(Modifier.width(560.dp).height(384.dp).then(blankFrame),contentAlignment=Alignment.Center) {
+                    Box(Modifier.width(560.dp).height(384.dp).then(frameBarrier),contentAlignment=Alignment.Center) {
                         if(completing) key(ui.roundId) {
-                            CompletionFooter(ui,presented,replay)
+                            CompletionFooter(ui,presented,scene.completionFullyVisible,replay)
                         }
                     }
                 }
@@ -150,24 +150,19 @@ fun FlowerVolume(modifier:Modifier) {
 }
 
 @Composable
-private fun CompletionFooter(ui: RoseUi, presented: Boolean, onReplay: () -> Unit) {
+private fun CompletionFooter(ui: RoseUi, presented: Boolean, fullyVisible: Boolean, onReplay: () -> Unit) {
     val completed = ui.phase == Phase.Completed
-    val blessingFade = remember { Animatable(0f) }
     val replayFade = remember { Animatable(0f) }
-    // The first committed buffer must be transparent, even on round two and later.
-    LaunchedEffect(presented) {
-        if(presented) blessingFade.animateTo(1f,tween(600)) else blessingFade.snapTo(0f)
-    }
     LaunchedEffect(completed,presented) {
         if(completed && presented) replayFade.animateTo(1f,tween(450)) else replayFade.snapTo(0f)
     }
-    val canReplay = presented && completed && replayFade.value >= 1f
+    val canReplay = fullyVisible && presented && completed && replayFade.value >= 1f
     val buttonHeight = 48.dp // SpatialUI Regular button height.
 
     Box(Modifier.fillMaxWidth()) {
         // Measure the wish with room already deducted for the button and the gap.
         RoseLargeText(ui.blessing, modifier = Modifier.fillMaxWidth()
-            .padding(bottom = buttonHeight + 24.dp).alpha(if(presented)blessingFade.value else 0f), maxLines = 3)
+            .padding(bottom = buttonHeight + 24.dp), maxLines = 3)
         Box(Modifier.align(Alignment.BottomCenter).height(buttonHeight).alpha(if(presented)replayFade.value else 0f)
             .then(if (canReplay) Modifier else Modifier.clearAndSetSemantics {}),
             contentAlignment = Alignment.Center) {

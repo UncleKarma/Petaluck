@@ -2,6 +2,7 @@ package com.unclekarma.petaluck.scene
 
 import android.content.Context
 import android.util.Log
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -35,7 +36,8 @@ class RoseScene(context: Context) {
     var ui by mutableStateOf(RoseUi()); private set
     var attachmentsReady by mutableStateOf(false); private set
     var completionPresentedRound by mutableStateOf<Long?>(null); private set
-    var completionBlankRequest by mutableStateOf<CompletionBufferGate.Request?>(null); private set
+    var completionFrameRequest by mutableStateOf<CompletionBufferGate.Request?>(null); private set
+    var completionFullyVisible by mutableStateOf(false); private set
     private val completionBuffer = CompletionBufferGate()
     private lateinit var content: SpatialViewContent
     private lateinit var sceneScope: CoroutineScope
@@ -122,7 +124,7 @@ class RoseScene(context: Context) {
                 completionPanel.enabled=false
                 completionBuffer.reset()
                 completionPresentedRound=null
-                completionBlankRequest=null
+                completionFrameRequest=null
                 completionPanel.components.set(OpacityControllerComponent(0f))
                 completionPanel.components.set(AccessibilityComponent("祝福与重玩操作区",""))
                 completionPanel.components[TransformComponent::class.java]!!.setPosition(Vector3(0f,-.05f,.12f))
@@ -595,6 +597,7 @@ class RoseScene(context: Context) {
     private fun tick(dt:Float) {
         val s=session ?: return
         if(appPaused || busy || disposed || s.phase==Phase.Error)return
+        if(completionBuffer.advanceFade(dt)) applyCompletionOpacity()
         if(petals.values.any { !it.owner.valid && s.state(it.spec.id)!=PetalState.Removed }) {s.fail();publish();return}
         if(s.phase==Phase.Loading) {
             if(entranceAwaitingFrame) {
@@ -660,12 +663,12 @@ class RoseScene(context: Context) {
             if(blessingAppeared && !appPaused && !state.colorfulFinale)endingMusic.blessing(state.roundId)
         }
     }
-    /** Acknowledges the exact blank draw, including the outgoing round's erase. */
+    /** Acknowledges only the requested draw for this owner and round. */
     fun completionFrameCommitted(frame:CompletionBufferGate.Request) {
         if(disposed || !completionBuffer.committed(frame))return
         syncPanels(ui)
         Log.i(TAG,"CompletionFrameCommitted round=${frame.revealRound} serial=${frame.serial} " +
-            "stage=${if(frame.revealRound==null) "erased" else "reveal"} enabled=${completionPanel?.enabled} revision=replay-hit-surface-v1")
+            "stage=${if(frame.revealRound==null) "erased" else frame.draw.name} enabled=${completionPanel?.enabled} fade=${completionBuffer.fadeProgress}")
     }
     private fun syncPanels(state:RoseUi) {
         resultPanel?.components?.get(AccessibilityComponent::class.java)?.value=state.result.ifEmpty{"尚未摘取"}
@@ -680,17 +683,23 @@ class RoseScene(context: Context) {
         val completing=state.phase==Phase.Completing || state.phase==Phase.Completed
         completionBuffer.update(state.roundId,completing)
         completionPresentedRound=completionBuffer.presentedRound
-        completionBlankRequest=completionBuffer.request
+        completionFrameRequest=completionBuffer.request
         val presented=completing && completionPresentedRound==state.roundId
         completionPanel?.components?.get(AccessibilityComponent::class.java)?.value=if(presented)state.blessing else ""
         // Mask before enabling. On replay, keep drawing ONLY until the panel's own blank
         // buffer commits; disabling immediately would preserve the old opaque text/button.
-        completionPanel?.components?.get(OpacityControllerComponent::class.java)?.opacity=if(presented)1f else 0f
+        applyCompletionOpacity()
         // Opacity zero still leaves a native attachment hit area over the flower. Keep the
         // owner enabled only through the blank commit, then disable it between rounds.
         completionPanel?.enabled=completionBuffer.enabled
         messagePanel?.enabled=!completing
         resultPanel?.enabled=state.result.isNotEmpty()
+    }
+    private fun applyCompletionOpacity() {
+        val progress = completionBuffer.fadeProgress
+        completionPanel?.components?.get(OpacityControllerComponent::class.java)?.opacity =
+            FastOutSlowInEasing.transform(progress)
+        completionFullyVisible = progress >= 1f
     }
     private fun clearRound() {
         audioPreparationJob?.cancel();audioPreparationJob=null
@@ -713,7 +722,7 @@ class RoseScene(context: Context) {
         endingPetalRain.close()
         resultBinding.clear();messageBinding.clear();completionBinding.clear()
         completionBuffer.reset()
-        completionBlankRequest=null
+        completionFrameRequest=null
         completionPresentedRound=null
         resultPanel=null;messagePanel=null;completionPanel=null
         prototypes.values.forEach {if(it.valid)it.destroy()};prototypes.clear();textures.close()
