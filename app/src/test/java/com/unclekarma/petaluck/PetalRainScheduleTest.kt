@@ -29,52 +29,52 @@ class PetalRainScheduleTest {
         }
     }
 
-    @Test fun emissionStopsAtTenSecondsAndOwnersSurviveUntilFifteen() {
+    @Test fun lastPetalsFinishTheirSampledLifetimeAfterEmissionStops() {
         val c = Clock()
         c.now = 1234
-        c.rain.start(7)
+        c.rain.start(7, 6_731)
         c.advance(11233)
         assertTrue(c.events.isEmpty())
         c.advance(11234)
         assertEquals(listOf("drain:7"), c.events)
-        c.advance(16233)
+        c.advance(17964)
         assertEquals(listOf("drain:7"), c.events)
-        c.advance(16234)
+        c.advance(17965)
         assertEquals(listOf("drain:7", "finish:7"), c.events)
         assertTrue(c.pending.isEmpty())
     }
 
     @Test fun duplicateStartDoesNotExtendEitherDeadline() {
         val c = Clock()
-        c.rain.start(1)
+        c.rain.start(1, 7_000)
         c.advance(9000)
-        c.rain.start(1)
+        c.rain.start(1, 7_000)
         c.advance(10000)
         assertEquals(listOf("drain:1"), c.events)
-        c.rain.start(1)
-        c.advance(15000)
+        c.rain.start(1, 7_000)
+        c.advance(17000)
         assertEquals(listOf("drain:1", "finish:1"), c.events)
     }
 
     @Test fun cancelledCallbacksCannotDrainOrDestroyNextRound() {
         val c = Clock()
-        c.rain.start(1)
+        c.rain.start(1, 7_000)
         val old = c.pending.toList()
         c.advance(2000)
         c.rain.cancel()
-        c.rain.start(2)
+        c.rain.start(2, 6_500)
         old.forEach { it.action() }
         assertTrue(c.events.isEmpty())
         c.advance(12000)
         assertEquals(listOf("drain:2"), c.events)
         old.forEach { it.action() }
-        c.advance(17000)
+        c.advance(18500)
         assertEquals(listOf("drain:2", "finish:2"), c.events)
     }
 
     @Test fun pauseDuringTailCancelsFinalDeadlineAndNeverResumes() {
         val c = Clock()
-        c.rain.start(1)
+        c.rain.start(1, 7_000)
         c.advance(10000)
         val old = c.pending.toList()
         c.rain.cancel()
@@ -88,7 +88,7 @@ class PetalRainScheduleTest {
     @Test fun musicNaturalEndAtFourteenPointFiveDoesNotCutTheTail() {
         val c = Clock()
         val music = EndingMusicPlayback(
-            {}, {}, {}, { c.rain.start(it) }, { c.rain.cancel() },
+            {}, {}, {}, { c.rain.start(it, 7_000) }, { c.rain.cancel() },
             onFinished = {},
         )
         music.blessing(1, 0, 14500)
@@ -97,9 +97,9 @@ class PetalRainScheduleTest {
         music.tick(c.now, true)
         assertFalse(music.active)
         assertEquals(listOf("drain:1"), c.events)
-        c.advance(14999)
+        c.advance(16999)
         assertEquals(listOf("drain:1"), c.events)
-        c.advance(15000)
+        c.advance(17000)
         assertEquals(listOf("drain:1", "finish:1"), c.events)
     }
 }

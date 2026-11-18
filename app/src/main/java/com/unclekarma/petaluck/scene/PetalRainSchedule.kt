@@ -11,7 +11,7 @@ internal class PetalRainSchedule(
     private var round: Long? = null
     private var draining = false
 
-    fun start(roundId: Long) {
+    fun start(roundId: Long, tailDurationMs: Long) {
         if (round == roundId) return
         cancel()
         round = roundId
@@ -20,12 +20,12 @@ internal class PetalRainSchedule(
             if (generation == token && round == roundId && !draining) {
                 draining = true
                 onDrain(roundId)
-            }
-        }
-        schedule(STOP_MS) {
-            if (generation == token && round == roundId) {
-                cancel()
-                onFinished(roundId)
+                if (generation == token) schedule(tailDurationMs) {
+                    if (generation == token && round == roundId) {
+                        cancel()
+                        onFinished(roundId)
+                    }
+                }
             }
         }
     }
@@ -39,6 +39,5 @@ internal class PetalRainSchedule(
 
     companion object {
         const val EMIT_MS = 10_000L
-        const val STOP_MS = 15_000L
     }
 }

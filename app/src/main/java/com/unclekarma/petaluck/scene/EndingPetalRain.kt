@@ -42,6 +42,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
     private var instance: Entity? = null
     private var particles = emptyList<ParticleComponent>()
     private var finaleEmissionRandom: Random? = null
+    private var tailDurationMs = AUTHORED_LIFETIME_MS
     private var preparedRound: Long? = null
     private var epoch = 0L
     private var loading = false
@@ -53,7 +54,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         onDrain = { roundId ->
             if (!closed && preparedRound == roundId) {
                 try {
-                    // Keep the owners alive: already-born petals finish their five-second life.
+                    // Keep the owners alive: already-born petals finish fading out.
                     particles.forEach { it.isEmitting = false }
                     Log.i(TAG, "PetalRainEmissionEnded round=$roundId elapsedMs=10000")
                 } catch (e: Exception) {
@@ -64,7 +65,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
         },
         onFinished = { roundId ->
             if (preparedRound == roundId) {
-                Log.i(TAG, "PetalRainTailFinished round=$roundId elapsedMs=15000")
+                Log.i(TAG, "PetalRainTailFinished round=$roundId tailMs=$tailDurationMs")
                 stop()
             }
         },
@@ -149,6 +150,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                             copy
                         }
                     }
+                    var longestLifetimeMs = AUTHORED_LIFETIME_MS
                     val controls = owners.mapIndexed { index, owner ->
                         // Authored emitter is already near the +0.35 m container ceiling.
                         // Each color covers the full overhead disk at the Stage entry origin.
@@ -163,8 +165,14 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                                 val lifetimeSeconds = lifetimeRandom.nextInt(7_000, 9_001) * 1.625f / 1_000f
                                 it.configureFinaleEmitter(finaleRate, lifetimeSeconds)
                                 Log.i(TAG, "FinaleEmitterLifetime index=$index seconds=$lifetimeSeconds fadeIn=1 fadeOut=1")
+                            } else {
+                                it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
+                                if (config.colorId in 0 until RoseLayout.BASE_COLOR_COUNT) {
+                                    val lifetimeMs = AUTHORED_LIFETIME_MS + lifetimeRandom.nextInt(1_500, 2_001)
+                                    it.mainSimulation.setRainLifetime(lifetimeMs / 1_000f)
+                                    longestLifetimeMs = maxOf(longestLifetimeMs, lifetimeMs)
+                                }
                             }
-                            else it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
                             it.mainSimulation.apply {
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
                                 noiseSeed = breeze.nextInt(1, Int.MAX_VALUE)
@@ -177,6 +185,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     instance = candidate
                     particles = controls
                     finaleEmissionRandom = emissionRandom
+                    tailDurationMs = longestLifetimeMs
                     preparedRound = roundId
                     retained = true
                     Log.i(TAG, "PetalRainReady round=$roundId color=${config.colorId} emitters=${controls.size} surrounding=$surrounding initialFinaleRate=$finaleRate revision=random-rate-v5 textures=$paths")
@@ -201,7 +210,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
             // Direct SpatialView child: independent of RoseAnchor entrance, bend and teardown.
             content.addEntity(owner)
             owner.enabled = true
-            if (!endless) playback.start(roundId)
+            if (!endless) playback.start(roundId, tailDurationMs)
             Log.i(TAG, "PetalRainStarted round=$roundId")
             true
         } catch (e: Exception) {
@@ -266,6 +275,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
 
     companion object {
         private const val TAG = "Petaluck"
+        private const val AUTHORED_LIFETIME_MS = 5_000L
         private const val SCENE_KEY = "Scenes/PetalRain"
         private val EMITTERS = listOf("PetalRain5", "PetalRain6", "PetalRain7")
     }
@@ -296,7 +306,7 @@ internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float, lif
     mainSimulation.configureFinaleRain(lifetimeSeconds)
 }
 
-/** Applied once to each attached, freshly cloned Stage emitter; volume rain keeps its asset values. */
+/** Applied once to each attached, freshly cloned Stage emitter. */
 internal fun ParticleSimulation.configureFinaleRain(lifetimeSeconds: Float) {
     require(lifetimeSeconds in 11.375f..14.625f)
     maxParticleCount = 320 // Up to ceil(20 births/s × 14.625 s) = 293 live petals per color.
@@ -304,7 +314,6 @@ internal fun ParticleSimulation.configureFinaleRain(lifetimeSeconds: Float) {
     // Authored motion has no gravity/drag module; falling is driven by downward startSpeed.
     // Sample per particle at birth: a wider spread with almost the same mean falling speed.
     startSpeed = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.RANDOM, .05f, .20f)
-    lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, lifetimeSeconds, lifetimeSeconds)
     isRotationVelocityCurveEnabled = true
     // Signed, per-particle XYZ sampling mixes slow turns and fast flips in both directions.
     // Mean absolute speeds remain close to v5's 35.6 / 24.4 / 30 degrees per second.
@@ -315,6 +324,11 @@ internal fun ParticleSimulation.configureFinaleRain(lifetimeSeconds: Float) {
         curve.start = -limit
         curve.end = limit
     }
+    setRainLifetime(lifetimeSeconds)
+}
+
+private fun ParticleSimulation.setRainLifetime(lifetimeSeconds: Float) {
+    lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, lifetimeSeconds, lifetimeSeconds)
     // Per-emitter sampled lifetime: 1s fade in + (lifetime - 2)s opaque + 1s fade out.
     // The bundled component is attached already; these immediate native key writes require it.
     clearColorGradientKeys()
