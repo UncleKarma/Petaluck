@@ -133,6 +133,9 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     // Independent from gameplay, palette and breeze sampling.
                     val emissionRandom = if (surrounding) Random(config.seed xor 0x454d49544cL) else null
                     val finaleRate = emissionRandom?.nextInt(120, 161)?.toFloat() ?: 0f
+                    // A fixed sampled lifetime per emitter keeps normalized alpha keys at exactly
+                    // one second for every particle it creates, without adding more emitters.
+                    val lifetimeRandom = Random(config.seed xor 0x4c494645L)
                     // Clone before editing any source material/rate. Every clone belongs to candidate
                     // immediately, so cancellation/failure destroys the entire prepared effect.
                     val owners = paths.indices.map { index ->
@@ -156,7 +159,11 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                             it.isEmitting = false
                             val copies = owners.indices.count { candidateIndex -> candidateIndex % 3 == index % 3 }
                             val rate = rates[index % 3]
-                            if (surrounding) it.configureFinaleEmitter(finaleRate)
+                            if (surrounding) {
+                                val lifetimeSeconds = 4f + lifetimeRandom.nextInt(3_000, 5_001) / 1_000f
+                                it.configureFinaleEmitter(finaleRate, lifetimeSeconds)
+                                Log.i(TAG, "FinaleEmitterLifetime index=$index seconds=$lifetimeSeconds fadeIn=1 fadeOut=1")
+                            }
                             else it.birthRateFull = ParticleFloatVaryingProperty(rate.type, rate.value / copies, rate.range / copies)
                             it.mainSimulation.apply {
                                 material.baseColorMap = checkNotNull(textures[paths[index]])
@@ -270,7 +277,7 @@ internal fun ParticleComponent.setFinaleEmissionRate(totalBirthRate: Float) {
 }
 
 /** Eight overlapping color emitters share the Stage's sampled total emission rate. */
-internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
+internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float, lifetimeSeconds: Float) {
     setFinaleEmissionRate(totalBirthRate)
     val authored = emitterShape
     emitterShape = ParticleEmitterShape(
@@ -284,17 +291,18 @@ internal fun ParticleComponent.configureFinaleEmitter(totalBirthRate: Float) {
         radialSpan = 360f,
         torusInnerRadius = authored.torusInnerRadius,
     )
-    mainSimulation.configureFinaleRain()
+    mainSimulation.configureFinaleRain(lifetimeSeconds)
 }
 
 /** Applied once to each attached, freshly cloned Stage emitter; volume rain keeps its asset values. */
-internal fun ParticleSimulation.configureFinaleRain() {
+internal fun ParticleSimulation.configureFinaleRain(lifetimeSeconds: Float) {
+    require(lifetimeSeconds in 7f..9f)
     maxParticleCount *= 6 // Previous Stage capacity was 2x; now triple that capacity.
     startSize = startSize.let { ParticleFloatVaryingProperty(it.type, it.value * 2f, it.range * 2f) }
     // Authored motion has no gravity/drag module; falling is driven by downward startSpeed.
     // Sample per particle at birth: a wider spread with almost the same mean falling speed.
     startSpeed = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.RANDOM, .05f, .20f)
-    lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, 4f, 4f)
+    lifetime = ParticleFloatVaryingProperty(ParticleVaryingPropertyType.CONSTANT, lifetimeSeconds, lifetimeSeconds)
     isRotationVelocityCurveEnabled = true
     // Signed, per-particle XYZ sampling mixes slow turns and fast flips in both directions.
     // Mean absolute speeds remain close to v5's 35.6 / 24.4 / 30 degrees per second.
@@ -305,13 +313,13 @@ internal fun ParticleSimulation.configureFinaleRain() {
         curve.start = -limit
         curve.end = limit
     }
-    // Normalized lifetime keys: 1s fade in + 2s opaque + 1s fade out.
+    // Per-emitter sampled lifetime: 1s fade in + (lifetime - 2)s opaque + 1s fade out.
     // The bundled component is attached already; these immediate native key writes require it.
     clearColorGradientKeys()
     addColorGradientColorKey(Color3(1f, 1f, 1f), 0f)
     addColorGradientColorKey(Color3(1f, 1f, 1f), 1f)
     addColorGradientAlphaKey(0f, 0f)
-    addColorGradientAlphaKey(1f, .25f)
-    addColorGradientAlphaKey(1f, .75f)
+    addColorGradientAlphaKey(1f, 1f / lifetimeSeconds)
+    addColorGradientAlphaKey(1f, 1f - 1f / lifetimeSeconds)
     addColorGradientAlphaKey(0f, 1f)
 }

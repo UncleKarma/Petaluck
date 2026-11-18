@@ -41,7 +41,7 @@ class FinaleRainNativeTest {
                         val originals = scope.getChildren()
                         assertEquals(3, originals.size)
                         val totalRate = 160f
-                        for (original in originals) {
+                        for ((index, original) in originals.withIndex()) {
                             val sourceComponent = checkNotNull(original.components[ParticleComponent::class.java])
                             val source = sourceComponent.mainSimulation
                             val shape = sourceComponent.emitterShape
@@ -61,7 +61,8 @@ class FinaleRainNativeTest {
                             try {
                                 assertTrue(scope.addChild(clone))
                                 val component = checkNotNull(clone.components[ParticleComponent::class.java])
-                                component.configureFinaleEmitter(totalRate)
+                                val lifetimeSeconds = 7f + index
+                                component.configureFinaleEmitter(totalRate, lifetimeSeconds)
                                 val target = component.mainSimulation
                                 // These getters pull from native outside SceneEvents.Update batching.
                                 assertEquals(20f, component.birthRateFull.value, .0001f)
@@ -85,7 +86,9 @@ class FinaleRainNativeTest {
                                 assertEquals(.05f, target.startSpeed.value, .0001f)
                                 assertEquals(.20f, target.startSpeed.range, .0001f)
                                 assertEquals(capacity * 6, target.maxParticleCount)
-                                assertEquals(4f, target.lifetime.value, .0001f)
+                                assertEquals(ParticleVaryingPropertyType.CONSTANT, target.lifetime.type)
+                                assertEquals(lifetimeSeconds, target.lifetime.value, .0001f)
+                                assertEquals(lifetimeSeconds, target.lifetime.range, .0001f)
                                 assertTrue(target.isColorGradientEnabled)
                                 assertTrue(target.isRotationVelocityCurveEnabled)
                                 val spinLimits = listOf(72f, 50f, 60f)
