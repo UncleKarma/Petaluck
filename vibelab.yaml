@@ -18,8 +18,8 @@ app:
     - file: "assets/vibelab-demo.mp4"
       cover: "assets/vibelab-demo-cover.jpeg"
 version:
-  name: "V1.0.0"
-  notes: "首次上线空间摘花瓣体验，包含八种花色、随机祝福、结束音乐、同色花瓣雨和重玩。"
+  name: "V1.1.0"
+  notes: "新增彩色玫瑰与终章：八种纯色依次体验后，迎来彩色花朵、环绕花瓣雨、循环配乐和告别诗句。优化花瓣雨的覆盖、运动和持续时间，彩色终章发射器整体提高1米。细化花瓣曲面与外缘卷曲，降低碰撞网格复杂度，并修复重玩时的交互和祝福文字过渡。"
 build:
   repo_url: "https://github.com/UncleKarma/Petaluck"
   repo_visibility: "private"

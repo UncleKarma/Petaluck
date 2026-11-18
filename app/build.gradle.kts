@@ -12,8 +12,8 @@ android {
         applicationId = "com.unclekarma.petaluck"
         minSdk = 35
         targetSdk = 35
-        versionCode = 39
-        versionName = "1.0.38"
+        versionCode = 40
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         ndk { abiFilters.add("arm64-v8a") }
@@ -48,7 +48,7 @@ android {
 
 androidComponents {
     onVariants(selector().withBuildType("release")) { variant ->
-        variant.outputs.forEach { output -> output.versionName.set("V1.0.0") }
+        variant.outputs.forEach { output -> output.versionName.set("V1.1.0") }
     }
 }
 
