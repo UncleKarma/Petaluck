@@ -154,7 +154,7 @@ internal class EndingPetalRain(context: Context) : AutoCloseable {
                     val controls = owners.mapIndexed { index, owner ->
                         // Authored emitter is already near the +0.35 m container ceiling.
                         // Each color covers the full overhead disk at the Stage entry origin.
-                        val position = if(surrounding) Vector3(0f, 2.15f + (index % 3) * .15f, 0f)
+                        val position = if(surrounding) Vector3(0f, 3.15f + (index % 3) * .15f, 0f)
                             else Vector3(0f, .33f, 0f)
                         checkNotNull(owner.components[TransformComponent::class.java]).setPosition(position)
                         checkNotNull(owner.components[ParticleComponent::class.java]).also {
