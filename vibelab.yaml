@@ -22,7 +22,6 @@ version:
   notes: 新增彩色玫瑰与终章；美术资产优化
 build:
   repo_url: https://github.com/UncleKarma/Petaluck
-  commit_sha: "785699d1bc057d56ecc49497bf4765abadee9588"
   repo_visibility: "public"
   tech_stack: android_spatial
   ai_tool: Codex CLI
