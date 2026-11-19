@@ -5,8 +5,7 @@ app:
   description: |-
     《一瓣欢喜》是一段藏在花朵中的温柔时光。
     心里想着一个人，也可以只为自己。轻轻捏住花瓣，一片片摘下，让“喜欢”与“不喜欢”随花瓣飘落。最后一瓣落下时，答案交给偶然，欢喜留给自己。
-  tags:
-    - 其他
+  tags: ["休闲益智"]
   category: application
   icon: uri:tos-cn-i-1f2op84boi/2f7f7d41-3b4b-4ed7-b0fe-dbe7612a91b1.jpg
   landscape: uri:tos-cn-i-1f2op84boi/9266826c-472d-4210-bfdf-426c4d6a14a5.jpg
