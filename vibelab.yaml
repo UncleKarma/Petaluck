@@ -1,30 +1,36 @@
 app:
   id: "7708103971520380971"
-  name: "一瓣欢喜"
-  slogan: "《一瓣欢喜》是一段藏在花朵中的温柔时光。"
+  name: 一瓣欢喜
+  slogan: 《一瓣欢喜》是一段藏在花朵中的温柔时光。
   description: |-
     《一瓣欢喜》是一段藏在花朵中的温柔时光。
     心里想着一个人，也可以只为自己。轻轻捏住花瓣，一片片摘下，让“喜欢”与“不喜欢”随花瓣飘落。最后一瓣落下时，答案交给偶然，欢喜留给自己。
-  tags: [ "休闲益智" ]
-  category: "application"
-  icon: "assets/icon.jpg"
-  landscape: "assets/cover.jpeg"
+  tags:
+    - 其他
+  category: application
+  icon: uri:tos-cn-i-1f2op84boi/2f7f7d41-3b4b-4ed7-b0fe-dbe7612a91b1.jpg
+  landscape: uri:tos-cn-i-1f2op84boi/9266826c-472d-4210-bfdf-426c4d6a14a5.jpg
   detail_images:
-    - "assets/Screenshot_2026.11.13-14.12.18.jpeg"
-    - "assets/Screenshot_2026.11.13-14.12.58.jpeg"
-    - "assets/Screenshot_2026.11.16-11.10.31.jpeg"
-    - "assets/vibelab-detail-replay.jpeg"
+    - uri:tos-cn-i-1f2op84boi/cdd90d1e-f83a-4765-a506-178c23f91e20.jpeg
+    - uri:tos-cn-i-1f2op84boi/7488d56f-0bbd-4271-b67e-244f7fed2b71.jpeg
+    - uri:tos-cn-i-1f2op84boi/06b0a530-429b-4430-896a-99f73a7bb9d9.jpeg
+    - uri:tos-cn-i-1f2op84boi/c46615d5-38f3-413f-9627-0b31792ffc9b.jpeg
   videos:
-    - file: "assets/vibelab-demo.mp4"
-      cover: "assets/vibelab-demo-cover.jpeg"
+    - file: uri:tos-cn-i-1f2op84boi/25eff3fc-5891-4689-bf4c-6e3cf1db0a09.mp4
+      cover: uri:tos-cn-i-1f2op84boi/9d0b11da-b24e-4a9e-a469-dbe3e94abdc7.jpeg
 version:
-  name: "V1.1.0"
-  notes: "新增彩色玫瑰与终章：八种纯色依次体验后，迎来彩色花朵、环绕花瓣雨、循环配乐和告别诗句。优化花瓣雨的覆盖、运动和持续时间，彩色终章发射器整体提高1米。细化花瓣曲面与外缘卷曲，降低碰撞网格复杂度，并修复重玩时的交互和祝福文字过渡。"
+  name: V1.1.0
+  notes: 新增彩色玫瑰与终章；美术资产优化
 build:
-  repo_url: "https://github.com/UncleKarma/Petaluck"
-  repo_visibility: "private"
-  tech_stack: "android_spatial"
-  ai_tool: "Codex CLI"
-  ai_model: "GPT-6"
-  features: [ "none" ]
+  repo_url: https://github.com/UncleKarma/Petaluck
+  commit_sha: "785699d1bc057d56ecc49497bf4765abadee9588"
+  repo_visibility: "public"
+  tech_stack: android_spatial
+  ai_tool: Codex CLI
+  ai_model: GPT-6
+  features:
+    - hand_tracking
+    - eye_tracking
+    - mixed_reality
+    - mixed_reality_capture
   teammates: []
