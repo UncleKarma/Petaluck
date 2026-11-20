@@ -2,7 +2,7 @@
 
 依据 `petaluck.zip` 中 PRD v1.8 与参考图实现的 PICO Shared Space **Volume 开发版**。工程可在 Android Studio 打开，应用使用 Spatial SDK 6.2.8、Android API 35。
 
-应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「Petaluck」。应用包名为 `com.unclekarma.petaluck`，从 1.0.21 起作为新应用安装；旧开发包可并存。
+应用显示名按系统语言选择：中文为「一瓣欢喜」，英文及其它语言默认回退为「Petaluck」。Debug 和 release 的安装包名均为 `com.example.flowertears.p18ab52cf`，启动类为 `com.unclekarma.petaluck.platform.LaunchActivity`。
 
 当前开发构建版本为 **1.0.34（versionCode 35）**。彩色终章祝福改为两行七言：“此间花色终有尽 / 人间万彩待君寻”，邀请玩家回到生活中继续寻色。字体、淡入和“就此别过”按钮保持原样。花瓣雨沿用1.0.33的八发射器、每秒120～160片、按发射器随机7～9秒寿命及各1秒淡入淡出；普通流程和交互不变。139项主机测试、构建及静态检查通过，已安装；实际终章文字显示待头显复核。详见 [终章诗句](docs/special-colorful-blessing-copy.md) 和 [寿命修订记录](docs/finale-lifetime-v7.md)。
 
@@ -55,14 +55,14 @@ python3 tools/render_rose_review.py --stem
 python3 tools/render_rose_review.py --v4
 ```
 
-APK：`app/build/outputs/apk/debug/app-debug.apk`，开发包名：`com.unclekarma.petaluck`。
+Debug APK 位于 `app/build/outputs/apk/debug/app-debug.apk`。如果切换版本后 Android Studio 的 Run 输出仍以旧包名启动，请执行 **File → Sync Project with Gradle Files**，等同步完成后运行 `app` 配置。
 
 在可访问设备的主机环境中：
 
 ```bash
 pico-cli device list --format json
 pico-cli app install app/build/outputs/apk/debug/app-debug.apk --device <serial> --replace
-pico-cli app launch com.unclekarma.petaluck --activity .platform.LaunchActivity --device <serial>
+pico-cli app launch com.example.flowertears.p18ab52cf --device <serial>
 ```
 
 ## 资产与预览
